@@ -1,0 +1,505 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sign Up screen should render 1`] = `
+<RCTScrollView>
+  <View>
+    <View
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <View
+        accessibilityIgnoresInvertColors={true}
+        style={
+          Object {
+            "alignItems": "center",
+            "height": 240,
+            "justifyContent": "center",
+            "width": "100%",
+          }
+        }
+      >
+        <Image
+          source={
+            Object {
+              "testUri": "../../../src/assets/authBg/authBg.png",
+            }
+          }
+          style={
+            Array [
+              Object {
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              },
+              Object {
+                "height": 240,
+                "width": "100%",
+              },
+              undefined,
+            ]
+          }
+        />
+        <Image
+          source={
+            Object {
+              "testUri": "../../../src/assets/loginDish/loginDish.png",
+            }
+          }
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "padding": 20,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#181725",
+              "fontFamily": "Poppins-Regular",
+              "fontSize": 26,
+              "lineHeight": 29,
+            }
+          }
+        >
+          Sign Up
+        </Text>
+        <View
+          style={
+            Object {
+              "alignSelf": "center",
+              "marginTop": 15,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "alignSelf": "flex-start",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                }
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "borderBottomLeftRadius": 40,
+                      "borderTopLeftRadius": 40,
+                      "marginRight": 2,
+                    },
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#E2E2E2",
+                      "borderColor": "#fff",
+                      "borderWidth": 1,
+                      "elevation": 3,
+                      "paddingHorizontal": 14,
+                      "paddingVertical": 8,
+                      "shadowColor": "#181725",
+                      "shadowOffset": Object {
+                        "height": 1,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.22,
+                      "shadowRadius": 2.22,
+                    },
+                    Object {
+                      "backgroundColor": "#FF5823",
+                    },
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "fontFamily": "Poppins-Regular",
+                        "fontSize": 16,
+                      },
+                      Object {
+                        "color": "#fff",
+                      },
+                    ]
+                  }
+                >
+                  Customer
+                </Text>
+              </View>
+            </View>
+            <View
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                }
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "borderBottomRightRadius": 40,
+                      "borderTopRightRadius": 40,
+                    },
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#E2E2E2",
+                      "borderColor": "#fff",
+                      "borderWidth": 1,
+                      "elevation": 3,
+                      "paddingHorizontal": 14,
+                      "paddingVertical": 8,
+                      "shadowColor": "#181725",
+                      "shadowOffset": Object {
+                        "height": 1,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.22,
+                      "shadowRadius": 2.22,
+                    },
+                    false,
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "fontFamily": "Poppins-Regular",
+                        "fontSize": 16,
+                      },
+                      false,
+                    ]
+                  }
+                >
+                  Owner
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "marginBottom": 30,
+              "marginTop": 40,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#7C7C7C",
+                "fontFamily": "Poppins-Regular",
+                "fontSize": 16,
+              }
+            }
+          >
+            Email/Username
+          </Text>
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <TextInput
+              allowFontScaling={true}
+              autoCapitalize="none"
+              onChangeText={[Function]}
+              rejectResponderTermination={true}
+              style={
+                Object {
+                  "borderBottomWidth": 1,
+                  "borderColor": "#E2E2E2",
+                  "color": "#181725",
+                  "fontFamily": "Poppins-Regular",
+                  "fontSize": 18,
+                  "paddingVertical": 10,
+                  "width": "100%",
+                }
+              }
+              testID="email"
+              underlineColorAndroid="transparent"
+              value=""
+            />
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "marginBottom": 20,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#7C7C7C",
+                "fontFamily": "Poppins-Regular",
+                "fontSize": 16,
+              }
+            }
+          >
+            Password
+          </Text>
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <TextInput
+              allowFontScaling={true}
+              autoCapitalize="none"
+              onChangeText={[Function]}
+              rejectResponderTermination={true}
+              secureTextEntry={true}
+              style={
+                Object {
+                  "borderBottomWidth": 1,
+                  "borderColor": "#E2E2E2",
+                  "color": "#181725",
+                  "fontFamily": "Poppins-Regular",
+                  "fontSize": 18,
+                  "paddingVertical": 10,
+                  "width": "100%",
+                }
+              }
+              testID="password"
+              underlineColorAndroid="transparent"
+              value=""
+            />
+            <View
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                  "position": "absolute",
+                  "right": 0,
+                }
+              }
+              testID="eyeIc"
+            >
+              <Image
+                source={
+                  Object {
+                    "testUri": "../../../src/assets/password/password.png",
+                  }
+                }
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "marginBottom": 20,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#7C7C7C",
+                "fontFamily": "Poppins-Regular",
+                "fontSize": 16,
+              }
+            }
+          >
+            Confirm Password
+          </Text>
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <TextInput
+              allowFontScaling={true}
+              autoCapitalize="none"
+              onChangeText={[Function]}
+              rejectResponderTermination={true}
+              secureTextEntry={true}
+              style={
+                Object {
+                  "borderBottomWidth": 1,
+                  "borderColor": "#E2E2E2",
+                  "color": "#181725",
+                  "fontFamily": "Poppins-Regular",
+                  "fontSize": 18,
+                  "paddingVertical": 10,
+                  "width": "100%",
+                }
+              }
+              testID="confirmPassword"
+              underlineColorAndroid="transparent"
+              value=""
+            />
+            <View
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                  "position": "absolute",
+                  "right": 0,
+                }
+              }
+              testID="eyeIc"
+            >
+              <Image
+                source={
+                  Object {
+                    "testUri": "../../../src/assets/password/password.png",
+                  }
+                }
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#E2E2E2",
+              "borderRadius": 19,
+              "marginTop": 40,
+              "opacity": 1,
+              "padding": 24,
+            }
+          }
+          testID="signupBtn"
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#fff",
+                  "fontFamily": "Poppins-Regular",
+                  "fontSize": 18,
+                },
+                Object {},
+              ]
+            }
+          >
+            Sign Up
+          </Text>
+        </View>
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "marginTop": 25,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "fontFamily": "Poppins-Regular",
+                "fontSize": 14,
+              }
+            }
+          >
+            Already have an account? 
+          </Text>
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+              }
+            }
+          >
+            <Text
+              style={
+                Object {
+                  "color": "#54BF29",
+                  "fontFamily": "Poppins-Regular",
+                  "fontSize": 14,
+                }
+              }
+            >
+              Sign In
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</RCTScrollView>
+`;

@@ -1,43 +1,88 @@
 {
-  "name": "sheettestrn",
+  "name": "ratingsapp",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "test": "jest --passWithNoTests",
+    "test-update-snapshots": "jest -u",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "component": "node_modules/.bin/hygen component new",
+    "screen": "node_modules/.bin/hygen screen new",
+    "prettier": "prettier --write \"src/**/*.ts{,x}\"",
+    "prettier-check": "prettier --check \"src/**/*.ts{,x}\"",
+    "storybook": "start-storybook -p 7007",
+    "build-storybook": "build-storybook",
+    "pre-commit": "npm run prettier-check && npm run lint && npm run test"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.11",
-    "@react-navigation/native": "^5.9.4",
-    "@react-navigation/stack": "^5.14.5",
+    "@react-native-async-storage/async-storage": "^1.15.7",
+    "@react-native-community/google-signin": "^5.0.0",
+    "@react-navigation/native": "^6.0.2",
+    "@react-navigation/stack": "^6.0.7",
+    "@reduxjs/toolkit": "^1.6.1",
+    "@sentry/react-native": "^2.6.2",
+    "axios": "^0.21.1",
+    "install": "^0.13.0",
+    "jwt-decode": "^3.1.2",
     "react": "17.0.1",
     "react-native": "0.64.1",
+    "react-native-datepicker": "^1.7.2",
+    "react-native-fbsdk-next": "^4.3.0",
     "react-native-gesture-handler": "^1.10.3",
-    "react-native-safe-area-context": "^3.2.0",
-    "react-native-screens": "^3.4.0"
+    "react-native-reanimated": "1.13.2",
+    "react-native-safe-area-context": "^3.3.0",
+    "react-native-screens": "^3.6.0",
+    "react-native-vector-icons": "7.1.0",
+    "react-redux": "^7.2.4",
+    "redux": "^4.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",
+    "@storybook/addon-actions": "^5.3",
+    "@storybook/addon-knobs": "^5.3",
+    "@storybook/addon-links": "^5.3",
+    "@storybook/addon-ondevice-actions": "^5.3.23",
+    "@storybook/addon-ondevice-knobs": "^5.3.25",
+    "@storybook/react-native": "^5.3.25",
+    "@storybook/react-native-server": "^5.3.23",
+    "@testing-library/react-native": "^7.2.0",
     "@types/jest": "^26.0.23",
-    "@types/react-native": "^0.64.5",
+    "@types/react-native": "^0.64.1",
+    "@types/react-native-vector-icons": "^6.4.8",
     "@types/react-test-renderer": "^16.9.2",
+    "@typescript-eslint/eslint-plugin": "^4.29.3",
+    "@typescript-eslint/parser": "^4.29.3",
     "babel-jest": "^26.6.3",
+    "babel-loader": "^8.2.2",
+    "detox": "^18.20.2",
     "eslint": "^7.14.0",
+    "eslint-plugin-jest-formatting": "^3.0.0",
+    "husky": "^4.3.8",
+    "hygen": "^6.1.0",
     "jest": "^26.6.3",
-    "metro-react-native-babel-preset": "^0.64.0",
-    "react-test-renderer": "17.0.1",
+    "metro-react-native-babel-preset": "^0.66.0",
+    "react-dom": "17.0.2",
+    "react-native-codegen": "^0.0.7",
+    "react-test-renderer": "17.0.2",
     "typescript": "^3.8.3"
   },
   "resolutions": {
     "@types/react": "^17"
   },
   "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/tests/setup.ts"
+    ],
     "preset": "react-native",
+    "transformIgnorePatterns": [
+      "/node_modules/(?!@react-native|react-native|@react-native-community/google-signin|@sentry/react-native|@react-navigation/native|@react-navigation/stack)"
+    ],
     "moduleFileExtensions": [
       "ts",
       "tsx",
@@ -46,5 +91,10 @@
       "json",
       "node"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prettier-check && npm run lint && npm run test"
+    }
   }
 }
