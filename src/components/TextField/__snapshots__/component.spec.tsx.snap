@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextField should render 1`] = `
+<View>
+  <Text
+    style={
+      Object {
+        "color": "#7C7C7C",
+        "fontFamily": "Poppins-Regular",
+        "fontSize": 16,
+      }
+    }
+  >
+    Email/Username
+  </Text>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <TextInput
+      autoCapitalize="none"
+      onChangeText={[MockFunction]}
+      style={
+        Object {
+          "borderBottomWidth": 1,
+          "borderColor": "#E2E2E2",
+          "color": "#181725",
+          "fontFamily": "Poppins-Regular",
+          "fontSize": 18,
+          "paddingVertical": 10,
+          "width": "100%",
+        }
+      }
+      value="Input"
+    />
+  </View>
+</View>
+`;
