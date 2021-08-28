@@ -1,3 +1,16 @@
-# Sheets-test-RN
+## Creating new components
 
-![sheets-ios](https://user-images.githubusercontent.com/23625686/128796022-0504a101-f363-49bb-850c-717a539c76d0.gif)
+For convenience reasons this project uses template generator to simplify creation of new
+components. For example, to generate a new `Button` component run:
+
+`npm run component Button`
+
+This will create a new `Button` directory inside `src/components` with following files:
+
+```
+src/components/Button/index.ts
+src/components/Button/stories.ts
+src/components/Button/styles.ts
+```
+
+It will also update `src/stories/index.js` with a newly created comoonent storybook entry.
