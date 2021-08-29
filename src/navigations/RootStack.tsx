@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { useDispatch, useSelector } from 'react-redux'
 
 import routes from './routes'
-import { getData } from '../utilities/helpers'
+import { getData, removeData } from '../utilities/helpers'
 import AuthStack from './AuthStack'
 import CustomerHomeStack from './CustomerHomeStack'
 import { RootState } from '../store'
@@ -17,7 +17,6 @@ const RootStack = () => {
 
   const renderUserData = async () => {
     const data = await getData('userInfo')
-    console.log('data', data)
     if (!data || !data.token) {
       return setIsLoggedIn(false)
     }
@@ -57,8 +56,16 @@ const RootStack = () => {
         <>
           {userInfo.typeOfUser === 'customer' ? (
             <>
-              <Stack.Screen name={routes.CUSTOMER_HOME_STACK} component={CustomerHomeStack} />
-              <Stack.Screen name={routes.AUTH_STACK} component={AuthStack} />
+              <Stack.Screen
+                name={routes.CUSTOMER_HOME_STACK}
+                component={CustomerHomeStack}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name={routes.AUTH_STACK}
+                component={AuthStack}
+                options={{ headerShown: false }}
+              />
             </>
           ) : (
             <>

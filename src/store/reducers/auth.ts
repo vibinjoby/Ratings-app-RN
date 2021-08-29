@@ -1,5 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { fetchLoginFormDetails, registerUserDetails } from '../../network/AuthService'
+import {
+  fetchLoginFormDetails,
+  registerUserDetails,
+  socialAuthentication,
+} from '../../network/AuthService'
 
 import { decodeToken } from '../../utilities/helpers'
 import { apiCallBegan } from '../actions/api'
@@ -81,9 +85,24 @@ export const loginUser =
     })
   }
 
+export const socialLoginUser =
+  (token: string, socialType: string, typeOfUser: string) => (dispatch: typeof store.dispatch) => {
+    dispatch({
+      type: apiCallBegan.type,
+      payload: {
+        apiMethod: socialAuthentication,
+        args: [token, socialType, typeOfUser],
+        onSucess: [login.type],
+        loader: true,
+      },
+    })
+  }
+
 export const registerUser =
-  (email: string, password: string, typeOfUser: string) => (dispatch: typeof store.dispatch) => {
+  (fullName: string, email: string, password: string, typeOfUser: string) =>
+  (dispatch: typeof store.dispatch) => {
     const userObj = {
+      fullName,
       email,
       password,
       typeOfUser,

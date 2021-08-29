@@ -1,0 +1,37 @@
+import HttpService from '../network/HttpService'
+import serviceConst from '../configs/serviceConst'
+
+export const getRestaurants = async (token: string, pageNumber: number): Promise<any> => {
+  const { BASE_URL, FETCH_RESTAURANTS } = serviceConst
+  HttpService.setHeader(token)
+  const { data } = await HttpService.get(BASE_URL + FETCH_RESTAURANTS + pageNumber)
+
+  return data
+}
+
+export const createRestaurant = async (
+  token: string,
+  restaurantName: string,
+  address: string,
+  contactNumber: string,
+  email: string,
+): Promise<any> => {
+  const { BASE_URL, CREATE_RESTAURANT } = serviceConst
+  HttpService.setHeader(token)
+  const { data } = await HttpService.post(BASE_URL + CREATE_RESTAURANT, {
+    restaurantName,
+    address,
+    contactNumber,
+    email,
+  })
+
+  return data
+}
+
+export const fetchRestaurantDetail = async (token: string, restaurantId: string): Promise<any> => {
+  const { BASE_URL, FETCH_RESTAURANT_DETAIL } = serviceConst
+  HttpService.setHeader(token)
+  const { data } = await HttpService.get(BASE_URL + FETCH_RESTAURANT_DETAIL + restaurantId)
+
+  return data
+}

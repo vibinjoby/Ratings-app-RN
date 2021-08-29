@@ -1,17 +1,18 @@
 import React from 'react'
+import { StyleSheet, View } from 'react-native'
 import { storiesOf } from '@storybook/react-native'
+
 import RestaurantCard from './component'
-import { StyleSheet } from 'react-native'
-import { View } from 'react-native'
+import constants from '../../configs/commonConst'
 
 storiesOf('Components', module).add('RestaurantCard', () => (
   <View style={styles.container}>
     <RestaurantCard
+      id={'123'}
       title="Joes Pizzeria"
-      restaurantImg={require('../../assets/dummy-restaurant-pic.png')}
+      restaurantImg={{ uri: constants.DUMMY_PIC }}
       ratings={4.4}
       reviewCount={84}
-      onPress={() => console.log('pressed')}
     />
   </View>
 ))

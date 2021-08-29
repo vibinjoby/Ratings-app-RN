@@ -14,14 +14,12 @@ export const fetchLoginFormDetails = async (
   password: string,
   typeOfUser: string,
 ) => {
-  console.log('came here')
   const { BASE_URL, FETCH_LOGIN_API_URI } = serviceConst
   const { data } = await HttpService.post(BASE_URL + FETCH_LOGIN_API_URI, {
     email,
     password,
     typeOfUser,
   })
-  console.log('data')
 
   return data
 }
@@ -29,5 +27,19 @@ export const fetchLoginFormDetails = async (
 export const registerUserDetails = async (body: Record<string, unknown>) => {
   const { BASE_URL, REGISTER_API_URI } = serviceConst
   const { data } = await HttpService.post(BASE_URL + REGISTER_API_URI, body)
+  return data
+}
+
+export const socialAuthentication = async (
+  token: string,
+  socialType: string,
+  typeOfUser: string,
+) => {
+  const { BASE_URL, SOCIAL_LOGIN_URI } = serviceConst
+  const { data } = await HttpService.post(BASE_URL + SOCIAL_LOGIN_URI, {
+    token,
+    socialType,
+    typeOfUser,
+  })
   return data
 }

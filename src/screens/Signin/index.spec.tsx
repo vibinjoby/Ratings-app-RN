@@ -1,15 +1,20 @@
 import 'react-native'
 import React from 'react'
 import { fireEvent, render } from '@testing-library/react-native'
+import { NavigationContainer } from '@react-navigation/native'
 
 import SignIn from '.'
-import { NavigationContainer } from '@react-navigation/native'
+import WrapComponent from '../../../tests/wrapComponent'
+import { Provider } from 'react-redux'
+import { store } from '../../store'
 
 describe('Sign In screen', () => {
   it('should render', () => {
     const { toJSON } = render(
       <NavigationContainer>
-        <SignIn />
+        <Provider store={store}>
+          <SignIn />
+        </Provider>
       </NavigationContainer>,
     )
     expect(toJSON()).toMatchSnapshot()
@@ -18,7 +23,9 @@ describe('Sign In screen', () => {
   it('should let me enter values', () => {
     const { getByTestId } = render(
       <NavigationContainer>
-        <SignIn />
+        <Provider store={store}>
+          <SignIn />
+        </Provider>
       </NavigationContainer>,
     )
     fireEvent.changeText(getByTestId('email'), 'Email')

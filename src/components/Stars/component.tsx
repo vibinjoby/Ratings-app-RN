@@ -10,7 +10,7 @@ export interface StarsProps {
   selectedStars: number
   selectedColor?: string
   starHeight?: number
-  onSelection: (arg0: number) => void
+  onSelection?: (arg0: number) => void
 }
 
 const Stars: React.FC<StarsProps> = ({
@@ -27,9 +27,11 @@ const Stars: React.FC<StarsProps> = ({
         scrollEnabled={false}
         horizontal={true}
         renderItem={({ item, index }) => (
-          <TouchableWithoutFeedback onPress={() => selectable && onSelection(index + 1)}>
+          <TouchableWithoutFeedback
+            onPress={() => selectable && onSelection && onSelection(index + 1)}
+          >
             <FontAwesome
-              name={index + 1 <= selectedStars && index - 1 >= selectedStars ? `star-half` : `star`}
+              name={`star`}
               color={index + 1 <= selectedStars ? selectedColor : Colors.unselectedStars}
               size={starHeight ? starHeight : 20}
             />

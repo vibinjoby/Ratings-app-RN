@@ -23,6 +23,9 @@ jest.mock('@react-navigation/native', () => {
     useNavigation: () => ({
       navigate: mockedNavigate,
     }),
+    useRoute: () => ({
+      params: {},
+    }),
   }
 })
 

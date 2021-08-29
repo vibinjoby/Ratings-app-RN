@@ -88,7 +88,6 @@ export const storeData = async (key: string, value: any) => {
 export const getData = async (key: string): Promise<any> => {
   try {
     const jsonValue: any = await AsyncStorage.getItem(key)
-    console.log('jsonValue')
     return jsonValue != null ? JSON.parse(jsonValue) : null
   } catch (e) {
     Sentry.captureException(e)

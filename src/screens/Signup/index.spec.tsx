@@ -4,22 +4,21 @@ import { fireEvent, render } from '@testing-library/react-native'
 import { NavigationContainer } from '@react-navigation/native'
 
 import Signup from '.'
+import WrapComponent from '../../../tests/wrapComponent'
 
 describe('Sign Up screen', () => {
+  beforeEach(() => {
+    render(<NavigationContainer>{WrapComponent(Signup)}</NavigationContainer>)
+  })
+
   it('should render', () => {
-    const { toJSON } = render(
-      <NavigationContainer>
-        <Signup />
-      </NavigationContainer>,
-    )
+    const { toJSON } = render(<NavigationContainer>{WrapComponent(Signup)}</NavigationContainer>)
     expect(toJSON()).toMatchSnapshot()
   })
 
   it('should let me enter values and submit', () => {
     const { getByTestId } = render(
-      <NavigationContainer>
-        <Signup />
-      </NavigationContainer>,
+      <NavigationContainer>{WrapComponent(Signup)}</NavigationContainer>,
     )
     fireEvent.changeText(getByTestId('email'), 'Email')
     fireEvent.changeText(getByTestId('password'), 'Password')

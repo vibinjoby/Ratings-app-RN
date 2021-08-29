@@ -232,7 +232,52 @@ exports[`Sign Up screen should render 1`] = `
               }
             }
           >
-            Email/Username
+            FullName
+          </Text>
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <TextInput
+              autoCapitalize="none"
+              onChangeText={[Function]}
+              style={
+                Object {
+                  "borderBottomWidth": 1,
+                  "borderColor": "#E2E2E2",
+                  "color": "#181725",
+                  "fontFamily": "Poppins-Regular",
+                  "fontSize": 18,
+                  "paddingVertical": 10,
+                  "width": "100%",
+                }
+              }
+              testID="email"
+              value=""
+            />
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "marginBottom": 20,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#7C7C7C",
+                "fontFamily": "Poppins-Regular",
+                "fontSize": 16,
+              }
+            }
+          >
+            Email
           </Text>
           <View
             style={

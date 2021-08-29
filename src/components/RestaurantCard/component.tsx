@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import { useNavigation } from '@react-navigation/native'
+import React from 'react'
 import {
   Image,
   ImageBackground,
@@ -7,26 +8,28 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
+import routes from '../../navigations/routes'
+
 import Colors from '../../utilities/colors'
 import Stars from '../Stars'
 import styles from './styles'
 
 export interface RestaurantCardProps {
+  id: string
   title: string
   ratings: number
   restaurantImg: ImageSourcePropType
   reviewCount: number
-  onPress: () => void
 }
 
 const RestaurantCard: React.FC<RestaurantCardProps> = ({
+  id,
   title,
   ratings,
   restaurantImg,
   reviewCount,
-  onPress,
 }: RestaurantCardProps) => {
-  const [selectedStars, setSelectedStars] = useState(ratings)
+  const navigation = useNavigation()
   const RatingOverview = () => (
     <View style={styles.ratingWrapper}>
       <Image style={styles.starImg} source={require('../../assets/star/star.png')} />
@@ -35,7 +38,12 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
   )
 
   return (
-    <TouchableOpacity activeOpacity={0.8} style={styles.container} onPress={onPress}>
+    <TouchableOpacity
+      activeOpacity={0.8}
+      style={styles.container}
+      //@ts-ignore
+      onPress={() => navigation.navigate(routes.RESTAURANT_DETAILS, { id })}
+    >
       <View>
         <ImageBackground source={restaurantImg} resizeMode="stretch" style={styles.imgBg}>
           <RatingOverview />
@@ -45,8 +53,7 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
           <Stars
             selectedColor={Colors.golden}
             selectable={false}
-            selectedStars={selectedStars}
-            onSelection={(stars) => setSelectedStars(stars)}
+            selectedStars={ratings}
             starHeight={15}
           />
           <Text style={styles.reviews}>{reviewCount} Reviews</Text>
