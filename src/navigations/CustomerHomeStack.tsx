@@ -1,9 +1,10 @@
 import React from 'react'
-import { createStackNavigator } from '@react-navigation/stack'
+import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack'
 
 import routes from './routes'
 import Home from '../screens/Home'
 import RestaurantDetails from '../screens/RestaurantDetails'
+import AddReview from '../screens/AddReview'
 
 const CustomerHomeStack = () => {
   const Stack = createStackNavigator()
@@ -15,6 +16,14 @@ const CustomerHomeStack = () => {
         name={routes.RESTAURANT_DETAILS}
         component={RestaurantDetails}
         options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name={routes.ADD_REVIEW}
+        component={AddReview}
+        options={{
+          headerShown: false,
+          cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS,
+        }}
       />
     </Stack.Navigator>
   )

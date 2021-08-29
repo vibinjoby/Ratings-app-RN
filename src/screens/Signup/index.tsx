@@ -1,27 +1,61 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
-import { View, Text, ImageBackground, Image, TouchableOpacity, ScrollView } from 'react-native'
+import {
+  View,
+  Text,
+  ImageBackground,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+  KeyboardType,
+} from 'react-native'
 import { useDispatch } from 'react-redux'
+import * as yup from 'yup'
+import { Formik } from 'formik'
 
 import Button from '../../components/Button'
-import TextField from '../../components/TextField'
 import TwoTabs from '../../components/TwoTabs'
 import routes from '../../navigations/routes'
 import { registerUser } from '../../store/reducers/auth'
 import Typography from '../../utilities/typography'
 import styles from './styles'
+import CustomTextInput from '../../components/CustomTextInput'
+
+type RegisterType = {
+  fullName: string
+  email: string
+  password: string
+}
 
 const SignUp: React.FC = () => {
-  const [fullName, setFullName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [cnfrmPassword, setCnfrmPassword] = useState('')
   const [selectedTab, setSelectedTab] = useState(0)
+
+  const data = [
+    { key: 1, placeholder: 'Full Name', name: 'fullName' },
+    {
+      key: 2,
+      placeholder: 'Email',
+      name: 'email',
+      keyboardType: 'email-address',
+    },
+    {
+      key: 3,
+      placeholder: 'Create Password',
+      name: 'password',
+      secureEntry: true,
+    },
+    {
+      key: 4,
+      placeholder: 'Confirm Password',
+      name: 'confirmPwd',
+      secureEntry: true,
+    },
+  ]
 
   const navigation = useNavigation()
   const dispatch = useDispatch()
 
-  const handleSignUp = () => {
+  const handleSignUp = ({ fullName, email, password }: RegisterType) => {
     if (!email || !password) return
 
     let typeOfUser = ''
@@ -52,45 +86,69 @@ const SignUp: React.FC = () => {
               onTabSelect={(tab) => setSelectedTab(tab)}
             />
           </View>
-          <TextField
-            testID="email"
-            containerStyle={styles.emailField}
-            textHint="FullName"
-            inputValue={fullName}
-            onInputChange={(e) => setFullName(e)}
-          />
+          <Formik
+            onSubmit={() => console.log()}
+            initialValues={{
+              fullName: '',
+              email: '',
+              password: '',
+              confirmPwd: '',
+            }}
+            validationSchema={yup.object().shape({
+              fullName: yup.string().label('Full Name').required(),
+              email: yup.string().email().label('Email').required(),
+              password: yup
+                .string()
+                .label('Password')
+                .matches(
+                  /^(?=.*\d)(?=.*[@$!%*#?&_])[A-Za-z\d@$!%*#?&_]{8,}$/,
+                  'Must Contain 8 Characters, One Number and one special case Character',
+                )
+                .required(),
+              confirmPwd: yup
+                .string()
+                .label('Confirm Password')
+                .oneOf([yup.ref('password'), null], 'Passwords must match')
+                .required(),
+            })}
+          >
+            {({
+              values,
+              handleChange,
+              errors,
+              setFieldTouched,
+              touched,
+              isValid,
+              validateForm,
+              dirty,
+            }) => (
+              <>
+                {data.map((item) => (
+                  <CustomTextInput
+                    keyboardType={item.keyboardType as KeyboardType}
+                    key={item.key.toString()}
+                    onBlur={() => setFieldTouched(item.name)}
+                    onFocus={() => validateForm()}
+                    onChangeText={handleChange(item.name)}
+                    placeholderTxt={item.placeholder}
+                    touched={touched}
+                    secureTextEntry={item.secureEntry}
+                    name={item.name}
+                    errors={errors}
+                    customStyles={styles.textInp}
+                  />
+                ))}
+                <Button
+                  testID="signupBtn"
+                  disabled={!isValid || !dirty}
+                  title="Sign Up"
+                  onPress={() => handleSignUp(values)}
+                  customStyle={styles.loginBtn}
+                />
+              </>
+            )}
+          </Formik>
 
-          <TextField
-            testID="email"
-            containerStyle={styles.pwdField}
-            textHint="Email"
-            inputValue={email}
-            onInputChange={(e) => setEmail(e)}
-          />
-          <TextField
-            testID="password"
-            containerStyle={styles.pwdField}
-            textHint="Password"
-            isProtected
-            inputValue={password}
-            onInputChange={(e) => setPassword(e)}
-          />
-          <TextField
-            testID="confirmPassword"
-            containerStyle={styles.pwdField}
-            textHint="Confirm Password"
-            isProtected
-            inputValue={cnfrmPassword}
-            onInputChange={(e) => setCnfrmPassword(e)}
-          />
-
-          <Button
-            testID="signupBtn"
-            disabled={!email || !password}
-            title="Sign Up"
-            onPress={handleSignUp}
-            customStyle={styles.loginBtn}
-          />
           <View style={styles.footerContainer}>
             <Text style={styles.footerTxt}>Already have an account? </Text>
 

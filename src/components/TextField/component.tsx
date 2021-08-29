@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { View, TextInput, Text, Image, TouchableOpacity } from 'react-native'
+import PasswordErrorText from '../PasswordErrorText'
 
 import styles from './styles'
 
@@ -11,6 +12,8 @@ export interface TextFieldProps {
   inputValue: string
   isProtected?: boolean
   onInputChange: (arg0: string) => void
+  isPwdCheck?: boolean
+  errorText?: string
 }
 
 const TextField: React.FC<TextFieldProps> = ({
@@ -20,8 +23,12 @@ const TextField: React.FC<TextFieldProps> = ({
   inputValue,
   isProtected,
   onInputChange,
+  isPwdCheck,
+  errorText,
 }: TextFieldProps) => {
   const [showPwd, setShowPwd] = useState(isProtected)
+
+  const ErrorText = () => <Text style={styles.errTxt}>{errorText}</Text>
 
   return (
     <View style={containerStyle}>
@@ -46,6 +53,8 @@ const TextField: React.FC<TextFieldProps> = ({
           </TouchableOpacity>
         )}
       </View>
+      {errorText && <ErrorText />}
+      {isPwdCheck && <PasswordErrorText inputValue={inputValue} />}
     </View>
   )
 }

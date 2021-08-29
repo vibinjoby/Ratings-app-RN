@@ -1,19 +1,22 @@
 import 'react-native'
 import React from 'react'
-import RestaurantCard from './component'
-
 import { render } from '@testing-library/react-native'
+import { NavigationContainer } from '@react-navigation/native'
+
+import RestaurantCard from './component'
 
 describe('RestaurantCard', () => {
   it('should render', () => {
     render(
-      <RestaurantCard
-        id={'123'}
-        title="Joes Pizzeria"
-        restaurantImg={require('../../assets/dummy-restaurant-pic.png')}
-        ratings={4.4}
-        reviewCount={84}
-      />,
+      <NavigationContainer>
+        <RestaurantCard
+          id={'123'}
+          title="Joes Pizzeria"
+          restaurantImg={require('../../assets/dummy-restaurant-pic.png')}
+          ratings={4.4}
+          reviewCount={84}
+        />
+      </NavigationContainer>,
     )
   })
 })

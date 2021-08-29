@@ -35,3 +35,22 @@ export const fetchRestaurantDetail = async (token: string, restaurantId: string)
 
   return data
 }
+
+export const submitRatings = async (
+  token: string,
+  restaurantId: string,
+  ratings: number,
+  visitDate: string,
+  comments: string,
+): Promise<any> => {
+  const { BASE_URL, SUBMIT_RATINGS } = serviceConst
+  HttpService.setHeader(token)
+  const { data } = await HttpService.post(BASE_URL + SUBMIT_RATINGS, {
+    restaurantId,
+    ratings,
+    visitDate,
+    comments,
+  })
+
+  return data
+}

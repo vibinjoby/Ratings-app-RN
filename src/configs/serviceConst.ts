@@ -7,4 +7,5 @@ export default {
   FETCH_RESTAURANTS: 'restaurants/fetchRestaurants/',
   CREATE_RESTAURANT: 'restaurants/createRestaurant',
   FETCH_RESTAURANT_DETAIL: 'restaurants/fetchRestaurant/',
+  SUBMIT_RATINGS: 'reviews/submitReview',
 }

@@ -7,6 +7,8 @@ import { Provider } from 'react-redux'
 
 import RootStack from './src/navigations/RootStack'
 import { store } from './src/store'
+import AppToasts from './src/components/AppToasts'
+import AppLoader from './src/components/AppLoader'
 //import Storybook from './storybook'
 
 const App: React.FC = () => {
@@ -29,16 +31,15 @@ const App: React.FC = () => {
     // console.error = () => {} // Ignore all errors
   }, [])
 
-  {
-    /* <AppNoInternet>
-<AppLoader>
-  <AppToasts> */
-  }
   return !isStorybook ? (
     <Provider store={store}>
-      <NavigationContainer>
-        <RootStack />
-      </NavigationContainer>
+      <AppLoader>
+        <AppToasts>
+          <NavigationContainer>
+            <RootStack />
+          </NavigationContainer>
+        </AppToasts>
+      </AppLoader>
     </Provider>
   ) : (
     <></>

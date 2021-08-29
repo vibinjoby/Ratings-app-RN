@@ -33,9 +33,9 @@ const api =
 
     const { apiMethod, args, onSucess, loader } = action.payload
     try {
-      /* if (loader) {
+      if (loader) {
         dispatch({ type: startLoader.type })
-      } */
+      }
       const response = await apiMethod(...args)
       for (const successCallback of onSucess) {
         dispatch({ type: successCallback, payload: { data: response, args } })
@@ -44,18 +44,18 @@ const api =
       Sentry.captureException(error)
       console.log(error)
       try {
-        /*  dispatch({
+        dispatch({
           type: errorToast.type,
           payload: { message: JSON.parse(error)?.error },
-        }) */
+        })
       } catch (err) {
         Sentry.captureException(err)
         console.log(err)
       }
     }
-    /* if (loader) {
+    if (loader) {
       dispatch({ type: stopLoader.type })
-    } */
+    }
   }
 
 export default api

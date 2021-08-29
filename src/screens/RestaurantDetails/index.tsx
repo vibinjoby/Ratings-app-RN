@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import { ImageBackground, View, Text, Image, TouchableOpacity } from 'react-native'
-import { useRoute } from '@react-navigation/native'
+import { ImageBackground, View, Text, Image, TouchableOpacity, ScrollView } from 'react-native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
 
 import commons from '../../configs/commonConst'
@@ -9,8 +9,7 @@ import { RootState } from '../../store'
 import { getRestaurantDetail } from '../../store/reducers/restaurant'
 import Colors from '../../utilities/colors'
 import styles from './styles'
-import { ScrollView } from 'react-native-gesture-handler'
-import moment from 'moment'
+import routes from '../../navigations/routes'
 
 type Review = {
   reviewId?: string
@@ -26,6 +25,7 @@ const RestaurantDetails: React.FC = () => {
   const token = useSelector((state: RootState) => state.auth.token)
   const restaurantDetail = useSelector((state: RootState) => state.restaurants.restaurantDetails)
   const dispatch = useDispatch()
+  const navigation = useNavigation()
 
   useEffect(() => {
     const id = route.params?.id
@@ -61,7 +61,7 @@ const RestaurantDetails: React.FC = () => {
             starHeight={14}
             selectedColor={Colors.appOrange}
           />
-          <Text style={styles.visitDt}>{moment(visitDate).format('DD/MM/yyyy')}</Text>
+          <Text style={styles.visitDt}>{visitDate.substr(0, 13)}</Text>
         </View>
         <Text style={styles.comments}>{comments}</Text>
         {/* eslint-disable camelcase */}
@@ -73,11 +73,17 @@ const RestaurantDetails: React.FC = () => {
   const PlusIc = () => (
     <TouchableOpacity
       activeOpacity={0.8}
-      style={styles.plusIcContainer}
-      onPress={() => console.log('plsu')}
+      style={styles.plusIcContainer} //@ts-ignore
+      onPress={() => navigation.navigate(routes.ADD_REVIEW)}
     >
       <Text style={styles.plusTxt}>+</Text>
     </TouchableOpacity>
+  )
+  const RatingOverview = () => (
+    <View style={styles.ratingOverview}>
+      <Image style={styles.starImg} source={require('../../assets/star/star.png')} />
+      <Text style={styles.ratings}>{restaurantDetail.restaurantData.average_ratings}</Text>
+    </View>
   )
 
   if (!restaurantDetail) return <></>
@@ -90,10 +96,11 @@ const RestaurantDetails: React.FC = () => {
             <Text style={styles.restaurantTitle}>
               {restaurantDetail?.restaurantData.restaurant_name}
             </Text>
+            <RatingOverview />
           </ImageBackground>
           <View style={styles.contentContainer}>
-            <ReviewsHeader title="Latest" />
-            {restaurantDetail?.latestReviews.map((item, index) => (
+            <ReviewsHeader title="Latest Rated" />
+            {restaurantDetail?.latestReviews.slice(0, 3).map((item, index) => (
               <ReviewBlock
                 key={index} //@ts-ignore
                 reviewerName={item?.rated_user_id?.fullName} //@ts-ignore

@@ -1,6 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { getRestaurants, fetchRestaurantDetail } from '../../network/RestaurantService'
+import {
+  getRestaurants,
+  fetchRestaurantDetail,
+  submitRatings,
+} from '../../network/RestaurantService'
 import { apiCallBegan } from '../actions/api'
 import { store } from '../index'
 
@@ -82,10 +86,21 @@ const slice = createSlice({
       const { data } = action.payload
       state.restaurantDetails = data
     },
+    addReview: (state: State, action) => {
+      const { data } = action.payload
+      state.restaurantDetails.latestReviews.unshift(data.review)
+      state.restaurantDetails.hasUserRated = true
+
+      if (!state.restaurantDetails.lowestRatedReview && data.review.ratings < 3) {
+        state.restaurantDetails.lowestRatedReview = data.review
+      } else if (!state.restaurantDetails.highestRatedReview && data.review.ratings >= 3) {
+        state.restaurantDetails.highestRatedReview = data.review
+      }
+    },
   },
 })
 
-export const { loadAllRestaurants, loadRestaurantDetail } = slice.actions
+export const { loadAllRestaurants, loadRestaurantDetail, addReview } = slice.actions
 
 export default slice.reducer
 
@@ -97,7 +112,7 @@ export const fetchRestaurants =
         apiMethod: getRestaurants,
         args: [token, pageNumber],
         onSucess: [loadAllRestaurants.type],
-        loader: true,
+        loader: false,
       },
     })
   }
@@ -110,6 +125,20 @@ export const getRestaurantDetail =
         apiMethod: fetchRestaurantDetail,
         args: [token, restaurantId],
         onSucess: [loadRestaurantDetail.type],
+        loader: true,
+      },
+    })
+  }
+
+export const submitReview =
+  (token: string, restaurantId: string, ratings: number, visitDate: string, comments: string) =>
+  (dispatch: typeof store.dispatch) => {
+    dispatch({
+      type: apiCallBegan.type,
+      payload: {
+        apiMethod: submitRatings,
+        args: [token, restaurantId, ratings, visitDate, comments],
+        onSucess: [addReview],
         loader: true,
       },
     })

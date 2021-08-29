@@ -22,4 +22,9 @@ export default StyleSheet.create({
     position: 'absolute',
     right: 0,
   },
+  errTxt: {
+    fontSize: 12,
+    color: Colors.errorText,
+    marginBottom: 5,
+  },
 })

@@ -1,9 +1,10 @@
-import { StyleSheet } from 'react-native'
+import { Platform, StyleSheet } from 'react-native'
 import Typography from '../../utilities/typography'
 
 export default StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: Platform.OS === 'android' ? 20 : 0,
   },
   title: {
     ...Typography.Title1.bold,

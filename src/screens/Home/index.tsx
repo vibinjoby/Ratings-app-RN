@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { SafeAreaView, View, Text, TouchableOpacity, FlatList } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
@@ -15,10 +15,9 @@ import { logout } from '../../store/reducers/auth'
 import { removeData } from '../../utilities/helpers'
 import routes from '../../navigations/routes'
 
-export interface HomeProps {}
-
-const Home: React.FC<HomeProps> = () => {
+const Home: React.FC = () => {
   const token = useSelector((state: RootState) => state.auth.token)
+  const fullName = useSelector((state: RootState) => state.auth.userInfo.fullName)
   const restaurantData = useSelector((state: RootState) => state.restaurants.restaurants)
   const dispatch = useDispatch()
   const navigation = useNavigation()
@@ -33,13 +32,13 @@ const Home: React.FC<HomeProps> = () => {
     await removeData('userInfo')
     navigation.reset({
       index: 0, //@ts-ignore
-      routes: [{ name: routes.AUTH_STACK_NAV }],
+      routes: [{ name: routes.AUTH_STACK }],
     })
   }
 
   const CustomerHeader = () => (
     <View style={styles.headerWrapper}>
-      <Text style={styles.customerSalutation}>Welcome Vibin Joby</Text>
+      <Text style={styles.customerSalutation}>Welcome {fullName}</Text>
       <TouchableOpacity activeOpacity={0.9} onPress={handleLogout}>
         <MaterialCommIcons name="logout" size={25} color={Colors.appOrange} />
       </TouchableOpacity>

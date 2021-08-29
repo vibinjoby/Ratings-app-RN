@@ -7,6 +7,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  textInp: {
+    marginBottom: 10,
+  },
   bgContainer: {
     justifyContent: 'center',
     alignItems: 'center',

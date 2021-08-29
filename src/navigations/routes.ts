@@ -7,4 +7,5 @@ export default {
 
   AUTH_STACK: 'AuthStack',
   CUSTOMER_HOME_STACK: 'CustomerHomeStack',
+  ADD_REVIEW: 'AddReviews',
 }

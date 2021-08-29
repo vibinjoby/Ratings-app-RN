@@ -2,8 +2,10 @@ const Colors = {
   appGreen: '#54BF29',
   white: '#fff',
   lightGrey: '#DBF4D1',
+  lightText: 'rgba(60, 60, 67, 0.6)',
   appOrange: '#FF5823',
   black: '#181725',
+  red: 'red',
   textHint: '#7C7C7C',
   borderColor: '#E2E2E2',
   gButton: '#C95951',
@@ -12,6 +14,13 @@ const Colors = {
   fbBgColor: '#4A66AC',
   unselectedStars: '#A5A6B7',
   golden: '#F5D547',
+  lightOrange: '#FF9500',
+  errorText: '#FF5562',
+  enabledTxtInput: '#5465E9',
+  headerErrColor: 'rgba(30, 33, 76, 0.6)',
+  subHeaderErrColor: 'rgba(30, 33, 76, 0.4)',
+  textInputBorder: 'rgba(30, 33, 76,0.1)',
+  skeletonBg: '#EBEBEB',
 }
 
 export default Colors

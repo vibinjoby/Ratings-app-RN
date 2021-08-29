@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList, TouchableWithoutFeedback, View } from 'react-native'
+import { FlatList, TouchableOpacity, View } from 'react-native'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 import Colors from '../../utilities/colors'
@@ -10,7 +10,9 @@ export interface StarsProps {
   selectedStars: number
   selectedColor?: string
   starHeight?: number
+  spacing?: Record<string, unknown>
   onSelection?: (arg0: number) => void
+  customStyle?: Record<string, unknown>
 }
 
 const Stars: React.FC<StarsProps> = ({
@@ -18,29 +20,30 @@ const Stars: React.FC<StarsProps> = ({
   selectedStars = 1,
   selectedColor,
   starHeight,
+  spacing,
   onSelection,
+  customStyle,
 }: StarsProps) => {
   return (
-    <View style={styles.container}>
-      <FlatList
-        data={[1, 2, 3, 4, 5]}
-        scrollEnabled={false}
-        horizontal={true}
-        renderItem={({ item, index }) => (
-          <TouchableWithoutFeedback
-            onPress={() => selectable && onSelection && onSelection(index + 1)}
-          >
-            <FontAwesome
-              name={`star`}
-              color={index + 1 <= selectedStars ? selectedColor : Colors.unselectedStars}
-              size={starHeight ? starHeight : 20}
-            />
-          </TouchableWithoutFeedback>
-        )}
-        ItemSeparatorComponent={() => <View style={styles.starSpacing} />}
-        keyExtractor={(_, index) => index.toString()}
-      />
-    </View>
+    <FlatList
+      data={[1, 2, 3, 4, 5]}
+      scrollEnabled={false}
+      horizontal={true}
+      renderItem={({ index }) => (
+        <TouchableOpacity
+          activeOpacity={1}
+          onPress={() => selectable && onSelection && onSelection(index + 1)}
+        >
+          <FontAwesome
+            name={`star`}
+            color={index + 1 <= selectedStars ? selectedColor : Colors.unselectedStars}
+            size={starHeight ? starHeight : 20}
+          />
+        </TouchableOpacity>
+      )}
+      ItemSeparatorComponent={() => <View style={[styles.starSpacing, spacing]} />}
+      keyExtractor={(_, index) => index.toString()}
+    />
   )
 }
 

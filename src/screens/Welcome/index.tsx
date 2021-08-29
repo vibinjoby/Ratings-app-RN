@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import { Image, View, Text, ScrollView } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import { useDispatch, useSelector } from 'react-redux'
+import * as Sentry from '@sentry/react-native'
 
 import Button from '../../components/Button'
 import Colors from '../../utilities/colors'
@@ -8,46 +10,51 @@ import styles from './styles'
 import { configureGoogleSignIn, fbSignIn, googleSignIn } from '../../utilities/helpers'
 import SocialMediaButton from '../../components/SocialMediaButton'
 import routes from '../../navigations/routes'
+import { socialLoginUser } from '../../store/reducers/auth'
+import { RootState } from '../../store'
 
-export interface WelcomeProps {}
-
-const Welcome: React.FC<WelcomeProps> = () => {
+const Welcome: React.FC = () => {
   const navigation = useNavigation()
+  const dispatch = useDispatch()
+  const token = useSelector((state: RootState) => state.auth.token)
+
   useEffect(() => {
     configureGoogleSignIn()
   }, [])
+
+  useEffect(() => {
+    if (!token) return
+    navigation.reset({
+      index: 0, //@ts-ignore
+      routes: [{ name: routes.CUSTOMER_HOME_STACK }],
+    })
+  }, [token])
+
   const handleGoogleSignIn = async () => {
     try {
       const { idToken } = await googleSignIn()
-      // Call the backend api to get the token bearer and handle for the user
-      /* const {token, code} = await service.socialsAuthentication(
-        idToken,
-        'google',
-      );
-      dispatch(onAuth(navigation, token, code)); */
+      if (!idToken) return
+      dispatch(socialLoginUser(idToken, 'google', 'customer'))
     } catch (error) {
       console.log('---- GOOGLE SIGN IN ERROR ----')
       console.log(error)
-      console.log(error.toString())
-      //Sentry.captureException(error);
+      Sentry.captureException(error)
     }
   }
+
   const handleFBSignIn = async () => {
     try {
       const accessToken = await fbSignIn()
-      console.log(accessToken)
-      // Call the backend api to get the token bearer and handle for the user
-      /* const {token, code} = await service.socialsAuthentication(
-        accessToken,
-        'fb',
-      ); */
-      //dispatch(onAuth(navigation, token, code));
+      if (!accessToken) return
+      dispatch(socialLoginUser(accessToken, 'fb', 'customer'))
     } catch (error) {
-      //Sentry.captureException(error);
+      console.log(error)
+      Sentry.captureException(error)
       //setLoading(false);
       //elpers.handleErrors(error, toastCtx);
     }
   }
+
   const ButtonWrapper = () => (
     <View style={styles.buttonWrapper}>
       <Button
@@ -94,7 +101,7 @@ const Welcome: React.FC<WelcomeProps> = () => {
         <View style={styles.contentContainer}>
           <Text style={styles.titleTxt}>Find your favourite restaurant with clue</Text>
           <ButtonWrapper />
-          <Text style={styles.connectTxt}>Or connect with social media</Text>
+          <Text style={styles.connectTxt}>Or connect with socials as customer</Text>
           <SocialButtons />
         </View>
       </View>

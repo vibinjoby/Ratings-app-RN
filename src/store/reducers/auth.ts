@@ -93,7 +93,7 @@ export const socialLoginUser =
         apiMethod: socialAuthentication,
         args: [token, socialType, typeOfUser],
         onSucess: [login.type],
-        loader: true,
+        loader: false,
       },
     })
   }

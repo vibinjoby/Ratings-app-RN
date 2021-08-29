@@ -56,6 +56,7 @@ export default StyleSheet.create({
   },
   reviewWrapper: {
     marginLeft: 20,
+    flex: 1,
   },
   reviewerName: {
     ...Typography.Body.bold,
@@ -63,7 +64,26 @@ export default StyleSheet.create({
   },
   ratingWrapper: {
     flexDirection: 'row',
-    alignItems: 'center',
+  },
+  ratingOverview: {
+    position: 'absolute',
+    bottom: 8,
+    right: 20,
+    alignSelf: 'flex-start',
+    paddingHorizontal: 10,
+    paddingVertical: 2,
+    backgroundColor: Colors.appGreen,
+    flexDirection: 'row',
+    borderRadius: 8,
+    margin: 7,
+  },
+  starImg: {
+    marginRight: 5,
+  },
+  ratings: {
+    ...Typography.RegularFont,
+    color: Colors.white,
+    fontSize: 14,
   },
   comments: {
     ...Typography.RegularFont,
