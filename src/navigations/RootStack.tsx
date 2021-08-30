@@ -3,11 +3,13 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { useDispatch, useSelector } from 'react-redux'
 
 import routes from './routes'
-import { getData, removeData } from '../utilities/helpers'
+import { getData } from '../utilities/helpers'
 import AuthStack from './AuthStack'
 import CustomerHomeStack from './CustomerHomeStack'
 import { RootState } from '../store'
 import { loadUserInfo } from '../store/reducers/auth'
+import OwnerHomeStack from './OwnerHomeStack'
+import AdminHomeStack from './AdminHomeStack'
 
 const RootStack = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<any>(0)
@@ -37,6 +39,59 @@ const RootStack = () => {
     renderUserData()
   }, [])
 
+  // This is when the user is already logged in
+  const RenderScreenUserTypeBased = () => {
+    // Customer navigation
+    if (userInfo.typeOfUser === 'customer') {
+      return (
+        <>
+          <Stack.Screen
+            name={routes.CUSTOMER_HOME_STACK}
+            component={CustomerHomeStack}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name={routes.AUTH_STACK}
+            component={AuthStack}
+            options={{ headerShown: false }}
+          />
+        </>
+      )
+    } else if (userInfo.typeOfUser === 'owner') {
+      // Owners navigation
+      return (
+        <>
+          <Stack.Screen
+            name={routes.OWNER_HOME_STACK}
+            component={OwnerHomeStack}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name={routes.AUTH_STACK}
+            component={AuthStack}
+            options={{ headerShown: false }}
+          />
+        </>
+      )
+    } else {
+      // Admin navigation
+      return (
+        <>
+          <Stack.Screen
+            name={routes.ADMIN_HOME_STACK}
+            component={AdminHomeStack}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name={routes.AUTH_STACK}
+            component={AuthStack}
+            options={{ headerShown: false }}
+          />
+        </>
+      )
+    }
+  }
+
   if (isLoggedIn === 0) {
     return <></>
   }
@@ -44,45 +99,13 @@ const RootStack = () => {
   return (
     <Stack.Navigator>
       {!isLoggedIn && (
-        <>
-          <Stack.Screen
-            name={routes.AUTH_STACK}
-            component={AuthStack}
-            options={{ headerShown: false }}
-          />
-        </>
+        <Stack.Screen
+          name={routes.AUTH_STACK}
+          component={AuthStack}
+          options={{ headerShown: false }}
+        />
       )}
-      {isLoggedIn && (
-        <>
-          {userInfo.typeOfUser === 'customer' ? (
-            <>
-              <Stack.Screen
-                name={routes.CUSTOMER_HOME_STACK}
-                component={CustomerHomeStack}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name={routes.AUTH_STACK}
-                component={AuthStack}
-                options={{ headerShown: false }}
-              />
-            </>
-          ) : (
-            <>
-              {/* <Stack.Screen
-                name={routes.ADMIN_STACK_NAV}
-                component={AdminStackNav}
-                options={{ headerShown: false }}
-              /> */}
-              <Stack.Screen
-                name={routes.AUTH_STACK}
-                component={AuthStack}
-                options={{ headerShown: false }}
-              />
-            </>
-          )}
-        </>
-      )}
+      {isLoggedIn && RenderScreenUserTypeBased()}
     </Stack.Navigator>
   )
 }

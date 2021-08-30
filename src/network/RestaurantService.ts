@@ -54,3 +54,22 @@ export const submitRatings = async (
 
   return data
 }
+
+export const submitOwnerReply = async (token: string, ownerReply: string, reviewId: string) => {
+  const { BASE_URL, SUBMIT_OWNER_REPLY } = serviceConst
+  HttpService.setHeader(token)
+  const { data } = await HttpService.put(BASE_URL + SUBMIT_OWNER_REPLY, {
+    ownerReply,
+    reviewId,
+  })
+
+  return data
+}
+
+export const fetchOwnerRestaurants = async (token: string) => {
+  const { BASE_URL, fetch_OWNED_RESTAURANTS } = serviceConst
+  HttpService.setHeader(token)
+  const { data } = await HttpService.get(BASE_URL + fetch_OWNED_RESTAURANTS)
+
+  return data
+}

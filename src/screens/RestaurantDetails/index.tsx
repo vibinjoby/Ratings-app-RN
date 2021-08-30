@@ -100,6 +100,7 @@ const RestaurantDetails: React.FC = () => {
           </ImageBackground>
           <View style={styles.contentContainer}>
             <ReviewsHeader title="Latest Rated" />
+            {!restaurantDetail?.latestReviews && <Text>No reviews yet </Text>}
             {restaurantDetail?.latestReviews.slice(0, 3).map((item, index) => (
               <ReviewBlock
                 key={index} //@ts-ignore

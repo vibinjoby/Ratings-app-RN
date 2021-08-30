@@ -8,4 +8,6 @@ export default {
   CREATE_RESTAURANT: 'restaurants/createRestaurant',
   FETCH_RESTAURANT_DETAIL: 'restaurants/fetchRestaurant/',
   SUBMIT_RATINGS: 'reviews/submitReview',
+  SUBMIT_OWNER_REPLY: 'reviews/updateOwnerReply',
+  fetch_OWNED_RESTAURANTS: 'restaurants/fetchOwnedRestaurants',
 }

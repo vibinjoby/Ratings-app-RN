@@ -1,13 +1,21 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-import { SafeAreaView, View, Text, TouchableOpacity, FlatList } from 'react-native'
+import {
+  SafeAreaView,
+  View,
+  Text,
+  TouchableOpacity,
+  FlatList,
+  ActivityIndicator,
+  Platform,
+} from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import MaterialCommIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { useNavigation } from '@react-navigation/native'
 
 import RestaurantCard from '../../components/RestaurantCard'
 import { RootState } from '../../store'
-import { fetchRestaurants } from '../../store/reducers/restaurant'
+import { fetchRestaurants, resetRestaurantData } from '../../store/reducers/restaurant'
 import styles from './styles'
 import constants from '../../configs/commonConst'
 import Colors from '../../utilities/colors'
@@ -16,16 +24,26 @@ import { removeData } from '../../utilities/helpers'
 import routes from '../../navigations/routes'
 
 const Home: React.FC = () => {
+  const [endLoading, setEndLoading] = useState(false)
+  const [pgNo, setPgNo] = useState(1)
+  const [isFetching, setIsFetching] = useState(false)
+
   const token = useSelector((state: RootState) => state.auth.token)
   const fullName = useSelector((state: RootState) => state.auth.userInfo.fullName)
   const restaurantData = useSelector((state: RootState) => state.restaurants.restaurants)
+  const totalPgs = useSelector((state: RootState) => state.restaurants.totalRestaurants)
   const dispatch = useDispatch()
   const navigation = useNavigation()
 
   useEffect(() => {
     if (!token) return
-    dispatch(fetchRestaurants(token, 1))
+    setIsFetching(true)
+    dispatch(fetchRestaurants(token, pgNo))
   }, [])
+
+  useEffect(() => {
+    if (restaurantData) setIsFetching(false)
+  }, [restaurantData])
 
   const handleLogout = async () => {
     dispatch({ type: logout.type })
@@ -35,6 +53,27 @@ const Home: React.FC = () => {
       routes: [{ name: routes.AUTH_STACK }],
     })
   }
+
+  const onEndReached = async () => {
+    if (endLoading) return
+    if (pgNo + 1 > totalPgs) return
+    setEndLoading(true)
+    dispatch(fetchRestaurants(token, pgNo + 1))
+    setPgNo((pg) => pg + 1)
+    setEndLoading(false)
+  }
+
+  const onRefresh = () => {
+    dispatch({ type: resetRestaurantData.type })
+    setPgNo(1)
+    dispatch(fetchRestaurants(token, 1))
+  }
+
+  const ViewMore = () => (
+    <View style={styles.footerSpacing}>
+      <ActivityIndicator animating color={Colors.appOrange} size="large" />
+    </View>
+  )
 
   const CustomerHeader = () => (
     <View style={styles.headerWrapper}>
@@ -52,6 +91,8 @@ const Home: React.FC = () => {
         <CustomerHeader />
         <Text style={styles.title}>Discover</Text>
         <FlatList
+          refreshing={isFetching}
+          onRefresh={onRefresh}
           style={styles.flatlist}
           data={restaurantData}
           renderItem={({ item }) => (
@@ -64,8 +105,10 @@ const Home: React.FC = () => {
             />
           )}
           ItemSeparatorComponent={() => <View style={styles.spacing} />}
-          ListFooterComponent={() => <View style={styles.footerSpacing} />}
           keyExtractor={(_, index) => index.toString()}
+          onEndReached={onEndReached}
+          onEndReachedThreshold={Platform.OS === 'android' ? 10 : 0}
+          ListFooterComponent={() => <>{endLoading && <ViewMore />}</>}
         />
       </View>
     </>

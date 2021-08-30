@@ -20,6 +20,7 @@ export interface RestaurantCardProps {
   ratings: number
   restaurantImg: ImageSourcePropType
   reviewCount: number
+  onPress?: () => void
 }
 
 const RestaurantCard: React.FC<RestaurantCardProps> = ({
@@ -28,6 +29,7 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
   ratings,
   restaurantImg,
   reviewCount,
+  onPress,
 }: RestaurantCardProps) => {
   const navigation = useNavigation()
   const RatingOverview = () => (
@@ -42,7 +44,7 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
       activeOpacity={0.8}
       style={styles.container}
       //@ts-ignore
-      onPress={() => navigation.navigate(routes.RESTAURANT_DETAILS, { id })}
+      onPress={() => (onPress ? onPress() : navigation.navigate(routes.RESTAURANT_DETAILS, { id }))}
     >
       <View>
         <ImageBackground source={restaurantImg} resizeMode="stretch" style={styles.imgBg}>

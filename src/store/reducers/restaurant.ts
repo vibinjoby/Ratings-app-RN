@@ -79,7 +79,7 @@ const slice = createSlice({
   reducers: {
     loadAllRestaurants: (state: State, action) => {
       const { data } = action.payload
-      state.restaurants = data.data
+      state.restaurants = [...state.restaurants, ...data.data]
       state.totalRestaurants = data.totalCount
     },
     loadRestaurantDetail: (state: State, action) => {
@@ -97,10 +97,14 @@ const slice = createSlice({
         state.restaurantDetails.highestRatedReview = data.review
       }
     },
+    resetRestaurantData: (state: State) => {
+      state.restaurants = []
+    },
   },
 })
 
-export const { loadAllRestaurants, loadRestaurantDetail, addReview } = slice.actions
+export const { loadAllRestaurants, loadRestaurantDetail, addReview, resetRestaurantData } =
+  slice.actions
 
 export default slice.reducer
 

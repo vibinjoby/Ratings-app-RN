@@ -18,15 +18,24 @@ const SignIn: React.FC = () => {
   const navigation = useNavigation()
   const dispatch = useDispatch()
   const token = useSelector((state: RootState) => state.auth.token)
+  const userType = useSelector((state: RootState) => state.auth.userInfo.typeOfUser)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [selectedTab, setSelectedTab] = useState(0)
 
   useEffect(() => {
     if (!token) return
-    //@ts-ignore
-    navigation.navigate(routes.CUSTOMER_HOME_STACK)
-  }, [token])
+    if (userType === 'customer') {
+      //@ts-ignore
+      navigation.navigate(routes.CUSTOMER_HOME_STACK)
+    } else if (userType === 'owner') {
+      //@ts-ignore
+      navigation.navigate(routes.OWNER_HOME_STACK)
+    } else {
+      //@ts-ignore
+      navigation.navigate(routes.ADMIN_HOME_STACK)
+    }
+  }, [userType])
 
   const handleLogin = () => {
     if (!email || !password) return
