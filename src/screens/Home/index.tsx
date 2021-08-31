@@ -38,6 +38,27 @@ const Home: React.FC = () => {
   const dispatch = useDispatch()
   const navigation = useNavigation()
 
+  const handleLogout = async () => {
+    dispatch({ type: logout.type })
+    await removeData('userInfo')
+    navigation.reset({
+      index: 0, //@ts-ignore
+      routes: [{ name: routes.AUTH_STACK }],
+    })
+  }
+
+  useEffect(() => {
+    navigation.setOptions({
+      title: '',
+      headerLeft: () => <Text style={styles.customerSalutation}>Welcome {fullName}</Text>,
+      headerRight: () => (
+        <TouchableOpacity activeOpacity={0.9} onPress={handleLogout}>
+          <MaterialCommIcons name="logout" size={25} color={Colors.appOrange} />
+        </TouchableOpacity>
+      ),
+    })
+  }, [])
+
   useEffect(() => {
     if (!token) return
     setIsFetching(true)
@@ -51,15 +72,6 @@ const Home: React.FC = () => {
   useEffect(() => {
     if (restaurantData) setIsFetching(false)
   }, [restaurantData])
-
-  const handleLogout = async () => {
-    dispatch({ type: logout.type })
-    await removeData('userInfo')
-    navigation.reset({
-      index: 0, //@ts-ignore
-      routes: [{ name: routes.AUTH_STACK }],
-    })
-  }
 
   const onEndReached = async () => {
     if (endLoading) return
@@ -82,20 +94,11 @@ const Home: React.FC = () => {
     </View>
   )
 
-  const CustomerHeader = () => (
-    <View style={styles.headerWrapper}>
-      <Text style={styles.customerSalutation}>Welcome {fullName}</Text>
-      <TouchableOpacity activeOpacity={0.9} onPress={handleLogout}>
-        <MaterialCommIcons name="logout" size={25} color={Colors.appOrange} />
-      </TouchableOpacity>
-    </View>
-  )
   if (restaurantData.length < 1) return <></>
   return (
     <>
       <SafeAreaView />
       <View style={styles.container}>
-        <CustomerHeader />
         <Text style={styles.title}>Discover</Text>
         <FlatList
           refreshing={isFetching}

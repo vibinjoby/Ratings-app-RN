@@ -10,13 +10,7 @@ export default StyleSheet.create({
     height: 208,
     width: '100%',
   },
-  restaurantTitle: {
-    ...Typography.BoldFont,
-    fontSize: 24,
-    color: Colors.white,
-    position: 'absolute',
-    bottom: 8,
-    left: 24,
+  titleWrapper: {
     shadowColor: Colors.black,
     shadowOffset: {
       width: 1,
@@ -24,7 +18,23 @@ export default StyleSheet.create({
     },
     shadowOpacity: 1.25,
     shadowRadius: 3.84,
-    elevation: 14,
+    elevation: 20,
+  },
+  restaurantTitle: {
+    ...Typography.BoldFont,
+    fontSize: 24,
+    color: Colors.black,
+    position: 'absolute',
+    bottom: 8,
+    left: 24,
+    shadowColor: Colors.white,
+    shadowOffset: {
+      width: 1,
+      height: 4,
+    },
+    shadowOpacity: 1.25,
+    shadowRadius: 3.84,
+    elevation: 20,
   },
   noReviewWrapper: {
     flex: 1,
@@ -76,8 +86,7 @@ export default StyleSheet.create({
   },
   ratingOverview: {
     position: 'absolute',
-    bottom: 8,
-    right: 20,
+    top: 8,
     alignSelf: 'flex-start',
     paddingHorizontal: 10,
     paddingVertical: 2,

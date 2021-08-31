@@ -26,6 +26,7 @@ export default StyleSheet.create({
   customerSalutation: {
     ...Typography.RegularFont,
     fontSize: 16,
+    paddingLeft: 20,
   },
   userPic: {
     width: 37,

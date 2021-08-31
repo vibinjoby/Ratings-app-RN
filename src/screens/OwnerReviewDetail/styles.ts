@@ -13,11 +13,11 @@ export default StyleSheet.create({
   restaurantTitle: {
     ...Typography.BoldFont,
     fontSize: 24,
-    color: Colors.white,
+    color: Colors.black,
     position: 'absolute',
     bottom: 8,
     left: 24,
-    shadowColor: Colors.black,
+    shadowColor: Colors.white,
     shadowOffset: {
       width: 1,
       height: 4,
@@ -76,8 +76,7 @@ export default StyleSheet.create({
   },
   ratingOverview: {
     position: 'absolute',
-    bottom: 8,
-    right: 20,
+    top: 8,
     alignSelf: 'flex-start',
     paddingHorizontal: 10,
     paddingVertical: 2,

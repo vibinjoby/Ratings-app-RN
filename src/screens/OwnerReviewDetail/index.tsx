@@ -39,7 +39,7 @@ const OwnerReviewDetail: React.FC = () => {
     return (
       <View style={styles.container}>
         <ImageBackground style={styles.headerBg} source={{ uri: commons.DUMMY_PIC }}>
-          <Text style={styles.restaurantTitle}>
+          <Text style={styles.restaurantTitle} numberOfLines={1} ellipsizeMode="tail">
             {/** @ts-ignore */}
             {ownerRestaurantDetail?.restaurantData.restaurant_name}
           </Text>

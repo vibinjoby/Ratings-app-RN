@@ -36,14 +36,17 @@ const OwnerHome: React.FC = () => {
     })
   }
 
-  const CustomerHeader = () => (
-    <View style={styles.headerWrapper}>
-      <Text style={styles.customerSalutation}>Welcome {fullName}</Text>
-      <TouchableOpacity activeOpacity={0.9} onPress={handleLogout}>
-        <MaterialCommIcons name="logout" size={25} color={Colors.appOrange} />
-      </TouchableOpacity>
-    </View>
-  )
+  useEffect(() => {
+    navigation.setOptions({
+      title: '',
+      headerLeft: () => <Text style={styles.customerSalutation}>Welcome {fullName}</Text>,
+      headerRight: () => (
+        <TouchableOpacity activeOpacity={0.9} onPress={handleLogout} style={styles.logout}>
+          <MaterialCommIcons name="logout" size={25} color={Colors.appOrange} />
+        </TouchableOpacity>
+      ),
+    })
+  }, [])
 
   const PlusIc = () => (
     <TouchableOpacity
@@ -60,7 +63,6 @@ const OwnerHome: React.FC = () => {
       <SafeAreaView />
       <ScrollView>
         <View style={styles.container}>
-          <CustomerHeader />
           <Text style={styles.title}>My Restaurants</Text>
           <FlatList
             style={styles.flatlist}
