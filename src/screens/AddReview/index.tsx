@@ -9,6 +9,7 @@ import Stars from '../../components/Stars'
 import { RootState } from '../../store'
 import {
   fetchRestaurants,
+  getRestaurantDetail,
   resetRestaurantData,
   submitReview,
 } from '../../store/reducers/restaurant'
@@ -31,6 +32,7 @@ const AddReview: React.FC = () => {
     dispatch(submitReview(token, restaurantId, selectedStars, visitDate, comments))
     dispatch({ type: resetRestaurantData.type })
     dispatch(fetchRestaurants(token, 1))
+    dispatch(getRestaurantDetail(token, restaurantId))
   }
 
   return (

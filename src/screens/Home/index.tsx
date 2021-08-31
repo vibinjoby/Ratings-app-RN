@@ -32,6 +32,9 @@ const Home: React.FC = () => {
   const fullName = useSelector((state: RootState) => state.auth.userInfo.fullName)
   const restaurantData = useSelector((state: RootState) => state.restaurants.restaurants)
   const totalPgs = useSelector((state: RootState) => state.restaurants.totalRestaurants)
+  const latestReviews = useSelector(
+    (state: RootState) => state.restaurants.restaurantDetails.latestReviews,
+  )
   const dispatch = useDispatch()
   const navigation = useNavigation()
 
@@ -40,6 +43,10 @@ const Home: React.FC = () => {
     setIsFetching(true)
     dispatch(fetchRestaurants(token, pgNo))
   }, [])
+
+  useEffect(() => {
+    onRefresh()
+  }, [latestReviews])
 
   useEffect(() => {
     if (restaurantData) setIsFetching(false)
@@ -93,6 +100,8 @@ const Home: React.FC = () => {
         <FlatList
           refreshing={isFetching}
           onRefresh={onRefresh}
+          scrollIndicatorInsets={{ right: 1 }}
+          contentContainerStyle={styles.contentContainer}
           style={styles.flatlist}
           data={restaurantData}
           renderItem={({ item }) => (

@@ -32,7 +32,7 @@ export default StyleSheet.create({
     marginBottom: 50,
   },
   footerSpacing: {
-    marginBottom: 20,
+    marginBottom: 80,
   },
   plusIcContainer: {
     position: 'absolute',

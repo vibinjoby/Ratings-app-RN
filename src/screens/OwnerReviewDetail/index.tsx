@@ -1,7 +1,7 @@
 import { useRoute } from '@react-navigation/native'
 import React, { useEffect } from 'react'
-import { View, Image, ImageBackground, Text } from 'react-native'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { View, Image, ImageBackground, Text } from 'react-native' //@ts-ignore
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
 import { useDispatch, useSelector } from 'react-redux'
 
 import ReviewBlock from '../../components/ReviewBlock'
@@ -79,7 +79,7 @@ const OwnerReviewDetail: React.FC = () => {
             ratings={item?.ratings} //@ts-ignore
             owner_reply={item?.owner_reply}
             shouldReply
-            onSend={(reply, id) => dispatch(addReply(token, reply, id))}
+            onSend={(reply, id) => reply && dispatch(addReply(token, reply, id))}
           />
         ))}
       </View>

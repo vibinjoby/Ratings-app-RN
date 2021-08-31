@@ -14,6 +14,9 @@ export default StyleSheet.create({
   flatlist: {
     paddingHorizontal: 20,
   },
+  contentContainer: {
+    paddingBottom: 80,
+  },
   headerWrapper: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -32,6 +35,6 @@ export default StyleSheet.create({
     marginBottom: 50,
   },
   footerSpacing: {
-    marginBottom: 20,
+    marginBottom: 200,
   },
 })
