@@ -10,4 +10,6 @@ export default {
   SUBMIT_RATINGS: 'reviews/submitReview',
   SUBMIT_OWNER_REPLY: 'reviews/updateOwnerReply',
   fetch_OWNED_RESTAURANTS: 'restaurants/fetchOwnedRestaurants',
+  FETCH_OWNER_REVIEWS: 'reviews/getAllRestaurantReviews',
+  FETCH_RESTAURANT_REVIEW: 'reviews/getRestaurantReviews/',
 }

@@ -26,15 +26,6 @@ export default StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 14,
   },
-  noReviewWrapper: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  noReviewTxt: {
-    ...Typography.RegularFont,
-    fontSize: 24,
-  },
   reviewBorder: {
     alignSelf: 'flex-start',
     padding: 10,
@@ -58,6 +49,15 @@ export default StyleSheet.create({
   },
   contentContainer: {
     padding: 20,
+  },
+  noReviewWrapper: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  noReviewTxt: {
+    ...Typography.RegularFont,
+    fontSize: 24,
   },
   reviewContainer: {
     flexDirection: 'row',

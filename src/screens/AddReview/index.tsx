@@ -2,12 +2,16 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
 import { View, Text, TextInput } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import AppDatePicker from '../../components/AppDatePicker'
 
+import AppDatePicker from '../../components/AppDatePicker'
 import Button from '../../components/Button'
 import Stars from '../../components/Stars'
 import { RootState } from '../../store'
-import { submitReview } from '../../store/reducers/restaurant'
+import {
+  fetchRestaurants,
+  resetRestaurantData,
+  submitReview,
+} from '../../store/reducers/restaurant'
 import Colors from '../../utilities/colors'
 import styles from './styles'
 
@@ -25,6 +29,8 @@ const AddReview: React.FC = () => {
   const onDone = () => {
     navigation.goBack()
     dispatch(submitReview(token, restaurantId, selectedStars, visitDate, comments))
+    dispatch({ type: resetRestaurantData.type })
+    dispatch(fetchRestaurants(token, 1))
   }
 
   return (

@@ -73,3 +73,19 @@ export const fetchOwnerRestaurants = async (token: string) => {
 
   return data
 }
+
+export const fetchOwnerReviews = async (token: string) => {
+  const { BASE_URL, FETCH_OWNER_REVIEWS } = serviceConst
+  HttpService.setHeader(token)
+  const { data } = await HttpService.get(BASE_URL + FETCH_OWNER_REVIEWS)
+
+  return data
+}
+
+export const fetchOwnerRestaurantReview = async (token: string, restaurantId: string) => {
+  const { BASE_URL, FETCH_RESTAURANT_REVIEW } = serviceConst
+  HttpService.setHeader(token)
+  const { data } = await HttpService.get(BASE_URL + FETCH_RESTAURANT_REVIEW + restaurantId)
+
+  return data
+}

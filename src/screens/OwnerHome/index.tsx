@@ -72,6 +72,10 @@ const OwnerHome: React.FC = () => {
                 ratings={item.average_ratings} //@ts-ignore
                 reviewCount={item.reviewsCount} //@ts-ignore
                 restaurantImg={{ uri: constants.DUMMY_PIC }}
+                onPress={() =>
+                  //@ts-ignore
+                  navigation.navigate(routes.OWNER_REVIEW_DETAILS, { id: item._id })
+                }
               />
             )}
             ItemSeparatorComponent={() => <View style={styles.spacing} />}

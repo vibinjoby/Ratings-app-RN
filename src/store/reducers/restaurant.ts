@@ -4,11 +4,12 @@ import {
   getRestaurants,
   fetchRestaurantDetail,
   submitRatings,
+  createRestaurant,
 } from '../../network/RestaurantService'
 import { apiCallBegan } from '../actions/api'
 import { store } from '../index'
 
-type Restaurant = {
+export type Restaurant = {
   _id: string /* eslint-disable camelcase */
   restaurant_name: string /* eslint-disable camelcase */
   average_ratings: number /* eslint-disable camelcase */
@@ -16,7 +17,7 @@ type Restaurant = {
   reviews?: Array<Review>
 }
 
-type Review = {
+export type Review = {
   _id: string
   comments: string
   visit_date: string /* eslint-disable camelcase */

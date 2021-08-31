@@ -4,21 +4,11 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
 
 import commons from '../../configs/commonConst'
-import Stars from '../../components/Stars'
 import { RootState } from '../../store'
 import { getRestaurantDetail } from '../../store/reducers/restaurant'
-import Colors from '../../utilities/colors'
 import styles from './styles'
 import routes from '../../navigations/routes'
-
-type Review = {
-  reviewId?: string
-  reviewerName: string
-  comments: string
-  ratings: number
-  visitDate: string /* eslint-disable camelcase */
-  owner_reply?: string
-}
+import ReviewBlock from '../../components/ReviewBlock'
 
 const RestaurantDetails: React.FC = () => {
   const route = useRoute<any>()
@@ -37,38 +27,6 @@ const RestaurantDetails: React.FC = () => {
       <Text style={styles.reviewTxt}>{title}</Text>
     </View>
   )
-  /* eslint-disable camelcase */
-  const OwnerReply = ({ owner_reply }: any) => (
-    <View style={styles.ownerWrapper}>
-      <View style={styles.ownerTitleWrapper}>
-        <Image source={require('../../assets/guest-pic.png')} style={styles.ownerPic} />
-        <Text style={styles.ownerTitle}>Business Owner</Text>
-      </View>
-      {/* eslint-disable camelcase */}
-      <Text>{owner_reply}</Text>
-    </View>
-  )
-  /* eslint-disable camelcase */
-  const ReviewBlock = ({ reviewerName, comments, ratings, visitDate, owner_reply }: Review) => (
-    <View style={styles.reviewContainer}>
-      <Image source={require('../../assets/dummyUser/dummyUser.png')} />
-      <View style={styles.reviewWrapper}>
-        <Text style={styles.reviewerName}>{reviewerName?.toUpperCase()}</Text>
-        <View style={styles.ratingWrapper}>
-          <Stars
-            selectedStars={ratings}
-            selectable={false}
-            starHeight={14}
-            selectedColor={Colors.appOrange}
-          />
-          <Text style={styles.visitDt}>{visitDate.substr(0, 13)}</Text>
-        </View>
-        <Text style={styles.comments}>{comments}</Text>
-        {/* eslint-disable camelcase */}
-        {owner_reply ? <OwnerReply owner_reply={owner_reply} /> : <></>}
-      </View>
-    </View>
-  )
 
   const PlusIc = () => (
     <TouchableOpacity
@@ -79,6 +37,7 @@ const RestaurantDetails: React.FC = () => {
       <Text style={styles.plusTxt}>+</Text>
     </TouchableOpacity>
   )
+
   const RatingOverview = () => (
     <View style={styles.ratingOverview}>
       <Image style={styles.starImg} source={require('../../assets/star/star.png')} />
@@ -88,9 +47,27 @@ const RestaurantDetails: React.FC = () => {
 
   if (!restaurantDetail) return <></>
 
+  if (restaurantDetail?.latestReviews.length === 0) {
+    return (
+      <View style={styles.container}>
+        <ImageBackground style={styles.headerBg} source={{ uri: commons.DUMMY_PIC }}>
+          <Text style={styles.restaurantTitle}>
+            {/** @ts-ignore */}
+            {restaurantDetail?.restaurantData.restaurant_name}
+          </Text>
+          <RatingOverview />
+        </ImageBackground>
+        <View style={styles.noReviewWrapper}>
+          <Text style={styles.noReviewTxt}>No Reviews yet!!</Text>
+        </View>
+        <PlusIc />
+      </View>
+    )
+  }
+
   return (
     <>
-      <ScrollView>
+      <ScrollView scrollIndicatorInsets={{ right: 1 }}>
         <View style={styles.container}>
           <ImageBackground style={styles.headerBg} source={{ uri: commons.DUMMY_PIC }}>
             <Text style={styles.restaurantTitle}>
@@ -104,6 +81,7 @@ const RestaurantDetails: React.FC = () => {
             {restaurantDetail?.latestReviews.slice(0, 3).map((item, index) => (
               <ReviewBlock
                 key={index} //@ts-ignore
+                reviewId={item?._id} //@ts-ignore
                 reviewerName={item?.rated_user_id?.fullName} //@ts-ignore
                 comments={item?.comments} //@ts-ignore
                 visitDate={item?.visit_date} //@ts-ignore
@@ -116,6 +94,7 @@ const RestaurantDetails: React.FC = () => {
               <View style={styles.lowestWrapper}>
                 <ReviewsHeader title="Lowest Rated" />
                 <ReviewBlock //@ts-ignore
+                  reviewId={restaurantDetail.lowestRatedReview?._id}
                   reviewerName={restaurantDetail.lowestRatedReview?.rated_user_id?.fullName} //@ts-ignore
                   comments={restaurantDetail.lowestRatedReview?.comments} //@ts-ignore
                   visitDate={restaurantDetail.lowestRatedReview?.visit_date} //@ts-ignore
@@ -124,10 +103,12 @@ const RestaurantDetails: React.FC = () => {
                 />
               </View>
             )}
+
             {restaurantDetail?.highestRatedReview && (
               <View style={styles.lowestWrapper}>
                 <ReviewsHeader title="Highest Rated" />
                 <ReviewBlock //@ts-ignore
+                  reviewId={restaurantDetail.highestRatedReview?._id}
                   reviewerName={restaurantDetail.highestRatedReview?.rated_user_id?.fullName} //@ts-ignore
                   comments={restaurantDetail.highestRatedReview?.comments} //@ts-ignore
                   visitDate={restaurantDetail.highestRatedReview?.visit_date} //@ts-ignore

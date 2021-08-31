@@ -11,6 +11,7 @@ export default {
 
   OWNER_HOME_STACK: 'OwnerHomeStack',
   OWNER_HOME: 'OwnerHome',
+  OWNER_REVIEW_DETAILS: 'OwnerReviewDetails',
   ADD_RESTAURANT: 'AddRestaurant',
 
   ADMIN_HOME_STACK: 'AdminHomeStack',
