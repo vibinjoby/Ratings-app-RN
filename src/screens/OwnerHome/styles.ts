@@ -7,8 +7,9 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.white,
   },
+  contentContainer: { justifyContent: 'space-between' },
   navHeader: {
-    shadowColor: '#000',
+    shadowColor: Colors.black,
     shadowOffset: {
       width: 0,
       height: 2,

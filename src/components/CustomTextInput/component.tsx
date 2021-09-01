@@ -7,6 +7,7 @@ import PasswordErrorTxt from '../PasswordErrorText'
 import styles from './styles'
 
 export interface CustomTextInputProps {
+  testID: string
   onChangeText: (arg0: string) => void
   customStyles?: Record<string, unknown>
   touched: { [key: string]: boolean }
@@ -25,6 +26,7 @@ export interface CustomTextInputProps {
 }
 
 const CustomTextInput: React.FC<CustomTextInputProps> = ({
+  testID,
   onChangeText,
   customStyles,
   touched,
@@ -53,12 +55,13 @@ const CustomTextInput: React.FC<CustomTextInputProps> = ({
           </Animatable.Text>
         )}
         <TextInput
+          testID={testID}
           placeholder={placeholderTxt}
           returnKeyType={'done'}
           style={[
             styles.textInput,
             isLabelVisible && {
-              borderColor: touched[name] && errors[name] ? 'red' : Colors.enabledTxtInput,
+              borderColor: touched[name] && errors[name] ? Colors.red : Colors.enabledTxtInput,
             },
             extraStyle,
           ]}

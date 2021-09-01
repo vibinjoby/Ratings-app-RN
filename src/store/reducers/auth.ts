@@ -52,7 +52,7 @@ const slice = createSlice({
       state.userInfo = userInfo
       state.token = data.token
     },
-    logout: (state: AuthState, _) => {
+    logout: (state: AuthState) => {
       state.userInfo = initialState.userInfo
       state.token = initialState.token
       state.errorCode = 0

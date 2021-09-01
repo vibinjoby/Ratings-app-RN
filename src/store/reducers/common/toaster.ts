@@ -20,7 +20,7 @@ const slice = createSlice({
       state.isSuccess = false
       state.toastMessage = action.payload.message
     },
-    resetToastMessage: (state: State, _) => {
+    resetToastMessage: (state: State) => {
       state.toastMessage = ''
     },
   },

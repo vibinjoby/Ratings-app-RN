@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import Colors from '../../utilities/colors'
 
 export default StyleSheet.create({
   centeredView: {
@@ -7,6 +8,7 @@ export default StyleSheet.create({
     bottom: 0,
     width: '100%',
   },
+  err: { borderLeftColor: Colors.red },
   animatableView: {
     position: 'absolute',
     bottom: 0,
@@ -14,12 +16,12 @@ export default StyleSheet.create({
   },
   modalView: {
     margin: 20,
-    backgroundColor: 'white',
-    borderLeftColor: 'green',
+    backgroundColor: Colors.white,
+    borderLeftColor: Colors.green,
     borderLeftWidth: 8,
     borderRadius: 8,
     padding: 20,
-    shadowColor: '#000',
+    shadowColor: Colors.black,
     shadowOffset: {
       width: 0,
       height: 2,

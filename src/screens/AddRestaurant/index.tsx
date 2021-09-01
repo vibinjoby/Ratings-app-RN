@@ -88,6 +88,7 @@ const AddRestaurant: React.FC = () => {
           <>
             {data.map((item) => (
               <CustomTextInput
+                testID="items"
                 keyboardType={item.keyboardType as KeyboardType}
                 key={item.key.toString()}
                 onBlur={() => setFieldTouched(item.name)}

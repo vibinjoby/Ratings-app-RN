@@ -1,4 +1,5 @@
 import { Platform, StyleSheet } from 'react-native'
+import Colors from '../../utilities/colors'
 import Typography from '../../utilities/typography'
 
 export default StyleSheet.create({
@@ -29,7 +30,7 @@ export default StyleSheet.create({
     paddingLeft: 20,
   },
   navHeader: {
-    shadowColor: '#000',
+    shadowColor: Colors.black,
     shadowOffset: {
       width: 0,
       height: 2,

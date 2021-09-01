@@ -9,7 +9,7 @@ export default {
   FETCH_RESTAURANT_DETAIL: 'restaurants/fetchRestaurant/',
   SUBMIT_RATINGS: 'reviews/submitReview',
   SUBMIT_OWNER_REPLY: 'reviews/updateOwnerReply',
-  fetch_OWNED_RESTAURANTS: 'restaurants/fetchOwnedRestaurants',
+  FETCH_OWNED_RESTAURANTS: 'restaurants/fetchOwnedRestaurants',
   FETCH_OWNER_REVIEWS: 'reviews/getAllRestaurantReviews',
   FETCH_RESTAURANT_REVIEW: 'reviews/getRestaurantReviews/',
   //admin

@@ -1,15 +1,15 @@
 import 'react-native'
 import React from 'react'
-import Stars from './component'
-
 import { render } from '@testing-library/react-native'
+
+import Stars from './component'
 import Colors from '../../utilities/colors'
 
 describe('Stars', () => {
   const mockFn = jest.fn()
 
   it('should render', () => {
-    render(
+    const { toJSON } = render(
       <Stars
         selectedColor={Colors.golden}
         selectable={false}
@@ -18,5 +18,6 @@ describe('Stars', () => {
         starHeight={15}
       />,
     )
+    expect(toJSON()).toMatchSnapshot()
   })
 })

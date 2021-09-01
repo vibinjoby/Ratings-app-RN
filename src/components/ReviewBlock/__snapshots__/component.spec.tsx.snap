@@ -1,0 +1,398 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReviewBlock should render 1`] = `
+<View
+  style={
+    Object {
+      "flexDirection": "row",
+      "marginTop": 20,
+    }
+  }
+>
+  <Image
+    source={
+      Object {
+        "testUri": "../../../src/assets/dummyUser/dummyUser.png",
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "marginLeft": 20,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#181725",
+          "fontFamily": "Poppins-Bold",
+          "fontSize": 16,
+        }
+      }
+    >
+      VIBIN
+    </Text>
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+        }
+      }
+    >
+      <RCTScrollView
+        ItemSeparatorComponent={[Function]}
+        data={
+          Array [
+            1,
+            2,
+            3,
+            4,
+            5,
+          ]
+        }
+        getItem={[Function]}
+        getItemCount={[Function]}
+        horizontal={true}
+        keyExtractor={[Function]}
+        onContentSizeChange={[Function]}
+        onLayout={[Function]}
+        onMomentumScrollBegin={[Function]}
+        onMomentumScrollEnd={[Function]}
+        onScroll={[Function]}
+        onScrollBeginDrag={[Function]}
+        onScrollEndDrag={[Function]}
+        removeClippedSubviews={false}
+        renderItem={[Function]}
+        scrollEnabled={false}
+        scrollEventThrottle={50}
+        stickyHeaderIndices={Array []}
+        viewabilityConfigCallbackPairs={Array []}
+      >
+        <View>
+          <View
+            onLayout={[Function]}
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                allowFontScaling={false}
+                style={
+                  Array [
+                    Object {
+                      "color": "#FF5823",
+                      "fontSize": 14,
+                    },
+                    undefined,
+                    Object {
+                      "fontFamily": "FontAwesome",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginRight": 5,
+                  },
+                  undefined,
+                ]
+              }
+            />
+          </View>
+          <View
+            onLayout={[Function]}
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                allowFontScaling={false}
+                style={
+                  Array [
+                    Object {
+                      "color": "#FF5823",
+                      "fontSize": 14,
+                    },
+                    undefined,
+                    Object {
+                      "fontFamily": "FontAwesome",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginRight": 5,
+                  },
+                  undefined,
+                ]
+              }
+            />
+          </View>
+          <View
+            onLayout={[Function]}
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                allowFontScaling={false}
+                style={
+                  Array [
+                    Object {
+                      "color": "#FF5823",
+                      "fontSize": 14,
+                    },
+                    undefined,
+                    Object {
+                      "fontFamily": "FontAwesome",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginRight": 5,
+                  },
+                  undefined,
+                ]
+              }
+            />
+          </View>
+          <View
+            onLayout={[Function]}
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                allowFontScaling={false}
+                style={
+                  Array [
+                    Object {
+                      "color": "#A5A6B7",
+                      "fontSize": 14,
+                    },
+                    undefined,
+                    Object {
+                      "fontFamily": "FontAwesome",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginRight": 5,
+                  },
+                  undefined,
+                ]
+              }
+            />
+          </View>
+          <View
+            onLayout={[Function]}
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                allowFontScaling={false}
+                style={
+                  Array [
+                    Object {
+                      "color": "#A5A6B7",
+                      "fontSize": 14,
+                    },
+                    undefined,
+                    Object {
+                      "fontFamily": "FontAwesome",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+          </View>
+        </View>
+      </RCTScrollView>
+      <Text
+        style={
+          Object {
+            "color": "#7C7C7C",
+            "fontFamily": "Poppins-Regular",
+            "fontSize": 10,
+            "marginLeft": 10,
+          }
+        }
+      >
+        20 Jun 2021
+      </Text>
+    </View>
+    <Text
+      style={
+        Object {
+          "fontFamily": "Poppins-Regular",
+          "fontSize": 18,
+          "marginVertical": 2,
+        }
+      }
+    >
+      This is not too bad at all
+    </Text>
+  </View>
+</View>
+`;

@@ -22,7 +22,6 @@ const Stars: React.FC<StarsProps> = ({
   starHeight,
   spacing,
   onSelection,
-  customStyle,
 }: StarsProps) => {
   return (
     <FlatList

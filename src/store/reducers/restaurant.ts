@@ -4,7 +4,6 @@ import {
   getRestaurants,
   fetchRestaurantDetail,
   submitRatings,
-  createRestaurant,
 } from '../../network/RestaurantService'
 import { apiCallBegan } from '../actions/api'
 import { store } from '../index'

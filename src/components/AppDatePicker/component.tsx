@@ -9,10 +9,10 @@ import styles from './styles'
 export interface AppDatePickerProps {
   label?: string
   defaultDate?: string
-  customStyle?: object
+  customStyle?: Record<string, unknown>
   onDateSelection?: (arg0: string) => void
   selectedDay?: () => number
-  containerStyle?: object
+  containerStyle?: Record<string, unknown>
   isPastAllowed?: boolean
   format?: string
 }

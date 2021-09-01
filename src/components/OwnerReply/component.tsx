@@ -3,9 +3,9 @@ import { Image, Text, View } from 'react-native'
 import styles from './styles'
 
 export interface OwnerReplyProps {
-  owner_reply: string
+  /* eslint-disable camelcase */ owner_reply: string
 }
-
+/* eslint-disable camelcase */
 const OwnerReply: React.FC<OwnerReplyProps> = ({ owner_reply }: OwnerReplyProps) => {
   return (
     <View style={styles.ownerWrapper}>

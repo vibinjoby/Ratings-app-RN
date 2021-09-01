@@ -1,14 +1,14 @@
 import 'react-native'
 import React from 'react'
-import ThreeTabs from './component'
-
 import { render } from '@testing-library/react-native'
+
+import ThreeTabs from './component'
 
 describe('ThreeTabs', () => {
   const mockFn = jest.fn()
 
   it('should render', () => {
-    render(
+    const { toJSON } = render(
       <ThreeTabs
         selectedTab={0}
         tab1Text="Customer"
@@ -17,5 +17,6 @@ describe('ThreeTabs', () => {
         onTabSelect={mockFn}
       />,
     )
+    expect(toJSON()).toMatchSnapshot()
   })
 })

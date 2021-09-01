@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PasswordErrorText should render 1`] = `
+<View>
+  <Text
+    style={
+      Object {
+        "color": "rgba(30, 33, 76, 0.6)",
+      }
+    }
+  >
+    Password must contain:
+  </Text>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "testUri": "../../../src/assets/error.png",
+        }
+      }
+      style={
+        Object {
+          "height": 10,
+          "marginRight": 3,
+          "marginTop": 3,
+          "width": 10,
+        }
+      }
+    />
+    <Text
+      style={
+        Object {
+          "color": "rgba(30, 33, 76, 0.4)",
+        }
+      }
+    >
+      At least 8 characters
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "testUri": "../../../src/assets/error.png",
+        }
+      }
+      style={
+        Object {
+          "height": 10,
+          "marginRight": 3,
+          "marginTop": 3,
+          "width": 10,
+        }
+      }
+    />
+    <Text
+      style={
+        Object {
+          "color": "rgba(30, 33, 76, 0.4)",
+        }
+      }
+    >
+      At least 1 uppercase letter
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "testUri": "../../../src/assets/error.png",
+        }
+      }
+      style={
+        Object {
+          "height": 10,
+          "marginRight": 3,
+          "marginTop": 3,
+          "width": 10,
+        }
+      }
+    />
+    <Text
+      style={
+        Object {
+          "color": "rgba(30, 33, 76, 0.4)",
+        }
+      }
+    >
+      At least 1 lowercase letter
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "testUri": "../../../src/assets/error.png",
+        }
+      }
+      style={
+        Object {
+          "height": 10,
+          "marginRight": 3,
+          "marginTop": 3,
+          "width": 10,
+        }
+      }
+    />
+    <Text
+      style={
+        Object {
+          "color": "rgba(30, 33, 76, 0.4)",
+        }
+      }
+    >
+      At least 1 special character(#,%,&)
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "testUri": "../../../src/assets/error.png",
+        }
+      }
+      style={
+        Object {
+          "height": 10,
+          "marginRight": 3,
+          "marginTop": 3,
+          "width": 10,
+        }
+      }
+    />
+    <Text
+      style={
+        Object {
+          "color": "rgba(30, 33, 76, 0.4)",
+        }
+      }
+    >
+      At least 1 number (0-9)
+    </Text>
+  </View>
+</View>
+`;

@@ -67,9 +67,9 @@ export const submitOwnerReply = async (token: string, ownerReply: string, review
 }
 
 export const fetchOwnerRestaurants = async (token: string) => {
-  const { BASE_URL, fetch_OWNED_RESTAURANTS } = serviceConst
+  const { BASE_URL, FETCH_OWNED_RESTAURANTS } = serviceConst
   HttpService.setHeader(token)
-  const { data } = await HttpService.get(BASE_URL + fetch_OWNED_RESTAURANTS)
+  const { data } = await HttpService.get(BASE_URL + FETCH_OWNED_RESTAURANTS)
 
   return data
 }

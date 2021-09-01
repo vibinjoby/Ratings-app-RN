@@ -11,14 +11,14 @@ import { apiCallBegan } from '../actions/api'
 import { Review } from './restaurant'
 
 type Restaurant = {
-  is_deleted: boolean
-  _id: string
-  restaurant_name: string
+  /* eslint-disable camelcase */ is_deleted: boolean /* eslint-disable camelcase */
+  _id: string /* eslint-disable camelcase */
+  restaurant_name: string /* eslint-disable camelcase */
   address: string
-  contact_number: string
-  email_address: string
-  owner_id: string
-  average_ratings: number
+  contact_number: string /* eslint-disable camelcase */
+  email_address: string /* eslint-disable camelcase */
+  owner_id: string /* eslint-disable camelcase */
+  average_ratings: number /* eslint-disable camelcase */
   reviewsCount: number
 }
 
@@ -53,7 +53,7 @@ const slice = createSlice({
       state.restaurantDetails.reviews = reviews
     },
     addOwnerReply: (state: State, action) => {
-      let reviews = state.restaurantDetails.reviews.map((review) => {
+      const reviews = state.restaurantDetails.reviews.map((review) => {
         if (review._id === action.payload.args[2]) {
           review.owner_reply = action.payload.args[1]
         }

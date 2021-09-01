@@ -4,7 +4,6 @@ import { fireEvent, render } from '@testing-library/react-native'
 import { NavigationContainer } from '@react-navigation/native'
 
 import SignIn from '.'
-import WrapComponent from '../../../tests/wrapComponent'
 import { Provider } from 'react-redux'
 import { store } from '../../store'
 

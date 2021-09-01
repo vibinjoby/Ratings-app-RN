@@ -1,12 +1,5 @@
 import React, { useState } from 'react'
-import {
-  Image,
-  KeyboardAvoidingView,
-  Platform,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native'
+import { Image, TextInput, TouchableOpacity, View } from 'react-native'
 
 import styles from './styles'
 

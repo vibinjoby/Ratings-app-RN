@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppNoInternet should render 1`] = `
+<Modal
+  hardwareAccelerated={false}
+  transparent={true}
+  visible={false}
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "rgba(0, 0, 0, 0.4)",
+        "flex": 1,
+        "zIndex": 999,
+      }
+    }
+  >
+    <View
+      forwardedRef={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "red",
+          "height": 80,
+          "justifyContent": "flex-end",
+          "opacity": 1,
+          "paddingBottom": 20,
+          "transform": Array [
+            Object {
+              "translateY": 0,
+            },
+          ],
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#fff",
+            "fontSize": 16,
+          }
+        }
+      >
+        You are not connected to the Internet
+      </Text>
+    </View>
+  </View>
+</Modal>
+`;

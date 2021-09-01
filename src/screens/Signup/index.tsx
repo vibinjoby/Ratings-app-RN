@@ -31,21 +31,24 @@ const SignUp: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState(0)
 
   const data = [
-    { key: 1, placeholder: 'Full Name', name: 'fullName' },
+    { key: 1, testID: 'fullName', placeholder: 'Full Name', name: 'fullName' },
     {
       key: 2,
+      testID: 'email',
       placeholder: 'Email',
       name: 'email',
       keyboardType: 'email-address',
     },
     {
       key: 3,
+      testID: 'password',
       placeholder: 'Create Password',
       name: 'password',
       secureEntry: true,
     },
     {
       key: 4,
+      testID: 'confirmPassword',
       placeholder: 'Confirm Password',
       name: 'confirmPwd',
       secureEntry: true,
@@ -125,6 +128,7 @@ const SignUp: React.FC = () => {
               <>
                 {data.map((item) => (
                   <CustomTextInput
+                    testID={item.testID}
                     keyboardType={item.keyboardType as KeyboardType}
                     key={item.key.toString()}
                     onBlur={() => setFieldTouched(item.name)}

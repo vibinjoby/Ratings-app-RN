@@ -6,7 +6,7 @@ import ReplyReview from './component'
 
 storiesOf('Components', module).add('ReplyReview', () => (
   <View style={styles.container}>
-    <ReplyReview _id="123" onSend={(a, b) => console.log('send')} />
+    <ReplyReview _id="123" onSend={() => console.log('send')} />
   </View>
 ))
 

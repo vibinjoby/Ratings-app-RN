@@ -20,7 +20,7 @@ const Popup = () => {
         content="Are you sure you want to delete this user"
         positiveBtnTxt="Yes"
         negativeBtnTxt="No"
-        onPositiveBtnPress={() => {}}
+        onPositiveBtnPress={() => console.log('positive btn pressed')}
         onNegativeBtnPress={toggleModal}
       />
     </View>

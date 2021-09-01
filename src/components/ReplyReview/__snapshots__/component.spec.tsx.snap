@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReplyReview should render 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "borderColor": "#E2E2E2",
+        "borderRadius": 30,
+        "borderWidth": 1.5,
+        "flex": 1,
+        "marginRight": 26,
+        "padding": 12,
+      }
+    }
+  >
+    <TextInput
+      onChangeText={[Function]}
+      placeholder="Type Reply..."
+      style={
+        Object {
+          "fontFamily": "Poppins-Regular",
+        }
+      }
+      value=""
+    />
+  </View>
+  <View
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    nativeID="animatedComponent"
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "testUri": "../../../src/assets/send/send.png",
+        }
+      }
+    />
+  </View>
+</View>
+`;

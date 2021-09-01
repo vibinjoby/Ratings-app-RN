@@ -1,0 +1,460 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RestaurantCard should render 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  nativeID="animatedComponent"
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "opacity": 1,
+    }
+  }
+>
+  <View>
+    <View
+      accessibilityIgnoresInvertColors={true}
+      style={
+        Object {
+          "borderRadius": 10,
+          "height": 141,
+        }
+      }
+    >
+      <Image
+        resizeMode="stretch"
+        source={
+          Object {
+            "testUri": "../../../src/assets/dummy-restaurant-pic.png",
+          }
+        }
+        style={
+          Array [
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            Object {
+              "height": 141,
+              "width": undefined,
+            },
+            undefined,
+          ]
+        }
+      />
+      <View
+        style={
+          Object {
+            "alignSelf": "flex-start",
+            "backgroundColor": "#FF5823",
+            "borderRadius": 8,
+            "flexDirection": "row",
+            "margin": 7,
+            "paddingHorizontal": 5,
+            "paddingTop": 2,
+          }
+        }
+      >
+        <Image
+          source={
+            Object {
+              "testUri": "../../../src/assets/star/star.png",
+            }
+          }
+          style={
+            Object {
+              "marginRight": 5,
+            }
+          }
+        />
+        <Text
+          style={
+            Object {
+              "color": "#fff",
+              "fontFamily": "Poppins-Regular",
+              "fontSize": 14,
+            }
+          }
+        >
+          4.4
+        </Text>
+      </View>
+    </View>
+    <Text
+      style={
+        Object {
+          "color": "#181725",
+          "fontFamily": "Poppins-Bold",
+          "fontSize": 24,
+          "lineHeight": 29,
+          "marginTop": 5,
+        }
+      }
+    >
+      Joes Pizzeria
+    </Text>
+    <View
+      style={
+        Object {
+          "bottom": -20,
+          "flexDirection": "row",
+          "position": "absolute",
+        }
+      }
+    >
+      <RCTScrollView
+        ItemSeparatorComponent={[Function]}
+        data={
+          Array [
+            1,
+            2,
+            3,
+            4,
+            5,
+          ]
+        }
+        getItem={[Function]}
+        getItemCount={[Function]}
+        horizontal={true}
+        keyExtractor={[Function]}
+        onContentSizeChange={[Function]}
+        onLayout={[Function]}
+        onMomentumScrollBegin={[Function]}
+        onMomentumScrollEnd={[Function]}
+        onScroll={[Function]}
+        onScrollBeginDrag={[Function]}
+        onScrollEndDrag={[Function]}
+        removeClippedSubviews={false}
+        renderItem={[Function]}
+        scrollEnabled={false}
+        scrollEventThrottle={50}
+        stickyHeaderIndices={Array []}
+        viewabilityConfigCallbackPairs={Array []}
+      >
+        <View>
+          <View
+            onLayout={[Function]}
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                allowFontScaling={false}
+                style={
+                  Array [
+                    Object {
+                      "color": "#F5D547",
+                      "fontSize": 15,
+                    },
+                    undefined,
+                    Object {
+                      "fontFamily": "FontAwesome",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginRight": 5,
+                  },
+                  undefined,
+                ]
+              }
+            />
+          </View>
+          <View
+            onLayout={[Function]}
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                allowFontScaling={false}
+                style={
+                  Array [
+                    Object {
+                      "color": "#F5D547",
+                      "fontSize": 15,
+                    },
+                    undefined,
+                    Object {
+                      "fontFamily": "FontAwesome",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginRight": 5,
+                  },
+                  undefined,
+                ]
+              }
+            />
+          </View>
+          <View
+            onLayout={[Function]}
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                allowFontScaling={false}
+                style={
+                  Array [
+                    Object {
+                      "color": "#F5D547",
+                      "fontSize": 15,
+                    },
+                    undefined,
+                    Object {
+                      "fontFamily": "FontAwesome",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginRight": 5,
+                  },
+                  undefined,
+                ]
+              }
+            />
+          </View>
+          <View
+            onLayout={[Function]}
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                allowFontScaling={false}
+                style={
+                  Array [
+                    Object {
+                      "color": "#F5D547",
+                      "fontSize": 15,
+                    },
+                    undefined,
+                    Object {
+                      "fontFamily": "FontAwesome",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginRight": 5,
+                  },
+                  undefined,
+                ]
+              }
+            />
+          </View>
+          <View
+            onLayout={[Function]}
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                allowFontScaling={false}
+                style={
+                  Array [
+                    Object {
+                      "color": "#A5A6B7",
+                      "fontSize": 15,
+                    },
+                    undefined,
+                    Object {
+                      "fontFamily": "FontAwesome",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+          </View>
+        </View>
+      </RCTScrollView>
+      <Text
+        style={
+          Object {
+            "color": "#7C7C7C",
+            "fontFamily": "Poppins-Regular",
+            "fontSize": 14,
+            "marginLeft": 10,
+            "marginTop": -3,
+          }
+        }
+      >
+        84
+         Reviews
+      </Text>
+    </View>
+  </View>
+</View>
+`;

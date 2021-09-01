@@ -218,26 +218,13 @@ exports[`Sign Up screen should render 1`] = `
         <View
           style={
             Object {
-              "marginBottom": 30,
-              "marginTop": 40,
+              "marginBottom": 10,
             }
           }
         >
-          <Text
-            style={
-              Object {
-                "color": "#7C7C7C",
-                "fontFamily": "Poppins-Regular",
-                "fontSize": 16,
-              }
-            }
-          >
-            FullName
-          </Text>
           <View
             style={
               Object {
-                "alignItems": "center",
                 "flexDirection": "row",
               }
             }
@@ -245,89 +232,86 @@ exports[`Sign Up screen should render 1`] = `
             <TextInput
               autoCapitalize="none"
               onChangeText={[Function]}
+              placeholder="Full Name"
+              returnKeyType="done"
               style={
-                Object {
-                  "borderBottomWidth": 1,
-                  "borderColor": "#E2E2E2",
-                  "color": "#181725",
-                  "fontFamily": "Poppins-Regular",
-                  "fontSize": 18,
-                  "paddingVertical": 10,
-                  "width": "100%",
-                }
+                Array [
+                  Object {
+                    "borderBottomWidth": 1,
+                    "borderColor": "rgba(30, 33, 76,0.1)",
+                    "borderRadius": 4,
+                    "color": "#181725",
+                    "fontFamily": "Poppins-Regular",
+                    "fontSize": 16,
+                    "marginBottom": 10,
+                    "marginTop": 10,
+                    "opacity": 0.8,
+                    "paddingHorizontal": 3,
+                    "paddingVertical": 15,
+                    "width": "100%",
+                  },
+                  false,
+                  undefined,
+                ]
               }
-              testID="email"
-              value=""
+              testID="fullName"
             />
           </View>
         </View>
         <View
           style={
             Object {
-              "marginBottom": 20,
+              "marginBottom": 10,
             }
           }
         >
-          <Text
-            style={
-              Object {
-                "color": "#7C7C7C",
-                "fontFamily": "Poppins-Regular",
-                "fontSize": 16,
-              }
-            }
-          >
-            Email
-          </Text>
           <View
             style={
               Object {
-                "alignItems": "center",
                 "flexDirection": "row",
               }
             }
           >
             <TextInput
               autoCapitalize="none"
+              keyboardType="email-address"
               onChangeText={[Function]}
+              placeholder="Email"
+              returnKeyType="done"
               style={
-                Object {
-                  "borderBottomWidth": 1,
-                  "borderColor": "#E2E2E2",
-                  "color": "#181725",
-                  "fontFamily": "Poppins-Regular",
-                  "fontSize": 18,
-                  "paddingVertical": 10,
-                  "width": "100%",
-                }
+                Array [
+                  Object {
+                    "borderBottomWidth": 1,
+                    "borderColor": "rgba(30, 33, 76,0.1)",
+                    "borderRadius": 4,
+                    "color": "#181725",
+                    "fontFamily": "Poppins-Regular",
+                    "fontSize": 16,
+                    "marginBottom": 10,
+                    "marginTop": 10,
+                    "opacity": 0.8,
+                    "paddingHorizontal": 3,
+                    "paddingVertical": 15,
+                    "width": "100%",
+                  },
+                  false,
+                  undefined,
+                ]
               }
               testID="email"
-              value=""
             />
           </View>
         </View>
         <View
           style={
             Object {
-              "marginBottom": 20,
+              "marginBottom": 10,
             }
           }
         >
-          <Text
-            style={
-              Object {
-                "color": "#7C7C7C",
-                "fontFamily": "Poppins-Regular",
-                "fontSize": 16,
-              }
-            }
-          >
-            Password
-          </Text>
           <View
             style={
               Object {
-                "alignItems": "center",
                 "flexDirection": "row",
               }
             }
@@ -335,74 +319,70 @@ exports[`Sign Up screen should render 1`] = `
             <TextInput
               autoCapitalize="none"
               onChangeText={[Function]}
+              placeholder="Create Password"
+              returnKeyType="done"
               secureTextEntry={true}
               style={
-                Object {
-                  "borderBottomWidth": 1,
-                  "borderColor": "#E2E2E2",
-                  "color": "#181725",
-                  "fontFamily": "Poppins-Regular",
-                  "fontSize": 18,
-                  "paddingVertical": 10,
-                  "width": "100%",
-                }
+                Array [
+                  Object {
+                    "borderBottomWidth": 1,
+                    "borderColor": "rgba(30, 33, 76,0.1)",
+                    "borderRadius": 4,
+                    "color": "#181725",
+                    "fontFamily": "Poppins-Regular",
+                    "fontSize": 16,
+                    "marginBottom": 10,
+                    "marginTop": 10,
+                    "opacity": 0.8,
+                    "paddingHorizontal": 3,
+                    "paddingVertical": 15,
+                    "width": "100%",
+                  },
+                  false,
+                  undefined,
+                ]
               }
               testID="password"
-              value=""
             />
-            <View
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              nativeID="animatedComponent"
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "opacity": 1,
-                  "position": "absolute",
-                  "right": 0,
-                }
-              }
-              testID="eyeIc"
-            >
-              <Image
-                source={
-                  Object {
-                    "testUri": "../../../src/assets/password/password.png",
-                  }
-                }
-              />
-            </View>
           </View>
+          <Image
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            resizeMode="contain"
+            source={
+              Object {
+                "testUri": "../../../src/assets/eye-off.png",
+              }
+            }
+            style={
+              Object {
+                "height": 25,
+                "position": "absolute",
+                "right": 10,
+                "top": 15,
+                "width": 25,
+                "zIndex": 1,
+              }
+            }
+          />
         </View>
         <View
           style={
             Object {
-              "marginBottom": 20,
+              "marginBottom": 10,
             }
           }
         >
-          <Text
-            style={
-              Object {
-                "color": "#7C7C7C",
-                "fontFamily": "Poppins-Regular",
-                "fontSize": 16,
-              }
-            }
-          >
-            Confirm Password
-          </Text>
           <View
             style={
               Object {
-                "alignItems": "center",
                 "flexDirection": "row",
               }
             }
@@ -410,50 +390,31 @@ exports[`Sign Up screen should render 1`] = `
             <TextInput
               autoCapitalize="none"
               onChangeText={[Function]}
+              placeholder="Confirm Password"
+              returnKeyType="done"
               secureTextEntry={true}
               style={
-                Object {
-                  "borderBottomWidth": 1,
-                  "borderColor": "#E2E2E2",
-                  "color": "#181725",
-                  "fontFamily": "Poppins-Regular",
-                  "fontSize": 18,
-                  "paddingVertical": 10,
-                  "width": "100%",
-                }
+                Array [
+                  Object {
+                    "borderBottomWidth": 1,
+                    "borderColor": "rgba(30, 33, 76,0.1)",
+                    "borderRadius": 4,
+                    "color": "#181725",
+                    "fontFamily": "Poppins-Regular",
+                    "fontSize": 16,
+                    "marginBottom": 10,
+                    "marginTop": 10,
+                    "opacity": 0.8,
+                    "paddingHorizontal": 3,
+                    "paddingVertical": 15,
+                    "width": "100%",
+                  },
+                  false,
+                  undefined,
+                ]
               }
               testID="confirmPassword"
-              value=""
             />
-            <View
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              nativeID="animatedComponent"
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "opacity": 1,
-                  "position": "absolute",
-                  "right": 0,
-                }
-              }
-              testID="eyeIc"
-            >
-              <Image
-                source={
-                  Object {
-                    "testUri": "../../../src/assets/password/password.png",
-                  }
-                }
-              />
-            </View>
           </View>
         </View>
         <View

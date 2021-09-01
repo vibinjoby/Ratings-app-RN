@@ -1,12 +1,12 @@
 import 'react-native'
 import React from 'react'
-import ReviewBlock from './component'
-
 import { render } from '@testing-library/react-native'
+
+import ReviewBlock from './component'
 
 describe('ReviewBlock', () => {
   it('should render', () => {
-    render(
+    const { toJSON } = render(
       <ReviewBlock
         reviewId="123"
         reviewerName="Vibin"
@@ -15,5 +15,6 @@ describe('ReviewBlock', () => {
         visitDate="20 Jun 2021"
       />,
     )
+    expect(toJSON()).toMatchSnapshot()
   })
 })

@@ -14,6 +14,7 @@ export const configureGoogleSignIn = () => {
         ? '608393754261-vhfk6c3gbi1641k4cupd2pfssfa74t52.apps.googleusercontent.com'
         : '608393754261-6d75grmneig39ucr20u7hbcd9f2uq2d5.apps.googleusercontent.com',
   })
+  return
 }
 
 export const googleSignIn = async () => {
@@ -52,6 +53,7 @@ export const googleSignOut = async () => {
       console.log(error)
     }
   }
+  return
 }
 
 export const fbSignIn = async () => {

@@ -9,10 +9,10 @@ const slice = createSlice({
     loading: false,
   },
   reducers: {
-    startLoader: (state: State, _) => {
+    startLoader: (state: State) => {
       state.loading = true
     },
-    stopLoader: (state, _) => {
+    stopLoader: (state) => {
       state.loading = false
     },
   },

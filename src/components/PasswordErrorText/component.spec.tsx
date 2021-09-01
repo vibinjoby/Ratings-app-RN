@@ -1,11 +1,12 @@
 import 'react-native'
 import React from 'react'
-import PasswordErrorText from './component'
-
 import { render } from '@testing-library/react-native'
+
+import PasswordErrorText from './component'
 
 describe('PasswordErrorText', () => {
   it('should render', () => {
-    render(<PasswordErrorText />)
+    const { toJSON } = render(<PasswordErrorText inputValue="" />)
+    expect(toJSON()).toMatchSnapshot()
   })
 })

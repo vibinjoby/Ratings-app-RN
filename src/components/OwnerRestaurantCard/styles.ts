@@ -10,7 +10,7 @@ export default StyleSheet.create({
     marginRight: 10,
     backgroundColor: Colors.white,
     borderRadius: 8,
-    shadowColor: '#000',
+    shadowColor: Colors.black,
     shadowOffset: {
       width: 0,
       height: 2,

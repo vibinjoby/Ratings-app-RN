@@ -10,7 +10,6 @@ import { getMyRestaurants } from '../../store/reducers/owner'
 import Colors from '../../utilities/colors'
 import { removeData } from '../../utilities/helpers'
 import styles from './styles'
-import RestaurantCard from '../../components/RestaurantCard'
 import routes from '../../navigations/routes'
 import constants from '../../configs/commonConst'
 import OwnerRestaurantCard from '../../components/OwnerRestaurantCard'
@@ -70,7 +69,7 @@ const OwnerHome: React.FC = () => {
             style={styles.flatlist}
             numColumns={2}
             data={myRestaurants}
-            contentContainerStyle={{ justifyContent: 'space-between' }}
+            contentContainerStyle={styles.contentContainer}
             renderItem={({ item }) => (
               <OwnerRestaurantCard //@ts-ignore
                 id={item._id} //@ts-ignore

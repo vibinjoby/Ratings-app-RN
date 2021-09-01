@@ -7,7 +7,7 @@ import RestaurantCard from './component'
 
 describe('RestaurantCard', () => {
   it('should render', () => {
-    render(
+    const { toJSON } = render(
       <NavigationContainer>
         <RestaurantCard
           id={'123'}
@@ -18,5 +18,6 @@ describe('RestaurantCard', () => {
         />
       </NavigationContainer>,
     )
+    expect(toJSON()).toMatchSnapshot()
   })
 })

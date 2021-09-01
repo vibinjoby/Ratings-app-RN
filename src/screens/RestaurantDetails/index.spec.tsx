@@ -4,7 +4,6 @@ import { render } from '@testing-library/react-native'
 import { NavigationContainer } from '@react-navigation/native'
 
 import RestaurantDetails from '.'
-import WrapComponent from '../../../tests/wrapComponent'
 import { store } from '../../store'
 import { Provider } from 'react-redux'
 

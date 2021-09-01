@@ -70,7 +70,7 @@
     "detox": "^18.20.2",
     "eslint": "^7.14.0",
     "eslint-plugin-jest-formatting": "^3.0.0",
-    "husky": "^4.3.8",
+    "husky": "^7.0.2",
     "hygen": "^6.1.0",
     "jest": "^26.6.3",
     "metro-react-native-babel-preset": "^0.66.0",
@@ -88,7 +88,7 @@
     ],
     "preset": "react-native",
     "transformIgnorePatterns": [
-      "/node_modules/(?!@react-native|react-native|@react-native-community/google-signin|@sentry/react-native|@react-navigation/native|@react-navigation/stack)"
+      "/node_modules/(?!@react-native|react-native|@react-native-community/google-signin|@react-native-community/netinfo|@sentry/react-native|@react-navigation/native|@react-navigation/stack)"
     ],
     "moduleFileExtensions": [
       "ts",

@@ -45,7 +45,7 @@ const AppToasts: React.FC = ({ children }: React.Props<any>) => {
               setModalVisible(false)
             }}
           >
-            <View style={[styles.modalView, !toaster.isSuccess && { borderLeftColor: 'red' }]}>
+            <View style={[styles.modalView, !toaster.isSuccess && styles.err]}>
               <View style={styles.modalViewContent}>
                 <Image
                   source={
