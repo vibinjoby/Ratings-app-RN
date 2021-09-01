@@ -205,8 +205,8 @@ exports[`AppDatePicker should render 1`] = `
                     }
                   >
                     <RCTDatePicker
-                      date={1630519225093}
-                      maximumDate={1630519225093}
+                      date={1630524633887}
+                      maximumDate={1630524633887}
                       mode="date"
                       onChange={[Function]}
                       onResponderTerminationRequest={[Function]}

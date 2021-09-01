@@ -15,7 +15,7 @@
     "prettier-check": "prettier --check \"src/**/*.ts{,x}\"",
     "storybook": "start-storybook -p 7007",
     "build-storybook": "build-storybook",
-    "pre-commit": "npm run prettier-check && npm run lint && npm run test"
+    "pre-commit": "npm run prettier-check && npm run lint && npm run test -- -u"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.15.7",
@@ -101,7 +101,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run prettier-check && npm run lint && npm run test"
+      "pre-commit": "npm run prettier-check && npm run lint && npm run test -- -u"
     }
   }
 }

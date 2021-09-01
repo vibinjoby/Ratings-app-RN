@@ -17,6 +17,8 @@ module.exports = {
   plugins: ['jest', 'jest-formatting', 'react-hooks', '@typescript-eslint'],
   ignorePatterns: ['lib'],
   rules: {
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-var-requires': 0,
     '@typescript-eslint/camelcase': 'off',
     'react-native/no-raw-text': 'off',
