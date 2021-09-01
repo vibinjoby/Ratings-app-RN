@@ -5,6 +5,7 @@ import toastReducer from './common/toaster'
 import authReducer from './auth'
 import restaurantReducer from './restaurant'
 import ownerReducer from './owner'
+import adminReducer from './admin'
 
 const rootReducer = combineReducers({
   toaster: toastReducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   restaurants: restaurantReducer,
   owner: ownerReducer,
+  admin: adminReducer,
 })
 
 export default rootReducer

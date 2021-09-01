@@ -1,9 +1,7 @@
-import { useNavigation } from '@react-navigation/native'
-import React from 'react'
-import { useEffect } from 'react'
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, Text, ImageBackground, Image, TouchableOpacity, ScrollView } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigation } from '@react-navigation/native'
 
 import Button from '../../components/Button'
 import { RootState } from '../../store'
@@ -11,13 +9,15 @@ import TextField from '../../components/TextField'
 import ThreeTabs from '../../components/ThreeTabs'
 import routes from '../../navigations/routes'
 import Typography from '../../utilities/typography'
-import styles from './styles'
 import { loginUser } from '../../store/reducers/auth'
+import styles from './styles'
+import { loginUserAdmin } from '../../store/reducers/admin'
 
 const SignIn: React.FC = () => {
   const navigation = useNavigation()
   const dispatch = useDispatch()
   const token = useSelector((state: RootState) => state.auth.token)
+  const adminToken = useSelector((state: RootState) => state.admin.token)
   const userType = useSelector((state: RootState) => state.auth.userInfo.typeOfUser)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -31,11 +31,14 @@ const SignIn: React.FC = () => {
     } else if (userType === 'owner') {
       //@ts-ignore
       navigation.navigate(routes.OWNER_HOME_STACK)
-    } else {
-      //@ts-ignore
-      navigation.navigate(routes.ADMIN_HOME_STACK)
     }
   }, [userType])
+
+  useEffect(() => {
+    if (!adminToken) return
+    //@ts-ignore
+    navigation.navigate(routes.ADMIN_HOME_STACK)
+  }, [adminToken])
 
   const handleLogin = () => {
     if (!email || !password) return
@@ -43,12 +46,14 @@ const SignIn: React.FC = () => {
     let typeOfUser = ''
     if (selectedTab === 0) {
       typeOfUser = 'customer'
+      dispatch(loginUser(email, password, typeOfUser))
     } else if (selectedTab === 1) {
       typeOfUser = 'owner'
+      dispatch(loginUser(email, password, typeOfUser))
     } else {
       typeOfUser = 'admin'
+      dispatch(loginUserAdmin(email, password))
     }
-    dispatch(loginUser(email, password, typeOfUser))
   }
 
   return (

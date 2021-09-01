@@ -11,7 +11,7 @@ const CustomerHomeStack = () => {
 
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name={routes.CUSTOMER_HOME} component={Home} />
+      <Stack.Screen name={routes.CUSTOMER_HOME} component={Home} options={{ headerShown: true }} />
       <Stack.Screen
         name={routes.RESTAURANT_DETAILS}
         component={RestaurantDetails}

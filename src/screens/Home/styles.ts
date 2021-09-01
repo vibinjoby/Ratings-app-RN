@@ -28,6 +28,17 @@ export default StyleSheet.create({
     fontSize: 16,
     paddingLeft: 20,
   },
+  navHeader: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+
+    elevation: 6,
+  },
   userPic: {
     width: 37,
     height: 37,

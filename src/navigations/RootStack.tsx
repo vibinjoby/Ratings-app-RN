@@ -10,6 +10,7 @@ import { RootState } from '../store'
 import { loadUserInfo } from '../store/reducers/auth'
 import OwnerHomeStack from './OwnerHomeStack'
 import AdminHomeStack from './AdminHomeStack'
+import { loadAdminInfo } from '../store/reducers/admin'
 
 const RootStack = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<any>(0)
@@ -22,13 +23,21 @@ const RootStack = () => {
     if (!data || !data.token) {
       return setIsLoggedIn(false)
     }
-    dispatch({
-      type: loadUserInfo.type,
-      payload: {
-        token: data.token,
-        userInfo: data.userInfo,
-      },
-    })
+    if (data.userInfo?.typeOfUser === 'admin') {
+      dispatch({
+        type: loadAdminInfo.type,
+        payload: {
+          token: data.token,
+        },
+      })
+    } else
+      dispatch({
+        type: loadUserInfo.type,
+        payload: {
+          token: data.token,
+          userInfo: data.userInfo,
+        },
+      })
     setIsLoggedIn(true)
   }
 

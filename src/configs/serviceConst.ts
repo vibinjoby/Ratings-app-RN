@@ -12,4 +12,12 @@ export default {
   fetch_OWNED_RESTAURANTS: 'restaurants/fetchOwnedRestaurants',
   FETCH_OWNER_REVIEWS: 'reviews/getAllRestaurantReviews',
   FETCH_RESTAURANT_REVIEW: 'reviews/getRestaurantReviews/',
+  //admin
+  LOGIN_ADMIN: 'admin/login',
+  FETCH_ALL_USERS: 'admin/fetchAllUsers',
+  FETCH_ALL_REVIEWS: 'admin/fetchAllReviews',
+  FETCH_ALL_RESTAURANTS: 'admin/fetchAllRestaurants',
+  DELETE_USER: 'admin/deleteUser/',
+  DELETE_RESTAURANT: 'admin/deleteRestaurant/',
+  DELETE_REVIEW: 'admin/deleteReview/',
 }

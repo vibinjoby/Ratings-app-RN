@@ -104,9 +104,13 @@ export const removeData = async (key: string) => {
   }
 }
 
-export const decodeToken = (token: string) => {
+export const decodeToken = (token: string, isAdmin?: boolean) => {
   //decode the token to get the userInfo object
   const userInfo = jwtDecode(token)
+  if (isAdmin) {
+    //@ts-ignore
+    userInfo.typeOfUser = 'admin'
+  }
   //save the token and userInfo obj in async storage
   storeData('userInfo', { userInfo, token })
   return userInfo

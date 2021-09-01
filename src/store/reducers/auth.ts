@@ -14,14 +14,12 @@ type UserInfo = {
   email: string
   fullName: string
   id: string
-  location: Array<any>
   iat: any
   typeOfUser: string
 }
 export type AuthState = {
   userInfo: UserInfo
   token: string
-  notifications: Record<string, unknown>
   resetPwd: Record<string, unknown>
   errorCode?: number
 }
@@ -32,14 +30,11 @@ const initialState = {
     email: '',
     fullName: '',
     id: '',
-    location: [],
     iat: '',
     typeOfUser: '',
   },
   token: '',
-  notifications: {},
   resetPwd: { email: '', token: '' },
-  errorCode: 0,
 }
 
 const slice = createSlice({
@@ -56,9 +51,6 @@ const slice = createSlice({
       const userInfo = decodeToken(data.token) as UserInfo
       state.userInfo = userInfo
       state.token = data.token
-      if (data.code) {
-        state.errorCode = data.code
-      }
     },
     logout: (state: AuthState, _) => {
       state.userInfo = initialState.userInfo

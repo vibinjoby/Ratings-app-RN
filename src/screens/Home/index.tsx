@@ -56,6 +56,7 @@ const Home: React.FC = () => {
           <MaterialCommIcons name="logout" size={25} color={Colors.appOrange} />
         </TouchableOpacity>
       ),
+      headerStyle: styles.navHeader,
     })
   }, [])
 

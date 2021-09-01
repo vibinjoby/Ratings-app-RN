@@ -16,4 +16,7 @@ export default {
 
   ADMIN_HOME_STACK: 'AdminHomeStack',
   ADMIN_HOME: 'AdminHome',
+  ALL_USERS: 'AllUsers',
+  ALL_RESTAURANTS: 'AllRestaurants',
+  ALL_REVIEWS: 'AllReviews',
 }

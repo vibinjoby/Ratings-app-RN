@@ -5,6 +5,18 @@ import Typography from '../../utilities/typography'
 export default StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: Colors.white,
+  },
+  navHeader: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+
+    elevation: 6,
   },
   headerWrapper: {
     flexDirection: 'row',
@@ -33,10 +45,10 @@ export default StyleSheet.create({
     paddingHorizontal: 20,
   },
   spacing: {
-    marginBottom: 50,
+    marginBottom: 20,
   },
   footerSpacing: {
-    marginBottom: 80,
+    marginBottom: 20,
   },
   plusIcContainer: {
     position: 'absolute',

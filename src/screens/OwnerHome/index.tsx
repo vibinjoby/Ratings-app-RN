@@ -13,6 +13,7 @@ import styles from './styles'
 import RestaurantCard from '../../components/RestaurantCard'
 import routes from '../../navigations/routes'
 import constants from '../../configs/commonConst'
+import OwnerRestaurantCard from '../../components/OwnerRestaurantCard'
 
 const OwnerHome: React.FC = () => {
   const token = useSelector((state: RootState) => state.auth.token)
@@ -45,6 +46,7 @@ const OwnerHome: React.FC = () => {
           <MaterialCommIcons name="logout" size={25} color={Colors.appOrange} />
         </TouchableOpacity>
       ),
+      headerStyle: styles.navHeader,
     })
   }, [])
 
@@ -66,13 +68,15 @@ const OwnerHome: React.FC = () => {
           <Text style={styles.title}>My Restaurants</Text>
           <FlatList
             style={styles.flatlist}
+            numColumns={2}
             data={myRestaurants}
+            contentContainerStyle={{ justifyContent: 'space-between' }}
             renderItem={({ item }) => (
-              <RestaurantCard //@ts-ignore
+              <OwnerRestaurantCard //@ts-ignore
                 id={item._id} //@ts-ignore
                 title={item.restaurant_name} //@ts-ignore
                 ratings={item.average_ratings} //@ts-ignore
-                reviewCount={item.reviewsCount} //@ts-ignore
+                reviewsCount={item.reviewsCount} //@ts-ignore
                 restaurantImg={{ uri: constants.DUMMY_PIC }}
                 onPress={() =>
                   //@ts-ignore
