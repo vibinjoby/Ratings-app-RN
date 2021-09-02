@@ -118,6 +118,7 @@ exports[`ReviewBlock should render 1`] = `
                     Object {},
                   ]
                 }
+                testID="font-icon"
               >
                 
               </Text>
@@ -179,6 +180,7 @@ exports[`ReviewBlock should render 1`] = `
                     Object {},
                   ]
                 }
+                testID="font-icon"
               >
                 
               </Text>
@@ -240,6 +242,7 @@ exports[`ReviewBlock should render 1`] = `
                     Object {},
                   ]
                 }
+                testID="font-icon"
               >
                 
               </Text>
@@ -301,6 +304,7 @@ exports[`ReviewBlock should render 1`] = `
                     Object {},
                   ]
                 }
+                testID="font-icon"
               >
                 
               </Text>
@@ -362,6 +366,7 @@ exports[`ReviewBlock should render 1`] = `
                     Object {},
                   ]
                 }
+                testID="font-icon"
               >
                 
               </Text>

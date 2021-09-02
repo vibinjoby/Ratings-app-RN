@@ -3,7 +3,7 @@ import serviceConst from '../configs/serviceConst'
 
 export const authenticateAdmin = async (username: string, password: string): Promise<any> => {
   const { BASE_URL, LOGIN_ADMIN } = serviceConst
-  const { data } = await HttpService.post(BASE_URL + LOGIN_ADMIN, { username, password })
+  const { data } = await HttpService.post(BASE_URL + LOGIN_ADMIN, { email: username, password })
 
   return data
 }

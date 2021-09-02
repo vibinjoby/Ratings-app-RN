@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, Text, TouchableOpacity, FlatList, ScrollView, SafeAreaView } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import MaterialCommIcons from 'react-native-vector-icons/MaterialCommunityIcons'
@@ -13,8 +13,10 @@ import styles from './styles'
 import routes from '../../navigations/routes'
 import constants from '../../configs/commonConst'
 import OwnerRestaurantCard from '../../components/OwnerRestaurantCard'
+import ModalPopup from '../../components/ModalPopup'
 
 const OwnerHome: React.FC = () => {
+  const [isLogoutPop, setIsLogoutPop] = useState(false)
   const token = useSelector((state: RootState) => state.auth.token)
   const fullName = useSelector((state: RootState) => state.auth.userInfo.fullName)
   const myRestaurants = useSelector((state: RootState) => state.owner.restaurants)
@@ -28,6 +30,7 @@ const OwnerHome: React.FC = () => {
   }, [token])
 
   const handleLogout = async () => {
+    toggleModal()
     dispatch({ type: logout.type })
     await removeData('userInfo')
     navigation.reset({
@@ -41,7 +44,7 @@ const OwnerHome: React.FC = () => {
       title: '',
       headerLeft: () => <Text style={styles.customerSalutation}>Welcome {fullName}</Text>,
       headerRight: () => (
-        <TouchableOpacity activeOpacity={0.9} onPress={handleLogout} style={styles.logout}>
+        <TouchableOpacity activeOpacity={0.9} onPress={toggleModal} style={styles.logout}>
           <MaterialCommIcons name="logout" size={25} color={Colors.appOrange} />
         </TouchableOpacity>
       ),
@@ -59,9 +62,30 @@ const OwnerHome: React.FC = () => {
     </TouchableOpacity>
   )
 
+  const toggleModal = () => {
+    setIsLogoutPop((val) => !val)
+  }
+
+  if (!myRestaurants || myRestaurants.length === 0) {
+    return (
+      <View style={styles.noReviewWrapper}>
+        <Text style={styles.noReviewTxt}>No Restaurants added yet!!</Text>
+        <PlusIc />
+      </View>
+    )
+  }
+
   return (
     <>
       <SafeAreaView />
+      <ModalPopup
+        isVisible={isLogoutPop}
+        content="Are you sure you want to logout?"
+        positiveBtnTxt="Logout"
+        negativeBtnTxt="Cancel"
+        onPositiveBtnPress={handleLogout}
+        onNegativeBtnPress={toggleModal}
+      />
       <ScrollView>
         <View style={styles.container}>
           <Text style={styles.title}>My Restaurants</Text>

@@ -4,20 +4,20 @@ import { store } from '..'
 import {
   authenticateAdmin,
   fetchAllRestaurants,
-  fetchAllReviews,
   fetchAllUsers,
   deleteRestaurant,
   deleteReview,
   deleteUser,
 } from '../../network/AdminService'
+import { fetchOwnerRestaurantReview } from '../../network/RestaurantService'
 import { decodeToken } from '../../utilities/helpers'
 import { apiCallBegan } from '../actions/api'
+import { Restaurant } from './restaurant'
 
 type State = {
   token: string
   users: Array<any>
-  reviews: Array<any>
-  restaurants: Array<any>
+  restaurants: Array<Restaurant>
 }
 
 const slice = createSlice({
@@ -25,7 +25,6 @@ const slice = createSlice({
   initialState: {
     token: '',
     users: [],
-    reviews: [],
     restaurants: [],
   },
   reducers: {
@@ -48,11 +47,24 @@ const slice = createSlice({
     },
     loadAllReviews: (state: State, action) => {
       const { data } = action.payload
-      state.reviews = data.filter((item: any) => !item.is_deleted)
+      const { reviews } = data
+      const id = action.payload.args[1]
+      state.restaurants
+        .filter((restaurant) => restaurant._id === id)
+        .map((restaurant) => (restaurant.reviews = reviews))
     },
     removeReview: (state: State, action) => {
       const id = action.payload.args[1]
-      state.reviews = state.reviews.filter((review) => review._id !== id)
+      const restaurantId = action.payload.args[2]
+      const restaurants = state.restaurants.find((restaurant) => restaurant._id === restaurantId)
+      const reviews = state.restaurants.find(
+        (restaurant) => restaurant._id === restaurantId,
+      )?.reviews
+
+      if (restaurants && restaurants.reviews) {
+        restaurants.reviews = reviews?.filter((review) => review._id !== id)
+        console.log(restaurants.reviews)
+      }
     },
     removeRestaurant: (state: State, action) => {
       const id = action.payload.args[1]
@@ -61,6 +73,9 @@ const slice = createSlice({
     removeUser: (state: State, action) => {
       const id = action.payload.args[1]
       state.users = state.users.filter((user) => user._id !== id)
+    },
+    removeToken: (state: State) => {
+      state.token = ''
     },
   },
 })
@@ -74,6 +89,7 @@ export const {
   removeReview,
   removeRestaurant,
   removeUser,
+  removeToken,
 } = slice.actions
 
 export default slice.reducer
@@ -115,25 +131,26 @@ export const getAllRestaurants = (token: string) => (dispatch: typeof store.disp
   })
 }
 
-export const getAllReviews = (token: string) => (dispatch: typeof store.dispatch) => {
-  dispatch({
-    type: apiCallBegan.type,
-    payload: {
-      apiMethod: fetchAllReviews,
-      args: [token],
-      onSucess: [loadAllReviews],
-      loader: true,
-    },
-  })
-}
+export const getAllReviews =
+  (token: string, restaurantId: string) => (dispatch: typeof store.dispatch) => {
+    dispatch({
+      type: apiCallBegan.type,
+      payload: {
+        apiMethod: fetchOwnerRestaurantReview,
+        args: [token, restaurantId],
+        onSucess: [loadAllReviews],
+        loader: true,
+      },
+    })
+  }
 
 export const filterReview =
-  (token: string, reviewId: string) => (dispatch: typeof store.dispatch) => {
+  (token: string, reviewId: string, restaurantId: string) => (dispatch: typeof store.dispatch) => {
     dispatch({
       type: apiCallBegan.type,
       payload: {
         apiMethod: deleteReview,
-        args: [token, reviewId],
+        args: [token, reviewId, restaurantId],
         onSucess: [removeReview],
         loader: true,
       },

@@ -22,8 +22,10 @@ import Colors from '../../utilities/colors'
 import { logout } from '../../store/reducers/auth'
 import { removeData } from '../../utilities/helpers'
 import routes from '../../navigations/routes'
+import ModalPopup from '../../components/ModalPopup'
 
 const Home: React.FC = () => {
+  const [isLogoutPop, setIsLogoutPop] = useState(false)
   const [endLoading, setEndLoading] = useState(false)
   const [pgNo, setPgNo] = useState(1)
   const [isFetching, setIsFetching] = useState(false)
@@ -39,6 +41,7 @@ const Home: React.FC = () => {
   const navigation = useNavigation()
 
   const handleLogout = async () => {
+    toggleModal()
     dispatch({ type: logout.type })
     await removeData('userInfo')
     navigation.reset({
@@ -52,8 +55,13 @@ const Home: React.FC = () => {
       title: '',
       headerLeft: () => <Text style={styles.customerSalutation}>Welcome {fullName}</Text>,
       headerRight: () => (
-        <TouchableOpacity activeOpacity={0.9} onPress={handleLogout}>
-          <MaterialCommIcons name="logout" size={25} color={Colors.appOrange} />
+        <TouchableOpacity activeOpacity={0.9} onPress={toggleModal}>
+          <MaterialCommIcons
+            name="logout"
+            size={25}
+            color={Colors.appOrange}
+            style={styles.logoutBtn}
+          />
         </TouchableOpacity>
       ),
       headerStyle: styles.navHeader,
@@ -83,6 +91,10 @@ const Home: React.FC = () => {
     setEndLoading(false)
   }
 
+  const toggleModal = () => {
+    setIsLogoutPop((val) => !val)
+  }
+
   const onRefresh = () => {
     dispatch({ type: resetRestaurantData.type })
     setPgNo(1)
@@ -99,6 +111,14 @@ const Home: React.FC = () => {
   return (
     <>
       <SafeAreaView />
+      <ModalPopup
+        isVisible={isLogoutPop}
+        content="Are you sure you want to logout?"
+        positiveBtnTxt="Logout"
+        negativeBtnTxt="Cancel"
+        onPositiveBtnPress={handleLogout}
+        onNegativeBtnPress={toggleModal}
+      />
       <View style={styles.container}>
         <Text style={styles.title}>Discover</Text>
         <FlatList

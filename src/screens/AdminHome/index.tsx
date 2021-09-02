@@ -1,11 +1,12 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FlatList, Image, ImageSourcePropType, Text, TouchableOpacity, View } from 'react-native'
 import MaterialCommIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { useDispatch } from 'react-redux'
+import ModalPopup from '../../components/ModalPopup'
 
 import routes from '../../navigations/routes'
-import { logout } from '../../store/reducers/auth'
+import { removeToken } from '../../store/reducers/admin'
 import Colors from '../../utilities/colors'
 import { removeData } from '../../utilities/helpers'
 import styles from './styles'
@@ -18,6 +19,7 @@ type ContentType = {
 }
 
 const AdminHome: React.FC = () => {
+  const [isLogoutPop, setIsLogoutPop] = useState(false)
   const dispatch = useDispatch()
   const navigation = useNavigation()
 
@@ -32,12 +34,16 @@ const AdminHome: React.FC = () => {
       title: 'Restaurants',
       subHead: 'Find all the restaurants created by owners in our app',
       img: require('../../assets/restaurantsPic/restaurantsPic.png'), //@ts-ignore
-      onPress: () => navigation.navigate(routes.ALL_USERS),
+      onPress: () => navigation.navigate(routes.ALL_RESTAURANTS),
     },
   ]
+  const toggleModal = () => {
+    setIsLogoutPop((val) => !val)
+  }
 
   const handleLogout = async () => {
-    dispatch({ type: logout.type })
+    toggleModal()
+    dispatch({ type: removeToken.type })
     await removeData('userInfo')
     navigation.reset({
       index: 0, //@ts-ignore
@@ -50,7 +56,7 @@ const AdminHome: React.FC = () => {
       title: '',
       headerLeft: () => <Text style={styles.customerSalutation}>Welcome Admin</Text>,
       headerRight: () => (
-        <TouchableOpacity activeOpacity={0.9} onPress={handleLogout}>
+        <TouchableOpacity activeOpacity={0.9} onPress={toggleModal}>
           <MaterialCommIcons
             name="logout"
             size={25}
@@ -59,7 +65,6 @@ const AdminHome: React.FC = () => {
           />
         </TouchableOpacity>
       ),
-      headerStyle: styles.navHeader,
     })
   }, [])
 
@@ -83,6 +88,14 @@ const AdminHome: React.FC = () => {
 
   return (
     <View style={styles.container}>
+      <ModalPopup
+        isVisible={isLogoutPop}
+        content="Are you sure you want to logout?"
+        positiveBtnTxt="Logout"
+        negativeBtnTxt="Cancel"
+        onPositiveBtnPress={handleLogout}
+        onNegativeBtnPress={toggleModal}
+      />
       <FlatList
         renderItem={({ item }) => (
           <Content

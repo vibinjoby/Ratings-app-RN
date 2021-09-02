@@ -5,6 +5,7 @@ import Typography from '../../utilities/typography'
 export default StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: Colors.white,
     paddingTop: Platform.OS === 'android' ? 20 : 0,
   },
   title: {
@@ -49,5 +50,8 @@ export default StyleSheet.create({
   },
   footerSpacing: {
     marginBottom: 200,
+  },
+  logoutBtn: {
+    marginRight: 20,
   },
 })

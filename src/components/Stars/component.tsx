@@ -34,8 +34,9 @@ const Stars: React.FC<StarsProps> = ({
           onPress={() => selectable && onSelection && onSelection(index + 1)}
         >
           <FontAwesome
-            name={`star`}
-            color={index + 1 <= selectedStars ? selectedColor : Colors.unselectedStars}
+            testID={'font-icon'}
+            name={selectedStars > index && selectedStars < index + 1 ? `star-half-full` : `star`}
+            color={selectedStars > index && selectedStars ? selectedColor : Colors.unselectedStars}
             size={starHeight ? starHeight : 20}
           />
         </TouchableOpacity>

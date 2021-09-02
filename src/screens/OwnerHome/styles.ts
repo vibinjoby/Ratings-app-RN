@@ -76,4 +76,13 @@ export default StyleSheet.create({
     fontSize: 40,
     color: Colors.white,
   },
+  noReviewWrapper: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  noReviewTxt: {
+    ...Typography.RegularFont,
+    fontSize: 24,
+  },
 })

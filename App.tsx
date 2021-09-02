@@ -28,7 +28,7 @@ const App: React.FC = () => {
     })
     /** Development-mode  */
     LogBox.ignoreAllLogs() // Ignore all log warnings
-    console.error = () => console.log('error') // Ignore all errors
+    console.error = () => console.log() // Ignore all errors
   }, [])
 
   return !isStorybook ? (

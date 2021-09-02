@@ -17,7 +17,7 @@ export interface OwnerRestaurantCardProps {
 const OwnerRestaurantCard: React.FC<OwnerRestaurantCardProps> = ({
   title,
   ratings,
-  reviewsCount,
+  reviewsCount = 0,
   onPress,
 }: OwnerRestaurantCardProps) => {
   return (

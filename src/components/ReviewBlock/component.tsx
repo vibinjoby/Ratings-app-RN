@@ -6,6 +6,7 @@ import Colors from '../../utilities/colors'
 import OwnerReply from '../OwnerReply'
 import ReplyReview from '../ReplyReview'
 import Stars from '../Stars'
+import ThreeVerticalDots from '../ThreeVerticalDots'
 import styles from './styles'
 
 export interface ReviewBlockProps {
@@ -17,6 +18,8 @@ export interface ReviewBlockProps {
   owner_reply?: string
   shouldReply?: boolean
   onSend?: (arg0: string, arg1: string) => void
+  showThreeDots?: boolean
+  onOptionPress?: (arg0: number) => void
 }
 
 const ReviewBlock: React.FC<ReviewBlockProps> = ({
@@ -28,6 +31,8 @@ const ReviewBlock: React.FC<ReviewBlockProps> = ({
   owner_reply,
   shouldReply,
   onSend,
+  showThreeDots,
+  onOptionPress,
 }: ReviewBlockProps) => {
   const [isReplyPressed, setIsReplyPressed] = useState(false)
   const ReplyButton = () => (
@@ -60,6 +65,12 @@ const ReviewBlock: React.FC<ReviewBlockProps> = ({
         {/* eslint-disable camelcase */}
         {owner_reply ? <OwnerReply owner_reply={owner_reply} /> : <></>}
       </View>
+      {showThreeDots && (
+        <ThreeVerticalDots
+          onOptionPress={onOptionPress}
+          displayDatas={['Delete Review', 'Edit Response']}
+        />
+      )}
     </View>
   )
 }

@@ -189,6 +189,7 @@ exports[`RestaurantCard should render 1`] = `
                     Object {},
                   ]
                 }
+                testID="font-icon"
               >
                 
               </Text>
@@ -250,6 +251,7 @@ exports[`RestaurantCard should render 1`] = `
                     Object {},
                   ]
                 }
+                testID="font-icon"
               >
                 
               </Text>
@@ -311,6 +313,7 @@ exports[`RestaurantCard should render 1`] = `
                     Object {},
                   ]
                 }
+                testID="font-icon"
               >
                 
               </Text>
@@ -372,6 +375,7 @@ exports[`RestaurantCard should render 1`] = `
                     Object {},
                   ]
                 }
+                testID="font-icon"
               >
                 
               </Text>
@@ -421,7 +425,7 @@ exports[`RestaurantCard should render 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#A5A6B7",
+                      "color": "#F5D547",
                       "fontSize": 15,
                     },
                     undefined,
@@ -433,8 +437,9 @@ exports[`RestaurantCard should render 1`] = `
                     Object {},
                   ]
                 }
+                testID="font-icon"
               >
-                
+                
               </Text>
             </View>
           </View>
