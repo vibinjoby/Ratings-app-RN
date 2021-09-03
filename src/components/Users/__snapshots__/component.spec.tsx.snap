@@ -76,7 +76,7 @@ exports[`Users should render 1`] = `
         "width": 24,
       }
     }
-    testID="deleteIc"
+    testID="deleteIcundefined"
   >
     <Image
       source={

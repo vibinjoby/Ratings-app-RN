@@ -9,6 +9,7 @@ exports[`Sign In screen should render 1`] = `
           "flex": 1,
         }
       }
+      testID="signinContainer"
     >
       <View
         accessibilityIgnoresInvertColors={true}
@@ -59,6 +60,7 @@ exports[`Sign In screen should render 1`] = `
             "padding": 20,
           }
         }
+        testID="contentContainer"
       >
         <Text
           style={
@@ -79,6 +81,7 @@ exports[`Sign In screen should render 1`] = `
               "marginTop": 20,
             }
           }
+          testID="tabContainer"
         >
           <View
             style={

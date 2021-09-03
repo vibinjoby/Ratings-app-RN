@@ -18,11 +18,17 @@ describe('Users', () => {
 
   it('should display all values and should be deletable', () => {
     const { getByTestId } = render(
-      <Users id={MOCK_ID} name={MOCK_NAME} typeOfUser={MOCK_USER_TYPE} onDelete={MOCK_FN} />,
+      <Users
+        id={MOCK_ID}
+        index={0}
+        name={MOCK_NAME}
+        typeOfUser={MOCK_USER_TYPE}
+        onDelete={MOCK_FN}
+      />,
     )
     expect(getByTestId('name').props.children).toBe(MOCK_NAME)
     expect(getByTestId('userType').props.children).toBe(MOCK_USER_TYPE)
-    fireEvent.press(getByTestId('deleteIc'))
+    fireEvent.press(getByTestId('deleteIc0'))
     expect(MOCK_FN).toBeCalledWith(MOCK_ID)
   })
 })

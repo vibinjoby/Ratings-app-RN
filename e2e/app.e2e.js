@@ -1,3 +1,4 @@
+/* eslint no-undef: 0 */
 describe('Ratings app', () => {
   // NOTE: Before executing the e2e tests delete the latest user,review and restaurant or after executing
   beforeAll(async () => {

@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { useDispatch, useSelector } from 'react-redux'
 
 import routes from './routes'
-import { getData, removeData } from '../utilities/helpers'
+import { getData } from '../utilities/helpers'
 import AuthStack from './AuthStack'
 import CustomerHomeStack from './CustomerHomeStack'
 import { RootState } from '../store'

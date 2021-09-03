@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Sign Up screen should render 1`] = `
-<RCTScrollView>
+<RCTScrollView
+  testID="scrollContainer"
+>
   <View>
     <View
       style={
@@ -9,6 +11,7 @@ exports[`Sign Up screen should render 1`] = `
           "flex": 1,
         }
       }
+      testID="signupContainer"
     >
       <View
         accessibilityIgnoresInvertColors={true}
@@ -59,6 +62,7 @@ exports[`Sign Up screen should render 1`] = `
             "padding": 20,
           }
         }
+        testID="contentContainer"
       >
         <Text
           style={
@@ -79,6 +83,7 @@ exports[`Sign Up screen should render 1`] = `
               "marginTop": 15,
             }
           }
+          testID="tabContainer"
         >
           <View
             style={

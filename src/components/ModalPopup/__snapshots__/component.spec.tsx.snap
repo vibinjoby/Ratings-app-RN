@@ -101,6 +101,7 @@ exports[`ModalPopup should render 1`] = `
           "padding": 15,
         }
       }
+      testID="container"
     >
       <Text
         style={
@@ -121,6 +122,7 @@ exports[`ModalPopup should render 1`] = `
             "marginTop": 25,
           }
         }
+        testID="btnWrapper"
       >
         <View
           accessible={true}
@@ -144,6 +146,7 @@ exports[`ModalPopup should render 1`] = `
               "padding": 14,
             }
           }
+          testID="negativeBtn"
         >
           <Text
             style={
@@ -184,6 +187,7 @@ exports[`ModalPopup should render 1`] = `
               "padding": 14,
             }
           }
+          testID="positiveBtn"
         >
           <Text
             style={
