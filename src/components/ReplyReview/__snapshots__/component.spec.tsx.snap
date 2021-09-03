@@ -29,6 +29,7 @@ exports[`ReplyReview should render 1`] = `
           "fontFamily": "Poppins-Regular",
         }
       }
+      testID="replyInput"
       value=""
     />
   </View>
@@ -49,6 +50,7 @@ exports[`ReplyReview should render 1`] = `
         "opacity": 1,
       }
     }
+    testID="sendBtn"
   >
     <Image
       source={

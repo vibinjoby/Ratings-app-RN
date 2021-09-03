@@ -40,6 +40,7 @@ exports[`SocialMediaButton should render 1`] = `
         "width": 20,
       }
     }
+    testID="mediaImg"
   />
   <Text
     style={

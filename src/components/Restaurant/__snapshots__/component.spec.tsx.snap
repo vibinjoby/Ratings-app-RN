@@ -55,6 +55,7 @@ exports[`Restaurant should render 1`] = `
             "maxWidth": 200,
           }
         }
+        testID="restaurantName"
       >
         California Roll
       </Text>
@@ -75,6 +76,7 @@ exports[`Restaurant should render 1`] = `
               "marginRight": 10,
             }
           }
+          testID="ratings"
         >
           4.5
         </Text>
@@ -136,6 +138,7 @@ exports[`Restaurant should render 1`] = `
                     "opacity": 1,
                   }
                 }
+                testID="stars0"
               >
                 <Text
                   allowFontScaling={false}
@@ -154,7 +157,7 @@ exports[`Restaurant should render 1`] = `
                       Object {},
                     ]
                   }
-                  testID="font-icon"
+                  testID="font-icon 0"
                 >
                   
                 </Text>
@@ -198,6 +201,7 @@ exports[`Restaurant should render 1`] = `
                     "opacity": 1,
                   }
                 }
+                testID="stars1"
               >
                 <Text
                   allowFontScaling={false}
@@ -216,7 +220,7 @@ exports[`Restaurant should render 1`] = `
                       Object {},
                     ]
                   }
-                  testID="font-icon"
+                  testID="font-icon 1"
                 >
                   
                 </Text>
@@ -260,6 +264,7 @@ exports[`Restaurant should render 1`] = `
                     "opacity": 1,
                   }
                 }
+                testID="stars2"
               >
                 <Text
                   allowFontScaling={false}
@@ -278,7 +283,7 @@ exports[`Restaurant should render 1`] = `
                       Object {},
                     ]
                   }
-                  testID="font-icon"
+                  testID="font-icon 2"
                 >
                   
                 </Text>
@@ -322,6 +327,7 @@ exports[`Restaurant should render 1`] = `
                     "opacity": 1,
                   }
                 }
+                testID="stars3"
               >
                 <Text
                   allowFontScaling={false}
@@ -340,7 +346,7 @@ exports[`Restaurant should render 1`] = `
                       Object {},
                     ]
                   }
-                  testID="font-icon"
+                  testID="font-icon 3"
                 >
                   
                 </Text>
@@ -384,6 +390,7 @@ exports[`Restaurant should render 1`] = `
                     "opacity": 1,
                   }
                 }
+                testID="stars4"
               >
                 <Text
                   allowFontScaling={false}
@@ -402,7 +409,7 @@ exports[`Restaurant should render 1`] = `
                       Object {},
                     ]
                   }
-                  testID="font-icon"
+                  testID="font-icon 4"
                 >
                   
                 </Text>
@@ -432,6 +439,7 @@ exports[`Restaurant should render 1`] = `
           Object {},
         ]
       }
+      testID="chevron"
     >
       󰅂
     </Text>

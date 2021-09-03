@@ -15,6 +15,7 @@ import Stars from '../Stars'
 import styles from './styles'
 
 export interface RestaurantCardProps {
+  testID?: string
   id: string
   title: string
   ratings: number
@@ -24,6 +25,7 @@ export interface RestaurantCardProps {
 }
 
 const RestaurantCard: React.FC<RestaurantCardProps> = ({
+  testID,
   id,
   title,
   ratings,
@@ -32,27 +34,39 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
   onPress,
 }: RestaurantCardProps) => {
   const navigation = useNavigation()
+
   const RatingOverview = () => (
     <View style={styles.ratingWrapper}>
       <Image style={styles.starImg} source={require('../../assets/star/star.png')} />
-      <Text style={styles.ratings}>{ratings}</Text>
+      <Text testID="ratings" style={styles.ratings}>
+        {ratings}
+      </Text>
     </View>
   )
 
   return (
     <TouchableOpacity
+      testID={testID}
       activeOpacity={0.8}
       style={styles.container}
       //@ts-ignore
       onPress={() => (onPress ? onPress() : navigation.navigate(routes.RESTAURANT_DETAILS, { id }))}
     >
       <View>
-        <ImageBackground source={restaurantImg} resizeMode="stretch" style={styles.imgBg}>
+        <ImageBackground
+          testID="imgBG"
+          source={restaurantImg}
+          resizeMode="stretch"
+          style={styles.imgBg}
+        >
           <RatingOverview />
         </ImageBackground>
-        <Text style={styles.restaurantTitle}>{title}</Text>
+        <Text testID="title" style={styles.restaurantTitle}>
+          {title}
+        </Text>
         <View style={styles.starContainer}>
           <Stars
+            testID="stars"
             selectedColor={Colors.golden}
             selectable={false}
             selectedStars={ratings}

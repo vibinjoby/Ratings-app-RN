@@ -2,7 +2,6 @@ import React from 'react'
 import { View, Text, Image } from 'react-native'
 
 import styles from './styles'
-
 export interface PasswordErrorTextProps {
   inputValue: any
 }
@@ -20,11 +19,16 @@ const PasswordErrorText: React.FC<PasswordErrorTextProps> = ({
       <Text style={styles.headerTxt}>Password must contain:</Text>
 
       <View style={styles.container}>
-        <Image source={inputValue.length >= 8 ? successImg : errorImg} style={styles.img} />
+        <Image
+          testID="lessCharacters"
+          source={inputValue.length >= 8 ? successImg : errorImg}
+          style={styles.img}
+        />
         <Text style={styles.subHeader}>At least 8 characters</Text>
       </View>
       <View style={styles.container}>
         <Image
+          testID="minUppercase"
           source={inputValue.length > 0 && isUpperCase(inputValue) ? successImg : errorImg}
           style={styles.img}
         />
@@ -32,6 +36,7 @@ const PasswordErrorText: React.FC<PasswordErrorTextProps> = ({
       </View>
       <View style={styles.container}>
         <Image
+          testID="minLowercase"
           source={inputValue.length > 0 && isLowerCase(inputValue) ? successImg : errorImg}
           style={styles.img}
         />
@@ -39,6 +44,7 @@ const PasswordErrorText: React.FC<PasswordErrorTextProps> = ({
       </View>
       <View style={styles.container}>
         <Image
+          testID="minSplCharacter"
           source={
             inputValue.match(/^.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?].*$/) ? successImg : errorImg
           }
@@ -47,7 +53,11 @@ const PasswordErrorText: React.FC<PasswordErrorTextProps> = ({
         <Text style={styles.subHeader}>At least 1 special character(#,%,&)</Text>
       </View>
       <View style={styles.container}>
-        <Image source={inputValue.match(/\d/) ? successImg : errorImg} style={styles.img} />
+        <Image
+          source={inputValue.match(/\d/) ? successImg : errorImg}
+          style={styles.img}
+          testID="minNumber"
+        />
         <Text style={styles.subHeader}>At least 1 number (0-9)</Text>
       </View>
     </View>

@@ -14,13 +14,14 @@ const ReplyReview: React.FC<ReplyReviewProps> = ({ _id, onSend }: ReplyReviewPro
     <View style={styles.container}>
       <View style={styles.replyWrapper}>
         <TextInput
+          testID="replyInput"
           value={inputVal}
           placeholder="Type Reply..."
           style={styles.textInp}
           onChangeText={(text) => setInputVal(text)}
         />
       </View>
-      <TouchableOpacity activeOpacity={0.7} onPress={() => onSend(inputVal, _id)}>
+      <TouchableOpacity testID="sendBtn" activeOpacity={0.7} onPress={() => onSend(inputVal, _id)}>
         <Image source={require('../../assets/send/send.png')} />
       </TouchableOpacity>
     </View>

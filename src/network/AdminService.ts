@@ -55,3 +55,21 @@ export const deleteRestaurant = async (token: string, restaurantId: string): Pro
 
   return data
 }
+
+export const editRestaurantReview = async (
+  token: string,
+  reviewId: string,
+  customerResponse?: string,
+  ownerResponse?: string,
+  stars?: number,
+): Promise<any> => {
+  const { BASE_URL, EDIT_REVIEW } = serviceConst
+  HttpService.setHeader(token)
+  const { data } = await HttpService.put(BASE_URL + EDIT_REVIEW + reviewId, {
+    customerResponse,
+    ownerResponse,
+    stars,
+  })
+
+  return data
+}

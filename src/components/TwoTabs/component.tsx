@@ -17,17 +17,21 @@ const TwoTabs: React.FC<TwoTabsProps> = ({
   onTabSelect,
 }: TwoTabsProps) => {
   const LeftTab = () => (
-    <TouchableOpacity onPress={() => onTabSelect(0)} activeOpacity={0.7}>
+    <TouchableOpacity testID="leftTab" onPress={() => onTabSelect(0)} activeOpacity={0.7}>
       <View style={[styles.leftTab, styles.tabs, selectedTab === 0 && styles.selectedTab]}>
-        <Text style={[styles.tabTxt, selectedTab === 0 && styles.selectedTabText]}>{tab1Text}</Text>
+        <Text testID="tab1Txt" style={[styles.tabTxt, selectedTab === 0 && styles.selectedTabText]}>
+          {tab1Text}
+        </Text>
       </View>
     </TouchableOpacity>
   )
 
   const RightTab = () => (
-    <TouchableOpacity onPress={() => onTabSelect(1)} activeOpacity={0.7}>
+    <TouchableOpacity testID="rightTab" onPress={() => onTabSelect(1)} activeOpacity={0.7}>
       <View style={[styles.rightTab, styles.tabs, selectedTab === 1 && styles.selectedTab]}>
-        <Text style={[styles.tabTxt, selectedTab === 1 && styles.selectedTabText]}>{tab2Text}</Text>
+        <Text testID="tab2Txt" style={[styles.tabTxt, selectedTab === 1 && styles.selectedTabText]}>
+          {tab2Text}
+        </Text>
       </View>
     </TouchableOpacity>
   )

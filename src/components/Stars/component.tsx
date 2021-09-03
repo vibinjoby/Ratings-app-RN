@@ -7,6 +7,7 @@ import styles from './styles'
 
 export interface StarsProps {
   selectable?: boolean
+  testID?: string
   selectedStars: number
   selectedColor?: string
   starHeight?: number
@@ -16,6 +17,7 @@ export interface StarsProps {
 }
 
 const Stars: React.FC<StarsProps> = ({
+  testID,
   selectable,
   selectedStars = 1,
   selectedColor,
@@ -31,10 +33,11 @@ const Stars: React.FC<StarsProps> = ({
       renderItem={({ index }) => (
         <TouchableOpacity
           activeOpacity={1}
+          testID={(testID ? testID : '') + index}
           onPress={() => selectable && onSelection && onSelection(index + 1)}
         >
           <FontAwesome
-            testID={'font-icon'}
+            testID={'font-icon ' + index}
             name={selectedStars > index && selectedStars < index + 1 ? `star-half-full` : `star`}
             color={selectedStars > index && selectedStars ? selectedColor : Colors.unselectedStars}
             size={starHeight ? starHeight : 20}

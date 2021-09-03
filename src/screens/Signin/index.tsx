@@ -58,16 +58,16 @@ const SignIn: React.FC = () => {
 
   return (
     <ScrollView>
-      <View style={styles.container}>
+      <View style={styles.container} testID="signinContainer">
         <ImageBackground
           style={styles.bgContainer}
           source={require('../../assets/authBg/authBg.png')}
         >
           <Image source={require('../../assets/loginDish/loginDish.png')} />
         </ImageBackground>
-        <View style={styles.contentContainer}>
+        <View style={styles.contentContainer} testID="contentContainer">
           <Text style={Typography.Title1.regular}>Log In</Text>
-          <View style={styles.tabContainer}>
+          <View style={styles.tabContainer} testID="tabContainer">
             <ThreeTabs
               selectedTab={selectedTab}
               tab1Text="Customer"

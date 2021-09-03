@@ -7,6 +7,7 @@ import Button from '../Button'
 import styles from './styles'
 
 export interface ModalPopupProps {
+  testID?: string
   isVisible: boolean
   content: string
   positiveBtnTxt: string
@@ -16,6 +17,7 @@ export interface ModalPopupProps {
 }
 
 const ModalPopup: React.FC<ModalPopupProps> = ({
+  testID,
   isVisible,
   content,
   positiveBtnTxt,
@@ -23,23 +25,31 @@ const ModalPopup: React.FC<ModalPopupProps> = ({
   onPositiveBtnPress,
   onNegativeBtnPress,
 }: ModalPopupProps) => {
+  console.log('isvisible', isVisible)
   return (
     <Modal
+      testID={testID}
       isVisible={isVisible}
       onBackdropPress={onNegativeBtnPress}
       backdropOpacity={0.5}
       hasBackdrop
     >
-      <View style={styles.content}>
+      <View style={styles.content} testID="container">
         <Text style={styles.contentTxt}>{content}</Text>
-        <View style={styles.btnWrapper}>
+        <View style={styles.btnWrapper} testID="btnWrapper">
           <Button
             title={negativeBtnTxt}
             onPress={onNegativeBtnPress}
             customStyle={styles.cancelBtn}
             textColor={Colors.black}
+            testID="negativeBtn"
           />
-          <Button title={positiveBtnTxt} onPress={onPositiveBtnPress} customStyle={styles.yesBtn} />
+          <Button
+            testID="positiveBtn"
+            title={positiveBtnTxt}
+            onPress={onPositiveBtnPress}
+            customStyle={styles.yesBtn}
+          />
         </View>
       </View>
     </Modal>

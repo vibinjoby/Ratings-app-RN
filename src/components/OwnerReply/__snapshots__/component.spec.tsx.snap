@@ -41,11 +41,14 @@ exports[`OwnerReply should render 1`] = `
           "marginLeft": 10,
         }
       }
+      testID="ownerTitle"
     >
       Business Owner
     </Text>
   </View>
-  <Text>
+  <Text
+    testID="ownerReply"
+  >
     Hey sorry that we couldn't meet your expectations
   </Text>
 </View>

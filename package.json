@@ -15,7 +15,11 @@
     "prettier-check": "prettier --check \"src/**/*.ts{,x}\"",
     "storybook": "start-storybook -p 7007",
     "build-storybook": "build-storybook",
-    "pre-commit": "npm run prettier-check && npm run lint && npm run test -- -u"
+    "pre-commit": "npm run prettier-check && npm run lint && npm run test -- -u",
+    "android:e2e:build": "detox build -c android",
+    "android:e2e:test": "detox test -c android",
+    "ios:e2e:build": "detox build -c ios",
+    "ios:e2e:test": "detox test -c ios --debug-synchronization 500"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.15.7",
@@ -29,7 +33,6 @@
     "formik": "^2.2.9",
     "jwt-decode": "^3.1.2",
     "moment": "^2.29.1",
-    "npm": "^7.21.1",
     "react": "17.0.2",
     "react-native": "0.65.1",
     "react-native-animatable": "^1.3.3",
@@ -58,6 +61,7 @@
     "@storybook/react-native": "^5.3.25",
     "@storybook/react-native-server": "^5.3.23",
     "@testing-library/react-native": "^7.2.0",
+    "@types/detox": "^17.14.2",
     "@types/jest": "^26.0.23",
     "@types/react-native": "^0.64.5",
     "@types/react-native-datepicker": "^1.7.1",
@@ -73,6 +77,7 @@
     "husky": "^7.0.2",
     "hygen": "^6.1.0",
     "jest": "^26.6.3",
+    "jest-circus": "^27.1.0",
     "metro-react-native-babel-preset": "^0.66.0",
     "react-dom": "17.0.2",
     "react-native-codegen": "^0.0.7",

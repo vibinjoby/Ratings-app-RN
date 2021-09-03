@@ -4,6 +4,7 @@ import { TouchableOpacity, Image, Text } from 'react-native'
 import styles from './styles'
 
 export interface SocialMediaButtonProps {
+  testID?: string
   mediaType: 'fb' | 'google'
   mediaText: string
   style?: Record<string, unknown>
@@ -11,6 +12,7 @@ export interface SocialMediaButtonProps {
 }
 
 const SocialMediaButton: React.FC<SocialMediaButtonProps> = ({
+  testID,
   mediaType,
   mediaText,
   style,
@@ -18,11 +20,13 @@ const SocialMediaButton: React.FC<SocialMediaButtonProps> = ({
 }: SocialMediaButtonProps) => {
   return (
     <TouchableOpacity
+      testID={testID}
       activeOpacity={0.7}
       onPress={onPress}
       style={[styles.buttonContainer, mediaType === 'fb' && styles.fbBorder, style]}
     >
       <Image
+        testID="mediaImg"
         source={
           mediaType === 'fb'
             ? require('../../assets/facebookIcon/facebookIcon.png')

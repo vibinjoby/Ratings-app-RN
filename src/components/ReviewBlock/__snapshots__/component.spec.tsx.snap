@@ -32,6 +32,7 @@ exports[`ReviewBlock should render 1`] = `
           "fontSize": 16,
         }
       }
+      testID="reviewerName"
     >
       VIBIN
     </Text>
@@ -100,6 +101,7 @@ exports[`ReviewBlock should render 1`] = `
                   "opacity": 1,
                 }
               }
+              testID="stars0"
             >
               <Text
                 allowFontScaling={false}
@@ -118,7 +120,7 @@ exports[`ReviewBlock should render 1`] = `
                     Object {},
                   ]
                 }
-                testID="font-icon"
+                testID="font-icon 0"
               >
                 
               </Text>
@@ -162,6 +164,7 @@ exports[`ReviewBlock should render 1`] = `
                   "opacity": 1,
                 }
               }
+              testID="stars1"
             >
               <Text
                 allowFontScaling={false}
@@ -180,7 +183,7 @@ exports[`ReviewBlock should render 1`] = `
                     Object {},
                   ]
                 }
-                testID="font-icon"
+                testID="font-icon 1"
               >
                 
               </Text>
@@ -224,6 +227,7 @@ exports[`ReviewBlock should render 1`] = `
                   "opacity": 1,
                 }
               }
+              testID="stars2"
             >
               <Text
                 allowFontScaling={false}
@@ -242,7 +246,7 @@ exports[`ReviewBlock should render 1`] = `
                     Object {},
                   ]
                 }
-                testID="font-icon"
+                testID="font-icon 2"
               >
                 
               </Text>
@@ -286,6 +290,7 @@ exports[`ReviewBlock should render 1`] = `
                   "opacity": 1,
                 }
               }
+              testID="stars3"
             >
               <Text
                 allowFontScaling={false}
@@ -304,7 +309,7 @@ exports[`ReviewBlock should render 1`] = `
                     Object {},
                   ]
                 }
-                testID="font-icon"
+                testID="font-icon 3"
               >
                 
               </Text>
@@ -348,6 +353,7 @@ exports[`ReviewBlock should render 1`] = `
                   "opacity": 1,
                 }
               }
+              testID="stars4"
             >
               <Text
                 allowFontScaling={false}
@@ -366,7 +372,7 @@ exports[`ReviewBlock should render 1`] = `
                     Object {},
                   ]
                 }
-                testID="font-icon"
+                testID="font-icon 4"
               >
                 
               </Text>
@@ -383,6 +389,7 @@ exports[`ReviewBlock should render 1`] = `
             "marginLeft": 10,
           }
         }
+        testID="visitDt"
       >
         20 Jun 2021
       </Text>
@@ -395,6 +402,7 @@ exports[`ReviewBlock should render 1`] = `
           "marginVertical": 2,
         }
       }
+      testID="comments"
     >
       This is not too bad at all
     </Text>

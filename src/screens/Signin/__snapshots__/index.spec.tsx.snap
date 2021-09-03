@@ -105,6 +105,7 @@ exports[`Sign In screen should render 1`] = `
                   "opacity": 1,
                 }
               }
+              testID="leftTab"
             >
               <View
                 style={
@@ -148,6 +149,7 @@ exports[`Sign In screen should render 1`] = `
                       },
                     ]
                   }
+                  testID="tab1Txt"
                 >
                   Customer
                 </Text>
@@ -170,6 +172,7 @@ exports[`Sign In screen should render 1`] = `
                   "opacity": 1,
                 }
               }
+              testID="middleTab"
             >
               <View
                 style={
@@ -207,6 +210,7 @@ exports[`Sign In screen should render 1`] = `
                       false,
                     ]
                   }
+                  testID="tab2Txt"
                 >
                   Owner
                 </Text>
@@ -229,6 +233,7 @@ exports[`Sign In screen should render 1`] = `
                   "opacity": 1,
                 }
               }
+              testID="rightTab"
             >
               <View
                 style={
@@ -267,6 +272,7 @@ exports[`Sign In screen should render 1`] = `
                       false,
                     ]
                   }
+                  testID="tab3Txt"
                 >
                   Admin
                 </Text>

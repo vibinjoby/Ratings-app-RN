@@ -19,23 +19,29 @@ const ThreeTabs: React.FC<ThreeTabsProps> = ({
   onTabSelect,
 }: ThreeTabsProps) => {
   const LeftTab = () => (
-    <TouchableOpacity onPress={() => onTabSelect(0)} activeOpacity={0.7}>
+    <TouchableOpacity testID="leftTab" onPress={() => onTabSelect(0)} activeOpacity={0.7}>
       <View style={[styles.leftTab, styles.tabs, selectedTab === 0 && styles.selectedTab]}>
-        <Text style={[styles.tabTxt, selectedTab === 0 && styles.selectedTabText]}>{tab1Text}</Text>
+        <Text testID="tab1Txt" style={[styles.tabTxt, selectedTab === 0 && styles.selectedTabText]}>
+          {tab1Text}
+        </Text>
       </View>
     </TouchableOpacity>
   )
   const MiddleTab = () => (
-    <TouchableOpacity onPress={() => onTabSelect(1)} activeOpacity={0.7}>
+    <TouchableOpacity testID="middleTab" onPress={() => onTabSelect(1)} activeOpacity={0.7}>
       <View style={[styles.middleTab, styles.tabs, selectedTab === 1 && styles.selectedTab]}>
-        <Text style={[styles.tabTxt, selectedTab === 1 && styles.selectedTabText]}>{tab2Text}</Text>
+        <Text testID="tab2Txt" style={[styles.tabTxt, selectedTab === 1 && styles.selectedTabText]}>
+          {tab2Text}
+        </Text>
       </View>
     </TouchableOpacity>
   )
   const RightTab = () => (
-    <TouchableOpacity onPress={() => onTabSelect(2)} activeOpacity={0.7}>
+    <TouchableOpacity testID="rightTab" onPress={() => onTabSelect(2)} activeOpacity={0.7}>
       <View style={[styles.rightTab, styles.tabs, selectedTab === 2 && styles.selectedTab]}>
-        <Text style={[styles.tabTxt, selectedTab === 2 && styles.selectedTabText]}>{tab3Text}</Text>
+        <Text testID="tab3Txt" style={[styles.tabTxt, selectedTab === 2 && styles.selectedTabText]}>
+          {tab3Text}
+        </Text>
       </View>
     </TouchableOpacity>
   )

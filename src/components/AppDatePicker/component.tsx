@@ -44,6 +44,7 @@ const AppDatePicker: React.FC<AppDatePickerProps> = ({
     <View style={containerStyle}>
       <Text style={styles.appTxt}>{label}</Text>
       <DatePicker
+        testID="datePicker"
         style={[styles.datePicker, customStyle]}
         mode="date"
         placeholder="Select a date"

@@ -8,6 +8,7 @@ import Stars from '../Stars'
 import styles from './styles'
 
 export interface RestaurantProps {
+  testID?: string
   restaurantName: string
   ratings: number
   reviewsCount: number
@@ -15,21 +16,25 @@ export interface RestaurantProps {
 }
 
 const Restaurant: React.FC<RestaurantProps> = ({
+  testID,
   restaurantName,
   ratings,
   onPress,
 }: RestaurantProps) => {
   return (
-    <TouchableOpacity activeOpacity={0.8} onPress={onPress}>
+    <TouchableOpacity testID={testID} activeOpacity={0.8} onPress={onPress}>
       <View style={styles.container}>
         <Image source={{ uri: commonConst.DUMMY_PIC }} style={styles.imgBg} />
         <View>
-          <Text style={styles.restaurantTitle} numberOfLines={1}>
+          <Text testID="restaurantName" style={styles.restaurantTitle} numberOfLines={1}>
             {restaurantName}
           </Text>
           <View style={styles.starContainer}>
-            <Text style={styles.ratings}>{ratings}</Text>
+            <Text testID="ratings" style={styles.ratings}>
+              {ratings}
+            </Text>
             <Stars
+              testID="stars"
               selectedColor={Colors.appOrange}
               selectable={false}
               selectedStars={ratings}
@@ -39,6 +44,7 @@ const Restaurant: React.FC<RestaurantProps> = ({
           {/* <Text style={styles.reviews}>{reviewsCount} Reviews</Text> */}
         </View>
         <MaterialCommIcons
+          testID="chevron"
           name="chevron-right"
           size={40}
           color={Colors.black}

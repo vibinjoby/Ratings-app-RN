@@ -55,7 +55,7 @@ const Home: React.FC = () => {
       title: '',
       headerLeft: () => <Text style={styles.customerSalutation}>Welcome {fullName}</Text>,
       headerRight: () => (
-        <TouchableOpacity activeOpacity={0.9} onPress={toggleModal}>
+        <TouchableOpacity activeOpacity={0.9} onPress={toggleModal} testID="logoutBtn">
           <MaterialCommIcons
             name="logout"
             size={25}
@@ -107,11 +107,10 @@ const Home: React.FC = () => {
     </View>
   )
 
-  if (restaurantData.length < 1) return <></>
-  return (
-    <>
-      <SafeAreaView />
+  if (restaurantData.length < 1)
+    return (
       <ModalPopup
+        testID="logoutPop"
         isVisible={isLogoutPop}
         content="Are you sure you want to logout?"
         positiveBtnTxt="Logout"
@@ -119,22 +118,37 @@ const Home: React.FC = () => {
         onPositiveBtnPress={handleLogout}
         onNegativeBtnPress={toggleModal}
       />
-      <View style={styles.container}>
+    )
+  return (
+    <>
+      <SafeAreaView />
+      <ModalPopup
+        testID="logoutPop"
+        isVisible={isLogoutPop}
+        content="Are you sure you want to logout?"
+        positiveBtnTxt="Logout"
+        negativeBtnTxt="Cancel"
+        onPositiveBtnPress={handleLogout}
+        onNegativeBtnPress={toggleModal}
+      />
+      <View style={styles.container} testID="homeContainer">
         <Text style={styles.title}>Discover</Text>
         <FlatList
           refreshing={isFetching}
           onRefresh={onRefresh}
+          testID="restaurantContainer"
           scrollIndicatorInsets={{ right: 1 }}
           contentContainerStyle={styles.contentContainer}
           style={styles.flatlist}
           data={restaurantData}
-          renderItem={({ item }) => (
+          renderItem={({ item, index }) => (
             <RestaurantCard //@ts-ignore
               id={item._id} //@ts-ignore
               title={item.restaurant_name} //@ts-ignore
               ratings={item.average_ratings} //@ts-ignore
               reviewCount={item.reviewsCount} //@ts-ignore
               restaurantImg={{ uri: constants.DUMMY_PIC }}
+              testID={`card${index}`}
             />
           )}
           ItemSeparatorComponent={() => <View style={styles.spacing} />}

@@ -44,8 +44,18 @@ const OwnerHome: React.FC = () => {
       title: '',
       headerLeft: () => <Text style={styles.customerSalutation}>Welcome {fullName}</Text>,
       headerRight: () => (
-        <TouchableOpacity activeOpacity={0.9} onPress={toggleModal} style={styles.logout}>
-          <MaterialCommIcons name="logout" size={25} color={Colors.appOrange} />
+        <TouchableOpacity
+          testID="logoutBtn"
+          activeOpacity={0.9}
+          onPress={toggleModal}
+          style={styles.logout}
+        >
+          <MaterialCommIcons
+            name="logout"
+            size={25}
+            color={Colors.appOrange}
+            style={styles.logoutBtn}
+          />
         </TouchableOpacity>
       ),
       headerStyle: styles.navHeader,
@@ -55,6 +65,7 @@ const OwnerHome: React.FC = () => {
   const PlusIc = () => (
     <TouchableOpacity
       activeOpacity={0.8}
+      testID="addRestaurant"
       style={styles.plusIcContainer} //@ts-ignore
       onPress={() => navigation.navigate(routes.ADD_RESTAURANT)}
     >
@@ -63,12 +74,20 @@ const OwnerHome: React.FC = () => {
   )
 
   const toggleModal = () => {
-    setIsLogoutPop((val) => !val)
+    setIsLogoutPop(!isLogoutPop)
   }
 
   if (!myRestaurants || myRestaurants.length === 0) {
     return (
       <View style={styles.noReviewWrapper}>
+        <ModalPopup
+          isVisible={isLogoutPop}
+          content="Are you sure you want to logout?"
+          positiveBtnTxt="Logout"
+          negativeBtnTxt="Cancel"
+          onPositiveBtnPress={handleLogout}
+          onNegativeBtnPress={toggleModal}
+        />
         <Text style={styles.noReviewTxt}>No Restaurants added yet!!</Text>
         <PlusIc />
       </View>

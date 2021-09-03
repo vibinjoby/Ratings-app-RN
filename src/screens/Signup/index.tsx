@@ -71,17 +71,17 @@ const SignUp: React.FC = () => {
   }
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
+    <ScrollView testID="scrollContainer">
+      <View style={styles.container} testID="signupContainer">
         <ImageBackground
           style={styles.bgContainer}
           source={require('../../assets/authBg/authBg.png')}
         >
           <Image source={require('../../assets/loginDish/loginDish.png')} />
         </ImageBackground>
-        <View style={styles.contentContainer}>
+        <View style={styles.contentContainer} testID="contentContainer">
           <Text style={Typography.Title1.regular}>Sign Up</Text>
-          <View style={styles.tabContainer}>
+          <View style={styles.tabContainer} testID="tabContainer">
             <TwoTabs
               selectedTab={selectedTab}
               tab1Text="Customer"

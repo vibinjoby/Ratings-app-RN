@@ -59,6 +59,7 @@ exports[`Stars should render 1`] = `
             "opacity": 1,
           }
         }
+        testID="0"
       >
         <Text
           allowFontScaling={false}
@@ -77,7 +78,7 @@ exports[`Stars should render 1`] = `
               Object {},
             ]
           }
-          testID="font-icon"
+          testID="font-icon 0"
         >
           
         </Text>
@@ -121,6 +122,7 @@ exports[`Stars should render 1`] = `
             "opacity": 1,
           }
         }
+        testID="1"
       >
         <Text
           allowFontScaling={false}
@@ -139,7 +141,7 @@ exports[`Stars should render 1`] = `
               Object {},
             ]
           }
-          testID="font-icon"
+          testID="font-icon 1"
         >
           
         </Text>
@@ -183,6 +185,7 @@ exports[`Stars should render 1`] = `
             "opacity": 1,
           }
         }
+        testID="2"
       >
         <Text
           allowFontScaling={false}
@@ -201,7 +204,7 @@ exports[`Stars should render 1`] = `
               Object {},
             ]
           }
-          testID="font-icon"
+          testID="font-icon 2"
         >
           
         </Text>
@@ -245,6 +248,7 @@ exports[`Stars should render 1`] = `
             "opacity": 1,
           }
         }
+        testID="3"
       >
         <Text
           allowFontScaling={false}
@@ -263,7 +267,7 @@ exports[`Stars should render 1`] = `
               Object {},
             ]
           }
-          testID="font-icon"
+          testID="font-icon 3"
         >
           
         </Text>
@@ -307,6 +311,7 @@ exports[`Stars should render 1`] = `
             "opacity": 1,
           }
         }
+        testID="4"
       >
         <Text
           allowFontScaling={false}
@@ -325,7 +330,7 @@ exports[`Stars should render 1`] = `
               Object {},
             ]
           }
-          testID="font-icon"
+          testID="font-icon 4"
         >
           
         </Text>

@@ -7,12 +7,7 @@ import AppDatePicker from '../../components/AppDatePicker'
 import Button from '../../components/Button'
 import Stars from '../../components/Stars'
 import { RootState } from '../../store'
-import {
-  fetchRestaurants,
-  getRestaurantDetail,
-  resetRestaurantData,
-  submitReview,
-} from '../../store/reducers/restaurant'
+import { getRestaurantDetail, submitReview } from '../../store/reducers/restaurant'
 import Colors from '../../utilities/colors'
 import styles from './styles'
 
@@ -30,17 +25,16 @@ const AddReview: React.FC = () => {
   const onDone = () => {
     navigation.goBack()
     dispatch(submitReview(token, restaurantId, selectedStars, visitDate, comments))
-    dispatch({ type: resetRestaurantData.type })
-    dispatch(fetchRestaurants(token, 1))
     dispatch(getRestaurantDetail(token, restaurantId))
   }
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="container">
       <Text style={styles.titleTxt}>How was your experience</Text>
       <Text style={styles.subtitleTxt}>Rate your food, it is important for us</Text>
-      <View style={styles.starWrapper}>
+      <View style={styles.starWrapper} testID="starWrapper">
         <Stars
+          testID="stars"
           selectable
           spacing={styles.starSpacing}
           starHeight={31}
@@ -50,6 +44,7 @@ const AddReview: React.FC = () => {
         />
       </View>
       <TextInput
+        testID="comments"
         placeholder={'Type Something'}
         multiline
         style={styles.textInp}
@@ -63,6 +58,7 @@ const AddReview: React.FC = () => {
         onDateSelection={(date) => setVisitDate(date)}
       />
       <Button
+        testID="doneBtn"
         customStyle={styles.btn}
         title="Done"
         disabled={selectedStars < 1 || comments.length < 10 || !visitDate}

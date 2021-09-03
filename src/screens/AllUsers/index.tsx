@@ -46,12 +46,13 @@ const AllUsers: React.FC = () => {
       <FlatList
         data={allUsers}
         contentContainerStyle={styles.contentContainer}
-        renderItem={({ item }) => (
+        renderItem={({ item, index }) => (
           <Users //@ts-ignore
             id={item._id} //@ts-ignore
             name={item.fullName} //@ts-ignore
             typeOfUser={item.typeOfUser}
             onDelete={toggleModal}
+            index={index}
           />
         )}
         ItemSeparatorComponent={() => <View style={styles.spacing} />}

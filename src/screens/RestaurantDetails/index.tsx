@@ -30,6 +30,7 @@ const RestaurantDetails: React.FC = () => {
 
   const PlusIc = () => (
     <TouchableOpacity
+      testID="addReviewIc"
       activeOpacity={0.8}
       style={styles.plusIcContainer} //@ts-ignore
       onPress={() => navigation.navigate(routes.ADD_REVIEW)}
@@ -68,16 +69,15 @@ const RestaurantDetails: React.FC = () => {
   return (
     <>
       <ScrollView scrollIndicatorInsets={{ right: 1 }}>
-        <View style={styles.container}>
+        <View style={styles.container} testID="detailsContainer">
           <ImageBackground style={styles.headerBg} source={{ uri: commons.DUMMY_PIC }}>
             <Text style={styles.restaurantTitle}>
               {restaurantDetail?.restaurantData.restaurant_name}
             </Text>
             <RatingOverview />
           </ImageBackground>
-          <View style={styles.contentContainer}>
+          <View style={styles.contentContainer} testID="contentContainer">
             <ReviewsHeader title="Latest Rated" />
-            {!restaurantDetail?.latestReviews && <Text>No reviews yet </Text>}
             {restaurantDetail?.latestReviews.slice(0, 3).map((item, index) => (
               <ReviewBlock
                 key={index} //@ts-ignore

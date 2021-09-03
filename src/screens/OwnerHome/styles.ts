@@ -85,4 +85,7 @@ export default StyleSheet.create({
     ...Typography.RegularFont,
     fontSize: 24,
   },
+  logoutBtn: {
+    marginRight: 20,
+  },
 })

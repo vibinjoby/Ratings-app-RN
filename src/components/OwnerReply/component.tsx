@@ -11,10 +11,12 @@ const OwnerReply: React.FC<OwnerReplyProps> = ({ owner_reply }: OwnerReplyProps)
     <View style={styles.ownerWrapper}>
       <View style={styles.ownerTitleWrapper}>
         <Image source={require('../../assets/guest-pic.png')} style={styles.ownerPic} />
-        <Text style={styles.ownerTitle}>Business Owner</Text>
+        <Text testID="ownerTitle" style={styles.ownerTitle}>
+          Business Owner
+        </Text>
       </View>
       {/* eslint-disable camelcase */}
-      <Text>{owner_reply}</Text>
+      <Text testID="ownerReply">{owner_reply}</Text>
     </View>
   )
 }

@@ -17,6 +17,7 @@ const Welcome: React.FC = () => {
   const navigation = useNavigation()
   const dispatch = useDispatch()
   const token = useSelector((state: RootState) => state.auth.token)
+  const userType = useSelector((state: RootState) => state.auth.userInfo.typeOfUser)
 
   useEffect(() => {
     configureGoogleSignIn()
@@ -24,10 +25,13 @@ const Welcome: React.FC = () => {
 
   useEffect(() => {
     if (!token) return
-    navigation.reset({
-      index: 0, //@ts-ignore
-      routes: [{ name: routes.CUSTOMER_HOME_STACK }],
-    })
+    if (userType === 'customer') {
+      //@ts-ignore
+      navigation.navigate(routes.CUSTOMER_HOME_STACK)
+    } else if (userType === 'owner') {
+      //@ts-ignore
+      navigation.navigate(routes.OWNER_HOME_STACK)
+    }
   }, [token])
 
   const handleGoogleSignIn = async () => {
@@ -56,8 +60,9 @@ const Welcome: React.FC = () => {
   }
 
   const ButtonWrapper = () => (
-    <View style={styles.buttonWrapper}>
+    <View style={styles.buttonWrapper} testID="buttonWrapper">
       <Button
+        testID="loginBtn"
         title={'Login'}
         textColor={Colors.black}
         buttonColor={Colors.lightGrey}
@@ -66,6 +71,7 @@ const Welcome: React.FC = () => {
         onPress={() => navigation.navigate(routes.LOGIN)}
       />
       <Button
+        testID="signupBtn"
         title={'Sign Up'}
         textColor={Colors.white}
         customStyle={styles.rightBtn}
@@ -79,12 +85,14 @@ const Welcome: React.FC = () => {
   const SocialButtons = () => (
     <View>
       <SocialMediaButton
+        testID="gBtn"
         mediaText="Continue with Google"
         mediaType="google"
         onPress={handleGoogleSignIn}
         style={styles.gBtn}
       />
       <SocialMediaButton
+        testID="fbBtn"
         mediaText="Continue with Facebook"
         mediaType="fb"
         onPress={handleFBSignIn}
@@ -93,12 +101,12 @@ const Welcome: React.FC = () => {
   )
   return (
     <ScrollView>
-      <View style={styles.container}>
+      <View testID="welcomeContainer" style={styles.container}>
         <Image
           style={styles.headerImg}
           source={require('../../assets/welcomeDish/welcomeDish.png')}
         />
-        <View style={styles.contentContainer}>
+        <View testID="contentWrapper" style={styles.contentContainer}>
           <Text style={styles.titleTxt}>Find your favourite restaurant with clue</Text>
           <ButtonWrapper />
           <Text style={styles.connectTxt}>Or connect with socials as customer</Text>

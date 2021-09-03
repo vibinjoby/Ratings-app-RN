@@ -23,20 +23,23 @@ const AddRestaurant: React.FC = () => {
   const navigation = useNavigation()
   const dispatch = useDispatch()
   const data = [
-    { key: 1, placeholder: 'Restaurant Name', name: 'restaurantName' },
+    { key: 1, testID: 'restaurantName', placeholder: 'Restaurant Name', name: 'restaurantName' },
     {
       key: 2,
+      testID: 'address',
       placeholder: 'Address',
       name: 'address',
     },
     {
       key: 3,
+      testID: 'email',
       placeholder: 'Email',
       name: 'email',
       keyboardType: 'email-address',
     },
     {
       key: 4,
+      testID: 'ctNumber',
       placeholder: 'Contact Number',
       name: 'contactNumber',
     },
@@ -88,7 +91,7 @@ const AddRestaurant: React.FC = () => {
           <>
             {data.map((item) => (
               <CustomTextInput
-                testID="items"
+                testID={item.testID}
                 keyboardType={item.keyboardType as KeyboardType}
                 key={item.key.toString()}
                 onBlur={() => setFieldTouched(item.name)}

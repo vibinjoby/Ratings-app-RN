@@ -105,7 +105,7 @@ export const registerUser =
         apiMethod: registerUserDetails,
         args: [userObj],
         onSucess: [login.type],
-        loader: true,
+        loader: false,
       },
     })
   }

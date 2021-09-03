@@ -26,6 +26,7 @@ exports[`ThreeTabs should render 1`] = `
         "opacity": 1,
       }
     }
+    testID="leftTab"
   >
     <View
       style={
@@ -69,6 +70,7 @@ exports[`ThreeTabs should render 1`] = `
             },
           ]
         }
+        testID="tab1Txt"
       >
         Customer
       </Text>
@@ -91,6 +93,7 @@ exports[`ThreeTabs should render 1`] = `
         "opacity": 1,
       }
     }
+    testID="middleTab"
   >
     <View
       style={
@@ -128,6 +131,7 @@ exports[`ThreeTabs should render 1`] = `
             false,
           ]
         }
+        testID="tab2Txt"
       >
         Owner
       </Text>
@@ -150,6 +154,7 @@ exports[`ThreeTabs should render 1`] = `
         "opacity": 1,
       }
     }
+    testID="rightTab"
   >
     <View
       style={
@@ -188,6 +193,7 @@ exports[`ThreeTabs should render 1`] = `
             false,
           ]
         }
+        testID="tab3Txt"
       >
         Admin
       </Text>

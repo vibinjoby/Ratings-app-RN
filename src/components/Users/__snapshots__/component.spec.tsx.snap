@@ -38,8 +38,9 @@ exports[`Users should render 1`] = `
           "fontSize": 16,
         }
       }
+      testID="name"
     >
-      
+      name
     </Text>
     <Text
       style={
@@ -49,8 +50,9 @@ exports[`Users should render 1`] = `
           "fontSize": 12,
         }
       }
+      testID="userType"
     >
-      
+      usertype
     </Text>
   </View>
   <View
@@ -74,6 +76,7 @@ exports[`Users should render 1`] = `
         "width": 24,
       }
     }
+    testID="deleteIc"
   >
     <Image
       source={

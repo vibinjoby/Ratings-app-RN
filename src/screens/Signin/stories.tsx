@@ -1,5 +1,15 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react-native'
-import SignIn from '.'
+import { NavigationContainer } from '@react-navigation/native'
+import { Provider } from 'react-redux'
 
-storiesOf('Screens', module).add('Signin', () => <SignIn />)
+import SignIn from '.'
+import { store } from '../../store'
+
+storiesOf('Screens', module).add('Signin', () => (
+  <NavigationContainer>
+    <Provider store={store}>
+      <SignIn />
+    </Provider>
+  </NavigationContainer>
+))

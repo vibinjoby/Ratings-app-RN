@@ -24,6 +24,7 @@ const AllRestaurants: React.FC = () => {
     <View style={styles.container}>
       <FlatList
         data={restaurantData}
+        testID="restaurantsContainer"
         contentContainerStyle={styles.contentContainer}
         renderItem={({ item }) => (
           <Restaurant //@ts-ignore

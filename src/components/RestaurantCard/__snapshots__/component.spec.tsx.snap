@@ -52,6 +52,7 @@ exports[`RestaurantCard should render 1`] = `
             undefined,
           ]
         }
+        testID="imgBG"
       />
       <View
         style={
@@ -86,6 +87,7 @@ exports[`RestaurantCard should render 1`] = `
               "fontSize": 14,
             }
           }
+          testID="ratings"
         >
           4.4
         </Text>
@@ -101,6 +103,7 @@ exports[`RestaurantCard should render 1`] = `
           "marginTop": 5,
         }
       }
+      testID="title"
     >
       Joes Pizzeria
     </Text>
@@ -171,6 +174,7 @@ exports[`RestaurantCard should render 1`] = `
                   "opacity": 1,
                 }
               }
+              testID="stars0"
             >
               <Text
                 allowFontScaling={false}
@@ -189,7 +193,7 @@ exports[`RestaurantCard should render 1`] = `
                     Object {},
                   ]
                 }
-                testID="font-icon"
+                testID="font-icon 0"
               >
                 
               </Text>
@@ -233,6 +237,7 @@ exports[`RestaurantCard should render 1`] = `
                   "opacity": 1,
                 }
               }
+              testID="stars1"
             >
               <Text
                 allowFontScaling={false}
@@ -251,7 +256,7 @@ exports[`RestaurantCard should render 1`] = `
                     Object {},
                   ]
                 }
-                testID="font-icon"
+                testID="font-icon 1"
               >
                 
               </Text>
@@ -295,6 +300,7 @@ exports[`RestaurantCard should render 1`] = `
                   "opacity": 1,
                 }
               }
+              testID="stars2"
             >
               <Text
                 allowFontScaling={false}
@@ -313,7 +319,7 @@ exports[`RestaurantCard should render 1`] = `
                     Object {},
                   ]
                 }
-                testID="font-icon"
+                testID="font-icon 2"
               >
                 
               </Text>
@@ -357,6 +363,7 @@ exports[`RestaurantCard should render 1`] = `
                   "opacity": 1,
                 }
               }
+              testID="stars3"
             >
               <Text
                 allowFontScaling={false}
@@ -375,7 +382,7 @@ exports[`RestaurantCard should render 1`] = `
                     Object {},
                   ]
                 }
-                testID="font-icon"
+                testID="font-icon 3"
               >
                 
               </Text>
@@ -419,6 +426,7 @@ exports[`RestaurantCard should render 1`] = `
                   "opacity": 1,
                 }
               }
+              testID="stars4"
             >
               <Text
                 allowFontScaling={false}
@@ -437,7 +445,7 @@ exports[`RestaurantCard should render 1`] = `
                     Object {},
                   ]
                 }
-                testID="font-icon"
+                testID="font-icon 4"
               >
                 
               </Text>

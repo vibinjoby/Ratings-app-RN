@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { View, Image, TextInput, TouchableWithoutFeedback, KeyboardType, Text } from 'react-native'
 import * as Animatable from 'react-native-animatable'
-import Colors from '../../utilities/colors'
 
+import Colors from '../../utilities/colors'
 import PasswordErrorTxt from '../PasswordErrorText'
 import styles from './styles'
 

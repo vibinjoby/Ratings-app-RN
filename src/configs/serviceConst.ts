@@ -20,4 +20,5 @@ export default {
   DELETE_USER: 'admin/deleteUser/',
   DELETE_RESTAURANT: 'admin/deleteRestaurant/',
   DELETE_REVIEW: 'admin/deleteReview/',
+  EDIT_REVIEW: 'admin/editReview/',
 }

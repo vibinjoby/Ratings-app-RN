@@ -7,6 +7,7 @@ import Stars from '../Stars'
 import Colors from '../../utilities/colors'
 
 export interface OwnerRestaurantCardProps {
+  testID?: string
   id?: string
   title: string
   ratings: number
@@ -15,21 +16,36 @@ export interface OwnerRestaurantCardProps {
 }
 
 const OwnerRestaurantCard: React.FC<OwnerRestaurantCardProps> = ({
+  testID,
   title,
   ratings,
   reviewsCount = 0,
   onPress,
 }: OwnerRestaurantCardProps) => {
   return (
-    <TouchableOpacity onPress={onPress} style={styles.container} activeOpacity={0.7}>
+    <TouchableOpacity
+      testID={testID}
+      onPress={onPress}
+      style={styles.container}
+      activeOpacity={0.7}
+    >
       <Image style={styles.img} source={{ uri: constants.DUMMY_PIC }} />
-      <Text style={styles.title} numberOfLines={1}>
+      <Text testID="title" style={styles.title} numberOfLines={1}>
         {title}
       </Text>
       <View style={styles.footer}>
-        <Text style={styles.ratings}>{ratings}</Text>
-        <Stars starHeight={10} selectedStars={ratings} selectedColor={Colors.appOrange} />
-        <Text style={styles.reviews}>{reviewsCount} Reviews</Text>
+        <Text testID="ratings" style={styles.ratings}>
+          {ratings}
+        </Text>
+        <Stars
+          testID="stars"
+          starHeight={10}
+          selectedStars={ratings}
+          selectedColor={Colors.appOrange}
+        />
+        <Text testID="reviewsCount" style={styles.reviews}>
+          {reviewsCount} Reviews
+        </Text>
       </View>
     </TouchableOpacity>
   )

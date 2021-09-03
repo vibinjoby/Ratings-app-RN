@@ -105,6 +105,7 @@ exports[`Sign Up screen should render 1`] = `
                   "opacity": 1,
                 }
               }
+              testID="leftTab"
             >
               <View
                 style={
@@ -148,6 +149,7 @@ exports[`Sign Up screen should render 1`] = `
                       },
                     ]
                   }
+                  testID="tab1Txt"
                 >
                   Customer
                 </Text>
@@ -170,6 +172,7 @@ exports[`Sign Up screen should render 1`] = `
                   "opacity": 1,
                 }
               }
+              testID="rightTab"
             >
               <View
                 style={
@@ -208,6 +211,7 @@ exports[`Sign Up screen should render 1`] = `
                       false,
                     ]
                   }
+                  testID="tab2Txt"
                 >
                   Owner
                 </Text>

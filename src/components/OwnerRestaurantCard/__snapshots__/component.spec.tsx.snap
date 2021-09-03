@@ -56,6 +56,7 @@ exports[`OwnerRestaurantCard should render 1`] = `
         "textAlign": "center",
       }
     }
+    testID="title"
   >
     Moxies Grill & Bar
   </Text>
@@ -76,8 +77,9 @@ exports[`OwnerRestaurantCard should render 1`] = `
           "marginHorizontal": 5,
         }
       }
+      testID="ratings"
     >
-      4.5
+      4
     </Text>
     <RCTScrollView
       ItemSeparatorComponent={[Function]}
@@ -137,6 +139,7 @@ exports[`OwnerRestaurantCard should render 1`] = `
                 "opacity": 1,
               }
             }
+            testID="stars0"
           >
             <Text
               allowFontScaling={false}
@@ -155,7 +158,7 @@ exports[`OwnerRestaurantCard should render 1`] = `
                   Object {},
                 ]
               }
-              testID="font-icon"
+              testID="font-icon 0"
             >
               
             </Text>
@@ -199,6 +202,7 @@ exports[`OwnerRestaurantCard should render 1`] = `
                 "opacity": 1,
               }
             }
+            testID="stars1"
           >
             <Text
               allowFontScaling={false}
@@ -217,7 +221,7 @@ exports[`OwnerRestaurantCard should render 1`] = `
                   Object {},
                 ]
               }
-              testID="font-icon"
+              testID="font-icon 1"
             >
               
             </Text>
@@ -261,6 +265,7 @@ exports[`OwnerRestaurantCard should render 1`] = `
                 "opacity": 1,
               }
             }
+            testID="stars2"
           >
             <Text
               allowFontScaling={false}
@@ -279,7 +284,7 @@ exports[`OwnerRestaurantCard should render 1`] = `
                   Object {},
                 ]
               }
-              testID="font-icon"
+              testID="font-icon 2"
             >
               
             </Text>
@@ -323,6 +328,7 @@ exports[`OwnerRestaurantCard should render 1`] = `
                 "opacity": 1,
               }
             }
+            testID="stars3"
           >
             <Text
               allowFontScaling={false}
@@ -341,7 +347,7 @@ exports[`OwnerRestaurantCard should render 1`] = `
                   Object {},
                 ]
               }
-              testID="font-icon"
+              testID="font-icon 3"
             >
               
             </Text>
@@ -385,13 +391,14 @@ exports[`OwnerRestaurantCard should render 1`] = `
                 "opacity": 1,
               }
             }
+            testID="stars4"
           >
             <Text
               allowFontScaling={false}
               style={
                 Array [
                   Object {
-                    "color": "#FF5823",
+                    "color": "#A5A6B7",
                     "fontSize": 10,
                   },
                   undefined,
@@ -403,9 +410,9 @@ exports[`OwnerRestaurantCard should render 1`] = `
                   Object {},
                 ]
               }
-              testID="font-icon"
+              testID="font-icon 4"
             >
-              
+              
             </Text>
           </View>
         </View>
@@ -419,6 +426,7 @@ exports[`OwnerRestaurantCard should render 1`] = `
           "marginRight": 5,
         }
       }
+      testID="reviewsCount"
     >
       4
        Reviews

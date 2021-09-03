@@ -4,13 +4,14 @@ import { useRoute } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { RootState } from '../../store'
-import { filterReview, getAllRestaurants, getAllReviews } from '../../store/reducers/admin'
+import { filterReview, getAllReviews, modifyReview } from '../../store/reducers/admin'
 import styles from './styles'
 import ReviewBlock from '../../components/ReviewBlock'
 import { Restaurant } from '../../store/reducers/restaurant'
 
 const AdminReviewDetail: React.FC = () => {
   const dispatch = useDispatch()
+
   const token = useSelector((state: RootState) => state.admin.token)
   const route = useRoute<any>()
   const reviews = useSelector(
@@ -30,6 +31,15 @@ const AdminReviewDetail: React.FC = () => {
     if (index === 0) {
       dispatch(filterReview(token, reviewId, restaurantId))
     }
+  }
+
+  const onEditSave = (
+    reviewId: string,
+    customerResponse?: string,
+    ownerResponse?: string,
+    stars?: number,
+  ) => {
+    dispatch(modifyReview(token, reviewId, customerResponse, ownerResponse, stars))
   }
 
   if (!reviews || reviews.length === 0) {
@@ -56,6 +66,8 @@ const AdminReviewDetail: React.FC = () => {
             owner_reply={item?.owner_reply}
             showThreeDots
             onOptionPress={(index) => onSelectedOption(index, item?._id)}
+            isEditResponse
+            onEditSave={onEditSave}
           />
         )}
       />

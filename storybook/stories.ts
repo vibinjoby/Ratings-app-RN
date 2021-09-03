@@ -19,6 +19,7 @@ import '../src/components/OwnerRestaurantCard/stories'
 import '../src/components/Users/stories'
 import '../src/components/ModalPopup/stories'
 import '../src/components/Restaurant/stories'
+import '../src/components/ThreeVerticalDots/stories'
 
 // Screens
 import '../src/screens/Signin/stories'
@@ -34,4 +35,4 @@ import '../src/screens/AddRestaurant/stories'
 import '../src/screens/AllUsers/stories'
 import '../src/screens/AllRestaurants/stories'
 import '../src/screens/AdminReviewDetail/stories'
-import '../src/components/ThreeVerticalDots/stories'
+import '../src/components/EditResponse/stories'

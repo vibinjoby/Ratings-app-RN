@@ -8,6 +8,7 @@ import {
   deleteRestaurant,
   deleteReview,
   deleteUser,
+  editRestaurantReview,
 } from '../../network/AdminService'
 import { fetchOwnerRestaurantReview } from '../../network/RestaurantService'
 import { decodeToken } from '../../utilities/helpers'
@@ -63,7 +64,6 @@ const slice = createSlice({
 
       if (restaurants && restaurants.reviews) {
         restaurants.reviews = reviews?.filter((review) => review._id !== id)
-        console.log(restaurants.reviews)
       }
     },
     removeRestaurant: (state: State, action) => {
@@ -76,6 +76,19 @@ const slice = createSlice({
     },
     removeToken: (state: State) => {
       state.token = ''
+    },
+    updateReview: (state: State, action) => {
+      const { data } = action.payload
+      state.restaurants
+        .find((restaurant) => restaurant._id === data.restaurant_id)
+        ?.reviews?.map((review) => {
+          if (review._id === data._id) {
+            review.comments = data.comments
+            review.owner_reply = data.owner_reply
+            review.ratings = data.ratings
+          }
+          return review
+        })
     },
   },
 })
@@ -90,6 +103,7 @@ export const {
   removeRestaurant,
   removeUser,
   removeToken,
+  updateReview,
 } = slice.actions
 
 export default slice.reducer
@@ -181,3 +195,23 @@ export const filterUser = (token: string, userId: string) => (dispatch: typeof s
     },
   })
 }
+
+export const modifyReview =
+  (
+    token: string,
+    reviewId: string,
+    customerResponse?: string,
+    ownerResponse?: string,
+    stars?: number,
+  ) =>
+  (dispatch: typeof store.dispatch) => {
+    dispatch({
+      type: apiCallBegan.type,
+      payload: {
+        apiMethod: editRestaurantReview,
+        args: [token, reviewId, customerResponse, ownerResponse, stars],
+        onSucess: [updateReview],
+        loader: false,
+      },
+    })
+  }
