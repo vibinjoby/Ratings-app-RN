@@ -47,7 +47,7 @@ describe('Ratings app', () => {
 
   it('should login as a customer', async () => {
     await element(by.id('email')).replaceText('chinchuv93@gmail.com')
-    await element(by.id('password')).replaceText('*1Vibinjoby#')
+    await element(by.id('password')).replaceText('Password123!')
     await element(by.id('signinBtn')).tap()
   })
 
