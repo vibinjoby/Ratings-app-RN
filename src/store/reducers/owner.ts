@@ -8,7 +8,7 @@ import {
   submitOwnerReply,
 } from '../../network/RestaurantService'
 import { apiCallBegan } from '../actions/api'
-import { Review } from './restaurant'
+import { Review } from './customer'
 
 type Restaurant = {
   /* eslint-disable camelcase */ is_deleted: boolean /* eslint-disable camelcase */

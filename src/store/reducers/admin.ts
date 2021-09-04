@@ -13,7 +13,7 @@ import {
 import { fetchOwnerRestaurantReview } from '../../network/RestaurantService'
 import { decodeToken } from '../../utilities/helpers'
 import { apiCallBegan } from '../actions/api'
-import { Restaurant } from './restaurant'
+import { Restaurant } from './customer'
 
 type State = {
   token: string

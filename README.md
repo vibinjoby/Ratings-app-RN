@@ -42,6 +42,8 @@ Step-4
 
 The project uses husky library which is used to run the script `npm run prettier-check && npm run lint && npm run test -- -u` which will execute all the unit test cases and run linting before every commit to make sure nothing breaks
 
+![](gifs/unit-test.gif)
+
 ## Storybook for ease of development
 
 The project uses storybook library for developing components and screens in isolation

@@ -23,4 +23,7 @@ export default StyleSheet.create({
     ...Typography.RegularFont,
     fontSize: 24,
   },
+  deleteIc: {
+    marginRight: 20,
+  },
 })

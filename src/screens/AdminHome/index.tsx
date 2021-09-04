@@ -89,6 +89,7 @@ const AdminHome: React.FC = () => {
   return (
     <View style={styles.container}>
       <ModalPopup
+        testID="logoutPop"
         isVisible={isLogoutPop}
         content="Are you sure you want to logout?"
         positiveBtnTxt="Logout"

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import commons from '../../configs/commonConst'
 import { RootState } from '../../store'
-import { getRestaurantDetail } from '../../store/reducers/restaurant'
+import { getRestaurantDetail } from '../../store/reducers/customer'
 import styles from './styles'
 import routes from '../../navigations/routes'
 import ReviewBlock from '../../components/ReviewBlock'
@@ -13,7 +13,7 @@ import ReviewBlock from '../../components/ReviewBlock'
 const RestaurantDetails: React.FC = () => {
   const route = useRoute<any>()
   const token = useSelector((state: RootState) => state.auth.token)
-  const restaurantDetail = useSelector((state: RootState) => state.restaurants.restaurantDetails)
+  const restaurantDetail = useSelector((state: RootState) => state.customer.restaurantDetails)
   const dispatch = useDispatch()
   const navigation = useNavigation()
 

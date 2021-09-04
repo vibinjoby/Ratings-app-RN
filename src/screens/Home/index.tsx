@@ -15,7 +15,11 @@ import { useNavigation } from '@react-navigation/native'
 
 import RestaurantCard from '../../components/RestaurantCard'
 import { RootState } from '../../store'
-import { fetchRestaurants, resetRestaurantData } from '../../store/reducers/restaurant'
+import {
+  fetchRestaurants,
+  resetRestaurantData,
+  sortRestaurants,
+} from '../../store/reducers/customer'
 import styles from './styles'
 import constants from '../../configs/commonConst'
 import Colors from '../../utilities/colors'
@@ -29,13 +33,14 @@ const Home: React.FC = () => {
   const [endLoading, setEndLoading] = useState(false)
   const [pgNo, setPgNo] = useState(1)
   const [isFetching, setIsFetching] = useState(false)
+  const [sortBy, setSortBy] = useState('sort-descending')
 
   const token = useSelector((state: RootState) => state.auth.token)
   const fullName = useSelector((state: RootState) => state.auth.userInfo.fullName)
-  const restaurantData = useSelector((state: RootState) => state.restaurants.restaurants)
-  const totalPgs = useSelector((state: RootState) => state.restaurants.totalRestaurants)
+  const restaurantData = useSelector((state: RootState) => state.customer.restaurants)
+  const totalPgs = useSelector((state: RootState) => state.customer.totalRestaurants)
   const latestReviews = useSelector(
-    (state: RootState) => state.restaurants.restaurantDetails.latestReviews,
+    (state: RootState) => state.customer.restaurantDetails.latestReviews,
   )
   const dispatch = useDispatch()
   const navigation = useNavigation()
@@ -71,7 +76,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     if (!token) return
     setIsFetching(true)
-    dispatch(fetchRestaurants(token, pgNo))
+    dispatch({ type: resetRestaurantData.type })
   }, [])
 
   useEffect(() => {
@@ -99,6 +104,16 @@ const Home: React.FC = () => {
     dispatch({ type: resetRestaurantData.type })
     setPgNo(1)
     dispatch(fetchRestaurants(token, 1))
+  }
+
+  const toggleSortFilter = () => {
+    dispatch({
+      type: sortRestaurants.type,
+      payload: {
+        sortBy: sortBy === 'sort-ascending' ? 0 : 1,
+      },
+    })
+    setSortBy((val) => (val === 'sort-ascending' ? 'sort-descending' : 'sort-ascending'))
   }
 
   const ViewMore = () => (
@@ -132,7 +147,17 @@ const Home: React.FC = () => {
         onNegativeBtnPress={toggleModal}
       />
       <View style={styles.container} testID="homeContainer">
-        <Text style={styles.title}>Discover</Text>
+        <View style={styles.titleWrapper}>
+          <Text style={styles.title}>Discover</Text>
+          <TouchableOpacity activeOpacity={0.7} onPress={toggleSortFilter}>
+            <MaterialCommIcons
+              color={Colors.appOrange}
+              style={styles.sortIc}
+              name={sortBy}
+              size={30}
+            />
+          </TouchableOpacity>
+        </View>
         <FlatList
           refreshing={isFetching}
           onRefresh={onRefresh}

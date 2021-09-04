@@ -8,10 +8,18 @@ export default StyleSheet.create({
     backgroundColor: Colors.white,
     paddingTop: Platform.OS === 'android' ? 20 : 0,
   },
+  titleWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
   title: {
     ...Typography.Title1.bold,
     marginVertical: 15,
     marginLeft: 20,
+  },
+  sortIc: {
+    marginRight: 20,
   },
   flatlist: {
     paddingHorizontal: 20,
