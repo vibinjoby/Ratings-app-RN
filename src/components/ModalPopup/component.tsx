@@ -25,7 +25,6 @@ const ModalPopup: React.FC<ModalPopupProps> = ({
   onPositiveBtnPress,
   onNegativeBtnPress,
 }: ModalPopupProps) => {
-  console.log('isvisible', isVisible)
   return (
     <Modal
       testID={testID}

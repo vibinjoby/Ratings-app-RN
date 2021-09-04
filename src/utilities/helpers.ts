@@ -6,7 +6,6 @@ import { AccessToken, LoginManager } from 'react-native-fbsdk-next'
 import { Platform } from 'react-native'
 
 export const configureGoogleSignIn = () => {
-  console.log('--- configureGoogleSignIn ---')
   GoogleSignin.configure({
     scopes: ['email', 'profile'],
     webClientId:
@@ -21,10 +20,8 @@ export const googleSignIn = async () => {
   try {
     await GoogleSignin.hasPlayServices()
     const userInfo = await GoogleSignin.signIn()
-    console.log('--- googleSignIn SUCCESS ---')
     return userInfo
-  } catch (error) {
-    console.log('--- googleSignIn ERROR ---', error)
+  } catch (error: any) {
     //Sentry.captureException(error);
     if (error.code === statusCodes.SIGN_IN_CANCELLED) {
       // user cancelled the login flow
@@ -58,7 +55,6 @@ export const googleSignOut = async () => {
 
 export const fbSignIn = async () => {
   const result = await LoginManager.logInWithPermissions(['email'])
-  console.log(result)
   //If the user cancels the sign in return with message
   if (result.isCancelled) return console.log('Login cancelled')
 

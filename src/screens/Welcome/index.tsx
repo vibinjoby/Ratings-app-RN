@@ -40,8 +40,6 @@ const Welcome: React.FC = () => {
       if (!idToken) return
       dispatch(socialLoginUser(idToken, 'google', 'customer'))
     } catch (error) {
-      console.log('---- GOOGLE SIGN IN ERROR ----')
-      console.log(error)
       Sentry.captureException(error)
     }
   }

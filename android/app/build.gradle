@@ -80,6 +80,9 @@ import com.android.build.OutputFile
 project.ext.react = [
     enableHermes: false,  // clean and rebuild if changing
 ]
+project.ext.vectoricons = [
+        iconFontNames: [ 'FontAwesome.ttf', 'MaterialCommunityIcons.ttf' ] // Name of the font files you want to copy
+]
 
 apply from: "../../node_modules/react-native/react.gradle"
 
@@ -191,12 +194,16 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation platform('com.google.firebase:firebase-bom:28.4.0')
     implementation 'com.google.firebase:firebase-analytics'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     androidTestImplementation('com.wix:detox:+')
     implementation 'com.android.support:multidex:2.0.1'
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
     // Facebook Sign In
     implementation 'com.facebook.android:facebook-android-sdk:[5,6)'
+
+    //Font vector
+    implementation(project(':react-native-vector-icons'))
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
@@ -228,6 +235,6 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.implementation
     into 'libs'
 }
-apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 apply plugin: 'com.google.gms.google-services'

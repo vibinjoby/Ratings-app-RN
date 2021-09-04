@@ -6,7 +6,7 @@ describe('Ratings app', () => {
   })
   // STEP:-1 : SIGN UP AS OWNER AND CREATE YOUR RESTAURANT
 
-  it('should get past welcome screen', async () => {
+  /* it('should get past welcome screen', async () => {
     // Sign up as a owner
     await element(by.id('signupBtn')).tap()
   })
@@ -36,7 +36,7 @@ describe('Ratings app', () => {
   it('should logout', async () => {
     await element(by.id('logoutBtn')).tap()
     await element(by.id('positiveBtn')).tap()
-  })
+  }) 
 
   // STEP:-2 : SIGN IN AS CUSTOMER AND ADD YOUR REPLY
 
@@ -103,7 +103,7 @@ describe('Ratings app', () => {
   it('should logout', async () => {
     await element(by.id('logoutBtn')).tap()
     await element(by.id('positiveBtn')).tap()
-  })
+  })*/
 
   // STEP:-4 : SIGN IN AS ADMIN AND EDIT YOUR RESPONSES and DELETE USERS AND THE REVIEWS
   it('should get past welcome screen', async () => {

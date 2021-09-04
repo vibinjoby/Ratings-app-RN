@@ -1,6 +1,6 @@
 ## Creating new components
 
-For convenience reasons this project uses template generator to simplify creation of new
+For convenience reasons the project uses template generator to simplify creation of new
 components. For example, to generate a new `Button` component run:
 
 `npm run component Button`
