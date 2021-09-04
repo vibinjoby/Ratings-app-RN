@@ -19,7 +19,7 @@
     "android:e2e:build": "detox build -c android",
     "android:e2e:test": "detox test -c android",
     "ios:e2e:build": "detox build -c ios",
-    "ios:e2e:test": "detox test -c ios --debug-synchronization 500"
+    "ios:e2e:test": "detox test -c ios"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.15.7",
