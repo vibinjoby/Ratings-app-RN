@@ -38,11 +38,14 @@ Step-4
 - Delete the review
 - Logout of the app
 
+<img width="646" alt="Screen Shot 2021-09-04 at 10 57 41 AM" src="https://user-images.githubusercontent.com/23625686/132098835-b2774043-d001-47b2-92d8-4657cdcbfd97.png">
+
+
 ## Unit testing and Linting
 
 The project uses husky library which is used to run the script `npm run prettier-check && npm run lint && npm run test -- -u` which will execute all the unit test cases and run linting before every commit to make sure nothing breaks
 
-![](gifs/unit-test.gif)
+![](gifs/commit-check.gif)
 
 ## Storybook for ease of development
 
