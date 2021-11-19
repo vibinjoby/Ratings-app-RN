@@ -48,7 +48,9 @@ const SignIn: React.FC = () => {
   }
  */
 
-  const handleLogin = () => {}
+  const handleLogin = () => {
+    console.log('object')
+  }
   const handleSignUp = () => navigation.navigate({ key: ScreenNames.SIGNUP })
   return <SignInView onSignUp={handleSignUp} onLogin={handleLogin} />
 }

@@ -17,7 +17,7 @@ const WelcomeView = ({ onSignIn, onSignUp, onGSignIn, onFbSignIn }: WelcomeViewP
     <View testID="welcomeContainer" style={styles.container}>
       <Image
         style={styles.headerImg}
-        source={require('../../assets/welcomeDish/welcomeDish.png')}
+        source={require('../../../../assets/welcomeDish/welcomeDish.png')}
       />
       <View testID="contentWrapper" style={styles.contentContainer}>
         <Text style={styles.titleTxt}>Find your favourite restaurant with clue</Text>

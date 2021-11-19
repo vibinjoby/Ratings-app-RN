@@ -2,7 +2,7 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import Welcome from './Welcome/containers'
-import SignIn from './SignIn/containers'
+import SignIn from './Signin/containers'
 import SignUp from './Signup/containers'
 /* import CustomerHomeStack from './CustomerHomeStack'
 import OwnerHomeStack from './OwnerHomeStack'

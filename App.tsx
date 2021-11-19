@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { LogBox, View } from 'react-native'
 import * as Sentry from '@sentry/react-native'
 
-import RootStack from './src/navigations/RootStack'
+import Auth from './src/Features/Auth'
 import Storybook from './storybook'
 import DevMenu from 'react-native-dev-menu'
 
@@ -37,7 +37,7 @@ const App: React.FC = () => {
 
   return !isStorybook ? (
     <NavigationContainer>
-      <View style={{ backgroundColor: 'black' }} />
+      <Auth />
     </NavigationContainer>
   ) : (
     <Storybook />
