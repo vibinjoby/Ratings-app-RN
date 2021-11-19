@@ -1,22 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import { useDispatch, useSelector } from 'react-redux'
 
 import routes from './routes'
 import { getData } from '../utilities/helpers'
 import AuthStack from './AuthStack'
-import CustomerHomeStack from './CustomerHomeStack'
-import { RootState } from '../store'
-import { loadUserInfo } from '../store/reducers/auth'
+/* import CustomerHomeStack from './CustomerHomeStack'
 import OwnerHomeStack from './OwnerHomeStack'
-import AdminHomeStack from './AdminHomeStack'
-import { loadAdminInfo } from '../store/reducers/admin'
+import AdminHomeStack from './AdminHomeStack' */
 
 const RootStack = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<any>(0)
-  const userInfo = useSelector((state: RootState) => state.auth.userInfo)
+  /* const userInfo = useSelector((state: RootState) => state.auth.userInfo) */
   const Stack = createStackNavigator()
-  const dispatch = useDispatch()
 
   const renderUserData = async () => {
     const data = await getData('userInfo')
@@ -24,30 +19,29 @@ const RootStack = () => {
       return setIsLoggedIn(false)
     }
     if (data.userInfo?.typeOfUser === 'admin') {
-      dispatch({
+      /* dispatch({
         type: loadAdminInfo.type,
         payload: {
           token: data.token,
         },
-      })
-    } else
-      dispatch({
+      }) */
+    } else setIsLoggedIn(true)
+    /* dispatch({
         type: loadUserInfo.type,
         payload: {
           token: data.token,
           userInfo: data.userInfo,
         },
-      })
-    setIsLoggedIn(true)
+      }) */
   }
 
   useEffect(() => {
-    if (!userInfo.typeOfUser) {
+    /* if (!userInfo.typeOfUser) {
       setIsLoggedIn(0)
     }
-    renderUserData()
+    renderUserData() */
   }, [])
-
+  /* 
   // This is when the user is already logged in
   const RenderScreenUserTypeBased = () => {
     // Customer navigation
@@ -103,18 +97,15 @@ const RootStack = () => {
 
   if (isLoggedIn === 0) {
     return <></>
-  }
+  } */
 
   return (
     <Stack.Navigator>
-      {!isLoggedIn && (
-        <Stack.Screen
-          name={routes.AUTH_STACK}
-          component={AuthStack}
-          options={{ headerShown: false }}
-        />
-      )}
-      {isLoggedIn && RenderScreenUserTypeBased()}
+      <Stack.Screen
+        name={routes.AUTH_STACK}
+        component={AuthStack}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   )
 }

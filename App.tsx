@@ -1,21 +1,27 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-import { LogBox } from 'react-native'
+import { LogBox, View } from 'react-native'
 import * as Sentry from '@sentry/react-native'
-import { Provider } from 'react-redux'
 
 import RootStack from './src/navigations/RootStack'
-import { store } from './src/store'
-import AppToasts from './src/components/AppToasts'
-import AppLoader from './src/components/AppLoader'
-//import Storybook from './storybook'
+import Storybook from './storybook'
+import DevMenu from 'react-native-dev-menu'
 
 const App: React.FC = () => {
-  // Enable this for development
-  const [isStorybook] = useState(false)
+  const [isStorybook, setIsStorybook] = useState(false)
+
+  const toggleStorybook = () => {
+    setIsStorybook((val) => !val)
+  }
 
   useEffect(() => {
+    if (__DEV__) {
+      DevMenu.addItem('Toggle storybook', toggleStorybook)
+      /** Development-mode  */
+      LogBox.ignoreAllLogs() // Ignore all log warnings
+      console.error = () => console.log() // Ignore all errors
+    }
     // Sentry logging
     // Visit here to see all logs https://sentry.io/organizations/vibins-personal-projects/issues/?project=5935046
     Sentry.init({
@@ -27,26 +33,14 @@ const App: React.FC = () => {
       debug: true,
       enableNative: false,
     })
-    /** Development-mode  */
-    LogBox.ignoreAllLogs() // Ignore all log warnings
-    console.error = () => console.log() // Ignore all errors
   }, [])
 
   return !isStorybook ? (
-    <Provider store={store}>
-      <AppLoader>
-        <AppToasts>
-          <NavigationContainer>
-            <RootStack />
-          </NavigationContainer>
-        </AppToasts>
-      </AppLoader>
-    </Provider>
+    <NavigationContainer>
+      <View style={{ backgroundColor: 'black' }} />
+    </NavigationContainer>
   ) : (
-    <>
-      {/** Uncomment the below line when running on storybook */}
-      {/* <Storybook /> */}
-    </>
+    <Storybook />
   )
 }
 

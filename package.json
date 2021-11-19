@@ -1,7 +1,6 @@
 {
   "name": "ratingsapp",
   "version": "0.0.1",
-  "private": true,
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
@@ -15,7 +14,6 @@
     "prettier-check": "prettier --check \"src/**/*.ts{,x}\"",
     "storybook": "start-storybook -p 7007",
     "build-storybook": "build-storybook",
-    "pre-commit": "npm run prettier-check && npm run lint && npm run test -- -u",
     "android:e2e:build": "detox build -c android",
     "android:e2e:test": "detox test -c android",
     "ios:e2e:build": "detox build -c ios",
@@ -37,6 +35,7 @@
     "react-native": "0.65.1",
     "react-native-animatable": "^1.3.3",
     "react-native-datepicker": "^1.7.2",
+    "react-native-dev-menu": "^4.0.2",
     "react-native-fbsdk-next": "^4.3.0",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-keyboard-aware-scrollview": "^2.1.0",
@@ -74,7 +73,6 @@
     "detox": "^18.20.2",
     "eslint": "^7.14.0",
     "eslint-plugin-jest-formatting": "^3.0.0",
-    "husky": "^7.0.2",
     "hygen": "^6.1.0",
     "jest": "^26.6.3",
     "jest-circus": "^27.1.0",
