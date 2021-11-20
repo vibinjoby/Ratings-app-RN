@@ -1,22 +1,19 @@
-import { NavigationContainer } from '@react-navigation/native'
-import React, { useState } from 'react'
-import { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { LogBox } from 'react-native'
+import { NavigationContainer } from '@react-navigation/native'
 import * as Sentry from '@sentry/react-native'
-import DevMenu from 'react-native-dev-menu'
-import './config/ReactotronConfig'
 import { ApolloProvider } from '@apollo/client'
+import DevMenu from 'react-native-dev-menu'
 
-import Auth from './src/Features/Auth'
+import './config/ReactotronConfig'
 //import Storybook from './storybook'
 import { client } from './client'
+import BaseModule from './src/BaseModule'
 
 const App: React.FC = () => {
   const [isStorybook, setIsStorybook] = useState(false)
 
-  const toggleStorybook = () => {
-    setIsStorybook((val) => !val)
-  }
+  const toggleStorybook = () => setIsStorybook((val) => !val)
 
   useEffect(() => {
     if (__DEV__) {
@@ -38,14 +35,14 @@ const App: React.FC = () => {
     })
   }, [])
 
-  return !isStorybook ? (
+  if (isStorybook) return <></>
+
+  return (
     <ApolloProvider client={client}>
       <NavigationContainer>
-        <Auth />
+        <BaseModule />
       </NavigationContainer>
     </ApolloProvider>
-  ) : (
-    <></>
   )
 }
 

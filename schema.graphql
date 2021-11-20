@@ -140,6 +140,7 @@ input UpdateUserInput {
 input LoginInput {
   email: String!
   password: String!
+  userType: UserType!
 }
 
 input CreateAdminInput {

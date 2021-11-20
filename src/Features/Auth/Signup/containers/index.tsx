@@ -19,7 +19,6 @@ const SignUp: React.FC = () => {
     } else if (selectedTab === 1) {
       typeOfUser = 'owner'
     }
-    //dispatch(registerUser(fullName, email, password, typeOfUser))
   }
 
   const handleSignIn = () => navigation.navigate(ScreenNames.LOGIN)

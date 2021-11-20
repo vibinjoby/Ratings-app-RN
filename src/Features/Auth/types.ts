@@ -7,4 +7,5 @@ export interface RegisterProps {
 export interface LoginProps {
   email: string
   password: string
+  selectedTab: number
 }

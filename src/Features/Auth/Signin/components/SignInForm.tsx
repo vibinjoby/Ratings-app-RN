@@ -6,7 +6,7 @@ import Button from '../../../../components/Button'
 import TextField from '../../../../components/TextField'
 import ThreeTabs from '../../../../components/ThreeTabs'
 import Typography from '../../../../utilities/typography'
-import styles from '../styles/SignInForm'
+import styles from '../styles'
 
 export interface SignInFormProps {
   onLogin: () => void
@@ -28,13 +28,11 @@ const SignInForm = ({ onLogin, onSignUp, values, handleChange }: SignInFormProps
         <Text style={Typography.Title1.regular}>Log In</Text>
         <View style={styles.tabContainer} testID="tabContainer">
           <ThreeTabs
-            selectedTab={1}
+            selectedTab={values['selectedTab']}
             tab1Text="Customer"
             tab2Text="Owner"
             tab3Text="Admin"
-            onTabSelect={(tab) => {
-              /* setSelectedTab(tab) */
-            }}
+            onTabSelect={(tab) => handleChange('selectedTab')(tab)}
           />
         </View>
 
