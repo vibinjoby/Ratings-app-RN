@@ -12,13 +12,13 @@ const data = [
     title: 'Users',
     subHead: 'Find all the users registered in our app both customers and owners',
     img: require('../../../../assets/usersPic/usersPic.png'),
-    onPress: () => {},
+    onPress: () => ({}),
   },
   {
     title: 'Restaurants',
     subHead: 'Find all the restaurants created by owners in our app',
     img: require('../../../../assets/restaurantsPic/restaurantsPic.png'),
-    onPress: () => {},
+    onPress: () => ({}),
   },
 ]
 

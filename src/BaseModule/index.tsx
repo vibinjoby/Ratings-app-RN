@@ -17,7 +17,7 @@ const BaseModule = () => {
   useEffect(() => {
     // Check if the user has already logged in,
     // If so navigate him to the appropriate home page based on userType
-    ;(async () => {
+    const _ = (async () => {
       const data = await getData('userInfo')
       // Save the info to cache
       userInfoVars({ ...data })

@@ -45,7 +45,7 @@ const OwnerView = ({ isLogoutPopupVisible, onLogout, onNegativeModalPress }: Hom
         />
       </View>
     </ScrollView>
-    <PlusIcon onPress={() => {}} />
+    <PlusIcon onPress={() => ({})} />
   </>
 )
 

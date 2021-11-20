@@ -21,7 +21,7 @@ const EmptyRestaurants = ({
       onNegativeBtnPress={onNegativeModalPress}
     />
     <Text style={styles.noReviewTxt}>No Restaurants added yet!!</Text>
-    <PlusIcon onPress={() => {}} />
+    <PlusIcon onPress={() => ({})} />
   </View>
 )
 

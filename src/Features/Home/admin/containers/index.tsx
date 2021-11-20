@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
-import { Text, TouchableOpacity } from 'react-native'
+import { TouchableOpacity } from 'react-native'
 import MaterialCommIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import Colors from '../../../../utilities/colors'
