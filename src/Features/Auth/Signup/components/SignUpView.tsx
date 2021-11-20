@@ -53,9 +53,9 @@ const SignUpView = ({ onSignUp, onSignIn }: SignUpViewProps) => (
     <View style={styles.container} testID="signupContainer">
       <ImageBackground
         style={styles.bgContainer}
-        source={require('../../assets/authBg/authBg.png')}
+        source={require('../../../../assets/authBg/authBg.png')}
       >
-        <Image source={require('../../assets/loginDish/loginDish.png')} />
+        <Image source={require('../../../../assets/loginDish/loginDish.png')} />
       </ImageBackground>
       <View style={styles.contentContainer} testID="contentContainer">
         <Text style={Typography.Title1.regular}>Sign Up</Text>

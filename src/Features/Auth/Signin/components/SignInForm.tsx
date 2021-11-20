@@ -1,18 +1,21 @@
 import React from 'react'
+import { FormikHandlers, FormikValues } from 'formik'
 import { Image, ImageBackground, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 
 import Button from '../../../../components/Button'
 import TextField from '../../../../components/TextField'
 import ThreeTabs from '../../../../components/ThreeTabs'
 import Typography from '../../../../utilities/typography'
-import styles from '../styles/SignInView'
+import styles from '../styles/SignInForm'
 
-export interface SignInViewProps {
+export interface SignInFormProps {
   onLogin: () => void
   onSignUp: () => void
+  values: FormikValues
+  handleChange: (fieldName: string) => FormikHandlers['handleChange']
 }
 
-const SignInView = ({ onLogin, onSignUp }: SignInViewProps) => (
+const SignInForm = ({ onLogin, onSignUp, values, handleChange }: SignInFormProps) => (
   <ScrollView>
     <View style={styles.container} testID="signinContainer">
       <ImageBackground
@@ -38,26 +41,22 @@ const SignInView = ({ onLogin, onSignUp }: SignInViewProps) => (
         <TextField
           containerStyle={styles.emailField}
           textHint="Email/Username"
-          inputValue={'email'}
-          onInputChange={(e) => {
-            /* setEmail(e) */
-          }}
+          inputValue={values['email']}
+          onInputChange={handleChange('email')}
           testID={'email'}
         />
         <TextField
           containerStyle={styles.pwdField}
           textHint="Password"
           isProtected
-          inputValue={'password'}
+          inputValue={values['password']}
           testID={'password'}
-          onInputChange={(e) => {
-            /* setPassword(e) */
-          }}
+          onInputChange={handleChange('password')}
         />
 
         <Button
           testID="signinBtn"
-          disabled={false} //!email || !password
+          disabled={!values['email'] || !values['password']}
           title="Log In"
           onPress={onLogin}
           customStyle={styles.loginBtn}
@@ -74,4 +73,4 @@ const SignInView = ({ onLogin, onSignUp }: SignInViewProps) => (
   </ScrollView>
 )
 
-export default React.memo(SignInView)
+export default React.memo(SignInForm)

@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 
-import SignInView from '../components/SignInView'
+import SignInForm from '../components/SignInForm'
 import { ScreenNames } from '../../constants'
+import { useLogin } from '../../hooks'
+import { useFormik } from 'formik'
+import { LoginProps } from '../../types'
 
 const SignIn: React.FC = () => {
   const navigation = useNavigation()
@@ -10,9 +13,24 @@ const SignIn: React.FC = () => {
   const token = useSelector((state: RootState) => state.auth.token)
   const adminToken = useSelector((state: RootState) => state.admin.token)
   const userType = useSelector((state: RootState) => state.auth.userInfo.typeOfUser) */
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
   const [selectedTab, setSelectedTab] = useState(0)
+  const { values, setValues, setErrors, errors, setFieldError, handleChange } =
+    useFormik<LoginProps>({
+      initialValues: {
+        email: '',
+        password: '',
+      },
+      onSubmit: () => {},
+    })
+
+  const { onLoginMutate, data, loading, error } = useLogin({
+    email: values['email'],
+    password: values['password'],
+  })
+
+  useEffect(() => {
+    console.log(values)
+  }, [values])
   /* 
   useEffect(() => {
     if (!token) return
@@ -48,11 +66,18 @@ const SignIn: React.FC = () => {
   }
  */
 
-  const handleLogin = () => {
-    console.log('object')
-  }
-  const handleSignUp = () => navigation.navigate({ key: ScreenNames.SIGNUP })
-  return <SignInView onSignUp={handleSignUp} onLogin={handleLogin} />
+  const handleSignUp = () => navigation.navigate(ScreenNames.SIGNUP)
+  return (
+    <SignInForm
+      onSignUp={handleSignUp}
+      onLogin={onLoginMutate}
+      values={values}
+      handleChange={(fieldName: string) => (e: React.ChangeEvent) => {
+        setFieldError(fieldName, '')
+        handleChange(fieldName)(e)
+      }}
+    />
+  )
 }
 
 export default SignIn

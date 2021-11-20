@@ -22,7 +22,7 @@ import '../src/components/Restaurant/stories'
 import '../src/components/ThreeVerticalDots/stories'
 
 // Screens
-import '../src/screens/Signin/stories'
+/* import '../src/screens/Signin/stories'
 import '../src/screens/Signup/stories'
 import '../src/screens/Welcome/stories'
 import '../src/screens/Home/stories'
@@ -35,4 +35,4 @@ import '../src/screens/AddRestaurant/stories'
 import '../src/screens/AllUsers/stories'
 import '../src/screens/AllRestaurants/stories'
 import '../src/screens/AdminReviewDetail/stories'
-import '../src/components/EditResponse/stories'
+import '../src/components/EditResponse/stories' */

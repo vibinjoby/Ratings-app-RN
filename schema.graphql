@@ -1,0 +1,176 @@
+type Review {
+  id: Int!
+  ratings: Float!
+  visitDate: DateTime!
+  comments: String!
+  ownerReply: String
+  lastEdited: DateTime
+  createdAt: DateTime!
+  userId: Int!
+  restaurantId: Int!
+  user: User!
+  restaurant: Restaurant!
+}
+
+# A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+scalar DateTime
+
+type Restaurant {
+  id: Int!
+  restaurantName: String!
+  address: String!
+  contactNumber: Float!
+  averageRatings: Float!
+  lastEdited: DateTime
+  createdAt: DateTime!
+  userId: Int!
+  user: User!
+  reviews: [Review!]
+}
+
+type User {
+  id: Int!
+  fullName: String!
+  email: String!
+  password: String!
+  userType: UserType!
+  restaurants: [Restaurant!]
+  reviews: [Review!]
+  createdAt: DateTime!
+}
+
+enum UserType {
+  owner
+  customer
+}
+
+type Admin {
+  id: Int!
+  username: String!
+  password: String!
+  createdAt: DateTime!
+}
+
+type LoginOutput {
+  token: String!
+}
+
+type PageData {
+  count: Float!
+  limit: Float!
+  offset: Float!
+}
+
+type RestaurantResponse {
+  page: RestaurantConnection!
+  pageData: PageData
+}
+
+type RestaurantConnection {
+  edges: [RestaurantEdge!]
+  pageInfo: RestaurantPageInfo
+}
+
+type RestaurantEdge {
+  cursor: String
+  node: Restaurant
+}
+
+type RestaurantPageInfo {
+  startCursor: String
+  endCursor: String
+  hasPreviousPage: Boolean!
+  hasNextPage: Boolean!
+}
+
+type Query {
+  users: [User!]!
+  user(id: Float!): User!
+  whoAmI: User!
+  getRestaurants(
+    # Paginate before opaque cursor
+    before: String
+
+    # Paginate after opaque cursor
+    after: String
+
+    # Paginate first
+    first: Float
+
+    # Paginate last
+    last: Float
+  ): RestaurantResponse!
+  getRestaurant(id: Int!): Restaurant!
+  getOwnedrestaurants: [Restaurant!]!
+  review(id: Int!): Review!
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): String!
+  login(data: LoginInput!): LoginOutput!
+  createAdmin(createAdminInput: CreateAdminInput!): Admin!
+  loginAsAdmin(data: CreateAdminInput!): LoginOutput!
+  createRestaurant(createRestaurantInput: CreateRestaurantInput!): Restaurant!
+  updateRestaurant(updateRestaurantInput: UpdateRestaurantInput!): Restaurant!
+  removeRestaurant(id: Int!): Restaurant!
+  createReview(createReviewInput: CreateReviewInput!): Review!
+  createOwnerReply(reviewId: Int!, ownerReply: String!): Review!
+  findReviewsByRestaurantId(restaurantId: Int!): Review!
+  updateReview(updateReviewInput: UpdateReviewInput!): Review!
+  removeReview(id: Int!): Review!
+}
+
+input CreateUserInput {
+  email: String!
+  fullName: String!
+  password: String!
+  userType: UserType!
+}
+
+input UpdateUserInput {
+  email: String!
+  fullName: String!
+  password: String!
+  userType: String!
+  id: Int!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+input CreateAdminInput {
+  username: String!
+  password: String!
+}
+
+input CreateRestaurantInput {
+  restaurantName: String!
+  address: String!
+  contactNumber: Float!
+}
+
+input UpdateRestaurantInput {
+  restaurantName: String!
+  address: String!
+  contactNumber: Float!
+  id: Int!
+}
+
+input CreateReviewInput {
+  ratings: Float!
+  visitDate: DateTime!
+  comments: String!
+  restaurantId: Int!
+}
+
+input UpdateReviewInput {
+  ratings: Float!
+  visitDate: DateTime!
+  comments: String!
+  restaurantId: Int
+  id: Int!
+}

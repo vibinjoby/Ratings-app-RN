@@ -22,7 +22,7 @@ const SignUp: React.FC = () => {
     //dispatch(registerUser(fullName, email, password, typeOfUser))
   }
 
-  const handleSignIn = () => navigation.navigate({ key: ScreenNames.LOGIN })
+  const handleSignIn = () => navigation.navigate(ScreenNames.LOGIN)
 
   return <SignUpView onSignIn={handleSignIn} onSignUp={handleSignUp} />
 }

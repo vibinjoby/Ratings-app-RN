@@ -17,9 +17,11 @@
     "android:e2e:build": "detox build -c android",
     "android:e2e:test": "detox test -c android",
     "ios:e2e:build": "detox build -c ios",
-    "ios:e2e:test": "detox test -c ios"
+    "ios:e2e:test": "detox test -c ios",
+    "codegen:internal": "npx apollo codegen:generate --localSchemaFile=schema.graphql --target=typescript --tagName=gql"
   },
   "dependencies": {
+    "@apollo/client": "^3.4.17",
     "@react-native-async-storage/async-storage": "^1.15.7",
     "@react-native-community/google-signin": "^5.0.0",
     "@react-native-community/netinfo": "^6.0.1",
@@ -27,6 +29,8 @@
     "@react-navigation/stack": "^6.0.7",
     "@reduxjs/toolkit": "^1.6.1",
     "@sentry/react-native": "^2.6.2",
+    "@types/graphql": "^14.5.0",
+    "apollo": "^2.33.9",
     "axios": "^0.21.1",
     "formik": "^2.2.9",
     "jwt-decode": "^3.1.2",
@@ -80,6 +84,7 @@
     "react-dom": "17.0.2",
     "react-native-codegen": "^0.0.7",
     "react-test-renderer": "17.0.2",
+    "reactotron-react-native": "^3.5.0",
     "typescript": "^3.8.3"
   },
   "resolutions": {

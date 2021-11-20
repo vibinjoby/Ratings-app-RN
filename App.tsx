@@ -1,12 +1,15 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-import { LogBox, View } from 'react-native'
+import { LogBox } from 'react-native'
 import * as Sentry from '@sentry/react-native'
+import DevMenu from 'react-native-dev-menu'
+import './config/ReactotronConfig'
+import { ApolloProvider } from '@apollo/client'
 
 import Auth from './src/Features/Auth'
-import Storybook from './storybook'
-import DevMenu from 'react-native-dev-menu'
+//import Storybook from './storybook'
+import { client } from './client'
 
 const App: React.FC = () => {
   const [isStorybook, setIsStorybook] = useState(false)
@@ -20,7 +23,7 @@ const App: React.FC = () => {
       DevMenu.addItem('Toggle storybook', toggleStorybook)
       /** Development-mode  */
       LogBox.ignoreAllLogs() // Ignore all log warnings
-      console.error = () => console.log() // Ignore all errors
+      //console.error = () => console.log() // Ignore all errors
     }
     // Sentry logging
     // Visit here to see all logs https://sentry.io/organizations/vibins-personal-projects/issues/?project=5935046
@@ -36,11 +39,13 @@ const App: React.FC = () => {
   }, [])
 
   return !isStorybook ? (
-    <NavigationContainer>
-      <Auth />
-    </NavigationContainer>
+    <ApolloProvider client={client}>
+      <NavigationContainer>
+        <Auth />
+      </NavigationContainer>
+    </ApolloProvider>
   ) : (
-    <Storybook />
+    <></>
   )
 }
 

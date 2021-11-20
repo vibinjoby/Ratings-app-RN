@@ -50,9 +50,9 @@ const Welcome: React.FC = () => {
     }
   }
 
-  const handleSignIn = () => navigation.navigate({ key: ScreenNames.LOGIN })
+  const handleSignIn = () => navigation.navigate(ScreenNames.LOGIN)
 
-  const handleSignUp = () => navigation.navigate({ key: ScreenNames.SIGNUP })
+  const handleSignUp = () => navigation.navigate(ScreenNames.SIGNUP)
 
   return (
     <WelcomeView
