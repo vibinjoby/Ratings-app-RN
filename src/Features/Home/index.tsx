@@ -3,16 +3,16 @@ import { Text } from 'react-native'
 import { useRoute } from '@react-navigation/native'
 import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack'
 
-import CustomerHome from './customer/containers'
+import AuthStack from '../Auth'
 import AdminHome from './admin/containers'
+import CustomerHome from './customer/containers/CustomerHome'
 import OwnerHome from './owner/containers/OwnerHome'
-import { ScreenNames } from './constants'
-import { ScreenNames as BaseModuleScreenNames } from '../../BaseModule/constants'
+import AddRestaurant from './owner/containers/AddRestaurant'
 import styles from './owner/styles'
 import { HomeRouteProps } from './types'
-import AuthStack from '../Auth'
 import userInfoVars from '../../store'
-import AddRestaurant from './owner/containers/AddRestaurant'
+import { ScreenNames } from './constants'
+import { ScreenNames as BaseModuleScreenNames } from '../../BaseModule/constants'
 
 const HomeStack = () => {
   const { userInfo } = userInfoVars()
