@@ -1,3 +1,7 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
 type Review {
   id: Int!
   ratings: Float!
@@ -12,7 +16,9 @@ type Review {
   restaurant: Restaurant!
 }
 
-# A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
 scalar DateTime
 
 type Restaurant {
@@ -88,16 +94,24 @@ type Query {
   user(id: Float!): User!
   whoAmI: User!
   getRestaurants(
-    # Paginate before opaque cursor
+    """
+    Paginate before opaque cursor
+    """
     before: String
 
-    # Paginate after opaque cursor
+    """
+    Paginate after opaque cursor
+    """
     after: String
 
-    # Paginate first
+    """
+    Paginate first
+    """
     first: Float
 
-    # Paginate last
+    """
+    Paginate last
+    """
     last: Float
   ): RestaurantResponse!
   getRestaurant(id: Int!): Restaurant!
@@ -106,7 +120,7 @@ type Query {
 }
 
 type Mutation {
-  createUser(createUserInput: CreateUserInput!): User!
+  createUser(createUserInput: CreateUserInput!): LoginOutput!
   updateUser(updateUserInput: UpdateUserInput!): User!
   removeUser(id: Int!): String!
   login(data: LoginInput!): LoginOutput!

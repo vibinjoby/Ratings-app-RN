@@ -22,10 +22,10 @@ export const useAdminLogin = (adminInput: CreateAdminInput) => {
   return { onAdminLoginMutate, ...rest }
 }
 
-export const useRegister = (registerInput: CreateUserInput) => {
+export const useRegister = (createUserInput: CreateUserInput) => {
   const [onRegisterMutate, { ...rest }] = useMutation(RegisterMutation, {
     fetchPolicy: 'network-only',
-    variables: { registerInput },
+    variables: { createUserInput },
   })
 
   return { onRegisterMutate, ...rest }
