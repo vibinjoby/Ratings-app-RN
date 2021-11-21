@@ -296,21 +296,21 @@ PODS:
     - React-jsi (= 0.65.1)
     - React-perflogger (= 0.65.1)
   - React-jsinspector (0.65.1)
-  - react-native-fbsdk-next (4.3.0):
+  - react-native-fbsdk-next (4.6.0):
     - React-Core
-    - react-native-fbsdk-next/Core (= 4.3.0)
-    - react-native-fbsdk-next/Login (= 4.3.0)
-    - react-native-fbsdk-next/Share (= 4.3.0)
-  - react-native-fbsdk-next/Core (4.3.0):
+    - react-native-fbsdk-next/Core (= 4.6.0)
+    - react-native-fbsdk-next/Login (= 4.6.0)
+    - react-native-fbsdk-next/Share (= 4.6.0)
+  - react-native-fbsdk-next/Core (4.6.0):
     - FBSDKCoreKit (~> 9.3)
     - React-Core
-  - react-native-fbsdk-next/Login (4.3.0):
+  - react-native-fbsdk-next/Login (4.6.0):
     - FBSDKLoginKit (~> 9.3)
     - React-Core
-  - react-native-fbsdk-next/Share (4.3.0):
+  - react-native-fbsdk-next/Share (4.6.0):
     - FBSDKShareKit (~> 9.3)
     - React-Core
-  - react-native-netinfo (6.0.1):
+  - react-native-netinfo (6.2.1):
     - React-Core
   - react-native-safe-area-context (3.3.0):
     - React-Core
@@ -378,8 +378,12 @@ PODS:
     - React-cxxreact (= 0.65.1)
     - React-jsi (= 0.65.1)
     - React-perflogger (= 0.65.1)
-  - RNCAsyncStorage (1.15.7):
+  - RNCAsyncStorage (1.15.11):
     - React-Core
+  - RNDevMenu (4.0.2):
+    - React-Core
+    - React-Core/DevSupport
+    - React-RCTNetwork
   - RNGestureHandler (1.10.3):
     - React-Core
   - RNGoogleSignin (5.0.0):
@@ -457,6 +461,7 @@ DEPENDENCIES:
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
+  - RNDevMenu (from `../node_modules/react-native-dev-menu`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - "RNGoogleSignin (from `../node_modules/@react-native-community/google-signin`)"
   - RNReanimated (from `../node_modules/react-native-reanimated`)
@@ -554,6 +559,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
+  RNDevMenu:
+    :path: "../node_modules/react-native-dev-menu"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNGoogleSignin:
@@ -606,9 +613,9 @@ SPEC CHECKSUMS:
   React-jsi: 12913c841713a15f64eabf5c9ad98592c0ec5940
   React-jsiexecutor: 43f2542aed3c26e42175b339f8d37fe3dd683765
   React-jsinspector: 41e58e5b8e3e0bf061fdf725b03f2144014a8fb0
-  react-native-fbsdk-next: 19e974b071047b7ed1dad86a9dc3fe77dff76b8c
-  react-native-netinfo: 0f64266bbaa1989ebd51b43ee1723d582f6b3e47
-  react-native-safe-area-context: 8465df05de8106c584b117f0e027e17174d6e02e
+  react-native-fbsdk-next: a0dd8905af573ec4d21b7bc398423ccaa2ce2b07
+  react-native-netinfo: 3d3769f0d65de15c83a9bf1346f8be71de5a24bf
+  react-native-safe-area-context: 61c8c484a3a9e7d1fda19f7b1794b35bbfd2262a
   React-perflogger: fd28ee1f2b5b150b00043f0301d96bd417fdc339
   React-RCTActionSheet: 7f3fa0855c346aa5d7c60f9ced16e067db6d29fa
   React-RCTAnimation: 2119a18ee26159004b001bc56404ca5dbaae6077
@@ -621,7 +628,8 @@ SPEC CHECKSUMS:
   React-RCTVibration: 92d41c2442e5328cc4d342cd7f78e5876b68bae5
   React-runtimeexecutor: 85187f19dd9c47a7c102f9994f9d14e4dc2110de
   ReactCommon: eafed38eec7b591c31751bfa7494801618460459
-  RNCAsyncStorage: 7f72b8273be1f92076b16f68b333160d562eebad
+  RNCAsyncStorage: eb05c0284dd6b50b32f92fad55e2a41e03358c43
+  RNDevMenu: fd325b5554b61fe7f48d9205a3877cf5ee88cd7c
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499
   RNReanimated: e03f7425cb7a38dcf1b644d680d1bfc91c3337ad

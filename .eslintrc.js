@@ -31,9 +31,12 @@ module.exports = {
     'no-self-assign': 'off',
     'jest/no-jasmine-globals': 'error',
     'no-useless-escape': 'off',
+    'no-extra-semi': 'off',
+    '@typescript-eslint/no-extra-semi': ['error'],
     'import/no-duplicates': 'off',
     'jest-formatting/padding-around-expect-groups': 'off',
     '@typescript-eslint/no-empty-interface': 0,
+    '@typescript-eslint/no-empty-function': 0,
     '@typescript-eslint/member-delimiter-style': [
       'error',
       {
