@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { useFormik } from 'formik'
 
@@ -11,8 +11,7 @@ import { LoginProps } from '../../types'
 import ApiResult from '../../../../components/ApiResult'
 import { determineUserTypeByTabSelection } from '../../helpers'
 import { UserType } from '../../../../../__generated__/globalTypes'
-import { decodeToken } from '../../../../utilities/helpers'
-import userInfoVars, { UserInfoProps } from '../../../../store'
+import { decodeAndSaveToken } from '../../../../utilities/helpers'
 
 const SignIn: React.FC = () => {
   const navigation = useNavigation()
@@ -25,7 +24,7 @@ const SignIn: React.FC = () => {
     onSubmit: () => {},
   })
 
-  const { onLoginMutate, data, loading, error } = useLogin({
+  const { onLoginMutate, loading, error } = useLogin({
     email: values['email'],
     password: values['password'],
     userType: determineUserTypeByTabSelection(values['selectedTab']),
@@ -33,7 +32,6 @@ const SignIn: React.FC = () => {
 
   const {
     onAdminLoginMutate,
-    data: adminData,
     loading: adminLoading,
     error: adminError,
   } = useAdminLogin({
@@ -41,45 +39,37 @@ const SignIn: React.FC = () => {
     password: values['password'],
   })
 
-  useEffect(() => {
-    if (data?.login?.token || adminData?.loginAsAdmin?.token) {
-      const userType = determineUserTypeByTabSelection(values['selectedTab'])
-      // Save the token to Async storage
-      const { userInfo, token } = decodeToken(
-        userType !== UserType.admin ? data.login.token : adminData?.loginAsAdmin?.token,
-        userType === UserType.admin,
-      ) // Save the info to cache
-      userInfoVars({ token, userInfo } as UserInfoProps)
-
-      // Navigate to home based on user type
-      navigation.reset({
-        index: 0,
-        routes: [
-          {
-            name: BaseModuleScreenNames.HOME_STACK,
-            params: {
-              initialRoute:
-                userType === UserType.customer
-                  ? HomeScreenNames.CUSTOMER_HOME
-                  : userType === UserType.owner
-                  ? HomeScreenNames.OWNER_HOME
-                  : HomeScreenNames.ADMIN_HOME,
-            },
-          },
-        ],
-      })
-    }
-  }, [data, adminData])
-
   const handleSignUp = () => navigation.navigate(ScreenNames.SIGNUP)
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
+    let token = ''
     const userType = determineUserTypeByTabSelection(values['selectedTab'])
     if (userType === UserType.admin) {
-      onAdminLoginMutate()
+      const { data } = await onAdminLoginMutate()
+      token = data?.loginAsAdmin?.token
     } else {
-      onLoginMutate()
+      const { data } = await onLoginMutate()
+      token = data?.login?.token
     }
+    decodeAndSaveToken(token, userType === UserType.admin)
+
+    // Navigate to home based on user type
+    navigation.reset({
+      index: 0,
+      routes: [
+        {
+          name: BaseModuleScreenNames.HOME_STACK,
+          params: {
+            initialRoute:
+              userType === UserType.customer
+                ? HomeScreenNames.CUSTOMER_HOME
+                : userType === UserType.owner
+                ? HomeScreenNames.OWNER_HOME
+                : HomeScreenNames.ADMIN_HOME,
+          },
+        },
+      ],
+    })
   }
 
   return (

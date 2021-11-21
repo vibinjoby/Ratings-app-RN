@@ -40,8 +40,8 @@ exports[`OwnerRestaurantCard should render 1`] = `
     }
     style={
       Object {
-        "borderTopEndRadius": 8,
         "borderTopLeftRadius": 8,
+        "borderTopRightRadius": 8,
         "height": 165,
       }
     }

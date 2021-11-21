@@ -21,7 +21,7 @@ export default StyleSheet.create({
   },
   img: {
     height: 165,
-    borderTopEndRadius: 8,
+    borderTopRightRadius: 8,
     borderTopLeftRadius: 8,
   },
   title: {

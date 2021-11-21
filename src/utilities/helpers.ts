@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import * as Sentry from '@sentry/react-native'
 import jwtDecode from 'jwt-decode'
+import userInfoVars, { UserInfoProps } from '../store'
 
 export const storeData = async (key: string, value: any) => {
   try {
@@ -31,7 +32,7 @@ export const removeData = async (key: string) => {
   }
 }
 
-export const decodeToken = (token: string, isAdmin?: boolean) => {
+export const decodeAndSaveToken = (token: string, isAdmin?: boolean) => {
   //decode the token to get the userInfo object
   const userInfo = jwtDecode(token)
   if (isAdmin) {
@@ -40,5 +41,7 @@ export const decodeToken = (token: string, isAdmin?: boolean) => {
   }
   //save the token and userInfo obj in async storage
   storeData('userInfo', { userInfo, token })
+  // Save the info to cache
+  userInfoVars({ token, userInfo } as UserInfoProps)
   return { userInfo, token }
 }

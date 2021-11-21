@@ -1,29 +1,81 @@
+import React from 'react'
 import { useNavigation } from '@react-navigation/native'
-import React, { useState } from 'react'
+import { useFormik } from 'formik'
 
-import { ScreenNames } from '../../constants'
+import { ScreenNames, SignUpValidationSchema } from '../../constants'
+import { ScreenNames as BaseModuleScreenNames } from '../../../../BaseModule/constants'
+import { ScreenNames as HomeScreenNames } from '../../../Home/constants'
 import { RegisterProps } from '../../types'
-import SignUpView from '../components/SignUpView'
+import { useRegister } from '../../hooks'
+import SignUpForm from '../components/SignUpForm'
+import { determineUserTypeByTabSelection } from '../../helpers'
+import ApiResult from '../../../../components/ApiResult'
+import { decodeAndSaveToken } from '../../../../utilities/helpers'
+import { UserType } from '../../../../../__generated__/globalTypes'
 
 const SignUp: React.FC = () => {
-  const [selectedTab, setSelectedTab] = useState(0)
-
   const navigation = useNavigation()
 
-  const handleSignUp = ({ fullName, email, password }: RegisterProps) => {
-    if (!email || !password) return
+  const { values, errors, setFieldValue, isValid, dirty } = useFormik<RegisterProps>({
+    initialValues: {
+      fullName: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      selectedTab: 0,
+    },
+    validationSchema: SignUpValidationSchema,
+    onSubmit: () => {},
+  })
 
-    let typeOfUser = ''
-    if (selectedTab === 0) {
-      typeOfUser = 'customer'
-    } else if (selectedTab === 1) {
-      typeOfUser = 'owner'
-    }
+  const { onRegisterMutate, loading, error } = useRegister({
+    email: values['email'],
+    password: values['password'],
+    fullName: values['fullName'],
+    userType: determineUserTypeByTabSelection(values['selectedTab']),
+  })
+
+  const handleSignUp = async () => {
+    const { data } = await onRegisterMutate()
+    const userType = determineUserTypeByTabSelection(values['selectedTab'])
+    decodeAndSaveToken(data?.createUser?.token, false)
+
+    // Navigate to home based on user type
+    navigation.reset({
+      index: 0,
+      routes: [
+        {
+          name: BaseModuleScreenNames.HOME_STACK,
+          params: {
+            initialRoute:
+              userType === UserType.customer
+                ? HomeScreenNames.CUSTOMER_HOME
+                : userType === UserType.owner
+                ? HomeScreenNames.OWNER_HOME
+                : HomeScreenNames.ADMIN_HOME,
+          },
+        },
+      ],
+    })
   }
 
   const handleSignIn = () => navigation.navigate(ScreenNames.LOGIN)
 
-  return <SignUpView onSignIn={handleSignIn} onSignUp={handleSignUp} />
+  return (
+    <ApiResult loading={loading} error={error}>
+      <SignUpForm
+        onSignIn={handleSignIn}
+        onSignUp={handleSignUp}
+        values={values}
+        errors={errors}
+        isValid={isValid}
+        dirty={dirty}
+        handleChange={(fieldName: string) => (e: React.ChangeEvent) => {
+          setFieldValue(fieldName, e)
+        }}
+      />
+    </ApiResult>
+  )
 }
 
 export default SignUp

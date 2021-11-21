@@ -10,9 +10,8 @@ import { CreateUserInput } from "./../../../../../__generated__/globalTypes";
 // ====================================================
 
 export interface Register_createUser {
-  __typename: "User";
-  fullName: string;
-  email: string;
+  __typename: "LoginOutput";
+  token: string;
 }
 
 export interface Register {
