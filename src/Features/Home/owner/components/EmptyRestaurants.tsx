@@ -9,6 +9,7 @@ import PlusIcon from './PlusIcon'
 const EmptyRestaurants = ({
   isLogoutPopupVisible,
   onLogout,
+  onPlusPress,
   onNegativeModalPress,
 }: HomeViewProps) => (
   <View style={styles.noReviewWrapper}>
@@ -21,7 +22,7 @@ const EmptyRestaurants = ({
       onNegativeBtnPress={onNegativeModalPress}
     />
     <Text style={styles.noReviewTxt}>No Restaurants added yet!!</Text>
-    <PlusIcon onPress={() => ({})} />
+    <PlusIcon onPress={onPlusPress ?? (() => ({}))} />
   </View>
 )
 

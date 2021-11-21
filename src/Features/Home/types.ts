@@ -10,6 +10,7 @@ export type ContentType = {
 export interface HomeViewProps {
   isLogoutPopupVisible: boolean
   onLogout: () => void
+  onPlusPress?: () => void
   onNegativeModalPress: () => void
 }
 

@@ -7,7 +7,8 @@ import EmptyRestaurants from '../components/EmptyRestaurants'
 import styles from '../styles'
 import Colors from '../../../../utilities/colors'
 import OwnerView from '../components/OwnerView'
-import { ScreenNames } from '../../../../BaseModule/constants'
+import { ScreenNames as BaseScreenNames } from '../../../../BaseModule/constants'
+import { ScreenNames } from '../../constants'
 import { removeData } from '../../../../utilities/helpers'
 
 const OwnerHome: React.FC = () => {
@@ -20,9 +21,11 @@ const OwnerHome: React.FC = () => {
     await removeData('userInfo')
     navigation.reset({
       index: 0,
-      routes: [{ name: ScreenNames.AUTH_STACK }],
+      routes: [{ name: BaseScreenNames.AUTH_STACK }],
     })
   }
+
+  const handleAddRestaurant = () => navigation.navigate(ScreenNames.ADD_RESTAURANT)
 
   useEffect(() => {
     navigation.setOptions({
@@ -52,6 +55,7 @@ const OwnerHome: React.FC = () => {
         isLogoutPopupVisible={isLogoutPop}
         onLogout={handleLogout}
         onNegativeModalPress={togglePopupVisibility}
+        onPlusPress={handleAddRestaurant}
       />
     )
   }
@@ -61,6 +65,7 @@ const OwnerHome: React.FC = () => {
       isLogoutPopupVisible={isLogoutPop}
       onNegativeModalPress={togglePopupVisibility}
       onLogout={handleLogout}
+      onPlusPress={handleAddRestaurant}
     />
   )
 }
