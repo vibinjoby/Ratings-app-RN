@@ -1,6 +1,6 @@
 import gql from 'graphql-tag'
 
-export const RestaurantList = gql`
+export const OwnerRestaurants = gql`
   query MyRestaurants {
     getOwnedrestaurants {
       id

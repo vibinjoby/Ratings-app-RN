@@ -5,6 +5,7 @@ export const ScreenNames = {
   OWNER_HOME: 'OwnerHome',
   ADMIN_HOME: 'AdminHome',
   ADD_RESTAURANT: 'AddRestaurant',
+  RESTAURANT_DETAILS: 'RestaurantDetails',
 }
 
 export const AddRestaurantValidationSchema = yup.object().shape({

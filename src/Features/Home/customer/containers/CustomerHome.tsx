@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Text, TouchableOpacity } from 'react-native'
+import { TouchableOpacity } from 'react-native'
 import MaterialCommIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { useNavigation } from '@react-navigation/native'
 
@@ -8,6 +8,8 @@ import Colors from '../../../../utilities/colors'
 import { removeData } from '../../../../utilities/helpers'
 import { ScreenNames } from '../../../../BaseModule/constants'
 import CustomerView from '../components/CustomerView'
+import { useAllRestaurants } from '../../hooks'
+import ApiResult from '../../../../components/ApiResult'
 
 const CustomerHome: React.FC = () => {
   const [isLogoutPop, setIsLogoutPop] = useState(false)
@@ -15,14 +17,7 @@ const CustomerHome: React.FC = () => {
 
   const navigation = useNavigation()
 
-  const handleLogout = async () => {
-    togglePopupVisibility()
-    await removeData('userInfo')
-    navigation.reset({
-      index: 0,
-      routes: [{ name: ScreenNames.AUTH_STACK }],
-    })
-  }
+  const { data, loading, error, fetchMore } = useAllRestaurants()
 
   useEffect(() => {
     navigation.setOptions({
@@ -40,19 +35,48 @@ const CustomerHome: React.FC = () => {
     })
   }, [])
 
+  const handleLogout = async () => {
+    togglePopupVisibility()
+    await removeData('userInfo')
+    navigation.reset({
+      index: 0,
+      routes: [{ name: ScreenNames.AUTH_STACK }],
+    })
+  }
+
   const toggleSortFilter = () =>
     setSortBy((val) => (val === 'sort-ascending' ? 'sort-descending' : 'sort-ascending'))
 
   const togglePopupVisibility = () => setIsLogoutPop((val) => !val)
 
+  const handleEndReached = () => {
+    if (!data.getRestaurants.page.pageInfo.hasNextPage) return
+
+    fetchMore({
+      variables: {
+        limit: 3,
+        offset: data?.getRestaurants?.page?.edges?.length,
+      },
+    })
+  }
+
+  const handleCardPress = (id: number | undefined) => {
+    navigation.navigate('')
+  }
+
   return (
-    <CustomerView
-      isLogoutPopupVisible={isLogoutPop}
-      onNegativeModalPress={togglePopupVisibility}
-      onLogout={handleLogout}
-      sortBy={sortBy}
-      onSort={toggleSortFilter}
-    />
+    <ApiResult loading={loading} error={error}>
+      <CustomerView
+        isLogoutPopupVisible={isLogoutPop}
+        onNegativeModalPress={togglePopupVisibility}
+        onLogout={handleLogout}
+        sortBy={sortBy}
+        onSort={toggleSortFilter}
+        onCardPress={handleCardPress}
+        restaurantList={data?.getRestaurants?.page?.edges ?? []}
+        onEndReached={handleEndReached}
+      />
+    </ApiResult>
   )
 }
 

@@ -17,6 +17,12 @@ export interface CreateAdminInput {
   password: string;
 }
 
+export interface CreateRestaurantInput {
+  restaurantName: string;
+  address: string;
+  contactNumber: number;
+}
+
 export interface CreateUserInput {
   email: string;
   fullName: string;

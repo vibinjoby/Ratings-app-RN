@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
 export const RestaurantList = gql`
-  query RestaurantList {
-    getRestaurants {
+  query RestaurantList($limit: Float, $offset: Float) {
+    getRestaurants(limit: $limit, offset: $offset) {
       page {
         edges {
           node {
@@ -20,8 +20,6 @@ export const RestaurantList = gql`
       }
       pageData {
         count
-        limit
-        offset
       }
     }
   }

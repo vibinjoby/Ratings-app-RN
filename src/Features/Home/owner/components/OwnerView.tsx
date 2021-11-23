@@ -1,13 +1,25 @@
 import React from 'react'
-import { FlatList, SafeAreaView, ScrollView, Text, View } from 'react-native'
+import { ButtonProps, FlatList, SafeAreaView, Text, View } from 'react-native'
 
 import ModalPopup from '../../../../components/ModalPopup'
 import OwnerRestaurantCard from '../../../../components/OwnerRestaurantCard'
+import { RestaurantList_getRestaurants_page_edges_node as RestaurantData } from '../../gql/__generated__/RestaurantList'
 import { HomeViewProps } from '../../types'
 import styles from '../styles'
 import PlusIcon from './PlusIcon'
 
-const OwnerView = ({ isLogoutPopupVisible, onLogout, onNegativeModalPress }: HomeViewProps) => (
+interface OwnerViewProps {
+  restaurantData: Array<RestaurantData>
+  onPlusPress: ButtonProps['onPress']
+}
+
+const OwnerView = ({
+  restaurantData,
+  isLogoutPopupVisible,
+  onLogout,
+  onNegativeModalPress,
+  onPlusPress,
+}: HomeViewProps & OwnerViewProps) => (
   <>
     <SafeAreaView />
     <ModalPopup
@@ -18,34 +30,28 @@ const OwnerView = ({ isLogoutPopupVisible, onLogout, onNegativeModalPress }: Hom
       onPositiveBtnPress={onLogout}
       onNegativeBtnPress={onNegativeModalPress}
     />
-    <ScrollView>
-      <View style={styles.container}>
-        <Text style={styles.title}>My Restaurants</Text>
-        <FlatList
-          style={styles.flatlist}
-          numColumns={2}
-          data={[]}
-          contentContainerStyle={styles.contentContainer}
-          renderItem={({ item }) => (
-            <OwnerRestaurantCard //@ts-ignore
-              id={item._id} //@ts-ignore
-              title={item.restaurant_name} //@ts-ignore
-              ratings={item.average_ratings} //@ts-ignore
-              reviewsCount={item.reviewsCount} //@ts-ignore
-              restaurantImg={{ uri: constants.DUMMY_PIC }}
-              onPress={() =>
-                //@ts-ignore
-                navigation.navigate(routes.OWNER_REVIEW_DETAILS, { id: item._id })
-              }
-            />
-          )}
-          ItemSeparatorComponent={() => <View style={styles.spacing} />}
-          ListFooterComponent={() => <View style={styles.footerSpacing} />}
-          keyExtractor={(_, index) => index.toString()}
-        />
-      </View>
-    </ScrollView>
-    <PlusIcon onPress={() => ({})} />
+    <View style={styles.container}>
+      <Text style={styles.title}>My Restaurants</Text>
+      <FlatList
+        style={styles.flatlist}
+        numColumns={2}
+        data={restaurantData}
+        contentContainerStyle={styles.contentContainer}
+        renderItem={({ item }) => (
+          <OwnerRestaurantCard
+            id={item.id}
+            title={item.restaurantName}
+            ratings={item.averageRatings}
+            reviewsCount={0}
+            onPress={() => {}}
+          />
+        )}
+        ItemSeparatorComponent={() => <View style={styles.spacing} />}
+        ListFooterComponent={() => <View style={styles.footerSpacing} />}
+        keyExtractor={(_, index) => index.toString()}
+      />
+    </View>
+    <PlusIcon onPress={onPlusPress} />
   </>
 )
 

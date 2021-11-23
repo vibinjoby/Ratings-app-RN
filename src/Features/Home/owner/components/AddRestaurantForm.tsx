@@ -55,7 +55,7 @@ const AddRestaurantForm = ({
         textHint={item.placeholder}
         testID={item.testID}
         key={item.key.toString()}
-        onInputChange={handleChange}
+        onInputChange={handleChange(item.name)}
         containerStyle={styles.textInp}
       />
     ))}

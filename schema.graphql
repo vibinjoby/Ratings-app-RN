@@ -113,6 +113,8 @@ type Query {
     Paginate last
     """
     last: Float
+    limit: Float
+    offset: Float
   ): RestaurantResponse!
   getRestaurant(id: Int!): Restaurant!
   getOwnedrestaurants: [Restaurant!]!

@@ -10,11 +10,13 @@ import OwnerView from '../components/OwnerView'
 import { ScreenNames as BaseScreenNames } from '../../../../BaseModule/constants'
 import { ScreenNames } from '../../constants'
 import { removeData } from '../../../../utilities/helpers'
+import { useOwnerRestaurants } from '../../hooks'
+import ApiResult from '../../../../components/ApiResult'
 
 const OwnerHome: React.FC = () => {
   const [isLogoutPop, setIsLogoutPop] = useState(false)
   const navigation = useNavigation()
-  const myRestaurants: string[] = []
+  const { data, loading, error } = useOwnerRestaurants()
 
   const handleLogout = async () => {
     togglePopupVisibility()
@@ -49,7 +51,7 @@ const OwnerHome: React.FC = () => {
 
   const togglePopupVisibility = () => setIsLogoutPop((val) => !val)
 
-  if (!myRestaurants || myRestaurants.length === 0) {
+  if (!data || data?.getOwnedRestaurants?.length === 0) {
     return (
       <EmptyRestaurants
         isLogoutPopupVisible={isLogoutPop}
@@ -61,12 +63,15 @@ const OwnerHome: React.FC = () => {
   }
 
   return (
-    <OwnerView
-      isLogoutPopupVisible={isLogoutPop}
-      onNegativeModalPress={togglePopupVisibility}
-      onLogout={handleLogout}
-      onPlusPress={handleAddRestaurant}
-    />
+    <ApiResult loading={loading} error={error}>
+      <OwnerView
+        restaurantData={data?.getOwnedrestaurants}
+        isLogoutPopupVisible={isLogoutPop}
+        onNegativeModalPress={togglePopupVisibility}
+        onLogout={handleLogout}
+        onPlusPress={handleAddRestaurant}
+      />
+    </ApiResult>
   )
 }
 

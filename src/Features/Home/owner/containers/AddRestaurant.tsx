@@ -2,9 +2,10 @@ import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 
 import AddRestaurantForm from '../components/AddRestaurantForm'
-import userInfoVars from '../../../../store'
 import { useFormik } from 'formik'
 import { AddRestaurantValidationSchema } from '../../constants'
+import { useAddRestaurant, useOwnerRestaurants } from '../../hooks'
+import ApiResult from '../../../../components/ApiResult'
 
 export interface RestaurantType {
   restaurantName: string
@@ -14,8 +15,8 @@ export interface RestaurantType {
 }
 
 const AddRestaurant: React.FC = () => {
-  const { token } = userInfoVars()
   const navigation = useNavigation()
+  const { refetch } = useOwnerRestaurants()
   const { values, errors, isValid, dirty, setFieldValue } = useFormik<RestaurantType>({
     initialValues: {
       restaurantName: '',
@@ -27,23 +28,33 @@ const AddRestaurant: React.FC = () => {
     onSubmit: () => {},
   })
 
-  const handleSave = ({ restaurantName, address, email, contactNumber }: RestaurantType) => {
+  const { onAddRestaurantMutate, loading, error } = useAddRestaurant({
+    contactNumber: parseFloat(values['contactNumber']),
+    restaurantName: values['restaurantName'],
+    address: values['address'],
+  })
+
+  const handleSave = async ({ restaurantName, address, email, contactNumber }: RestaurantType) => {
     if (!restaurantName || !address || !email || !contactNumber) return
 
+    await onAddRestaurantMutate()
+    refetch()
     navigation.goBack()
   }
 
   return (
-    <AddRestaurantForm
-      onSave={handleSave}
-      values={values}
-      errors={errors}
-      handleChange={(fieldName: string) => (e: React.ChangeEvent) => {
-        setFieldValue(fieldName, e)
-      }}
-      isValid={isValid}
-      dirty={dirty}
-    />
+    <ApiResult loading={loading} error={error}>
+      <AddRestaurantForm
+        onSave={handleSave}
+        values={values}
+        errors={errors}
+        handleChange={(fieldName: string) => (e: React.ChangeEvent) => {
+          setFieldValue(fieldName, e)
+        }}
+        isValid={isValid}
+        dirty={dirty}
+      />
+    </ApiResult>
   )
 }
 

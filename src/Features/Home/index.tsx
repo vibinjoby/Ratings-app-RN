@@ -27,6 +27,7 @@ const HomeStack = () => {
   return (
     <Stack.Navigator screenOptions={screenOptions} initialRouteName={route.params?.initialRoute}>
       <Stack.Screen name={ScreenNames.CUSTOMER_HOME} component={CustomerHome} />
+      <Stack.Screen name={ScreenNames.RESTAURANT_DETAILS} component={CustomerHome} />
       <Stack.Screen name={ScreenNames.ADMIN_HOME} component={AdminHome} />
       <Stack.Screen name={ScreenNames.OWNER_HOME} component={OwnerHome} />
       <Stack.Screen

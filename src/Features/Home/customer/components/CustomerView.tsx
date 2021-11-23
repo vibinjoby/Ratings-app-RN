@@ -1,16 +1,20 @@
 import React from 'react'
-import { FlatList, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
+import { Text, TouchableOpacity, View } from 'react-native'
 import MaterialCommIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import ModalPopup from '../../../../components/ModalPopup'
-import RestaurantCard from '../../../../components/RestaurantCard'
 import Colors from '../../../../utilities/colors'
+import { RestaurantList_getRestaurants_page_edges as RestaurantData } from '../../gql/__generated__/RestaurantList'
 import { HomeViewProps } from '../../types'
 import styles from '../styles'
+import RestaurantList from './RestaurantList'
 
 interface CustomerViewProps {
   sortBy: string
   onSort: () => void
+  restaurantList: Array<RestaurantData>
+  onEndReached: () => void
+  onCardPress: (id: number | undefined) => void
 }
 
 const CustomerView = ({
@@ -19,9 +23,11 @@ const CustomerView = ({
   onNegativeModalPress,
   sortBy,
   onSort,
+  restaurantList,
+  onEndReached,
+  onCardPress,
 }: HomeViewProps & CustomerViewProps) => (
   <>
-    <SafeAreaView />
     <ModalPopup
       testID="logoutPop"
       isVisible={isLogoutPopupVisible}
@@ -43,27 +49,13 @@ const CustomerView = ({
           />
         </TouchableOpacity>
       </View>
-      <FlatList
-        testID="restaurantContainer"
-        scrollIndicatorInsets={{ right: 1 }}
-        contentContainerStyle={styles.contentContainer}
-        style={styles.flatlist}
-        data={[]}
-        renderItem={({ item, index }) => (
-          <RestaurantCard //@ts-ignore
-            id={item._id} //@ts-ignore
-            title={item.restaurant_name} //@ts-ignore
-            ratings={item.average_ratings} //@ts-ignore
-            reviewCount={item.reviewsCount} //@ts-ignore
-            restaurantImg={{ uri: constants.DUMMY_PIC }}
-            testID={`card${index}`}
-          />
-        )}
-        ItemSeparatorComponent={() => <View style={styles.spacing} />}
-        keyExtractor={(_, index) => index.toString()}
+      <RestaurantList
+        listData={restaurantList}
+        onEndReached={onEndReached}
+        onCardPress={onCardPress}
       />
     </View>
   </>
 )
 
-export default React.memo(CustomerView)
+export default CustomerView

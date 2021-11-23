@@ -8,7 +8,7 @@ import Colors from '../../utilities/colors'
 
 export interface OwnerRestaurantCardProps {
   testID?: string
-  id?: string
+  id?: number
   title: string
   ratings: number
   reviewsCount: number

@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import {
   Image,
@@ -8,7 +7,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import routes from '../../navigations/routes'
 
 import Colors from '../../utilities/colors'
 import Stars from '../Stars'
@@ -16,25 +14,21 @@ import styles from './styles'
 
 export interface RestaurantCardProps {
   testID?: string
-  id: string
-  title: string
-  ratings: number
+  title: string | undefined
+  ratings: number | undefined
   restaurantImg: ImageSourcePropType
   reviewCount: number
-  onPress?: () => void
+  onPress: () => void
 }
 
 const RestaurantCard: React.FC<RestaurantCardProps> = ({
   testID,
-  id,
   title,
-  ratings,
+  ratings = 0,
   restaurantImg,
   reviewCount,
   onPress,
 }: RestaurantCardProps) => {
-  const navigation = useNavigation()
-
   const RatingOverview = () => (
     <View style={styles.ratingWrapper}>
       <Image style={styles.starImg} source={require('../../assets/star/star.png')} />
@@ -49,8 +43,7 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
       testID={testID}
       activeOpacity={0.8}
       style={styles.container}
-      //@ts-ignore
-      onPress={() => (onPress ? onPress() : navigation.navigate(routes.RESTAURANT_DETAILS, { id }))}
+      onPress={onPress}
     >
       <View>
         <ImageBackground

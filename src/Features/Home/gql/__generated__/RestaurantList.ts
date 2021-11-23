@@ -35,8 +35,6 @@ export interface RestaurantList_getRestaurants_page {
 export interface RestaurantList_getRestaurants_pageData {
   __typename: "PageData";
   count: number;
-  limit: number;
-  offset: number;
 }
 
 export interface RestaurantList_getRestaurants {
