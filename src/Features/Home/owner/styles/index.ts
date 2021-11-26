@@ -9,31 +9,14 @@ export default StyleSheet.create({
     backgroundColor: Colors.white,
   },
   contentContainer: { justifyContent: 'space-between' },
-  navHeader: {
-    shadowColor: Colors.black,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.23,
-    shadowRadius: 2.62,
 
-    elevation: 6,
-  },
   headerWrapper: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 20,
   },
-  customerSalutation: {
-    ...Typography.RegularFont,
-    fontSize: 16,
-    paddingLeft: 20,
-  },
-  logout: {
-    marginRight: 20,
-  },
+
   userPic: {
     width: 37,
     height: 37,
@@ -85,8 +68,5 @@ export default StyleSheet.create({
   noReviewTxt: {
     ...Typography.RegularFont,
     fontSize: 24,
-  },
-  logoutBtn: {
-    marginRight: 20,
   },
 })

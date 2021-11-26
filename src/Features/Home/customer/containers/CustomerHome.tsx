@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import { TouchableOpacity } from 'react-native'
-import MaterialCommIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 
-import styles from '../styles'
-import Colors from '../../../../utilities/colors'
 import { removeData } from '../../../../utilities/helpers'
 import { ScreenNames } from '../../../../BaseModule/constants'
 import CustomerView from '../components/CustomerView'
 import { useAllRestaurants } from '../../hooks'
 import ApiResult from '../../../../components/ApiResult'
+import { useNavBar } from '../../../../utilities/CustomNavBar'
 
 const CustomerHome: React.FC = () => {
   const [isLogoutPop, setIsLogoutPop] = useState(false)
@@ -18,22 +15,6 @@ const CustomerHome: React.FC = () => {
   const navigation = useNavigation()
 
   const { data, loading, error, fetchMore } = useAllRestaurants()
-
-  useEffect(() => {
-    navigation.setOptions({
-      title: '',
-      headerRight: () => (
-        <TouchableOpacity activeOpacity={0.9} onPress={togglePopupVisibility} testID="logoutBtn">
-          <MaterialCommIcons
-            name="logout"
-            size={25}
-            color={Colors.appOrange}
-            style={styles.logoutBtn}
-          />
-        </TouchableOpacity>
-      ),
-    })
-  }, [])
 
   const handleLogout = async () => {
     togglePopupVisibility()
@@ -48,6 +29,8 @@ const CustomerHome: React.FC = () => {
     setSortBy((val) => (val === 'sort-ascending' ? 'sort-descending' : 'sort-ascending'))
 
   const togglePopupVisibility = () => setIsLogoutPop((val) => !val)
+
+  useNavBar({ togglePopupVisibility })
 
   const handleEndReached = () => {
     if (!data.getRestaurants.page.pageInfo.hasNextPage) return

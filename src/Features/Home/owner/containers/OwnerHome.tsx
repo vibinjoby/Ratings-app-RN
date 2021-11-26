@@ -1,17 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import { TouchableOpacity } from 'react-native'
+import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
-import MaterialCommIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import EmptyRestaurants from '../components/EmptyRestaurants'
-import styles from '../styles'
-import Colors from '../../../../utilities/colors'
 import OwnerView from '../components/OwnerView'
 import { ScreenNames as BaseScreenNames } from '../../../../BaseModule/constants'
 import { ScreenNames } from '../../constants'
 import { removeData } from '../../../../utilities/helpers'
 import { useOwnerRestaurants } from '../../hooks'
 import ApiResult from '../../../../components/ApiResult'
+import { useNavBar } from '../../../../utilities/CustomNavBar'
 
 const OwnerHome: React.FC = () => {
   const [isLogoutPop, setIsLogoutPop] = useState(false)
@@ -29,29 +26,11 @@ const OwnerHome: React.FC = () => {
 
   const handleAddRestaurant = () => navigation.navigate(ScreenNames.ADD_RESTAURANT)
 
-  useEffect(() => {
-    navigation.setOptions({
-      headerRight: () => (
-        <TouchableOpacity
-          testID="logoutBtn"
-          activeOpacity={0.9}
-          onPress={togglePopupVisibility}
-          style={styles.logout}
-        >
-          <MaterialCommIcons
-            name="logout"
-            size={25}
-            color={Colors.appOrange}
-            style={styles.logoutBtn}
-          />
-        </TouchableOpacity>
-      ),
-    })
-  }, [])
-
   const togglePopupVisibility = () => setIsLogoutPop((val) => !val)
 
-  if (!data || data?.getOwnedRestaurants?.length === 0) {
+  useNavBar({ togglePopupVisibility })
+
+  if (data?.getOwnedrestaurants?.length === 0) {
     return (
       <EmptyRestaurants
         isLogoutPopupVisible={isLogoutPop}
