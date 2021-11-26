@@ -11,6 +11,7 @@ import PlusIcon from './PlusIcon'
 interface OwnerViewProps {
   restaurantData: Array<RestaurantData>
   onPlusPress: ButtonProps['onPress']
+  onCardPress: (id: number) => void
 }
 
 const OwnerView = ({
@@ -19,6 +20,7 @@ const OwnerView = ({
   onLogout,
   onNegativeModalPress,
   onPlusPress,
+  onCardPress,
 }: HomeViewProps & OwnerViewProps) => (
   <>
     <SafeAreaView />
@@ -43,7 +45,7 @@ const OwnerView = ({
             title={item.restaurantName}
             ratings={item.averageRatings}
             reviewsCount={0}
-            onPress={() => {}}
+            onPress={onCardPress}
           />
         )}
         ItemSeparatorComponent={() => <View style={styles.spacing} />}

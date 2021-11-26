@@ -30,6 +30,10 @@ const OwnerHome: React.FC = () => {
 
   useNavBar({ togglePopupVisibility })
 
+  const handleCardPress = (id: number) => {
+    navigation.navigate(ScreenNames.RESTAURANT_DETAILS_NAV, { restaurantId: id })
+  }
+
   if (data?.getOwnedrestaurants?.length === 0) {
     return (
       <EmptyRestaurants
@@ -49,6 +53,7 @@ const OwnerHome: React.FC = () => {
         onNegativeModalPress={togglePopupVisibility}
         onLogout={handleLogout}
         onPlusPress={handleAddRestaurant}
+        onCardPress={handleCardPress}
       />
     </ApiResult>
   )

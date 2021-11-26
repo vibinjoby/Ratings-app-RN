@@ -2,7 +2,7 @@ import React from 'react'
 import { ImageBackground, ScrollView, Text, View } from 'react-native'
 
 import styles from '../styles/RestaurantDetails'
-import ReviewBlock from '../../../../components/ReviewBlock'
+import ReviewBlock from '../../../components/ReviewBlock'
 import RatingsOverview from './RatingsOverview'
 
 const ReviewsHeader = ({ title }: any) => (

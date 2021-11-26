@@ -1,7 +1,7 @@
 import React from 'react'
 import { ImageBackground, Text, View } from 'react-native'
 
-import PlusIcon from '../../owner/components/PlusIcon'
+import PlusIcon from '../../Home/owner/components/PlusIcon'
 import RatingsOverview from './RatingsOverview'
 import styles from '../styles/RestaurantDetails'
 

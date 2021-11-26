@@ -8,14 +8,15 @@ import Colors from '../../utilities/colors'
 
 export interface OwnerRestaurantCardProps {
   testID?: string
-  id?: number
+  id: number
   title: string
   ratings: number
   reviewsCount: number
-  onPress: () => void
+  onPress: (id: number) => void
 }
 
 const OwnerRestaurantCard: React.FC<OwnerRestaurantCardProps> = ({
+  id,
   testID,
   title,
   ratings,
@@ -25,7 +26,7 @@ const OwnerRestaurantCard: React.FC<OwnerRestaurantCardProps> = ({
   return (
     <TouchableOpacity
       testID={testID}
-      onPress={onPress}
+      onPress={() => onPress(id)}
       style={styles.container}
       activeOpacity={0.7}
     >

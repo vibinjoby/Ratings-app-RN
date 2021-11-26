@@ -10,18 +10,20 @@ import AddRestaurant from './owner/containers/AddRestaurant'
 import { HomeRouteProps } from './types'
 import { ScreenNames } from './constants'
 import { ScreenNames as BaseModuleScreenNames } from '../../BaseModule/constants'
+import RestaurantDetailsNav from '../Restaurant'
 
 const HomeStack = () => {
   const route = useRoute<HomeRouteProps>()
-  const screenOptions = {}
   const Stack = createStackNavigator()
 
   return (
-    <Stack.Navigator screenOptions={screenOptions} initialRouteName={route.params?.initialRoute}>
+    <Stack.Navigator initialRouteName={route.params?.initialRoute}>
       <Stack.Screen name={ScreenNames.CUSTOMER_HOME} component={CustomerHome} />
       <Stack.Screen name={ScreenNames.RESTAURANT_DETAILS} component={CustomerHome} />
       <Stack.Screen name={ScreenNames.ADMIN_HOME} component={AdminHome} />
       <Stack.Screen name={ScreenNames.OWNER_HOME} component={OwnerHome} />
+      <Stack.Screen name={ScreenNames.RESTAURANT_DETAILS_NAV} component={RestaurantDetailsNav} />
+
       <Stack.Screen
         name={ScreenNames.ADD_RESTAURANT}
         component={AddRestaurant}
