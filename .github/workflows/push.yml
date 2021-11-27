@@ -36,8 +36,6 @@ jobs:
 
       - name: Node
         uses: actions/setup-node@v2
-        with:
-          node-version: '14.8.1'
 
       - name: Use specific Java version for sdkmanager to work
         uses: joschi/setup-jdk@v2
