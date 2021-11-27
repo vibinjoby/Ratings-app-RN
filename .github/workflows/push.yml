@@ -46,7 +46,7 @@ jobs:
       - name: Download Android Emulator Image
         run: |
           echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install "system-images;android-29;google_apis;x86"
-          echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd --force --name emu --device "Pixel_3a_XL_API_30" -k 'system-images;android-29;google_apis;x86'
+          echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd --force --name emu --device "Nexus 5X" -k 'system-images;android-29;google_apis;x86'
           $ANDROID_HOME/emulator/emulator -list-avds
       - name: Install node_modules
         run: |
@@ -55,7 +55,7 @@ jobs:
       - name: Build for detox
         run: |
           yarn android:e2e:build
-      - name: Android Emulator
+      - name: Start Android Emulator
         timeout-minutes: 10
         continue-on-error: true
         run: |
@@ -64,5 +64,5 @@ jobs:
           $ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done; input keyevent 82'
           $ANDROID_HOME/platform-tools/adb devices
           echo "Emulator started"
-      - name: Android Detox
+      - name: Run detox tests on android emulator
         run: yarn android:e2e:test
