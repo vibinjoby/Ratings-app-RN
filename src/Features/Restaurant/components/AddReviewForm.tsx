@@ -15,7 +15,7 @@ interface AddReviewFormProps {
   handleChange: (fieldName: string) => FormikHandlers['handleChange']
 }
 
-const AddReviewForm = ({ onSave, values, errors, handleChange }: AddReviewFormProps) => {
+const AddReviewForm = ({ onSave, values, handleChange }: AddReviewFormProps) => {
   return (
     <View style={styles.container} testID="container">
       <Text style={styles.titleTxt}>How was your experience</Text>
