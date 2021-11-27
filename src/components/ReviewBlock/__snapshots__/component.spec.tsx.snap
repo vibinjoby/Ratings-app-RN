@@ -391,7 +391,7 @@ exports[`ReviewBlock should render 1`] = `
         }
         testID="visitDt"
       >
-        20 Jun 2021
+        20th Jun,2021
       </Text>
     </View>
     <Text

@@ -7,7 +7,7 @@ describe('ReviewBlock', () => {
   const MOCK_SEND = jest.fn()
   const MOCK_EDIT_SAVE = jest.fn()
   const MOCK_OPTION_PRESS = jest.fn()
-  const MOCK_ID = '123'
+  const MOCK_ID = 123
   const MOCK_REVIEW_NAME = 'VIBIN'
   const MOCK_COMMENTS = 'This is not too bad at all'
   const MOCK_RATINGS = 3
@@ -45,7 +45,7 @@ describe('ReviewBlock', () => {
       />,
     )
     expect(getByTestId('reviewerName').props.children).toBe(MOCK_REVIEW_NAME)
-    expect(getByTestId('visitDt').props.children).toBe(MOCK_VISIT_DT)
+    expect(getByTestId('visitDt').props.children).toBe('20th Jun,2021')
     expect(getByTestId('comments').props.children).toBe(MOCK_COMMENTS)
 
     // Pressing the reply button
@@ -63,7 +63,7 @@ describe('ReviewBlock', () => {
         comments={MOCK_COMMENTS}
         ratings={MOCK_RATINGS}
         visitDate={MOCK_VISIT_DT}
-        owner_reply={MOCK_OWNER_REPLY}
+        ownerReply={MOCK_OWNER_REPLY}
         onSend={MOCK_SEND}
         onEditSave={MOCK_EDIT_SAVE}
         onOptionPress={MOCK_OPTION_PRESS}
@@ -80,7 +80,7 @@ describe('ReviewBlock', () => {
         comments={MOCK_COMMENTS}
         ratings={MOCK_RATINGS}
         visitDate={MOCK_VISIT_DT}
-        owner_reply={MOCK_OWNER_REPLY}
+        ownerReply={MOCK_OWNER_REPLY}
         onSend={MOCK_SEND}
         onEditSave={MOCK_EDIT_SAVE}
         onOptionPress={MOCK_OPTION_PRESS}

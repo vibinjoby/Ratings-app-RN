@@ -22,6 +22,7 @@ exports[`ReplyReview should render 1`] = `
     }
   >
     <TextInput
+      autoFocus={true}
       onChangeText={[Function]}
       placeholder="Type Reply..."
       style={
