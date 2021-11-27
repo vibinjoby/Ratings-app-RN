@@ -1,7 +1,8 @@
 ## E2E testing using detox
 
-Build the android release using `npm run android:e2e:build`
-Run `npm run android:e2e:test` to execute the detox test
+Build the android release using `yarn android:e2e:build`
+
+Run `yarn android:e2e:test` to execute the detox test
 
 | Step-1 | Step-2 | Step-3 | Step-4
 | --------------- | --------------- | --------------- | --------------- |
