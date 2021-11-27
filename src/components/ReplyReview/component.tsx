@@ -4,8 +4,8 @@ import { Image, TextInput, TouchableOpacity, View } from 'react-native'
 import styles from './styles'
 
 export interface ReplyReviewProps {
-  _id: string
-  onSend: (arg0: string, arg1: string) => void
+  _id: number
+  onSend: (arg0: string, arg1: number) => void
 }
 
 const ReplyReview: React.FC<ReplyReviewProps> = ({ _id, onSend }: ReplyReviewProps) => {
@@ -14,6 +14,7 @@ const ReplyReview: React.FC<ReplyReviewProps> = ({ _id, onSend }: ReplyReviewPro
     <View style={styles.container}>
       <View style={styles.replyWrapper}>
         <TextInput
+          autoFocus
           testID="replyInput"
           value={inputVal}
           placeholder="Type Reply..."

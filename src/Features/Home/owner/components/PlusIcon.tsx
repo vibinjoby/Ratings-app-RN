@@ -1,10 +1,10 @@
 import React from 'react'
-import { Text, TouchableOpacity } from 'react-native'
+import { Text, TouchableOpacity, TouchableOpacityProps } from 'react-native'
 
 import styles from '../styles'
 
 export interface PlusIconProps {
-  onPress: () => void
+  onPress: TouchableOpacityProps['onPress']
 }
 
 const PlusIcon = ({ onPress }: PlusIconProps) => (

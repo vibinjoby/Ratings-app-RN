@@ -46,3 +46,8 @@ export interface RestaurantList_getRestaurants {
 export interface RestaurantList {
   getRestaurants: RestaurantList_getRestaurants;
 }
+
+export interface RestaurantListVariables {
+  limit?: number | null;
+  offset?: number | null;
+}

@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react'
-import { StyleSheet, Text, TouchableOpacity } from 'react-native'
+import { Text, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import MaterialCommIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
-import Colors from './colors'
-import userInfoVars from '../store'
-import Typography from './typography'
+import userInfoVars from '../../store'
+import Colors from '../../utilities/colors'
+import styles from './styles'
 
 export interface NavBarProps {
   togglePopupVisibility: () => void
 }
 
-export const useNavBar = ({ togglePopupVisibility }: NavBarProps) => {
+const useNavBar = ({ togglePopupVisibility }: NavBarProps) => {
   const { userInfo } = userInfoVars()
   const navigation = useNavigation()
   useEffect(() => {
@@ -33,24 +33,4 @@ export const useNavBar = ({ togglePopupVisibility }: NavBarProps) => {
   }, [togglePopupVisibility])
 }
 
-const styles = StyleSheet.create({
-  logoutBtn: {
-    marginRight: 20,
-  },
-  customerSalutation: {
-    ...Typography.RegularFont,
-    fontSize: 16,
-    paddingLeft: 20,
-  },
-  navHeader: {
-    shadowColor: Colors.black,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.23,
-    shadowRadius: 2.62,
-
-    elevation: 6,
-  },
-})
+export default useNavBar

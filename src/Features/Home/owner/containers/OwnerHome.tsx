@@ -8,7 +8,7 @@ import { ScreenNames } from '../../constants'
 import { removeData } from '../../../../utilities/helpers'
 import { useOwnerRestaurants } from '../../hooks'
 import ApiResult from '../../../../components/ApiResult'
-import { useNavBar } from '../../../../utilities/CustomNavBar'
+import useNavBar from '../../../../components/CustomNavBar'
 
 const OwnerHome: React.FC = () => {
   const [isLogoutPop, setIsLogoutPop] = useState(false)

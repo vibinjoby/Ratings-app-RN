@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { removeData } from '../../../../utilities/helpers'
 import { ScreenNames } from '../../../../BaseModule/constants'
 import AdminView from '../components/AdminView'
-import { useNavBar } from '../../../../utilities/CustomNavBar'
+import useNavBar from '../../../../components/CustomNavBar'
 
 const AdminHome: React.FC = () => {
   const [isLogoutPop, setIsLogoutPop] = useState(false)

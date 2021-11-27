@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 
 import { removeData } from '../../../../utilities/helpers'
-import { ScreenNames } from '../../../../BaseModule/constants'
+import { ScreenNames as BaseModuleScreenNames } from '../../../../BaseModule/constants'
+import { ScreenNames } from '../../constants'
 import CustomerView from '../components/CustomerView'
 import { useAllRestaurants } from '../../hooks'
 import ApiResult from '../../../../components/ApiResult'
-import { useNavBar } from '../../../../utilities/CustomNavBar'
+import useNavBar from '../../../../components/CustomNavBar'
 
 const CustomerHome: React.FC = () => {
   const [isLogoutPop, setIsLogoutPop] = useState(false)
@@ -21,7 +22,7 @@ const CustomerHome: React.FC = () => {
     await removeData('userInfo')
     navigation.reset({
       index: 0,
-      routes: [{ name: ScreenNames.AUTH_STACK }],
+      routes: [{ name: BaseModuleScreenNames.AUTH_STACK }],
     })
   }
 
@@ -44,7 +45,7 @@ const CustomerHome: React.FC = () => {
   }
 
   const handleCardPress = (id: number | undefined) => {
-    navigation.navigate('')
+    navigation.navigate(ScreenNames.RESTAURANT_DETAILS_NAV, { restaurantId: id })
   }
 
   return (

@@ -2,8 +2,9 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import { useRoute } from '@react-navigation/native'
 
-import { ScreenNames } from './constants'
 import RestaurantDetails from './containers/RestaurantDetails'
+import AddReview from './containers/AddReview'
+import { ScreenNames } from './constants'
 import { DetailsRouteProps } from './types'
 
 const RestaurantDetailsNav = () => {
@@ -15,6 +16,11 @@ const RestaurantDetailsNav = () => {
       <Stack.Screen
         name={ScreenNames.DETAILS}
         component={RestaurantDetails}
+        initialParams={{ restaurantId: route.params.restaurantId }}
+      />
+      <Stack.Screen
+        name={ScreenNames.ADD_REVIEW}
+        component={AddReview}
         initialParams={{ restaurantId: route.params.restaurantId }}
       />
     </Stack.Navigator>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, TouchableOpacity } from 'react-native'
+import { Text, TouchableOpacity, ButtonProps as RNButtonProps } from 'react-native'
 import Colors from '../../utilities/colors'
 
 import styles from './styles'
@@ -11,7 +11,7 @@ export interface ButtonProps {
   textColor?: string
   customStyle?: Record<string, unknown>
   disabled?: boolean
-  onPress: () => void
+  onPress: RNButtonProps['onPress']
 }
 
 const Button: React.FC<ButtonProps> = ({

@@ -19,10 +19,13 @@ const HomeStack = () => {
   return (
     <Stack.Navigator initialRouteName={route.params?.initialRoute}>
       <Stack.Screen name={ScreenNames.CUSTOMER_HOME} component={CustomerHome} />
-      <Stack.Screen name={ScreenNames.RESTAURANT_DETAILS} component={CustomerHome} />
       <Stack.Screen name={ScreenNames.ADMIN_HOME} component={AdminHome} />
       <Stack.Screen name={ScreenNames.OWNER_HOME} component={OwnerHome} />
-      <Stack.Screen name={ScreenNames.RESTAURANT_DETAILS_NAV} component={RestaurantDetailsNav} />
+      <Stack.Screen
+        name={ScreenNames.RESTAURANT_DETAILS_NAV}
+        options={{ headerShown: false }}
+        component={RestaurantDetailsNav}
+      />
 
       <Stack.Screen
         name={ScreenNames.ADD_RESTAURANT}

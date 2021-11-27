@@ -23,6 +23,13 @@ export interface CreateRestaurantInput {
   contactNumber: number;
 }
 
+export interface CreateReviewInput {
+  ratings: number;
+  visitDate: any;
+  comments: string;
+  restaurantId: number;
+}
+
 export interface CreateUserInput {
   email: string;
   fullName: string;

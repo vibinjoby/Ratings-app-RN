@@ -3,10 +3,14 @@ import { Text, View, Image } from 'react-native'
 
 import styles from '../styles/RestaurantDetails'
 
-const RatingsOverview = () => (
+export interface RatingsOverviewProps {
+  ratings: number
+}
+
+const RatingsOverview = ({ ratings }: RatingsOverviewProps) => (
   <View style={styles.ratingOverview}>
     <Image style={styles.starImg} source={require('../../../assets/star/star.png')} />
-    <Text style={styles.ratings}>{/* restaurantDetail.restaurantData.average_ratings */}</Text>
+    <Text style={styles.ratings}>{ratings}</Text>
   </View>
 )
 

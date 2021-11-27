@@ -1,9 +1,36 @@
 import React from 'react'
-import { ImageBackground, ScrollView, Text, View } from 'react-native'
+import { ImageBackground, ScrollView, Text, TouchableOpacityProps, View } from 'react-native'
 
 import styles from '../styles/RestaurantDetails'
 import ReviewBlock from '../../../components/ReviewBlock'
 import RatingsOverview from './RatingsOverview'
+import {
+  RestaurantDetails_getRestaurant as RestaurantDetails,
+  RestaurantDetails_getRestaurant_reviews as Reviews,
+} from '../gql/__generated__/RestaurantDetails'
+import EmptyRestaurantDetailView from './EmptyRestaurantDetailView'
+import { UserType } from '../../../../__generated__/globalTypes'
+import PlusIcon from '../../Home/owner/components/PlusIcon'
+
+interface RestaurantDetailViewProps {
+  restaurantData: RestaurantDetails
+  userType: string | undefined
+  onAddReview: TouchableOpacityProps['onPress']
+  onSaveReply: (arg0: number, arg1: string) => void
+}
+
+interface ReviewWrapperProps {
+  userType: string
+  reviews: Array<Reviews> | null
+  onSaveReply: (arg0: number, arg1: string) => void
+}
+
+interface ReviewsWithHeaderProps {
+  userType: string
+  reviews: Array<Reviews>
+  title: string
+  onSaveReply: (arg0: number, arg1: string) => void
+}
 
 const ReviewsHeader = ({ title }: any) => (
   <View style={styles.reviewBorder}>
@@ -11,64 +38,68 @@ const ReviewsHeader = ({ title }: any) => (
   </View>
 )
 
-interface RestaurantDetailViewProps {
-  restaurantData: any
+const ReviewsWithHeader = ({ userType, title, reviews, onSaveReply }: ReviewsWithHeaderProps) => {
+  return (
+    <View>
+      <ReviewsHeader title={title} />
+      {reviews!.map((review, index) => (
+        <ReviewBlock
+          shouldReply={userType === UserType.owner}
+          key={index}
+          reviewId={review.id}
+          reviewerName={review.user.fullName}
+          comments={review.comments}
+          visitDate={review.visitDate}
+          ratings={review.ratings}
+          ownerReply={review.ownerReply ?? ''}
+          onSend={onSaveReply}
+        />
+      ))}
+    </View>
+  )
 }
 
-const RestaurantDetailView = ({ restaurantData }: RestaurantDetailViewProps) => (
-  <ScrollView scrollIndicatorInsets={{ right: 1 }}>
-    <View style={styles.container} testID="detailsContainer">
-      <ImageBackground
-        style={styles.headerBg}
-        source={{ uri: 'https://source.unsplash.com/user/picoftasty' }}
-      >
-        <Text style={styles.restaurantTitle}>{restaurantData.restaurant_name}</Text>
-        <RatingsOverview />
-      </ImageBackground>
-      <View style={styles.contentContainer} testID="contentContainer">
-        <ReviewsHeader title="Latest Rated" />
-        {/* {latestReviews.slice(0, 3).map((item, index) => (
-          <ReviewBlock
-            key={index}
-            reviewId={item?._id}
-            reviewerName={item?.rated_user_id?.fullName}
-            comments={item?.comments}
-            visitDate={item?.visit_date}
-            ratings={item?.ratings}
-            owner_reply={item?.owner_reply}
-          />
-        ))}
-
-        {lowestRatedReview && (
-          <View style={styles.lowestWrapper}>
-            <ReviewsHeader title="Lowest Rated" />
-            <ReviewBlock
-              reviewId={restaurantDetail.lowestRatedReview?._id}
-              reviewerName={restaurantDetail.lowestRatedReview?.rated_user_id?.fullName}
-              comments={restaurantDetail.lowestRatedReview?.comments}
-              visitDate={restaurantDetail.lowestRatedReview?.visit_date}
-              ratings={restaurantDetail.lowestRatedReview?.ratings}
-              owner_reply={restaurantDetail.lowestRatedReview?.owner_reply}
-            />
-          </View>
-        )}
-
-        {highestRatedReview && (
-          <View style={styles.lowestWrapper}>
-            <ReviewsHeader title="Highest Rated" />
-            <ReviewBlock
-              reviewId={restaurantDetail.highestRatedReview?._id}
-              reviewerName={restaurantDetail.highestRatedReview?.rated_user_id?.fullName}
-              comments={restaurantDetail.highestRatedReview?.comments}
-              visitDate={restaurantDetail.highestRatedReview?.visit_date}
-              ratings={restaurantDetail.highestRatedReview?.ratings}
-              owner_reply={restaurantDetail.highestRatedReview?.owner_reply}
-            />
-          </View>
-        )} */}
-      </View>
+const ReviewWrapper = ({ reviews, userType, onSaveReply }: ReviewWrapperProps) => {
+  if (!reviews || reviews.length === 0) {
+    return <EmptyRestaurantDetailView />
+  }
+  return (
+    <View style={styles.contentContainer} testID="contentContainer">
+      <ReviewsWithHeader
+        onSaveReply={onSaveReply}
+        userType={userType}
+        title={'Latest Rated'}
+        reviews={reviews}
+      />
     </View>
-  </ScrollView>
+  )
+}
+
+const RestaurantDetailView = ({
+  restaurantData,
+  userType,
+  onAddReview,
+  onSaveReply,
+}: RestaurantDetailViewProps) => (
+  <>
+    <ScrollView scrollIndicatorInsets={{ right: 1 }}>
+      <View style={styles.container} testID="detailsContainer">
+        <ImageBackground
+          style={styles.headerBg}
+          source={{ uri: 'https://source.unsplash.com/user/picoftasty' }}
+        >
+          <Text style={styles.restaurantTitle}>{restaurantData.restaurantName}</Text>
+          <RatingsOverview ratings={restaurantData.averageRatings} />
+        </ImageBackground>
+        <ReviewWrapper
+          onSaveReply={onSaveReply}
+          userType={userType!}
+          reviews={restaurantData.reviews}
+        />
+      </View>
+    </ScrollView>
+    {userType === UserType.customer ? <PlusIcon onPress={onAddReview} /> : null}
+  </>
 )
 
 export default React.memo(RestaurantDetailView)

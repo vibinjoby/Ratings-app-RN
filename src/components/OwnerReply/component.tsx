@@ -3,10 +3,10 @@ import { Image, Text, View } from 'react-native'
 import styles from './styles'
 
 export interface OwnerReplyProps {
-  /* eslint-disable camelcase */ owner_reply: string
+  ownerReply: string
 }
-/* eslint-disable camelcase */
-const OwnerReply: React.FC<OwnerReplyProps> = ({ owner_reply }: OwnerReplyProps) => {
+
+const OwnerReply: React.FC<OwnerReplyProps> = ({ ownerReply }: OwnerReplyProps) => {
   return (
     <View style={styles.ownerWrapper}>
       <View style={styles.ownerTitleWrapper}>
@@ -15,8 +15,8 @@ const OwnerReply: React.FC<OwnerReplyProps> = ({ owner_reply }: OwnerReplyProps)
           Business Owner
         </Text>
       </View>
-      {/* eslint-disable camelcase */}
-      <Text testID="ownerReply">{owner_reply}</Text>
+      {}
+      <Text testID="ownerReply">{ownerReply}</Text>
     </View>
   )
 }

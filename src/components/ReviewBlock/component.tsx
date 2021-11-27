@@ -1,3 +1,4 @@
+import moment from 'moment'
 import React, { useState } from 'react'
 import { Text, View, Image } from 'react-native'
 
@@ -10,18 +11,18 @@ import ThreeVerticalDots from '../ThreeVerticalDots'
 import styles from './styles'
 
 export interface ReviewBlockProps {
-  reviewId: string
+  reviewId: number
   reviewerName: string
   comments: string
   ratings: number
-  visitDate: string /* eslint-disable camelcase */
-  owner_reply?: string
+  visitDate: string
+  ownerReply?: string
   shouldReply?: boolean
   isEditResponse?: boolean
-  onSend?: (arg0: string, arg1: string) => void
+  onSend?: (arg0: number, arg1: string) => void
   showThreeDots?: boolean
   onOptionPress?: (arg0: number) => void
-  onEditSave?: (arg0: string, arg1?: string, arg2?: string, arg3?: number) => void
+  onEditSave?: (arg0: number, arg1?: string, arg2?: string, arg3?: number) => void
 }
 
 const ReviewBlock: React.FC<ReviewBlockProps> = ({
@@ -30,7 +31,7 @@ const ReviewBlock: React.FC<ReviewBlockProps> = ({
   comments,
   ratings,
   visitDate,
-  owner_reply,
+  ownerReply,
   shouldReply,
   onSend,
   showThreeDots,
@@ -47,7 +48,7 @@ const ReviewBlock: React.FC<ReviewBlockProps> = ({
     </Text>
   )
 
-  const onReply = (reviewId: string, replyComments: string) => {
+  const onReply = (replyComments: string, reviewId: number) => {
     setIsReplyPressed(false)
     onSend && onSend(reviewId, replyComments)
   }
@@ -85,16 +86,16 @@ const ReviewBlock: React.FC<ReviewBlockProps> = ({
               selectedColor={Colors.appOrange}
             />
             <Text testID="visitDt" style={styles.visitDt}>
-              {visitDate.substr(0, 13)}
+              {moment(visitDate).format('Do MMM,YYYY')}
             </Text>
           </View>
           <Text testID="comments" style={styles.comments}>
             {comments}
           </Text>
           {isReplyPressed && <ReplyReview _id={reviewId} onSend={onReply} />}
-          {shouldReply && !owner_reply && !isReplyPressed && <ReplyButton />}
-          {/* eslint-disable camelcase */}
-          {owner_reply ? <OwnerReply owner_reply={owner_reply} /> : <></>}
+          {shouldReply && !ownerReply && !isReplyPressed && <ReplyButton />}
+
+          {ownerReply ? <OwnerReply ownerReply={ownerReply} /> : <></>}
         </View>
         {showThreeDots && (
           <ThreeVerticalDots
@@ -109,7 +110,7 @@ const ReviewBlock: React.FC<ReviewBlockProps> = ({
         <EditResponse
           isVisible={showEditPop}
           customerResp={comments}
-          ownerResp={owner_reply}
+          ownerResp={ownerReply}
           ratings={ratings}
           onDismiss={toggleEditPopup}
           onEdit={onSave}
