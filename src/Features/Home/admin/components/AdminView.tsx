@@ -7,22 +7,16 @@ import styles from '../styles'
 import Content from './Content'
 import Seperator from './Seperator'
 
-const data = [
-  {
-    title: 'Users',
-    subHead: 'Find all the users registered in our app both customers and owners',
-    img: require('../../../../assets/usersPic/usersPic.png'),
-    onPress: () => ({}),
-  },
-  {
-    title: 'Restaurants',
-    subHead: 'Find all the restaurants created by owners in our app',
-    img: require('../../../../assets/restaurantsPic/restaurantsPic.png'),
-    onPress: () => ({}),
-  },
-]
+interface AdminViewProps {
+  data?: Array<any>
+}
 
-const AdminView = ({ isLogoutPopupVisible, onLogout, onNegativeModalPress }: HomeViewProps) => (
+const AdminView = ({
+  data,
+  isLogoutPopupVisible,
+  onLogout,
+  onNegativeModalPress,
+}: HomeViewProps & AdminViewProps) => (
   <View style={styles.container}>
     <ModalPopup
       testID="logoutPop"

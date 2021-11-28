@@ -48,6 +48,7 @@ type User {
 enum UserType {
   owner
   customer
+  admin
 }
 
 type Admin {
@@ -118,24 +119,24 @@ type Query {
   ): RestaurantResponse!
   getRestaurant(id: Int!): Restaurant!
   getOwnedrestaurants: [Restaurant!]!
+  findReviewsByRestaurantId(restaurantId: Int!): Review!
   review(id: Int!): Review!
 }
 
 type Mutation {
   createUser(createUserInput: CreateUserInput!): LoginOutput!
   updateUser(updateUserInput: UpdateUserInput!): User!
-  removeUser(id: Int!): String!
+  removeUser(id: Int!): Boolean!
   login(data: LoginInput!): LoginOutput!
   createAdmin(createAdminInput: CreateAdminInput!): Admin!
   loginAsAdmin(data: CreateAdminInput!): LoginOutput!
   createRestaurant(createRestaurantInput: CreateRestaurantInput!): Restaurant!
   updateRestaurant(updateRestaurantInput: UpdateRestaurantInput!): Restaurant!
-  removeRestaurant(id: Int!): Restaurant!
+  removeRestaurant(id: Int!): Boolean!
   createReview(createReviewInput: CreateReviewInput!): Review!
   createOwnerReply(reviewId: Int!, ownerReply: String!): Review!
-  findReviewsByRestaurantId(restaurantId: Int!): Review!
   updateReview(updateReviewInput: UpdateReviewInput!): Review!
-  removeReview(id: Int!): Review!
+  removeReview(id: Int!): Boolean!
 }
 
 input CreateUserInput {

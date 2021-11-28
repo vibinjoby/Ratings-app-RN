@@ -13,7 +13,7 @@ const EmptyRestaurantDetailView = ({ onAdd }: EmptyRestaurantDetailProps) => (
     <View style={styles.noReviewWrapper}>
       <Text style={styles.noReviewTxt}>No Reviews yet!!</Text>
     </View>
-    {onAdd ? <PlusIcon onPress={onAdd} /> : null}
+    {onAdd ? <PlusIcon testID="addReviewIc" onPress={onAdd} /> : null}
   </View>
 )
 

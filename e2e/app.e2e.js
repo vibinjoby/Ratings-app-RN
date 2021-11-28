@@ -14,7 +14,7 @@ describe('Ratings app', () => {
   it('should sign up as a owner', async () => {
     await element(by.id('rightTab')).tap()
     await element(by.id('fullName')).replaceText('vibincanada')
-    await element(by.id('email')).replaceText('vibin2canada@gmail.com')
+    await element(by.id('email')).replaceText('vibin3canada@gmail.com')
     await element(by.id('password')).replaceText('Password123!')
     await element(by.id('scrollContainer')).scrollTo('bottom')
     await element(by.id('confirmPassword')).replaceText('Password123!')
@@ -41,19 +41,23 @@ describe('Ratings app', () => {
   // STEP:-2 : SIGN IN AS CUSTOMER AND ADD YOUR REPLY
 
   it('should get past welcome screen', async () => {
-    // Sign in as a customer
-    await element(by.id('loginBtn')).tap()
+    // Sign up as a owner
+    await element(by.id('signupBtn')).tap()
   })
 
-  it('should login as a customer', async () => {
-    await element(by.id('email')).replaceText('chinchuv93@gmail.com')
+  it('should sign up as a customer', async () => {
+    await element(by.id('fullName')).replaceText('chinchu')
+    await element(by.id('email')).replaceText('chinchu393@gmail.com')
     await element(by.id('password')).replaceText('Password123!')
-    await element(by.id('signinBtn')).tap()
+    await element(by.id('scrollContainer')).scrollTo('bottom')
+    await element(by.id('confirmPassword')).replaceText('Password123!')
+
+    await element(by.id('signupBtn')).tap()
   })
 
   it('should find the last restaurant added and select it', async () => {
     await element(by.id('restaurantContainer')).scrollTo('bottom')
-    await element(by.text('Test restaurant')).tap()
+    await element(by.text('Test restaurant')).atIndex(1).tap()
     await element(by.id('addReviewIc')).tap()
   })
 
@@ -82,7 +86,7 @@ describe('Ratings app', () => {
 
   it('should login as a owner', async () => {
     await element(by.id('middleTab')).tap()
-    await element(by.id('email')).replaceText('vibin2canada@gmail.com')
+    await element(by.id('email')).replaceText('vibin3canada@gmail.com')
     await element(by.id('password')).replaceText('Password123!')
     await element(by.id('signinBtn')).tap()
   })
@@ -111,7 +115,7 @@ describe('Ratings app', () => {
     await element(by.id('loginBtn')).tap()
   })
 
-  it('should login as a owner', async () => {
+  it('should login as a admin', async () => {
     await element(by.id('rightTab')).tap()
     await element(by.id('email')).replaceText('admin')
     await element(by.id('password')).replaceText('admin')

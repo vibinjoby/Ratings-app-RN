@@ -8,6 +8,7 @@
 //==============================================================
 
 export enum UserType {
+  admin = "admin",
   customer = "customer",
   owner = "owner",
 }

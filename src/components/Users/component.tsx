@@ -5,10 +5,10 @@ import styles from './styles'
 import commons from '../../configs/commonConst'
 
 export interface UsersProps {
-  id: string
+  id: number
   name: string
   typeOfUser: string
-  onDelete: (arg0: string) => void
+  onDelete: (arg0: number) => void
   index?: number
 }
 

@@ -5,12 +5,13 @@ import styles from '../styles'
 
 export interface PlusIconProps {
   onPress: TouchableOpacityProps['onPress']
+  testID: string
 }
 
-const PlusIcon = ({ onPress }: PlusIconProps) => (
+const PlusIcon = ({ onPress, testID }: PlusIconProps) => (
   <TouchableOpacity
     activeOpacity={0.8}
-    testID="addRestaurant"
+    testID={testID}
     style={styles.plusIcContainer}
     onPress={onPress}
   >

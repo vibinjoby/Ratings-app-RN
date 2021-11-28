@@ -98,7 +98,9 @@ const RestaurantDetailView = ({
         />
       </View>
     </ScrollView>
-    {userType === UserType.customer ? <PlusIcon onPress={onAddReview} /> : null}
+    {userType === UserType.customer ? (
+      <PlusIcon testID="addReviewIc" onPress={onAddReview} />
+    ) : null}
   </>
 )
 

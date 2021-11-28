@@ -53,7 +53,7 @@ const OwnerView = ({
         keyExtractor={(_, index) => index.toString()}
       />
     </View>
-    <PlusIcon onPress={onPlusPress} />
+    <PlusIcon testID="addRestaurant" onPress={onPlusPress} />
   </>
 )
 
