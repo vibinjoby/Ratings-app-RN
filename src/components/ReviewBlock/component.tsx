@@ -8,6 +8,7 @@ import OwnerReply from '../OwnerReply'
 import ReplyReview from '../ReplyReview'
 import Stars from '../Stars'
 import ThreeVerticalDots from '../ThreeVerticalDots'
+import { UpdateReviewInput } from '../../../__generated__/globalTypes'
 import styles from './styles'
 
 export interface ReviewBlockProps {
@@ -22,7 +23,7 @@ export interface ReviewBlockProps {
   onSend?: (arg0: number, arg1: string) => void
   showThreeDots?: boolean
   onOptionPress?: (arg0: number) => void
-  onEditSave?: (arg0: number, arg1?: string, arg2?: string, arg3?: number) => void
+  onEditSave?: (updateInput: UpdateReviewInput) => void
 }
 
 const ReviewBlock: React.FC<ReviewBlockProps> = ({
@@ -57,9 +58,16 @@ const ReviewBlock: React.FC<ReviewBlockProps> = ({
     setShowEditPop((val) => !val)
   }
 
-  const onSave = (customerResponse?: string, ownerResponse?: string, stars?: number) => {
+  const onSave = (comments: string, ownerReply: string, ratings: number) => {
     toggleEditPopup()
-    onEditSave && onEditSave(reviewId, customerResponse, ownerResponse, stars)
+    onEditSave &&
+      onEditSave({
+        id: reviewId,
+        visitDate,
+        comments,
+        ownerReply,
+        ratings,
+      })
   }
 
   const onOptionSelected = (arg0: number) => {

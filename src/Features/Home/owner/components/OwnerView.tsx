@@ -3,13 +3,13 @@ import { ButtonProps, FlatList, SafeAreaView, Text, View } from 'react-native'
 
 import ModalPopup from '../../../../components/ModalPopup'
 import OwnerRestaurantCard from '../../../../components/OwnerRestaurantCard'
-import { RestaurantList_getRestaurants_page_edges_node as RestaurantData } from '../../gql/__generated__/RestaurantList'
+import { MyRestaurants_getOwnedrestaurants as RestaurantData } from '../../gql/__generated__/MyRestaurants'
 import { HomeViewProps } from '../../types'
 import styles from '../styles'
 import PlusIcon from './PlusIcon'
 
 interface OwnerViewProps {
-  restaurantData: Array<RestaurantData>
+  restaurantData: RestaurantData[] | undefined
   onPlusPress: ButtonProps['onPress']
   onCardPress: (id: number) => void
 }

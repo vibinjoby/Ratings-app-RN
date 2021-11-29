@@ -19,7 +19,7 @@ const AdminHome: React.FC = () => {
       title: 'Restaurants',
       subHead: 'Find all the restaurants created by owners in our app',
       img: require('../../../../assets/restaurantsPic/restaurantsPic.png'),
-      onPress: () => ({}),
+      onPress: () => navigation.navigate(ScreenNames.ALL_RESTAURANTS),
     },
   ]
   const [isLogoutPop, setIsLogoutPop] = useState(false)

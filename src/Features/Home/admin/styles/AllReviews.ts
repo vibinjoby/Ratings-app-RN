@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 
-import Colors from '../../utilities/colors'
-import Typography from '../../utilities/typography'
+import Colors from '../../../../utilities/colors'
+import Typography from '../../../../utilities/typography'
 
 export default StyleSheet.create({
   container: {

@@ -9,9 +9,9 @@ import styles from './styles'
 
 export interface RestaurantProps {
   testID?: string
-  restaurantName: string
-  ratings: number
-  reviewsCount: number
+  restaurantName?: string
+  ratings?: number
+  reviewsCount?: number
   onPress: () => void
 }
 
@@ -37,7 +37,7 @@ const Restaurant: React.FC<RestaurantProps> = ({
               testID="stars"
               selectedColor={Colors.appOrange}
               selectable={false}
-              selectedStars={ratings}
+              selectedStars={ratings ?? 0}
               starHeight={15}
             />
           </View>

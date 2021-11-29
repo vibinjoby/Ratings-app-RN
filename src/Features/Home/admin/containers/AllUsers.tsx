@@ -5,12 +5,15 @@ import AllUsersView from '../components/AllUsersView'
 import { useAllUsers, useRemoveUser } from '../../hooks'
 
 const AllUsers: React.FC = () => {
-  const { data, loading, error } = useAllUsers()
+  const { data, loading, error, refetch } = useAllUsers()
   const { removeUserMutate } = useRemoveUser()
 
   const handleRemoveUser = async (id: number) => {
     await removeUserMutate({ variables: { id } })
+    refetch()
   }
+
+  if (!data) return <></>
 
   return (
     <ApiResult loading={loading} error={error}>

@@ -44,6 +44,15 @@ export interface LoginInput {
   userType: UserType;
 }
 
+export interface UpdateReviewInput {
+  ratings: number;
+  visitDate: any;
+  comments: string;
+  restaurantId?: number | null;
+  id: number;
+  ownerReply: string;
+}
+
 //==============================================================
 // END Enums and Input Objects
 //==============================================================

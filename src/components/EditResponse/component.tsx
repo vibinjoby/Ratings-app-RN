@@ -13,7 +13,7 @@ export interface EditResponseProps {
   ownerResp?: string
   isVisible: boolean | undefined
   ratings: number
-  onEdit: (arg0: string, arg1?: string, arg2?: number) => void
+  onEdit: (comments: string, ownerReply: string, ratings: number) => void
   onDismiss: () => void
 }
 
@@ -26,7 +26,7 @@ const EditResponse: React.FC<EditResponseProps> = ({
   onEdit,
 }: EditResponseProps) => {
   const [customerResponse, setCustResponse] = useState(customerResp)
-  const [ownerResponse, setOwnerResponse] = useState(ownerResp)
+  const [ownerResponse, setOwnerResponse] = useState(ownerResp ?? '')
   const [selectedStars, setSelectedStars] = useState(ratings)
 
   const onSave = () => {

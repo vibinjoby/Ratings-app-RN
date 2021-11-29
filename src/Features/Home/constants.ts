@@ -7,6 +7,8 @@ export const ScreenNames = {
   ADD_RESTAURANT: 'AddRestaurant',
   RESTAURANT_DETAILS_NAV: 'RestaurantDetailsNav',
   ALL_USERS: 'AllUsers',
+  ALL_RESTAURANTS: 'AllRestaurants',
+  ALL_REVIEWS: 'AllReviews',
 }
 
 export const AddRestaurantValidationSchema = yup.object().shape({
