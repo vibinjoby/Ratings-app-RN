@@ -53,6 +53,7 @@ jobs:
           yarn install --frozen-lockfile
 
       - name: Build for detox
+        timeout-minutes: 30
         run: |
           yarn android:e2e:build
       - name: Start Android Emulator
