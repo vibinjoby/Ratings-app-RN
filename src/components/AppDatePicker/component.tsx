@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { View, Image, Text } from 'react-native'
-import DatePicker from 'react-native-datepicker'
+import DateTimePicker from '@react-native-community/datetimepicker'
 import * as Sentry from '@sentry/react-native'
 import moment from 'moment'
 
@@ -24,12 +24,14 @@ const AppDatePicker: React.FC<AppDatePickerProps> = ({
   containerStyle,
   format = 'Do MMM,YYYY',
 }: AppDatePickerProps) => {
-  const [date, setDate] = useState<any>()
+  const [date, setDate] = useState(new Date())
 
-  const validateDateChange = (date: string) => {
+  const validateDateChange = (_: Event, date: Date | undefined) => {
     try {
+      if (!date) return
+
       setDate(date)
-      onDateSelection && onDateSelection(date)
+      onDateSelection && onDateSelection(date!.toDateString())
     } catch (error) {
       Sentry.captureException(error)
     }
@@ -43,25 +45,16 @@ const AppDatePicker: React.FC<AppDatePickerProps> = ({
   return (
     <View style={containerStyle}>
       <Text style={styles.appTxt}>{label}</Text>
-      <DatePicker
+
+      <DateTimePicker
         testID="datePicker"
         style={[styles.datePicker, customStyle]}
         mode="date"
-        placeholder="Select a date"
-        date={date}
-        maxDate={moment().toDate()}
-        format={format}
-        confirmBtnText="Confirm"
-        cancelBtnText="Cancel"
-        iconComponent={<DateIconComp />}
-        customStyles={{
-          dateInput: styles.textInput,
-          datePicker: {
-            backgroundColor: '#d1d3d8',
-            justifyContent: 'center',
-          },
-        }}
-        onDateChange={validateDateChange}
+        placeholderText="Select a date"
+        value={date}
+        maximumDate={moment().toDate()}
+        dateFormat={'day month year'}
+        onChange={validateDateChange}
       />
     </View>
   )

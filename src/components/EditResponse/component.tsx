@@ -35,7 +35,13 @@ const EditResponse: React.FC<EditResponseProps> = ({
 
   return (
     <KeyboardAwareScrollView>
-      <Modal isVisible={isVisible} onBackdropPress={onDismiss} backdropOpacity={0.5} hasBackdrop>
+      <Modal
+        isVisible={isVisible}
+        onBackdropPress={onDismiss}
+        backdropOpacity={0.5}
+        hasBackdrop
+        useNativeDriver={false}
+      >
         <View style={styles.container}>
           <Text style={styles.title}>Customer Review</Text>
           <TextInput

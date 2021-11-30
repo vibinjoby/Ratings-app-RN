@@ -380,6 +380,8 @@ PODS:
     - React-perflogger (= 0.65.1)
   - RNCAsyncStorage (1.15.11):
     - React-Core
+  - RNDateTimePicker (4.0.0):
+    - React-Core
   - RNDevMenu (4.0.2):
     - React-Core
     - React-Core/DevSupport
@@ -461,6 +463,7 @@ DEPENDENCIES:
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
+  - "RNDateTimePicker (from `../node_modules/@react-native-community/datetimepicker`)"
   - RNDevMenu (from `../node_modules/react-native-dev-menu`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - "RNGoogleSignin (from `../node_modules/@react-native-community/google-signin`)"
@@ -559,6 +562,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
+  RNDateTimePicker:
+    :path: "../node_modules/@react-native-community/datetimepicker"
   RNDevMenu:
     :path: "../node_modules/react-native-dev-menu"
   RNGestureHandler:
@@ -629,6 +634,7 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: 85187f19dd9c47a7c102f9994f9d14e4dc2110de
   ReactCommon: eafed38eec7b591c31751bfa7494801618460459
   RNCAsyncStorage: eb05c0284dd6b50b32f92fad55e2a41e03358c43
+  RNDateTimePicker: 2224ee77a86b7123377597a015502435e2e49957
   RNDevMenu: fd325b5554b61fe7f48d9205a3877cf5ee88cd7c
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499

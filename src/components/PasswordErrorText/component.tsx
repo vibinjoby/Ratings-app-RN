@@ -5,15 +5,15 @@ import styles from './styles'
 export interface PasswordErrorTextProps {
   inputValue: any
 }
+const successImg = require('../../assets/success-img.png')
+const errorImg = require('../../assets/error.png')
+
+const isUpperCase = (string: string) => /(.*[A-Z].*)/.test(string)
+const isLowerCase = (string: string) => /(.*[a-z].*)/.test(string)
 
 const PasswordErrorText: React.FC<PasswordErrorTextProps> = ({
   inputValue,
 }: PasswordErrorTextProps) => {
-  const successImg = require('../../assets/success-img.png')
-  const errorImg = require('../../assets/error.png')
-
-  const isUpperCase = (string: string) => /(.*[A-Z].*)/.test(string)
-  const isLowerCase = (string: string) => /(.*[a-z].*)/.test(string)
   return (
     <View>
       <Text style={styles.headerTxt}>Password must contain:</Text>
