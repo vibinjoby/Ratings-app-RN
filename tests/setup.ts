@@ -38,7 +38,7 @@ jest.mock('@react-native-community/netinfo', () => {
   }
 })
 
-jest.mock('@react-native-async-storage/async-storage', () => ({
+jest.mock('@react-native-community/async-storage', () => ({
   AsyncStorage: {
     setItem: jest.fn(() => {
       return new Promise((resolve) => {

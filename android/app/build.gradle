@@ -196,7 +196,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     androidTestImplementation('com.wix:detox:+')
-    implementation 'com.android.support:multidex:2.0.1'
+    implementation 'androidx.multidex:multidex:2.0.1'
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
     // Facebook Sign In
