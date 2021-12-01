@@ -55,6 +55,8 @@ const BaseModule = () => {
         />
       </Stack.Navigator>
     )
+
+  return <></>
 }
 
 export default BaseModule

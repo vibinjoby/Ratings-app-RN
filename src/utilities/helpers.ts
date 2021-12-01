@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
+import AsyncStorage from '@react-native-community/async-storage'
 import * as Sentry from '@sentry/react-native'
 import jwtDecode from 'jwt-decode'
 import userInfoVars, { UserInfoProps } from '../store'

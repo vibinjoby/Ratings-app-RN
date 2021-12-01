@@ -1,19 +1,36 @@
 import React, { useState, useEffect } from 'react'
 import { LogBox } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
+import AsyncStorage from '@react-native-community/async-storage'
 import * as Sentry from '@sentry/react-native'
 import { ApolloProvider } from '@apollo/client'
 import DevMenu from 'react-native-dev-menu'
 
 import './config/ReactotronConfig'
-//import Storybook from './storybook'
+import Storybook from './storybook'
 import { client } from './client'
 import BaseModule from './src/BaseModule'
+
+const storybookKeyName = 'mobile-render-storybook'
 
 const App: React.FC = () => {
   const [isStorybook, setIsStorybook] = useState(false)
 
-  const toggleStorybook = () => setIsStorybook((val) => !val)
+  const loadRenderStorybook = async () => {
+    try {
+      const value = await AsyncStorage.getItem(storybookKeyName)
+      setIsStorybook(value === 'true')
+    } catch (error) {
+      console.warn(error)
+    }
+  }
+
+  const toggleStorybook = async () => {
+    setIsStorybook((_renderStorybook) => {
+      AsyncStorage.setItem(storybookKeyName, String(_renderStorybook)).catch((e) => console.warn(e))
+      return !_renderStorybook
+    })
+  }
 
   useEffect(() => {
     if (__DEV__) {
@@ -33,9 +50,10 @@ const App: React.FC = () => {
       debug: true,
       enableNative: false,
     })
+    loadRenderStorybook()
   }, [])
 
-  if (isStorybook) return <></>
+  if (isStorybook) return <Storybook />
 
   return (
     <ApolloProvider client={client}>
