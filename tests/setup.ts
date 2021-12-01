@@ -1,20 +1,5 @@
 import { NativeModules } from 'react-native'
 
-jest.mock('@react-native-community/google-signin', () => {
-  const mockGoogleSignin = jest.requireActual('@react-native-community/google-signin')
-
-  mockGoogleSignin.GoogleSignin.hasPlayServices = () => Promise.resolve(true)
-  mockGoogleSignin.GoogleSignin.configure = () => Promise.resolve()
-  mockGoogleSignin.GoogleSignin.currentUserAsync = () => {
-    return Promise.resolve({
-      name: 'name',
-      email: 'test@email.com',
-    })
-  }
-
-  return mockGoogleSignin
-})
-
 const mockedNavigate = jest.fn()
 
 jest.mock('@react-navigation/native', () => {
