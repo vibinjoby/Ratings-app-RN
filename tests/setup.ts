@@ -57,14 +57,3 @@ jest.mock('@react-native-community/async-storage', () => ({
     }),
   },
 }))
-
-NativeModules.RNGoogleSignin = {
-  BUTTON_SIZE_ICON: 0,
-  BUTTON_SIZE_STANDARD: 0,
-  BUTTON_SIZE_WIDE: 0,
-  BUTTON_COLOR_AUTO: 0,
-  BUTTON_COLOR_LIGHT: 0,
-  BUTTON_COLOR_DARK: 0,
-  configure: jest.fn(),
-  currentUserAsync: jest.fn(),
-}
