@@ -48,6 +48,6 @@ export interface RestaurantList {
 }
 
 export interface RestaurantListVariables {
-  limit?: number | null;
+  first?: number | null;
   offset?: number | null;
 }

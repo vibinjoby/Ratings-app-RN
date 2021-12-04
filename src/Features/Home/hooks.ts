@@ -28,7 +28,7 @@ import {
 export const useAllRestaurants = () => {
   const { ...rest } = useQuery<RestaurantData, RestaurantListVariables>(RestaurantList, {
     variables: {
-      limit: 3,
+      first: 3,
       offset: 0,
     },
     fetchPolicy: 'cache-and-network',

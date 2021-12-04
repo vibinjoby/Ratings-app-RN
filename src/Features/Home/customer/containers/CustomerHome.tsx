@@ -34,11 +34,11 @@ const CustomerHome: React.FC = () => {
   useNavBar({ togglePopupVisibility })
 
   const handleEndReached = () => {
-    if (!data.getRestaurants.page.pageInfo.hasNextPage) return
+    if (!data?.getRestaurants?.page?.pageInfo?.hasNextPage) return
 
     fetchMore({
       variables: {
-        limit: 3,
+        first: 3,
         offset: data?.getRestaurants?.page?.edges?.length,
       },
     })
