@@ -34,14 +34,13 @@ const CustomerHome: React.FC = () => {
   useNavBar({ togglePopupVisibility })
 
   const handleEndReached = () => {
-    if (!data?.getRestaurants?.page?.pageInfo?.hasNextPage) return
-
-    fetchMore({
-      variables: {
-        first: 3,
-        offset: data?.getRestaurants?.page?.edges?.length,
-      },
-    })
+    if (data?.getRestaurants?.page?.pageInfo?.hasNextPage)
+      fetchMore({
+        variables: {
+          first: 4,
+          offset: data.getRestaurants.page.edges?.length,
+        },
+      })
   }
 
   const handleCardPress = (id: number | undefined) => {
@@ -49,7 +48,7 @@ const CustomerHome: React.FC = () => {
   }
 
   return (
-    <ApiResult loading={loading} error={error}>
+    <ApiResult loading={false} error={error}>
       <CustomerView
         isLogoutPopupVisible={isLogoutPop}
         onNegativeModalPress={togglePopupVisibility}

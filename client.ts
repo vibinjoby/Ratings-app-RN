@@ -1,5 +1,6 @@
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
+import { relayStylePagination } from '@apollo/client/utilities'
 
 import { getData } from './src/utilities/helpers'
 
@@ -23,18 +24,21 @@ export const client = new ApolloClient({
     typePolicies: {
       Query: {
         fields: {
-          getRestaurants: {
-            // Don't cache separate results based on
-            // any of this field's arguments.
-            keyArgs: false,
-            // Concatenate the incoming list items with
-            // the existing list items.
-            merge(existing = [], incoming) {
-              return [...existing, ...incoming.page.edges]
-            },
-          },
+          getRestaurants: relayStylePagination(),
         },
       },
     },
   }),
+  connectToDevTools: __DEV__,
+  defaultOptions: {
+    watchQuery: {
+      fetchPolicy: 'cache-and-network',
+    },
+    query: {
+      fetchPolicy: 'no-cache',
+    },
+    mutate: {
+      fetchPolicy: 'no-cache',
+    },
+  },
 })

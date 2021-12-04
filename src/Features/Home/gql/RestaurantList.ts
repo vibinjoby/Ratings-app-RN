@@ -16,6 +16,7 @@ export const RestaurantList = gql`
         }
         pageInfo {
           hasNextPage
+          endCursor
         }
       }
       pageData {

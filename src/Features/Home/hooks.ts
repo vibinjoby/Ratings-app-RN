@@ -1,4 +1,5 @@
 import { useQuery, useMutation } from '@apollo/client'
+import { useEffect } from 'react'
 
 import { CreateRestaurantInput } from '../../../__generated__/globalTypes'
 import { AddRestaurantMutation } from './gql/AddRestaurant'
@@ -14,7 +15,6 @@ import {
   RemoveReviewMutation as RemoveReviewMutationData,
   RemoveReviewMutationVariables,
 } from './gql/__generated__/RemoveReviewMutation'
-
 import {
   RestaurantList as RestaurantData,
   RestaurantListVariables,
@@ -28,10 +28,12 @@ import {
 export const useAllRestaurants = () => {
   const { ...rest } = useQuery<RestaurantData, RestaurantListVariables>(RestaurantList, {
     variables: {
-      first: 3,
+      first: 4,
       offset: 0,
     },
+    notifyOnNetworkStatusChange: true,
     fetchPolicy: 'cache-and-network',
+    nextFetchPolicy: 'cache-first',
   })
   return { ...rest }
 }

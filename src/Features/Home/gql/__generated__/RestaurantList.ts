@@ -24,6 +24,7 @@ export interface RestaurantList_getRestaurants_page_edges {
 export interface RestaurantList_getRestaurants_page_pageInfo {
   __typename: "RestaurantPageInfo";
   hasNextPage: boolean;
+  endCursor: string | null;
 }
 
 export interface RestaurantList_getRestaurants_page {
