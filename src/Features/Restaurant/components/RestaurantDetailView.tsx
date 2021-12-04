@@ -42,7 +42,7 @@ const ReviewsWithHeader = ({ userType, title, reviews, onSaveReply }: ReviewsWit
   return (
     <View>
       <ReviewsHeader title={title} />
-      {reviews!.map((review, index) => (
+      {reviews.map((review, index) => (
         <ReviewBlock
           shouldReply={userType === UserType.owner}
           key={index}

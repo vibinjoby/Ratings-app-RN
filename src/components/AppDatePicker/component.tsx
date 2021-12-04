@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Image, Text } from 'react-native'
+import { View, Text } from 'react-native'
 import DateTimePicker from '@react-native-community/datetimepicker'
 import * as Sentry from '@sentry/react-native'
 import moment from 'moment'
@@ -22,7 +22,6 @@ const AppDatePicker: React.FC<AppDatePickerProps> = ({
   customStyle,
   onDateSelection,
   containerStyle,
-  format = 'Do MMM,YYYY',
 }: AppDatePickerProps) => {
   const [date, setDate] = useState(new Date())
 
@@ -31,17 +30,17 @@ const AppDatePicker: React.FC<AppDatePickerProps> = ({
       if (!date) return
 
       setDate(date)
-      onDateSelection && onDateSelection(date!.toDateString())
+      onDateSelection && onDateSelection(date.toDateString())
     } catch (error) {
       Sentry.captureException(error)
     }
   }
-
+  /* 
   const DateIconComp = () => (
     <View style={styles.dateIcContainer}>
       <Image source={require('../../assets/calendar.png')} style={styles.calendarImg} />
     </View>
-  )
+  ) */
   return (
     <View style={containerStyle}>
       <Text style={styles.appTxt}>{label}</Text>

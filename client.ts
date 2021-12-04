@@ -1,8 +1,8 @@
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
-import { relayStylePagination } from '@apollo/client/utilities'
 
 import { getData } from './src/utilities/helpers'
+import { relayStyleConcatPagination } from './src/utilities/pagination'
 
 const httpLink = createHttpLink({
   uri: 'https://ratings-nest-gql.herokuapp.com/graphql',
@@ -24,7 +24,7 @@ export const client = new ApolloClient({
     typePolicies: {
       Query: {
         fields: {
-          getRestaurants: relayStylePagination(),
+          getRestaurants: relayStyleConcatPagination(),
         },
       },
     },

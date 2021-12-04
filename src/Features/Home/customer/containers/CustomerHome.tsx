@@ -15,7 +15,7 @@ const CustomerHome: React.FC = () => {
 
   const navigation = useNavigation()
 
-  const { data, loading, error, fetchMore } = useAllRestaurants()
+  const { data, error, fetchMore } = useAllRestaurants()
 
   const handleLogout = async () => {
     togglePopupVisibility()
@@ -34,11 +34,11 @@ const CustomerHome: React.FC = () => {
   useNavBar({ togglePopupVisibility })
 
   const handleEndReached = () => {
-    if (data?.getRestaurants?.page?.pageInfo?.hasNextPage)
+    if (data?.getRestaurants?.pageInfo?.hasNextPage)
       fetchMore({
         variables: {
           first: 4,
-          offset: data.getRestaurants.page.edges?.length,
+          offset: data.getRestaurants.edges?.length,
         },
       })
   }
@@ -56,7 +56,7 @@ const CustomerHome: React.FC = () => {
         sortBy={sortBy}
         onSort={toggleSortFilter}
         onCardPress={handleCardPress}
-        restaurantList={data?.getRestaurants?.page?.edges ?? []}
+        restaurantList={data?.getRestaurants?.edges ?? []}
         onEndReached={handleEndReached}
       />
     </ApiResult>

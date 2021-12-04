@@ -7,6 +7,7 @@ import AddReviewForm from '../components/AddReviewForm'
 import { DetailsRouteProps } from '../types'
 import { useAddReview, useRestaurantDetails } from '../hooks'
 import ApiResult from '../../../components/ApiResult'
+import { useAllRestaurants } from '../../Home/hooks'
 
 const AddReview = () => {
   const route = useRoute<DetailsRouteProps>()
@@ -21,6 +22,7 @@ const AddReview = () => {
     onSubmit: () => {},
   })
   const { refetch } = useRestaurantDetails(restaurantId)
+  const { refetch: refetchAllRestaurants } = useAllRestaurants()
   const { onAddRestaurantMutate, loading, error } = useAddReview({
     comments: values['comments'],
     ratings: values['ratings'],
@@ -31,6 +33,7 @@ const AddReview = () => {
   const handleSave = async () => {
     await onAddRestaurantMutate()
     refetch()
+    refetchAllRestaurants()
     navigation.goBack()
   }
 

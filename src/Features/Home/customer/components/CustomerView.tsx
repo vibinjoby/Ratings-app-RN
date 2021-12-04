@@ -4,7 +4,7 @@ import MaterialCommIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import ModalPopup from '../../../../components/ModalPopup'
 import Colors from '../../../../utilities/colors'
-import { RestaurantList_getRestaurants_page_edges as RestaurantData } from '../../gql/__generated__/RestaurantList'
+import { RestaurantList_getRestaurants_edges as RestaurantData } from '../../gql/__generated__/RestaurantList'
 import { HomeViewProps } from '../../types'
 import styles from '../styles'
 import RestaurantList from './RestaurantList'

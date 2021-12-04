@@ -1,5 +1,4 @@
 import { useQuery, useMutation } from '@apollo/client'
-import { useEffect } from 'react'
 
 import { CreateRestaurantInput } from '../../../__generated__/globalTypes'
 import { AddRestaurantMutation } from './gql/AddRestaurant'

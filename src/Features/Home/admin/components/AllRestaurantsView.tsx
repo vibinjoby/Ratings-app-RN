@@ -2,7 +2,7 @@ import React from 'react'
 import { FlatList, View } from 'react-native'
 
 import Restaurant from '../../../../components/Restaurant'
-import { RestaurantList_getRestaurants_page_edges as RestaurantsList } from '../../gql/__generated__/RestaurantList'
+import { RestaurantList_getRestaurants_edges as RestaurantsList } from '../../gql/__generated__/RestaurantList'
 import styles from '../styles/AllRestaurants'
 
 interface AllRestaurantsViewProps {

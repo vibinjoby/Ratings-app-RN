@@ -62,18 +62,7 @@ type LoginOutput {
   token: String!
 }
 
-type PageData {
-  count: Float!
-  limit: Float!
-  offset: Float!
-}
-
 type RestaurantResponse {
-  page: RestaurantConnection!
-  pageData: PageData
-}
-
-type RestaurantConnection {
   edges: [RestaurantEdge!]
   pageInfo: RestaurantPageInfo
 }

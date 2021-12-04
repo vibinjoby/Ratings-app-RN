@@ -12,9 +12,7 @@ export const relayStyleConcatPagination = (keyArgs: keyArgs = false): FieldPolic
 
       return {
         ...incoming,
-        page: {
-          edges: uniqBy([...existing.page.edges, ...incoming.page.edges], 'node.__ref'),
-        },
+        edges: uniqBy([...existing.edges, ...incoming.edges], 'node.__ref'),
       }
     },
   }

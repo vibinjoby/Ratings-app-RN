@@ -7,7 +7,7 @@
 // GraphQL query operation: RestaurantList
 // ====================================================
 
-export interface RestaurantList_getRestaurants_page_edges_node {
+export interface RestaurantList_getRestaurants_edges_node {
   __typename: "Restaurant";
   restaurantName: string;
   id: number;
@@ -16,32 +16,21 @@ export interface RestaurantList_getRestaurants_page_edges_node {
   averageRatings: number;
 }
 
-export interface RestaurantList_getRestaurants_page_edges {
+export interface RestaurantList_getRestaurants_edges {
   __typename: "RestaurantEdge";
-  node: RestaurantList_getRestaurants_page_edges_node | null;
+  node: RestaurantList_getRestaurants_edges_node | null;
 }
 
-export interface RestaurantList_getRestaurants_page_pageInfo {
+export interface RestaurantList_getRestaurants_pageInfo {
   __typename: "RestaurantPageInfo";
   hasNextPage: boolean;
   endCursor: string | null;
 }
 
-export interface RestaurantList_getRestaurants_page {
-  __typename: "RestaurantConnection";
-  edges: RestaurantList_getRestaurants_page_edges[] | null;
-  pageInfo: RestaurantList_getRestaurants_page_pageInfo | null;
-}
-
-export interface RestaurantList_getRestaurants_pageData {
-  __typename: "PageData";
-  count: number;
-}
-
 export interface RestaurantList_getRestaurants {
   __typename: "RestaurantResponse";
-  page: RestaurantList_getRestaurants_page;
-  pageData: RestaurantList_getRestaurants_pageData | null;
+  edges: RestaurantList_getRestaurants_edges[] | null;
+  pageInfo: RestaurantList_getRestaurants_pageInfo | null;
 }
 
 export interface RestaurantList {
