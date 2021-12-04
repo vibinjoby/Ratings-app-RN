@@ -9,7 +9,12 @@ const AppLoader = () => {
     <Modal animationType="none" transparent visible={true}>
       <View style={styles.modalWrapper}>
         <View style={styles.modalContainer}>
-          <ActivityIndicator animating color={Colors.appOrange} size="large" />
+          <ActivityIndicator
+            testID={'loading-indicator'}
+            animating
+            color={Colors.appOrange}
+            size="large"
+          />
         </View>
       </View>
     </Modal>
