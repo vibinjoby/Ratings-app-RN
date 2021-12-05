@@ -6,7 +6,7 @@ import * as Sentry from '@sentry/react-native'
 import { ApolloProvider } from '@apollo/client'
 import DevMenu from 'react-native-dev-menu'
 
-import './config/ReactotronConfig'
+import './src/utilities/ReactotronConfig'
 //import Storybook from './storybook'
 import { client } from './client'
 import BaseModule from './src/BaseModule'
