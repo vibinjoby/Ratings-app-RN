@@ -60,7 +60,13 @@ const SignUpForm = ({ onSignUp, onSignIn, values, errors, handleChange }: SignUp
         ))}
         <Button
           testID="signupBtn"
-          disabled={!_.isEmpty(errors)}
+          disabled={
+            !_.isEmpty(errors) ||
+            !values['email'] ||
+            !values['password'] ||
+            !values['confirmPassword'] ||
+            !values['fullName']
+          }
           title="Sign Up"
           onPress={onSignUp}
           customStyle={styles.loginBtn}
@@ -78,4 +84,4 @@ const SignUpForm = ({ onSignUp, onSignIn, values, errors, handleChange }: SignUp
   </ScrollView>
 )
 
-export default React.memo(SignUpForm)
+export default SignUpForm

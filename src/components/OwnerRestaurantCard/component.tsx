@@ -2,7 +2,7 @@ import React from 'react'
 import { Image, Text, TouchableOpacity, View } from 'react-native'
 
 import styles from './styles'
-import constants from '../../configs/commonConst'
+import constants from '../../configs/constants'
 import Stars from '../AppStars'
 import Colors from '../../utilities/colors'
 

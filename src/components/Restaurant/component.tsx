@@ -2,7 +2,7 @@ import React from 'react'
 import { TouchableOpacity, View, Text, Image } from 'react-native'
 import MaterialCommIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
-import commonConst from '../../configs/commonConst'
+import constants from '../../configs/constants'
 import Colors from '../../utilities/colors'
 import Stars from '../AppStars'
 import styles from './styles'
@@ -25,7 +25,7 @@ const Restaurant: React.FC<RestaurantProps> = ({
   return (
     <TouchableOpacity testID={testID} activeOpacity={0.8} onPress={onPress}>
       <View style={styles.container}>
-        <Image source={{ uri: commonConst.DUMMY_PIC }} style={styles.imgBg} />
+        <Image source={{ uri: constants.DUMMY_PIC }} style={styles.imgBg} />
         <View>
           <Text testID="restaurantName" style={styles.restaurantTitle} numberOfLines={1}>
             {restaurantName}

@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import NetInfo from '@react-native-community/netinfo'
-import { useNavigation } from '@react-navigation/native'
+import { NavigationContainer, useNavigation } from '@react-navigation/native'
 import MaterialCommIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import userInfoVars from '../store'
 import Typography from './typography'
 import Colors from './colors'
+import { createStackNavigator } from '@react-navigation/stack'
+import { ApolloProvider } from '@apollo/client'
+import { client } from '../../client'
 
 export const useNoInternet = () => {
   const [isConnected, setIsConnected] = useState(true)
@@ -20,6 +23,20 @@ export const useNoInternet = () => {
     })
   }
   return { isConnected }
+}
+
+export const WithNavigationAndApolloProvider = (Component: React.FC) => {
+  const Stack = createStackNavigator()
+
+  return (
+    <ApolloProvider client={client}>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Screen" component={Component} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </ApolloProvider>
+  )
 }
 
 export interface NavBarProps {

@@ -31,7 +31,7 @@ const ButtonComponent = () => (
   </View>
 )
 
-storiesOf('Components', module).add('Button', () => <ButtonComponent />)
+storiesOf('Components', module).add('AppButton', () => <ButtonComponent />)
 
 const styles = StyleSheet.create({
   container: {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { View, Text } from 'react-native'
-import DateTimePicker from '@react-native-community/datetimepicker'
+import { View, Text, Image, ViewProps } from 'react-native'
+import DatePicker from 'react-native-datepicker'
 import * as Sentry from '@sentry/react-native'
 import moment from 'moment'
 
@@ -9,10 +9,10 @@ import styles from './styles'
 export interface AppDatePickerProps {
   label?: string
   defaultDate?: string
-  customStyle?: Record<string, unknown>
+  customStyle?: ViewProps['style']
   onDateSelection?: (arg0: string) => void
   selectedDay?: () => number
-  containerStyle?: Record<string, unknown>
+  containerStyle?: ViewProps['style']
   isPastAllowed?: boolean
   format?: string
 }
@@ -22,6 +22,7 @@ const AppDatePicker: React.FC<AppDatePickerProps> = ({
   customStyle,
   onDateSelection,
   containerStyle,
+  format = 'Do MMM,YYYY',
 }: AppDatePickerProps) => {
   const [date, setDate] = useState(new Date())
 
@@ -35,25 +36,35 @@ const AppDatePicker: React.FC<AppDatePickerProps> = ({
       Sentry.captureException(error)
     }
   }
-  /* 
+
   const DateIconComp = () => (
     <View style={styles.dateIcContainer}>
       <Image source={require('../../assets/calendar.png')} style={styles.calendarImg} />
     </View>
-  ) */
+  )
   return (
     <View style={containerStyle}>
       <Text style={styles.appTxt}>{label}</Text>
 
-      <DateTimePicker
+      <DatePicker
         testID="datePicker"
         style={[styles.datePicker, customStyle]}
         mode="date"
-        placeholderText="Select a date"
-        value={date}
-        maximumDate={moment().toDate()}
-        dateFormat={'day month year'}
-        onChange={validateDateChange}
+        placeholder="Select a date"
+        date={date}
+        maxDate={moment().toDate()}
+        format={format}
+        confirmBtnText="Confirm"
+        cancelBtnText="Cancel"
+        iconComponent={<DateIconComp />}
+        customStyles={{
+          dateInput: styles.textInput,
+          datePicker: {
+            backgroundColor: '#d1d3d8',
+            justifyContent: 'center',
+          },
+        }}
+        onDateChange={validateDateChange}
       />
     </View>
   )

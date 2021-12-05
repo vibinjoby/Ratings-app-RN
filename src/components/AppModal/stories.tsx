@@ -27,7 +27,12 @@ const Popup = () => {
   )
 }
 
-storiesOf('Components', module).add('ModalPopup', () => <Popup />)
+storiesOf('Components', module).add('AppModal', () => <Popup />)
+
+export default {
+  title: 'AppModal',
+  component: Popup,
+}
 
 const styles = StyleSheet.create({
   container: {
