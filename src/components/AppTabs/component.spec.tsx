@@ -1,9 +1,9 @@
 import React from 'react'
 import { fireEvent, render } from '@testing-library/react-native'
 
-import ThreeTabs from './component'
+import AppTabs from './component'
 
-describe('ThreeTabs', () => {
+describe('AppTabs', () => {
   const mockFn = jest.fn()
   const SELECTED_TAB = 0
   const TAB1TEXT = 'Customer'
@@ -12,26 +12,14 @@ describe('ThreeTabs', () => {
 
   it('should render', () => {
     const { toJSON } = render(
-      <ThreeTabs
-        selectedTab={SELECTED_TAB}
-        tab1Text={TAB1TEXT}
-        tab2Text={TAB2TEXT}
-        tab3Text={TAB3TEXT}
-        onTabSelect={mockFn}
-      />,
+      <AppTabs selectedTab={SELECTED_TAB} tabs={[TAB1TEXT, TAB2TEXT, TAB3TEXT]} onPress={mockFn} />,
     )
     expect(toJSON()).toMatchSnapshot()
   })
 
-  it('should be selectable and render all the tab text', () => {
+  it('should work for three tabs', () => {
     const { getByTestId } = render(
-      <ThreeTabs
-        selectedTab={SELECTED_TAB}
-        tab1Text={TAB1TEXT}
-        tab2Text={TAB2TEXT}
-        tab3Text={TAB3TEXT}
-        onTabSelect={mockFn}
-      />,
+      <AppTabs selectedTab={SELECTED_TAB} tabs={[TAB1TEXT, TAB2TEXT, TAB3TEXT]} onPress={mockFn} />,
     )
 
     expect(getByTestId('tab1Txt').props.children).toBe(TAB1TEXT)
@@ -40,6 +28,18 @@ describe('ThreeTabs', () => {
 
     fireEvent.press(getByTestId('leftTab'))
     fireEvent.press(getByTestId('middleTab'))
+    fireEvent.press(getByTestId('rightTab'))
+  })
+
+  it('should work for two tabs', () => {
+    const { getByTestId } = render(
+      <AppTabs selectedTab={SELECTED_TAB} tabs={[TAB1TEXT, TAB2TEXT]} onPress={mockFn} />,
+    )
+
+    expect(getByTestId('tab1Txt').props.children).toBe(TAB1TEXT)
+    expect(getByTestId('tab2Txt').props.children).toBe(TAB2TEXT)
+
+    fireEvent.press(getByTestId('leftTab'))
     fireEvent.press(getByTestId('rightTab'))
   })
 })

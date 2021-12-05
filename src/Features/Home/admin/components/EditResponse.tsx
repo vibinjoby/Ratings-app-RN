@@ -3,10 +3,10 @@ import { View, TextInput, Text } from 'react-native'
 import Modal from 'react-native-modal' //@ts-ignore
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
 
-import Colors from '../../utilities/colors'
-import Button from '../Button'
-import Stars from '../Stars'
-import styles from './styles'
+import Colors from '../../../../utilities/colors'
+import Button from '../../../../components/AppButton'
+import Stars from '../../../../components/AppStars'
+import styles from '../styles/EditResponse'
 
 export interface EditResponseProps {
   customerResp: string

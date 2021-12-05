@@ -4,7 +4,7 @@ exports[`AppNoInternet should render 1`] = `
 <Modal
   hardwareAccelerated={false}
   transparent={true}
-  visible={false}
+  visible={true}
 >
   <View
     style={
@@ -23,11 +23,11 @@ exports[`AppNoInternet should render 1`] = `
           "backgroundColor": "red",
           "height": 80,
           "justifyContent": "flex-end",
-          "opacity": 1,
+          "opacity": 0,
           "paddingBottom": 20,
           "transform": Array [
             Object {
-              "translateY": 0,
+              "translateY": -500,
             },
           ],
         }

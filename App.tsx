@@ -10,11 +10,14 @@ import './config/ReactotronConfig'
 //import Storybook from './storybook'
 import { client } from './client'
 import BaseModule from './src/BaseModule'
+import { useNoInternet } from './src/utilities/SetupServices'
+import AppNoInternet from './src/components/AppNoInternet'
 
 const storybookKeyName = 'mobile-render-storybook'
 
 const App: React.FC = () => {
   const [isStorybook, setIsStorybook] = useState(false)
+  const { isConnected } = useNoInternet()
 
   const loadRenderStorybook = async () => {
     try {
@@ -57,6 +60,7 @@ const App: React.FC = () => {
 
   return (
     <ApolloProvider client={client}>
+      <AppNoInternet isConnected={isConnected} />
       <NavigationContainer>
         <BaseModule />
       </NavigationContainer>

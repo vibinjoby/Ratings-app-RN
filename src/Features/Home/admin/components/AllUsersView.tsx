@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { FlatList, View } from 'react-native'
 
-import ModalPopup from '../../../../components/ModalPopup'
-import Users from '../../../../components/Users'
+import ModalPopup from '../../../../components/AppModal'
 import { UsersList } from '../../gql/__generated__/UsersList'
 import styles from '../styles/AllUsers'
+import UserRow from './UserRow'
 
 interface AllUsersViewProps {
   onRemove: (arg0: number) => void
@@ -38,7 +38,7 @@ const AllUsersView = ({ users, onRemove }: AllUsersViewProps & UsersList) => {
         data={users}
         contentContainerStyle={styles.contentContainer}
         renderItem={({ item, index }) => (
-          <Users
+          <UserRow
             id={item.id}
             name={item.fullName}
             typeOfUser={item.userType}

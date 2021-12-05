@@ -1,24 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import * as Animatable from 'react-native-animatable'
 import { View, Modal, StatusBar, Text } from 'react-native'
-import NetInfo from '@react-native-community/netinfo'
+import * as Animatable from 'react-native-animatable'
 
 import styles from './styles'
 
-const AppNoInternet: React.FC = ({ children }: React.Props<any>) => {
+interface AppNoInternetProps {
+  isConnected: boolean
+}
+
+const AppNoInternet: React.FC<AppNoInternetProps> = ({ isConnected }: AppNoInternetProps) => {
   const [modalVisible, setModalVisible] = useState(false)
   const [animationType, setAnimationType] = useState('fadeInDownBig')
-  const [isConnected, setIsConnected] = useState(true)
-
-  useEffect(() => {
-    checkConnectivity()
-  }, [])
-
-  const checkConnectivity = () => {
-    NetInfo.addEventListener((state: any) => {
-      setIsConnected(state.isConnected)
-    })
-  }
 
   useEffect(() => {
     if (isConnected) {
@@ -33,20 +25,17 @@ const AppNoInternet: React.FC = ({ children }: React.Props<any>) => {
     }
   }, [isConnected])
 
-  if (!animationType) return null
+  if (isConnected) return <></>
 
   return (
-    <>
+    <Modal transparent={true} visible={modalVisible}>
       <StatusBar backgroundColor={modalVisible ? 'red' : 'grey'} />
-      <Modal transparent={true} visible={modalVisible}>
-        <View style={styles.container}>
-          <Animatable.View animation={animationType} style={styles.animatableView}>
-            <Text style={styles.internetTxt}>You are not connected to the Internet</Text>
-          </Animatable.View>
-        </View>
-      </Modal>
-      {children}
-    </>
+      <View style={styles.container}>
+        <Animatable.View animation={animationType} style={styles.animatableView}>
+          <Text style={styles.internetTxt}>You are not connected to the Internet</Text>
+        </Animatable.View>
+      </View>
+    </Modal>
   )
 }
 

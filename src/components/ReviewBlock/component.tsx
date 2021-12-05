@@ -3,13 +3,13 @@ import React, { useState } from 'react'
 import { Text, View, Image } from 'react-native'
 
 import Colors from '../../utilities/colors'
-import EditResponse from '../EditResponse'
 import OwnerReply from '../OwnerReply'
 import ReplyReview from '../ReplyReview'
-import Stars from '../Stars'
+import Stars from '../AppStars'
 import ThreeVerticalDots from '../ThreeVerticalDots'
 import { UpdateReviewInput } from '../../../__generated__/globalTypes'
 import styles from './styles'
+import EditResponse from '../../Features/Home/admin/components/EditResponse'
 
 export interface ReviewBlockProps {
   reviewId: number

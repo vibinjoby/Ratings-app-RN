@@ -1,58 +1,32 @@
 import React from 'react'
-import { Image, ImageBackground, ScrollView, Text, TouchableOpacity, View } from 'react-native'
+import {
+  ButtonProps,
+  Image,
+  ImageBackground,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native'
 import { FormikErrors, FormikHandlers, FormikValues } from 'formik'
+import _ from 'lodash'
 
-import Button from '../../../../components/Button'
-import TwoTabs from '../../../../components/TwoTabs'
+import Button from '../../../../components/AppButton'
+import AppTabs from '../../../../components/AppTabs'
 import styles from '../styles/SignUpForm'
 import Typography from '../../../../utilities/typography'
-import { RegisterProps } from '../../types'
-import TextField from '../../../../components/TextField'
-
-const data = [
-  { key: 1, testID: 'fullName', placeholder: 'Full Name', name: 'fullName' },
-  {
-    key: 2,
-    testID: 'email',
-    placeholder: 'Email',
-    name: 'email',
-    keyboardType: 'email-address',
-  },
-  {
-    key: 3,
-    testID: 'password',
-    placeholder: 'Create Password',
-    name: 'password',
-    secureEntry: true,
-  },
-  {
-    key: 4,
-    testID: 'confirmPassword',
-    placeholder: 'Confirm Password',
-    name: 'confirmPassword',
-    secureEntry: true,
-  },
-]
+import AppTextInput from '../../../../components/AppTextInput'
+import { SignUpData } from '../../constants'
 
 export interface SignUpFormProps {
   values: FormikValues
-  errors: FormikErrors<RegisterProps>
-  isValid: boolean
-  dirty: boolean
+  errors: FormikErrors<FormikValues>
   handleChange: (fieldName: string) => FormikHandlers['handleChange']
-  onSignUp: () => void
-  onSignIn: () => void
+  onSignUp: ButtonProps['onPress']
+  onSignIn: ButtonProps['onPress']
 }
 
-const SignUpForm = ({
-  onSignUp,
-  onSignIn,
-  values,
-  errors,
-  isValid,
-  dirty,
-  handleChange,
-}: SignUpFormProps) => (
+const SignUpForm = ({ onSignUp, onSignIn, values, errors, handleChange }: SignUpFormProps) => (
   <ScrollView testID="scrollContainer">
     <View style={styles.container} testID="signupContainer">
       <ImageBackground
@@ -64,29 +38,29 @@ const SignUpForm = ({
       <View style={styles.contentContainer} testID="contentContainer">
         <Text style={Typography.Title1.regular}>Sign Up</Text>
         <View style={styles.tabContainer} testID="tabContainer">
-          <TwoTabs
+          <AppTabs
             selectedTab={values['selectedTab']}
-            tab1Text="Customer"
-            tab2Text="Owner"
-            onTabSelect={(tab) => handleChange('selectedTab')(tab)}
+            tabs={['Customer', 'Owner']}
+            onPress={(tab) => handleChange('selectedTab')(tab)}
           />
         </View>
 
-        {data.map((item) => (
-          <TextField
+        {SignUpData.map((item) => (
+          <AppTextInput
             inputValue={values[item.name]}
             testID={item.testID}
             key={item.key.toString()}
             onInputChange={handleChange(item.name)}
             textHint={item.placeholder}
-            isProtected={item.secureEntry} //@ts-ignore
-            errorText={errors[item.name]}
+            isProtected={item.secureEntry}
+            errorText={errors[item.name] as string}
             containerStyle={styles.textInp}
+            isPwdCheck={item.passwordGroupCheck}
           />
         ))}
         <Button
           testID="signupBtn"
-          disabled={!isValid || !dirty}
+          disabled={!_.isEmpty(errors)}
           title="Sign Up"
           onPress={onSignUp}
           customStyle={styles.loginBtn}

@@ -3,7 +3,7 @@ import { Image, Text, TouchableOpacity, View } from 'react-native'
 
 import styles from './styles'
 import constants from '../../configs/commonConst'
-import Stars from '../Stars'
+import Stars from '../AppStars'
 import Colors from '../../utilities/colors'
 
 export interface OwnerRestaurantCardProps {

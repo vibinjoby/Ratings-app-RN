@@ -1,4 +1,5 @@
 import React from 'react'
+import { StyleSheet } from 'react-native'
 import { useRoute } from '@react-navigation/native'
 import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack'
 
@@ -14,13 +15,7 @@ import AddRestaurant from './owner/containers/AddRestaurant'
 import { HomeRouteProps } from './types'
 import { ScreenNames } from './constants'
 import { ScreenNames as BaseModuleScreenNames } from '../../BaseModule/constants'
-import styles from '../../components/CustomNavBar/styles'
-
-const screenOptions = {
-  headerStyle: styles.navHeader,
-  headerTintColor: 'black',
-  headerBackTitleVisible: false,
-}
+import Colors from '../../utilities/colors'
 
 const HomeStack = () => {
   const route = useRoute<HomeRouteProps>()
@@ -67,6 +62,26 @@ const HomeStack = () => {
       />
     </Stack.Navigator>
   )
+}
+
+const styles = StyleSheet.create({
+  navHeader: {
+    shadowColor: Colors.black,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+
+    elevation: 6,
+  },
+})
+
+const screenOptions = {
+  headerStyle: styles.navHeader,
+  headerTintColor: 'black',
+  headerBackTitleVisible: false,
 }
 
 export default HomeStack

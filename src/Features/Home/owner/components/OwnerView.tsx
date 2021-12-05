@@ -1,7 +1,7 @@
 import React from 'react'
 import { ButtonProps, FlatList, SafeAreaView, Text, View } from 'react-native'
 
-import ModalPopup from '../../../../components/ModalPopup'
+import ModalPopup from '../../../../components/AppModal'
 import OwnerRestaurantCard from '../../../../components/OwnerRestaurantCard'
 import { MyRestaurants_getOwnedrestaurants as RestaurantData } from '../../gql/__generated__/MyRestaurants'
 import { HomeViewProps } from '../../types'

@@ -18,7 +18,7 @@ const AllRestaurants: React.FC = () => {
 
   return (
     <ApiResult loading={loading} error={error}>
-      <AllRestaurantsView restaurants={data?.getRestaurants.page.edges} onCardPress={handlePress} />
+      <AllRestaurantsView restaurants={data?.getRestaurants.edges} onCardPress={handlePress} />
     </ApiResult>
   )
 }

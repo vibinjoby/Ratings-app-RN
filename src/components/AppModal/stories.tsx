@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native'
 import { storiesOf } from '@storybook/react-native'
 
 import ModalPopup from './component'
-import Button from '../Button'
+import Button from '../AppButton'
 
 const Popup = () => {
   const [isModalVisible, setModalVisible] = useState(false)

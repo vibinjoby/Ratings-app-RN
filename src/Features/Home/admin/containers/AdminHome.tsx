@@ -5,7 +5,7 @@ import { removeData } from '../../../../utilities/helpers'
 import { ScreenNames as BaseModuleScreenNames } from '../../../../BaseModule/constants'
 import { ScreenNames } from '../../constants'
 import AdminView from '../components/AdminView'
-import useNavBar from '../../../../components/CustomNavBar'
+import { useNavBar } from '../../../../utilities/SetupServices'
 
 const AdminHome: React.FC = () => {
   const data = [

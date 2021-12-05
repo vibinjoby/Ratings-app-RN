@@ -2,9 +2,9 @@ import React from 'react'
 import { Text, View } from 'react-native'
 import { FormikErrors, FormikHandlers, FormikValues } from 'formik'
 
-import Button from '../../../../components/Button'
+import Button from '../../../../components/AppButton'
 import styles from '../styles/AddRestaurantForm'
-import TextField from '../../../../components/TextField'
+import AppTextInput from '../../../../components/AppTextInput'
 import { RestaurantType } from '../containers/AddRestaurant'
 
 export interface AddRestaurantFormProps {
@@ -50,7 +50,7 @@ const AddRestaurantForm = ({
     <Text style={styles.title}>Create new restaurant</Text>
 
     {data.map((item) => (
-      <TextField
+      <AppTextInput
         inputValue={values[item.name]}
         textHint={item.placeholder}
         testID={item.testID}

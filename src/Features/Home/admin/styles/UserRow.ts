@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import Typography from '../../utilities/typography'
+import Typography from '../../../../utilities/typography'
 
 export default StyleSheet.create({
   container: {

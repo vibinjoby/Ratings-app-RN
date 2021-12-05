@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import MaterialCommIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
-import ModalPopup from '../../../../components/ModalPopup'
+import ModalPopup from '../../../../components/AppModal'
 import Colors from '../../../../utilities/colors'
 import { RestaurantList_getRestaurants_edges as RestaurantData } from '../../gql/__generated__/RestaurantList'
 import { HomeViewProps } from '../../types'

@@ -3,7 +3,7 @@ import { View, Text } from 'react-native'
 import Modal from 'react-native-modal'
 
 import Colors from '../../utilities/colors'
-import Button from '../Button'
+import Button from '../AppButton'
 import styles from './styles'
 
 export interface ModalPopupProps {

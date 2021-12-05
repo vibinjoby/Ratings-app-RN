@@ -16,7 +16,7 @@ import { UserType } from '../../../../../__generated__/globalTypes'
 const SignUp: React.FC = () => {
   const navigation = useNavigation()
 
-  const { values, errors, setFieldValue, isValid, dirty } = useFormik<RegisterProps>({
+  const { values, errors, setFieldValue } = useFormik<RegisterProps>({
     initialValues: {
       fullName: '',
       email: '',
@@ -68,8 +68,6 @@ const SignUp: React.FC = () => {
         onSignUp={handleSignUp}
         values={values}
         errors={errors}
-        isValid={isValid}
-        dirty={dirty}
         handleChange={(fieldName: string) => (e: React.ChangeEvent) => {
           setFieldValue(fieldName, e)
         }}

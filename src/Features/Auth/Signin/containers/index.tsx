@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import { useFormik } from 'formik'
 
 import SignInForm from '../components/SignInForm'
-import { ScreenNames } from '../../constants'
+import { ScreenNames, SignInValidationSchema } from '../../constants'
 import { ScreenNames as BaseModuleScreenNames } from '../../../../BaseModule/constants'
 import { ScreenNames as HomeScreenNames } from '../../../Home/constants'
 import { useAdminLogin, useLogin } from '../../hooks'
@@ -15,12 +15,13 @@ import { decodeAndSaveToken } from '../../../../utilities/helpers'
 
 const SignIn: React.FC = () => {
   const navigation = useNavigation()
-  const { values, setFieldValue } = useFormik<LoginProps>({
+  const { values, setFieldValue, errors } = useFormik<LoginProps>({
     initialValues: {
       email: '',
       password: '',
       selectedTab: 0,
     },
+    validationSchema: SignInValidationSchema,
     onSubmit: () => {},
   })
 
@@ -78,6 +79,7 @@ const SignIn: React.FC = () => {
         onSignUp={handleSignUp}
         onLogin={handleLogin}
         values={values}
+        errors={errors}
         handleChange={(fieldName: string) => (e: React.ChangeEvent) => {
           setFieldValue(fieldName, e)
         }}

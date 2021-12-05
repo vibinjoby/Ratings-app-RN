@@ -3,8 +3,8 @@ import { ButtonProps, Text, TextInput, View } from 'react-native'
 import { FormikErrors, FormikHandlers, FormikValues } from 'formik'
 
 import AppDatePicker from '../../../components/AppDatePicker'
-import Button from '../../../components/Button'
-import Stars from '../../../components/Stars'
+import Button from '../../../components/AppButton'
+import Stars from '../../../components/AppStars'
 import Colors from '../../../utilities/colors'
 import styles from '../styles/AddReviewForm'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { View } from 'react-native'
 
-import Button from '../../../../components/Button'
+import Button from '../../../../components/AppButton'
 import Colors from '../../../../utilities/colors'
 import styles from '../styles'
 

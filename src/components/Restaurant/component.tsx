@@ -4,7 +4,7 @@ import MaterialCommIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import commonConst from '../../configs/commonConst'
 import Colors from '../../utilities/colors'
-import Stars from '../Stars'
+import Stars from '../AppStars'
 import styles from './styles'
 
 export interface RestaurantProps {
@@ -19,6 +19,7 @@ const Restaurant: React.FC<RestaurantProps> = ({
   testID,
   restaurantName,
   ratings,
+  reviewsCount,
   onPress,
 }: RestaurantProps) => {
   return (
@@ -41,7 +42,7 @@ const Restaurant: React.FC<RestaurantProps> = ({
               starHeight={15}
             />
           </View>
-          {/* <Text style={styles.reviews}>{reviewsCount} Reviews</Text> */}
+          <Text style={styles.reviews}>{reviewsCount} Reviews</Text>
         </View>
         <MaterialCommIcons
           testID="chevron"

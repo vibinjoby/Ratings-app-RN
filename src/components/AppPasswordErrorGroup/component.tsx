@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, Image } from 'react-native'
 
 import styles from './styles'
-export interface PasswordErrorTextProps {
+export interface AppPasswordErrorGroupProps {
   inputValue: any
 }
 const successImg = require('../../assets/success-img.png')
@@ -11,9 +11,9 @@ const errorImg = require('../../assets/error.png')
 const isUpperCase = (string: string) => /(.*[A-Z].*)/.test(string)
 const isLowerCase = (string: string) => /(.*[a-z].*)/.test(string)
 
-const PasswordErrorText: React.FC<PasswordErrorTextProps> = ({
+const AppPasswordErrorGroup: React.FC<AppPasswordErrorGroupProps> = ({
   inputValue,
-}: PasswordErrorTextProps) => {
+}: AppPasswordErrorGroupProps) => {
   return (
     <View>
       <Text style={styles.headerTxt}>Password must contain:</Text>
@@ -64,4 +64,4 @@ const PasswordErrorText: React.FC<PasswordErrorTextProps> = ({
   )
 }
 
-export default PasswordErrorText
+export default AppPasswordErrorGroup

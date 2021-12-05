@@ -1,7 +1,7 @@
 import React from 'react'
 import { FlatList, View } from 'react-native'
 
-import ModalPopup from '../../../../components/ModalPopup'
+import ModalPopup from '../../../../components/AppModal'
 import { HomeViewProps } from '../../types'
 import styles from '../styles'
 import Content from './Content'

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ThreeTabs should render 1`] = `
+exports[`AppTabs should render 1`] = `
 <View
   style={
     Object {

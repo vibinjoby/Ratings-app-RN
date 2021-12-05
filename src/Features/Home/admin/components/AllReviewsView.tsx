@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FlatList, View } from 'react-native'
 
-import ModalPopup from '../../../../components/ModalPopup'
+import ModalPopup from '../../../../components/AppModal'
 import ReviewBlock from '../../../../components/ReviewBlock'
 import { UpdateReviewInput } from '../../../../../__generated__/globalTypes'
 import { ReviewsList_findReviewsByRestaurantId as Reviews } from '../../gql/__generated__/ReviewsList'

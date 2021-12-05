@@ -17,9 +17,8 @@ const ThreeVerticalDots: React.FC<ThreeVerticalDotsProps> = ({
 }: ThreeVerticalDotsProps) => {
   const [isPressed, setIsPressed] = useState(false)
 
-  const togglePress = () => {
-    setIsPressed((val) => !val)
-  }
+  const togglePress = () => setIsPressed((val) => !val)
+
   const ThreeDots = () => (
     <TouchableOpacity testID={testID} onPress={togglePress} style={styles.threeDotWrapper}>
       <Image source={require('../../assets/moreIc/moreIc.png')} />

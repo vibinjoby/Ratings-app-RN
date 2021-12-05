@@ -1,10 +1,10 @@
 import React from 'react'
 import { Image, Text, TouchableOpacity, View } from 'react-native'
 
-import styles from './styles'
-import commons from '../../configs/commonConst'
+import styles from '../styles/UserRow'
+import commons from '../../../../configs/commonConst'
 
-export interface UsersProps {
+export interface UserRowProps {
   id: number
   name: string
   typeOfUser: string
@@ -12,7 +12,13 @@ export interface UsersProps {
   index?: number
 }
 
-const Users: React.FC<UsersProps> = ({ id, name, typeOfUser, onDelete, index }: UsersProps) => {
+const UserRow: React.FC<UserRowProps> = ({
+  id,
+  name,
+  typeOfUser,
+  onDelete,
+  index,
+}: UserRowProps) => {
   return (
     <View style={styles.container}>
       <Image style={styles.userPic} source={{ uri: commons.DUMMY_PIC }} />
@@ -30,10 +36,10 @@ const Users: React.FC<UsersProps> = ({ id, name, typeOfUser, onDelete, index }: 
         onPress={() => onDelete(id)}
         style={styles.deleteIc}
       >
-        <Image source={require('../../assets/deleteIc/deleteIc.png')} />
+        <Image source={require('../../../../assets/deleteIc/deleteIc.png')} />
       </TouchableOpacity>
     </View>
   )
 }
 
-export default Users
+export default UserRow

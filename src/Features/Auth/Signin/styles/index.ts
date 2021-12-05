@@ -22,8 +22,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   emailField: {
-    marginTop: 40,
-    marginBottom: 30,
+    marginVertical: 20,
   },
   pwdField: {
     marginBottom: 20,

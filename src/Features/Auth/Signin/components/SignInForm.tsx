@@ -1,21 +1,32 @@
 import React from 'react'
-import { FormikHandlers, FormikValues } from 'formik'
-import { Image, ImageBackground, ScrollView, Text, TouchableOpacity, View } from 'react-native'
+import {
+  ButtonProps,
+  Image,
+  ImageBackground,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native'
+import _ from 'lodash'
+import { FormikErrors, FormikHandlers, FormikValues } from 'formik'
 
-import Button from '../../../../components/Button'
-import TextField from '../../../../components/TextField'
-import ThreeTabs from '../../../../components/ThreeTabs'
-import Typography from '../../../../utilities/typography'
+import Button from '../../../../components/AppButton'
+import AppTextInput from '../../../../components/AppTextInput'
+import AppTabs from '../../../../components/AppTabs'
 import styles from '../styles'
+import Typography from '../../../../utilities/typography'
+import { SignInData } from '../../constants'
 
 export interface SignInFormProps {
-  onLogin: () => void
-  onSignUp: () => void
+  onLogin: ButtonProps['onPress']
+  onSignUp: ButtonProps['onPress']
   values: FormikValues
+  errors: FormikErrors<FormikValues>
   handleChange: (fieldName: string) => FormikHandlers['handleChange']
 }
 
-const SignInForm = ({ onLogin, onSignUp, values, handleChange }: SignInFormProps) => (
+const SignInForm = ({ onLogin, onSignUp, values, errors, handleChange }: SignInFormProps) => (
   <ScrollView>
     <View style={styles.container} testID="signinContainer">
       <ImageBackground
@@ -27,34 +38,31 @@ const SignInForm = ({ onLogin, onSignUp, values, handleChange }: SignInFormProps
       <View style={styles.contentContainer} testID="contentContainer">
         <Text style={Typography.Title1.regular}>Log In</Text>
         <View style={styles.tabContainer} testID="tabContainer">
-          <ThreeTabs
+          <AppTabs
             selectedTab={values['selectedTab']}
-            tab1Text="Customer"
-            tab2Text="Owner"
-            tab3Text="Admin"
-            onTabSelect={(tab) => handleChange('selectedTab')(tab)}
+            tabs={['Customer', 'Owner', 'Admin']}
+            onPress={(tab) => handleChange('selectedTab')(tab)}
           />
         </View>
-
-        <TextField
-          containerStyle={styles.emailField}
-          textHint="Email/Username"
-          inputValue={values['email']}
-          onInputChange={handleChange('email')}
-          testID={'email'}
-        />
-        <TextField
-          containerStyle={styles.pwdField}
-          textHint="Password"
-          isProtected
-          inputValue={values['password']}
-          testID={'password'}
-          onInputChange={handleChange('password')}
-        />
+        {SignInData.map((item) => (
+          <AppTextInput
+            key={item.key}
+            containerStyle={styles.emailField}
+            textHint={item.placeholder}
+            isProtected={item.secureEntry}
+            inputValue={values[item.name]}
+            onInputChange={handleChange(item.name)}
+            testID={item.name}
+            errorText={values['selectedTab'] !== 2 ? (errors[item.name] as string) : null}
+          />
+        ))}
 
         <Button
           testID="signinBtn"
-          disabled={!values['email'] || !values['password']}
+          disabled={
+            (!_.isEmpty(errors) || !values['email'] || !values['password']) &&
+            values['selectedTab'] !== 2
+          }
           title="Log In"
           onPress={onLogin}
           customStyle={styles.loginBtn}
@@ -71,4 +79,4 @@ const SignInForm = ({ onLogin, onSignUp, values, handleChange }: SignInFormProps
   </ScrollView>
 )
 
-export default React.memo(SignInForm)
+export default SignInForm

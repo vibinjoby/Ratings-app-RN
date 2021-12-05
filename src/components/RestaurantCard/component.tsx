@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 
 import Colors from '../../utilities/colors'
-import Stars from '../Stars'
+import Stars from '../AppStars'
 import styles from './styles'
 
 export interface RestaurantCardProps {
