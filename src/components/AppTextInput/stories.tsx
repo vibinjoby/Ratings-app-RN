@@ -2,20 +2,20 @@ import React, { useState } from 'react'
 import { View } from 'react-native'
 import { storiesOf } from '@storybook/react-native'
 
-import TextField from './component'
+import AppTextInput from './component'
 import { StyleSheet } from 'react-native'
 
-const TextFieldComponent = () => {
+export const AppTextInputComponent = () => {
   const [inputVal, setInputVal] = useState('')
 
   return (
     <View style={styles.container}>
-      <TextField
+      <AppTextInput
         textHint="Email/Username"
         inputValue={inputVal}
         onInputChange={(e) => setInputVal(e)}
       />
-      <TextField
+      <AppTextInput
         textHint="Password"
         isProtected
         inputValue={inputVal}
@@ -25,7 +25,11 @@ const TextFieldComponent = () => {
   )
 }
 
-storiesOf('Components', module).add('TextField', () => <TextFieldComponent />)
+storiesOf('Components', module).add('AppTextInput', () => <AppTextInputComponent />)
+
+export default {
+  title: 'AppTextInput',
+}
 
 const styles = StyleSheet.create({
   container: {

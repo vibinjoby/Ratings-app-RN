@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { LogBox } from 'react-native'
+
 import { NavigationContainer } from '@react-navigation/native'
 import AsyncStorage from '@react-native-community/async-storage'
 import * as Sentry from '@sentry/react-native'
@@ -36,10 +36,10 @@ const App: React.FC = () => {
   }
 
   useEffect(() => {
+    /** Development-mode  */
     if (__DEV__) {
       DevMenu.addItem('Toggle storybook', toggleStorybook)
-      /** Development-mode  */
-      LogBox.ignoreAllLogs() // Ignore all log warnings
+      //LogBox.ignoreAllLogs() // Ignore all log warnings
       //console.error = () => console.log() // Ignore all errors
     }
     // Sentry logging

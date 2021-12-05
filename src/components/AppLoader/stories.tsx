@@ -3,4 +3,10 @@ import { storiesOf } from '@storybook/react-native'
 
 import AppLoader from './component'
 
-storiesOf('Components', module).add('AppLoader', () => <AppLoader />)
+export const Story = () => <AppLoader />
+
+storiesOf('Components', module).add('AppLoader', () => <Story />)
+
+export default {
+  title: 'AppLoader',
+}

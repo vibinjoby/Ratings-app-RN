@@ -4,11 +4,17 @@ import { StyleSheet, View } from 'react-native'
 
 import OwnerReply from './component'
 
-storiesOf('Components', module).add('OwnerReply', () => (
+export const Story = () => (
   <View style={styles.container}>
-    <OwnerReply owner_reply="Hey sorry that we couldn't meet your expectations" />
+    <OwnerReply ownerReply="Hey sorry that we couldn't meet your expectations" />
   </View>
-))
+)
+
+storiesOf('Components', module).add('OwnerReply', () => <Story />)
+
+export default {
+  title: 'OwnerReply',
+}
 
 const styles = StyleSheet.create({
   container: {

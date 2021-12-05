@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react-native'
 
 import AppTabs from './component'
 
-const Component = () => {
+export const Component = () => {
   const [selectedTab, setSelectedTab] = useState(0)
   return (
     <>
@@ -27,6 +27,10 @@ const Component = () => {
 }
 
 storiesOf('Components', module).add('AppTabs', () => <Component />)
+
+export default {
+  title: 'AppTabs',
+}
 
 const styles = StyleSheet.create({
   container: {

@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react-native'
 
 import Restaurant from './component'
 
-storiesOf('Components', module).add('Restaurant', () => (
+export const Story = () => (
   <View style={styles.container}>
     <Restaurant
       restaurantName="California Roll"
@@ -13,7 +13,14 @@ storiesOf('Components', module).add('Restaurant', () => (
       onPress={() => console.log('pressed')}
     />
   </View>
-))
+)
+
+storiesOf('Components', module).add('Restaurant', () => <Story />)
+
+export default {
+  title: 'Restaurant',
+}
+
 const styles = StyleSheet.create({
   container: {
     padding: 20,

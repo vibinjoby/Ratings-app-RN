@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react-native'
 import Button from './component'
 import Colors from '../../utilities/colors'
 
-const ButtonComponent = () => (
+export const ButtonComponent = () => (
   <View style={styles.container}>
     <Button
       title={'GET STARTED'}
@@ -30,6 +30,10 @@ const ButtonComponent = () => (
     </View>
   </View>
 )
+
+export default {
+  title: 'AppButton',
+}
 
 storiesOf('Components', module).add('AppButton', () => <ButtonComponent />)
 

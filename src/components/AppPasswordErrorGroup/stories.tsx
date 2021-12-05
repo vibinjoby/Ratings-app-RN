@@ -1,7 +1,11 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react-native'
-import PasswordErrorText from './component'
+import AppPasswordErrorGroup from './component'
 
-storiesOf('Components', module).add('PasswordErrorGroup', () => (
-  <PasswordErrorText inputValue="12345" />
-))
+export const Story = () => <AppPasswordErrorGroup inputValue="12345" />
+
+storiesOf('Components', module).add('AppPasswordErrorGroup', () => <Story />)
+
+export default {
+  title: 'AppPasswordErrorGroup',
+}

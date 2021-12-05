@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react-native'
 import RestaurantCard from './component'
 import constants from '../../configs/constants'
 
-const RestaurantCardStory = () => (
+export const Story = () => (
   <View style={styles.container}>
     <RestaurantCard
       title="Joes Pizzeria"
@@ -17,7 +17,11 @@ const RestaurantCardStory = () => (
   </View>
 )
 
-storiesOf('Components', module).add('RestaurantCard', () => <RestaurantCardStory />)
+storiesOf('Components', module).add('RestaurantCard', () => <Story />)
+
+export default {
+  title: 'RestaurantCard',
+}
 
 const styles = StyleSheet.create({
   container: {

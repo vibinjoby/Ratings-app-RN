@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { View, Text, Image, ViewProps } from 'react-native'
 import DatePicker from 'react-native-datepicker'
-import * as Sentry from '@sentry/react-native'
 import moment from 'moment'
 
 import styles from './styles'
@@ -27,14 +26,10 @@ const AppDatePicker: React.FC<AppDatePickerProps> = ({
   const [date, setDate] = useState(new Date())
 
   const validateDateChange = (_: Event, date: Date | undefined) => {
-    try {
-      if (!date) return
+    if (!date) return
 
-      setDate(date)
-      onDateSelection && onDateSelection(date.toDateString())
-    } catch (error) {
-      Sentry.captureException(error)
-    }
+    setDate(date)
+    onDateSelection && onDateSelection(date.toDateString())
   }
 
   const DateIconComp = () => (

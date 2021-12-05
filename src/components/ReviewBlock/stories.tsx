@@ -4,10 +4,10 @@ import { storiesOf } from '@storybook/react-native'
 
 import ReviewBlock from './component'
 
-storiesOf('Components', module).add('ReviewBlock', () => (
+export const Story = () => (
   <View style={styles.container}>
     <ReviewBlock
-      reviewId="123"
+      reviewId={123}
       reviewerName="Vibin"
       comments="This is not too bad at all"
       ratings={3}
@@ -15,7 +15,13 @@ storiesOf('Components', module).add('ReviewBlock', () => (
       shouldReply
     />
   </View>
-))
+)
+
+storiesOf('Components', module).add('ReviewBlock', () => <Story />)
+
+export default {
+  title: 'ReviewBlock',
+}
 
 const styles = StyleSheet.create({
   container: {
