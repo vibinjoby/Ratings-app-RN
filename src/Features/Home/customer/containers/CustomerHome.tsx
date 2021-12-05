@@ -7,7 +7,7 @@ import { ScreenNames } from '../../constants'
 import CustomerView from '../components/CustomerView'
 import { useAllRestaurants } from '../../hooks'
 import ApiResult from '../../../../components/ApiResult'
-import { useNavBar } from '../../../../utilities/SetupServices'
+import { useNavBar } from '../../../../utilities/hooks'
 
 const CustomerHome: React.FC = () => {
   const [isLogoutPop, setIsLogoutPop] = useState(false)

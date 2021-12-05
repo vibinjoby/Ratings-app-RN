@@ -10,7 +10,7 @@ import './src/utilities/ReactotronConfig'
 //import Storybook from './storybook'
 import { client } from './client'
 import BaseModule from './src/BaseModule'
-import { useNoInternet } from './src/utilities/SetupServices'
+import { useNoInternet } from './src/utilities/hooks'
 import AppNoInternet from './src/components/AppNoInternet'
 
 const storybookKeyName = 'mobile-render-storybook'
