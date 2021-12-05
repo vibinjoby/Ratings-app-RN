@@ -8,15 +8,15 @@
 // ====================================================
 
 export interface SaveReviewReplyMutation_createOwnerReply {
-  __typename: "Review";
-  id: number;
+  __typename: 'Review'
+  id: number
 }
 
 export interface SaveReviewReplyMutation {
-  createOwnerReply: SaveReviewReplyMutation_createOwnerReply;
+  createOwnerReply: SaveReviewReplyMutation_createOwnerReply
 }
 
 export interface SaveReviewReplyMutationVariables {
-  reviewId: number;
-  ownerReply: string;
+  reviewId: number
+  ownerReply: string
 }

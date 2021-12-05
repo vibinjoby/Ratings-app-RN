@@ -8,21 +8,21 @@
 // ====================================================
 
 export interface MyRestaurants_getOwnedrestaurants_reviews {
-  __typename: "Review";
-  id: number;
-  ratings: number;
-  comments: string;
+  __typename: 'Review'
+  id: number
+  ratings: number
+  comments: string
 }
 
 export interface MyRestaurants_getOwnedrestaurants {
-  __typename: "Restaurant";
-  id: number;
-  restaurantName: string;
-  address: string;
-  averageRatings: number;
-  reviews: MyRestaurants_getOwnedrestaurants_reviews[] | null;
+  __typename: 'Restaurant'
+  id: number
+  restaurantName: string
+  address: string
+  averageRatings: number
+  reviews: MyRestaurants_getOwnedrestaurants_reviews[] | null
 }
 
 export interface MyRestaurants {
-  getOwnedrestaurants: MyRestaurants_getOwnedrestaurants[];
+  getOwnedrestaurants: MyRestaurants_getOwnedrestaurants[]
 }

@@ -8,9 +8,9 @@
 // ====================================================
 
 export interface RemoveUserMutation {
-  removeUser: boolean;
+  removeUser: boolean
 }
 
 export interface RemoveUserMutationVariables {
-  id: number;
+  id: number
 }

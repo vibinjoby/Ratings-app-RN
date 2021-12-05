@@ -8,9 +8,9 @@
 // ====================================================
 
 export interface RemoveReviewMutation {
-  removeReview: boolean;
+  removeReview: boolean
 }
 
 export interface RemoveReviewMutationVariables {
-  id: number;
+  id: number
 }
