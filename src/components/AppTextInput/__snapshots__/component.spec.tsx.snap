@@ -35,6 +35,7 @@ exports[`TextField should render 1`] = `
           "width": "100%",
         }
       }
+      testID="text-inp"
       value="Input"
     />
   </View>

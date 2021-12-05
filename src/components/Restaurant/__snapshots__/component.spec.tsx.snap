@@ -418,6 +418,18 @@ exports[`Restaurant should render 1`] = `
           </View>
         </RCTScrollView>
       </View>
+      <Text
+        style={
+          Object {
+            "color": "#7C7C7C",
+            "fontFamily": "Poppins-Regular",
+            "fontSize": 14,
+          }
+        }
+      >
+        15
+         Reviews
+      </Text>
     </View>
     <Text
       allowFontScaling={false}
