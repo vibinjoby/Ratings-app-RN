@@ -7,7 +7,7 @@ import { ApolloProvider } from '@apollo/client'
 import DevMenu from 'react-native-dev-menu'
 
 import './src/utilities/ReactotronConfig'
-import Storybook from './storybook'
+//import Storybook from './storybook'
 import { client } from './client'
 import BaseModule from './src/BaseModule'
 import { useNoInternet } from './src/utilities/hooks'
@@ -55,8 +55,6 @@ const App: React.FC = () => {
     })
     //loadRenderStorybook()
   }, [])
-
-  return <Storybook />
 
   if (isStorybook) return <></>
 
