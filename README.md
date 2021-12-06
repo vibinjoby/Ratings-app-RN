@@ -1,35 +1,51 @@
+# Storybook
+
+The project uses storybook library for developing components and screens in isolation
+https://storybook.js.org/docs/react/get-started/introduction
+
+## Web
+
+![](gifs/storybook-web.gif)
+
+## Mobile
+
+![](gifs/storybook.gif)
+
+# Unit and E2E testing
+
 ## E2E testing using detox
 
 Build the android release using `yarn android:e2e:build`
 
 Run `yarn android:e2e:test` to execute the detox test
 
-| Step-1 | Step-2 | Step-3 | Step-4
-| --------------- | --------------- | --------------- | --------------- |
+| Step-1                         | Step-2                         | Step-3                         | Step-4                         |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
 | ![](gifs/ratingsapp-e2e-1.gif) | ![](gifs/ratingsapp-e2e-2.gif) | ![](gifs/ratingsapp-e2e-3.gif) | ![](gifs/ratingsapp-e2e-4.gif) |
 
 # Script use case
-Step-1
---------
-- Create a new Owner account 
-- Add a new restaurant by filling all the needed info 
+
+## Step-1
+
+- Create a new Owner account
+- Add a new restaurant by filling all the needed info
 - Logout from the app
 
-Step-2
---------
+## Step-2
+
 - Login as a customer
 - Search for the restaurant recently created by scrolling to the bottom
 - Add a new review
 - Logout from the app
 
-Step-3
---------
+## Step-3
+
 - Login as a owner to the newly created account
 - Add owner's response to the customer's review by clicking on reply
 - Logout from the app
 
-Step-4
---------
+## Step-4
+
 - Login as a admin
 - Go to the users page
 - Delete the recently created owner user
@@ -41,19 +57,11 @@ Step-4
 
 <img width="646" alt="Screen Shot 2021-09-04 at 10 57 41 AM" src="https://user-images.githubusercontent.com/23625686/132098835-b2774043-d001-47b2-92d8-4657cdcbfd97.png">
 
-
 ## Unit testing and Linting
 
 The project uses husky library which is used to run the script `npm run prettier-check && npm run lint && npm run test -- -u` which will execute all the unit test cases and run linting before every commit to make sure nothing breaks
 
 ![](gifs/commit-check.gif)
-
-## Storybook for ease of development
-
-The project uses storybook library for developing components and screens in isolation
-https://storybook.js.org/docs/react/get-started/introduction
-
-![](gifs/storybook.gif)
 
 ## Creating new components
 
@@ -70,4 +78,4 @@ src/components/Button/stories.ts
 src/components/Button/styles.ts
 ```
 
-It will also update `src/stories/index.js` with a newly created comoonent storybook entry.
+It will also update `src/stories/index.js` with a newly created component storybook entry.
