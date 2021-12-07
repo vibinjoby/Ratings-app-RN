@@ -5,6 +5,8 @@ https://storybook.js.org/docs/react/get-started/introduction
 
 ## Web
 
+Run `yarn storybook`
+
 ![](gifs/storybook-web.gif)
 
 ## Mobile
