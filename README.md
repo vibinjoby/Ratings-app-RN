@@ -3,6 +3,10 @@
 The project uses storybook library for developing components and screens in isolation
 https://storybook.js.org/docs/react/get-started/introduction
 
+# API
+
+This project uses graphql via apollo client and the backend can be found [here](https://github.com/vibinjoby/Ratings-api-nestjs-gql) 
+
 ## Web
 
 Run `yarn storybook`
@@ -60,8 +64,7 @@ Run `yarn android:e2e:test` to execute the detox test
 <img width="646" alt="Screen Shot 2021-09-04 at 10 57 41 AM" src="https://user-images.githubusercontent.com/23625686/132098835-b2774043-d001-47b2-92d8-4657cdcbfd97.png">
 
 ## Unit testing and Linting
-
-The project uses husky library which is used to run the script `npm run prettier-check && npm run lint && npm run test -- -u` which will execute all the unit test cases and run linting before every commit to make sure nothing breaks
+Run the script `npm run prettier-check && npm run lint && npm run test -- -u` which will execute all the unit test cases and run linting
 
 ![](gifs/commit-check.gif)
 
