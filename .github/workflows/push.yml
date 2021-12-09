@@ -31,6 +31,7 @@ jobs:
           token: ${{ secrets.VIBIN_GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           exitZeroOnChanges: true # 👈 Option to prevent the workflow from failing
+          fetch-depth: 0
 
   build-and-e2e-test:
     runs-on: macos-latest
