@@ -11,6 +11,7 @@ export const RestaurantList = gql`
           address
           contactNumber
           averageRatings
+          reviewsCount
         }
       }
       pageInfo {

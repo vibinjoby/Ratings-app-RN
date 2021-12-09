@@ -22,7 +22,7 @@ const RestaurantList = ({ listData, onEndReached, onCardPress }: RestaurantListP
       <RestaurantCard
         title={item.node?.restaurantName}
         ratings={item.node?.averageRatings}
-        reviewCount={0}
+        reviewCount={item.node?.reviewsCount ?? 0}
         restaurantImg={{ uri: 'https://source.unsplash.com/user/picoftasty' }}
         testID={`card${index}`}
         onPress={() => onCardPress(item.node?.id)}

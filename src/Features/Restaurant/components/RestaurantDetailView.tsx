@@ -20,8 +20,9 @@ interface RestaurantDetailViewProps {
 }
 
 interface ReviewWrapperProps {
+  reviewHeader: string
   userType: string
-  reviews: Array<Reviews> | null
+  reviews: Array<Reviews>
   onSaveReply: (arg0: number, arg1: string) => void
 }
 
@@ -59,21 +60,21 @@ const ReviewsWithHeader = ({ userType, title, reviews, onSaveReply }: ReviewsWit
   )
 }
 
-const ReviewWrapper = ({ reviews, userType, onSaveReply }: ReviewWrapperProps) => {
-  if (!reviews || reviews.length === 0) {
-    return <EmptyRestaurantDetailView />
-  }
-  return (
-    <View style={styles.contentContainer} testID="contentContainer">
-      <ReviewsWithHeader
-        onSaveReply={onSaveReply}
-        userType={userType}
-        title={'Latest Rated'}
-        reviews={reviews}
-      />
-    </View>
-  )
-}
+const ReviewWrapper = ({
+  reviewHeader = 'Latest Rated',
+  reviews,
+  userType,
+  onSaveReply,
+}: ReviewWrapperProps) => (
+  <View style={styles.contentContainer} testID="contentContainer">
+    <ReviewsWithHeader
+      onSaveReply={onSaveReply}
+      userType={userType}
+      title={reviewHeader}
+      reviews={reviews}
+    />
+  </View>
+)
 
 const RestaurantDetailView = ({
   restaurantData,
@@ -91,11 +92,31 @@ const RestaurantDetailView = ({
           <Text style={styles.restaurantTitle}>{restaurantData.restaurantName}</Text>
           <RatingsOverview ratings={restaurantData.averageRatings} />
         </ImageBackground>
-        <ReviewWrapper
-          onSaveReply={onSaveReply}
-          userType={userType!}
-          reviews={restaurantData.reviews}
-        />
+
+        {restaurantData.reviews?.length === 0 ? (
+          <EmptyRestaurantDetailView />
+        ) : (
+          <>
+            <ReviewWrapper
+              reviewHeader="Latest Rated"
+              onSaveReply={onSaveReply}
+              userType={userType!}
+              reviews={restaurantData.reviews ?? []}
+            />
+            <ReviewWrapper
+              reviewHeader="Highest Rated"
+              onSaveReply={onSaveReply}
+              userType={userType!}
+              reviews={restaurantData.highestRatedReviews ?? []}
+            />
+            <ReviewWrapper
+              reviewHeader="Lowest Rated"
+              onSaveReply={onSaveReply}
+              userType={userType!}
+              reviews={restaurantData.lowestRatedReviews ?? []}
+            />
+          </>
+        )}
       </View>
     </ScrollView>
     {userType === UserType.customer ? (

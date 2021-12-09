@@ -14,6 +14,7 @@ export interface RestaurantList_getRestaurants_edges_node {
   address: string
   contactNumber: number
   averageRatings: number
+  reviewsCount: number
 }
 
 export interface RestaurantList_getRestaurants_edges {

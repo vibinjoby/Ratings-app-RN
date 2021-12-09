@@ -15,6 +15,26 @@ export const RestaurantDetails = gql`
           fullName
         }
       }
+      highestRatedReviews {
+        id
+        comments
+        ratings
+        ownerReply
+        visitDate
+        user {
+          fullName
+        }
+      }
+      lowestRatedReviews {
+        id
+        comments
+        ratings
+        ownerReply
+        visitDate
+        user {
+          fullName
+        }
+      }
     }
   }
 `
