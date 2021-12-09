@@ -38,7 +38,7 @@ describe('Ratings app', () => {
     await element(by.id('positiveBtn')).tap()
   })
 
-  // STEP:-2 : SIGN IN AS CUSTOMER AND ADD YOUR REPLY
+  // STEP:-2 : SIGN UP AS CUSTOMER AND ADD YOUR REPLY
 
   it('should get past welcome screen', async () => {
     // Sign up as a owner
@@ -57,7 +57,13 @@ describe('Ratings app', () => {
 
   it('should find the last restaurant added and select it', async () => {
     await element(by.id('restaurantContainer')).scrollTo('bottom')
-    await element(by.text('Test restaurant')).atIndex(1).tap()
+
+    try {
+      await element(by.text('Test restaurant')).tap()
+    } catch (error) {
+      await element(by.text('Test restaurant')).atIndex(1).tap()
+    }
+    await device.takeScreenshot('clicking on add review button')
     await element(by.id('addReviewIc')).tap()
   })
 
@@ -66,6 +72,7 @@ describe('Ratings app', () => {
     await element(by.id('comments')).replaceText('This is a testing review so please ignore!!')
     await element(by.id('datePicker')).tap()
     await element(by.text('OK')).tap()
+    await device.takeScreenshot('saving a review')
     await element(by.id('doneBtn')).tap()
   })
 
@@ -88,15 +95,22 @@ describe('Ratings app', () => {
     await element(by.id('middleTab')).tap()
     await element(by.id('email')).replaceText('vibin3canada@gmail.com')
     await element(by.id('password')).replaceText('Password123!')
+    await device.takeScreenshot('Logging in as owner')
     await element(by.id('signinBtn')).tap()
   })
 
   it('should find the created restaurant added and select it to reply to user', async () => {
-    await element(by.text('Test restaurant')).tap()
-    await element(by.id('replyBtn')).tap()
+    try {
+      await element(by.text('Test restaurant')).tap()
+    } catch (error) {
+      await element(by.text('Test restaurant')).atIndex(1).tap()
+    }
+
+    await element(by.id('replyBtn')).atIndex(0).tap()
     await element(by.id('replyInput')).replaceText(
       'Hi! Thanks for taking time to post your reviews..we very much appreciate it',
     )
+    await device.takeScreenshot('Replying to the user review')
     await element(by.id('sendBtn')).tap()
   })
 
@@ -119,16 +133,8 @@ describe('Ratings app', () => {
     await element(by.id('rightTab')).tap()
     await element(by.id('email')).replaceText('admin')
     await element(by.id('password')).replaceText('admin')
+    await device.takeScreenshot('logging in as an admin')
     await element(by.id('signinBtn')).tap()
-  })
-  it('should select users from home screen', async () => {
-    await element(by.text('Users')).tap()
-    await element(by.id('deleteIc2')).tap()
-    await element(by.id('positiveBtn')).tap()
-  })
-
-  it('should go back one screen to Home screen', async () => {
-    await device.pressBack()
   })
 
   it('should select restaurants from home screen', async () => {
@@ -136,7 +142,11 @@ describe('Ratings app', () => {
   })
 
   it('should find the last restaurant added and select it', async () => {
-    await element(by.text('Test restaurant')).tap()
+    try {
+      await element(by.text('Test restaurant')).tap()
+    } catch (error) {
+      await element(by.text('Test restaurant')).atIndex(1).tap()
+    }
   })
 
   it('should edit the review and owner reply', async () => {
@@ -146,12 +156,28 @@ describe('Ratings app', () => {
     await element(by.id('customerRespId')).replaceText('Sample response')
     await element(by.id('star4')).tap()
     await element(by.id('ownerRespId')).replaceText('Sample owner reply')
+    await device.takeScreenshot('Edit and save the review response')
     await element(by.id('save')).tap()
   })
 
   it('should edit the review and owner reply', async () => {
     await element(by.id('threeDots')).tap()
     await element(by.text('Delete Review')).tap()
+    await device.takeScreenshot('Deleting the review')
+    await element(by.id('positiveBtn')).tap()
+  })
+
+  it('should go back two screens to Home screen', async () => {
+    await device.pressBack()
+    await device.pressBack()
+  })
+  it('should select users from home screen', async () => {
+    await element(by.text('Users')).tap()
+    await device.takeScreenshot('Deleting users')
+    await element(by.id('deleteIc0')).tap()
+    await element(by.id('positiveBtn')).tap()
+    await element(by.id('deleteIc0')).tap()
+    await element(by.id('positiveBtn')).tap()
   })
 
   it('should go back one screen to Home screen', async () => {

@@ -24,7 +24,7 @@
     "emulator": {
       "type": "android.emulator",
       "device": {
-        "avdName": "emulator-5554"
+        "avdName": "Pixel_3a_API_30_x86"
       }
     }
   },
