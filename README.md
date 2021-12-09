@@ -1,11 +1,11 @@
+# API
+
+This project uses graphql via apollo client and the backend repo can be found [here](https://github.com/vibinjoby/Ratings-api-nestjs-gql) 
+
 # Storybook
 
 The project uses storybook library for developing components and screens in isolation
 https://storybook.js.org/docs/react/get-started/introduction
-
-# API
-
-This project uses graphql via apollo client and the backend can be found [here](https://github.com/vibinjoby/Ratings-api-nestjs-gql) 
 
 ## Web
 
