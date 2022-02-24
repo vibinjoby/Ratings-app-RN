@@ -1,4 +1,5 @@
 This is a react native app built using typescript for posting reviews on restaurants
+
 Find the same app built in native android using kotliin [here](https://github.com/vibinjoby/Ratings-app-kotlin)
 
 # API
